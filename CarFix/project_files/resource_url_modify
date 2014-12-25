@@ -1,0 +1,9 @@
+1.http://localhost:8080/CarFix/pages/business/tbBusinessBalance/tbBusinessBalanceFindAction.action 结算处理
+
+现在是一个菜单叫结算处理 ；http://localhost:8080/CarFix/pages/business/tbBusinessBalance/tbBusinessBalanceForwardPageAction!forwardPage.action
+
+现分为两个菜单  ：结算处理， 结算档案查询
+
+
+
+特殊结算编辑

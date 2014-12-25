@@ -1,0 +1,48 @@
+1.运行database中的sql建表
+
+  项目部署后 http://localhost:8080/CarFix/pages/secrity/tmUserFindAction.action
+  
+  每次先调用action 然后再进入JSP
+  
+2．dao层extends IDao<你的类>
+
+    已经实现了基本方法 如果有别的常用方法跟我说下
+    
+3．daoImpl extends BaseDaoImpl<你的类>
+
+4．除了IDao 层中的方法 其他的方法都必须写说明(自己实现的方法)，action中的方法必须都写注释,如果涉及到业务逻辑, 在代码中加以说明。
+
+5．事务加载与service层 多个表个操作在service层中进行
+
+6. 在国际化文件中MessageResource_zh_CN.properties中写上key=value jsp页面中<s:text/>调用
+
+（废弃）7．每个表的主键为ID 自动增长 每个表要加个ISVALID字段 系统有个删除数据恢复的功能 本质上是删除的时候把ISVALID设置为0 恢复的时候把ISVALID设置为1
+
+8．com.selfsoft.framework.common为公用包公用的方法都写入这个包里 Constants类为常量类 可以定义些常量，以及 action返回的常量 包的命名规范为com.selfsoft.模块名.**
+
+9.struts-模块名.xml 基本上一个模块一个 struts配置文件
+
+10.JSP中的JS放入单独的JS文件中,用prototype的AJAX方法 ,jsp文件命名为 XXFind.jsp XXCreate.jsp XXEdit.jsp 写于pages 下并创建模块的文件夹 ,js/common.js为公用的js文件
+
+11 .action命名为 类名+ 操作名+Action 首字母小写
+
+12．具体E3表格操作见TmUserFind.jsp 以及TmUser.js文件
+
+13．代码调试用IE8 
+
+14. prototype使用可以参考下面地址：
+
+https://compdoc2cn.dev.java.net/prototype/html/prototype.js.cn.html
+
+15.基本类型用Integer Double Float…..计算金钱的定义为BigDecimal
+
+16.表的SQL语句上传至database.txt中
+
+add baiJx 2010-1-15
+17.  页面get提交中文解码器 具体使用 
+	 页面部分: xxx.action?&chineseName=encodeURIComponent(name)
+	 action部分: UrlParamDecoder.getParam(request,"chineseName")
+	 
+18.  资源树ExtTreeBuilderService: 动态树,静态树,普通树,复选树,右键菜单树(具体使用详见方法注释)
+
+19.增加了jdbc.properties文件,初步的数据模型在project_files下.

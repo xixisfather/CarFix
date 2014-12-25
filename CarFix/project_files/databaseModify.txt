@@ -1,0 +1,122 @@
+1.TM_BALANCE_ITEM 新增了字段  ALLOW_HAND int      ccr-数据库表已添加(标识下)
+2.TM_BALANCE_ITEM 新增了字段[ITEM_CODE] [varchar] (10) ccr-数据库表已添加
+3.TB_WORKING_INFO [STATION_CODE] [varchar] (10) COLLATE Chinese_PRC_CI_AS NULL ,             ---edit
+[STATION_NAME] [varchar] (100) COLLATE Chinese_PRC_CI_AS NULL ,            ---edit 
+	长度修改 由20-100
+ 4.TB_BUSINESS_BALANCE 增加字段  结算单 状态 [BALANCE_STATUS] [int] NULL
+  	
+5. TB_MAINTAIN_PART_CONTENT 增加字段 [IS_FREE]  [int]	 null
+									 [BALANCE_ID]	[int]	 null
+									 
+6. 5. TM_STOCKOUT_DETAIL 增加字段 [IS_FREE]  [int]	 null
+									 [BALANCE_ID]	[int]	 null
+									 
+7.增加表
+
+TB_SPECIAL_WORKING_CONTENT
+
+TB_SPECIAL_PART_CONTENT
+
+TB_BUSINESS_SPECIAL_BALANCE_ITEM	
+
+
+
+
+
+2010-8-17
+增加表			
+
+--系统序列号
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TM_SYS_REGEDIT]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[TM_SYS_REGEDIT]
+GO
+
+CREATE TABLE [dbo].[TM_SYS_REGEDIT] (
+	[ID] [int] IDENTITY (1, 1) NOT NULL ,
+	[SYS_SN] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL 
+) ON [PRIMARY]
+GO					 
+
+
+
+
+
+TB_CAR_INFO
+
+[LICENSE_CODE] [varchar] (20) COLLATE Chinese_PRC_CI_AS NULL ,
+
+2012-0507
+--维修发料增加账类，项目类型
+alter table TB_MAINTAIN_PART_CONTENT add ZL varchar(50) null,XMLX varchar(50)null;
+
+alter table TB_FIX_ENTRUST_CONTENT add ZL varchar(50) null,XMLX varchar(50)null;
+
+
+
+create table TM_PROJECT_TYPE (
+   ID                   int                  identity,
+   PROJECT_TYPE         varchar(50)          null,
+   ZL                   varchar(50)          null,
+   XMLX                 varchar(50)          null,
+   constraint PK_TM_PROJECT_TYPE primary key (ID)
+)
+go
+
+
+ALTER TABLE dbo.TB_FIX_ENTRUST_CONTENT ADD
+	PROJECT_TYPE varchar(50) NULL
+	
+	
+
+ALTER TABLE dbo.TB_MAINTAIN_PART_CONTENT ADD
+	PROJECT_TYPE varchar(50) NULL
+	
+	
+alter table TM_STOCKOUT_DETAIL add ZL varchar(50) null,XMLX varchar(50)null,PROJECT_TYPE varchar(50) NULL;
+
+ALTER TABLE dbo.TB_FIX_ENTRUST_CONTENT ADD
+	WXLX varchar(50) NULL
+GO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+BEGIN TRANSACTION
+SET QUOTED_IDENTIFIER ON
+SET ARITHABORT ON
+SET NUMERIC_ROUNDABORT OFF
+SET CONCAT_NULL_YIELDS_NULL ON
+SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET ANSI_WARNINGS ON
+COMMIT
+BEGIN TRANSACTION
+ALTER TABLE dbo.TB_FIX_ENTRUST ADD
+	BJZZH varchar(50) NULL,
+	SBRQ varchar(50) NULL
+GO
+COMMIT
+
+
+
+
+ALTER table dbo.TB_MAINTAIN_PART_CONTENT add IS_PRINT VARCHAR(50)
+
+采购入库增加税率字段
+alter table dbo.tm_stock_in add RATE numeric(10, 2) NULL;
+

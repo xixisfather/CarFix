@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xkins>
+    <global-processor id="e3tableVelocity" type="net.jcreate.e3.table.skin.processor.VelocityTemplateProcessor"/>
+          <skin name="E3002_001" url="/E3/skins/E3002_001" definition="/Skin.xml" />
+</xkins>

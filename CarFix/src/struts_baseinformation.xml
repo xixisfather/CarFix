@@ -1,0 +1,787 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+ <struts>
+ 
+ 	<package name="strutsBaseInformation" extends="struts-default">
+ 		
+ 		<action name="tbCardHisPrintAction" class="com.selfsoft.baseinformation.action.TbCardHisAction" method="printTbCardHis">
+			
+		</action>
+ 		
+ 	
+ 		<action name="tbCardHisFindAction" class="com.selfsoft.baseinformation.action.TbCardHisAction" method="findTbCardHis">
+			<result name="success">
+				/pages/baseinformation/TbCardHisFind.jsp
+			</result>
+			
+		</action>
+ 		
+ 		<action name="tmCardTypeFindByCJFAction" class="com.selfsoft.baseparameter.action.TmCardTypeAction" method="findByCJF">
+			
+		</action>
+ 	
+ 		<action name="tmCardTypeFindByCZJEAction" class="com.selfsoft.baseparameter.action.TmCardTypeAction" method="findByCZJE">
+			
+		</action>
+		
+ 	
+ 		<action name="tmCardTypeFindAction" class="com.selfsoft.baseparameter.action.TmCardTypeAction" method="findTmCardType">
+			<result name="success">
+				/pages/baseinformation/TmCardTypeFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tmCardTypeDeleteAction" class="com.selfsoft.baseparameter.action.TmCardTypeAction" method="deleteTmCardType">
+			
+		</action>
+		<action name="tmCardTypeInsertAction" class="com.selfsoft.baseparameter.action.TmCardTypeAction" method="insertTmCardType">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmCardTypeTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmCardTypeTable
+			</result>
+			<result name="input">
+				
+				/pages/message/fail.jsp?table=tmCardTypeTable
+			</result>
+		</action>
+		<action name="tmCardTypeUpdateAction" class="com.selfsoft.baseparameter.action.TmCardTypeAction" method="updateTmCardType">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmCardTypeTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmCardTypeTable
+			</result>
+			<result name="input">
+				
+				/pages/message/fail.jsp?table=tmCardTypeTable
+			</result>
+		</action>
+		
+		<action name="tmCardTypeForwardPageAction" class="com.selfsoft.baseparameter.action.TmCardTypeAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseinformation/TmCardTypeCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseinformation/TmCardTypeEdit.jsp
+			</result>
+		</action>
+ 	
+ 		<action name="tbReturnVisitFindAction" class="com.selfsoft.business.action.TbReturnVisitAction" method="findTbReturnVisit">
+			
+			<result name="1">
+				/pages/business/visit/TbCarInfoLost.jsp
+			</result>
+			<result name="2">
+				/pages/business/visit/TbCarInfoMY.jsp
+			</result>
+			<result name="3">
+				/pages/business/visit/TbCarInfoBY.jsp
+			</result>
+			<result name="4">
+				/pages/business/visit/TbCarInfoWXHF.jsp
+			</result>
+		</action>
+		
+		<action name="tbReturnVisitForwardPageAction" class="com.selfsoft.business.action.TbReturnVisitAction" method="forwardPage">
+			
+			<result name="addPage">
+				/pages/business/visit/TbReturnVisitCreate.jsp
+			</result>
+			
+			<result name="editPage">
+				/pages/business/visit/TbReturnVisitEdit.jsp
+			</result>
+			
+		</action>	
+ 		
+ 		<action name="tbReturnVisitInsertAction" class="com.selfsoft.business.action.TbReturnVisitAction" method="insertTbReturnVisit">
+			
+			<result name="success">
+				/pages/message/success.jsp?table=tbReturnVisitTable
+			</result>
+			
+		</action>
+		
+		<action name="tbReturnVisitUpdateAction" class="com.selfsoft.business.action.TbReturnVisitAction" method="updateTbReturnVisit">
+			
+			<result name="success">
+				/pages/message/success.jsp?table=tbReturnVisitTable
+			</result>
+			
+		</action>
+		
+		<action name="tbReturnVisitDeleteAction" class="com.selfsoft.business.action.TbReturnVisitAction" method="deleteTbReturnVisit">
+			
+			
+		</action>
+ 		
+ 		<!-- 会员卡信息 -->
+ 		
+ 		<action name="tbMembershipCardResetPasswordAction" class="com.selfsoft.baseinformation.action.TbMembershipCardAction" method="resetPassword">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbMembershipCardTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbMembershipCardTable
+			</result>
+			
+		</action>	
+ 		
+ 		<action name="tbMembershipCardFindAction" class="com.selfsoft.baseinformation.action.TbMembershipCardAction" method="findTbMembershipCard">
+			<result name="success">
+				/pages/baseinformation/TbMembershipCardFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tbMembershipCardForwardPageAction" class="com.selfsoft.baseinformation.action.TbMembershipCardAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseinformation/TbMembershipCardCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseinformation/TbMembershipCardEdit.jsp
+			</result>
+			<result name="cz">
+				/pages/baseinformation/TbMembershipCardCZ.jsp
+			</result>
+			<result name="cjf">
+				/pages/baseinformation/TbMembershipCardCJF.jsp
+			</result>
+			<result name="jfxf">
+				/pages/baseinformation/TbMembershipCardJFXF.jsp
+			</result>
+			<result name="hk">
+				/pages/baseinformation/TbMembershipCardHK.jsp
+			</result>
+			<result name="pass">
+				/pages/baseinformation/TbMembershipCardResetPassword.jsp
+			</result>
+		</action>
+		
+		<action name="tbMembershipCardInsertAction" class="com.selfsoft.baseinformation.action.TbMembershipCardAction" method="insertTbMembershipCard">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbMembershipCardTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbMembershipCardTable
+			</result>
+			
+		</action>	
+		
+		<action name="tbMembershipCardUpdateAction" class="com.selfsoft.baseinformation.action.TbMembershipCardAction" method="updateTbMembershipCard">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbMembershipCardTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbMembershipCardTable
+			</result>
+			
+		</action>	
+		
+		<action name="tbMembershipCardEncryptAction" class="com.selfsoft.baseinformation.action.TbMembershipCardAction" method="encryptPassword">
+		
+		</action>
+		
+		<action name="tbMembershipCardDeleteAction" class="com.selfsoft.baseinformation.action.TbMembershipCardAction" method="deleteTbMembershipCard">
+		
+		</action>
+		
+		<action name="tbMembershipCardValidAction" class="com.selfsoft.baseinformation.action.TbMembershipCardAction" method="validTbMembershipCard">
+		
+		</action>
+		
+		<action name="tbMembershipCardFindByCardNoAction" class="com.selfsoft.baseinformation.action.TbMembershipCardAction" method="findByCardNo">
+		
+		</action>
+		
+		<action name="tbMembershipCardCZAction" class="com.selfsoft.baseinformation.action.TbMembershipCardAction" method="czTbMembershipCard">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbMembershipCardTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbMembershipCardTable
+			</result>
+			
+		</action>	
+		
+		<action name="tbMembershipCardCJFAction" class="com.selfsoft.baseinformation.action.TbMembershipCardAction" method="cjfTbMembershipCard">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbMembershipCardTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbMembershipCardTable
+			</result>
+			
+		</action>
+		
+		<action name="tbMembershipCardJFXFAction" class="com.selfsoft.baseinformation.action.TbMembershipCardAction" method="xfjfTbMembershipCard">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbMembershipCardTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbMembershipCardTable
+			</result>
+			
+		</action>
+		
+		<action name="tbMembershipCardHKAction" class="com.selfsoft.baseinformation.action.TbMembershipCardAction" method="hkTbMembershipCard">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbMembershipCardTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbMembershipCardTable
+			</result>
+			
+		</action>		
+ 		<!-- 会员卡信息 -->
+ 		
+ 	
+ 	
+ 		<!-- 客户信息 -->
+ 		<action name="tbCustomerFindAction" class="com.selfsoft.baseinformation.action.TbCustomerAction" method="findTbCustomer">
+			<result name="success">
+				/pages/baseinformation/TbCustomerFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tbCustomerRunOffFindAction" class="com.selfsoft.baseinformation.action.TbCustomerAction" method="findRunOffTbCustomer">
+			<result name="success">
+				/pages/baseinformation/TbCustomerRunOffFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tbCustomerDeleteAction" class="com.selfsoft.baseinformation.action.TbCustomerAction" method="deleteTbCustomer">
+		
+		</action>
+			
+		<action name="tbCustomerPickAction" class="com.selfsoft.baseinformation.action.TbCustomerAction" method="pickTbCustomer">
+		
+		</action>
+		<action name="tbCustomerInsertAction" class="com.selfsoft.baseinformation.action.TbCustomerAction" method="insertTbCustomer">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbCustomerTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbCustomerTable
+			</result>
+			<result name="listPage" type="redirectAction" >
+				<param name="actionName">findAllTmTbCustomerAction</param>
+				<param name="properties"  >${properties}</param>
+				<param name="types"  >${types}</param>
+			</result>
+		</action>
+		
+		<action name="tbCustomerCarInsertAction" class="com.selfsoft.baseinformation.action.TbCustomerAction" method="insertTbCustomerCar">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmDetTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmDetTable
+			</result>
+			
+		</action>
+		
+		
+		<action name="tbCustomerUpdateAction" class="com.selfsoft.baseinformation.action.TbCustomerAction" method="updateTbCustomer">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbCustomerTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbCustomerTable
+			</result>
+		</action>
+		
+		<action name="tbCustomerForwardPageAction" class="com.selfsoft.baseinformation.action.TbCustomerAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseinformation/TbCustomerCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseinformation/TbCustomerEdit.jsp
+			</result>
+			<result name="otherPage">
+				/pages/baseinformation/TbCarInfoCreate.jsp
+			</result>
+			<result name="viewPage">
+				/pages/baseinformation/TbCustomerCarCreate.jsp
+			</result>
+			<result name="importXlsPage1">
+				/pages/baseinformation/TbCustomerImportXls.jsp?e3Table=tbCustomerTable
+			</result>
+			<result name="importXlsPage2">
+				/pages/baseinformation/TbCustomerImportXls.jsp?e3Table=tmDetTable
+			</result>
+		</action>
+		
+		
+		<action name="tbCustomerImportXlsAction" class="com.selfsoft.baseinformation.action.TbCustomerAction" method="tbCustomerImportXls">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/importXlsSuccess.jsp?table=tbCustomerTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/importXlsFail.jsp?table=tbCustomerTable
+			</result>
+		</action>
+		
+		<action name="tbCustomerExportXlsAction" class="com.selfsoft.baseinformation.action.TbCustomerAction" method="tbCustomerExportXls">
+			
+		</action>
+		
+		<action name="tbCustomerSelectForCardAction" class="com.selfsoft.baseinformation.action.TbCustomerAction" method="selectTbCustomerForCard">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/baseinformation/TbCustomerList.jsp
+			</result>
+		</action>
+		
+ 		<!-- 客户信息 -->
+ 		
+ 		<!-- 车辆信息 -->
+ 		
+ 		<action name="tbCarInfoWXHFAction" class="com.selfsoft.baseinformation.action.TbCarInfoAction" method="wxhfTbCarInfo">
+			
+			<result name="success">
+				/pages/business/visit/TbCarInfoWXHF.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tbCarInfoLostAction" class="com.selfsoft.baseinformation.action.TbCarInfoAction" method="lostTbCarInfo">
+			<result name="success">
+				/pages/business/visit/TbCarInfoLost.jsp
+			</result>
+			
+		</action>
+ 		
+ 		<action name="findTmCarMaintainAlertAction" class="com.selfsoft.baseinformation.action.TbCarInfoAction" method="findMaintainAlertCar">
+			<result name="success">
+				/pages/business/tmCarMaintainAlert/tmCarMaintainAlertList.jsp
+			</result>
+			
+		</action>
+		
+		<action name="findTmCarInsuranceAlertAction" class="com.selfsoft.baseinformation.action.TbCarInfoAction" method="findInsuranceAlertCar">
+			<result name="success">
+				/pages/business/tmCarInsuranceAlert/tmCarInsuranceAlertList.jsp
+			</result>
+			
+		</action>
+ 		
+ 		<action name="tbCarInfoFindAction" class="com.selfsoft.baseinformation.action.TbCarInfoAction" method="findTbCarInfo">
+			<result name="success">
+				/pages/baseinformation/TbCarInfoFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tbCarInfoDeleteAction" class="com.selfsoft.baseinformation.action.TbCarInfoAction" method="deleteTbCarInfo">
+			
+		</action>
+		
+		<action name="tbCarInfoValidationAction" class="com.selfsoft.baseinformation.action.TbCarInfoAction" method="validationTbCarInfo">
+			
+		</action>
+		
+		<action name="tbCarInfoFindBylicenseCodeAction" class="com.selfsoft.baseinformation.action.TbCarInfoAction" method="findTbCarInfoBylicenseCode">
+			
+		</action>
+		<action name="tbCarInfoInsertAction" class="com.selfsoft.baseinformation.action.TbCarInfoAction" method="insertTbCarInfo">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbCarInfoTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbCarInfoTable
+			</result>
+		</action>
+		<action name="tbCarInfoUpdateAction" class="com.selfsoft.baseinformation.action.TbCarInfoAction" method="updateTbCarInfo">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbCarInfoTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbCarInfoTable
+			</result>
+		</action>
+		
+		<action name="tbCarInfoForwardPageAction" class="com.selfsoft.baseinformation.action.TbCarInfoAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseinformation/TbCarInfoCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseinformation/TbCarInfoEdit.jsp
+			</result>
+			<result name="otherPage">
+				/pages/baseinformation/TbCarInfoTransfer.jsp
+			</result>
+		</action>
+ 		<!-- 车辆信息 -->
+ 		
+ 		<!-- 配件信息 -->
+	 		<!-- 入库部分 -->
+	 		<action name="tbPartInfoChooseAction" class="com.selfsoft.baseinformation.action.TbPartInfoAction" method="chooseTbPartInfo">
+				<result name="success">
+					/pages/baseinformation/tbpartinfo/TbPartInfoChoose.jsp
+				</result>
+			</action>
+			<action name="chooseTbPartInfoOverFLowAction" class="com.selfsoft.baseinformation.action.TbPartInfoAction" method="chooseTbPartInfoOverFLow">
+				<result name="success">
+					/pages/business/stockin/flowChoose.jsp
+				</result>
+			</action>
+			<action name="chooseTbPartInfoLianceAction" class="com.selfsoft.baseinformation.action.TbPartInfoAction" method="chooseTbPartInfoLiance">
+				<result name="success">
+					/pages/business/stockin/linanceChoose.jsp
+				</result>
+			</action>
+			<!-- 入库部分 -->
+			
+			<!-- 出库部分 -->
+			<action name="chooseTbPartInfoStockOutAction" class="com.selfsoft.baseinformation.action.TbPartInfoAction" method="chooseTbPartInfoStockOut">
+				<result name="success">
+					/pages/business/stockout/partinfoChoose.jsp
+				</result>
+			</action>	
+			
+			<action name="chooseTbPartInfoRemStockAction" class="com.selfsoft.baseinformation.action.TbPartInfoAction" method="chooseTbPartInfoRemStock">
+				<result name="success">
+					/pages/business/stockout/remstockpartinfoChoose.jsp
+				</result>
+			</action>
+		
+			<action name="chooseTbPartInfoSellAction" class="com.selfsoft.baseinformation.action.TbPartInfoAction" method="chooseTbPartInfoSell">
+				<result name="success">
+					/pages/business/stockout/sellPartChoose.jsp
+				</result>
+			</action>
+		
+			<!-- 出库部分 -->
+			
+		
+		<action name="tbPartInfoFindAction" class="com.selfsoft.baseinformation.action.TbPartInfoAction" method="findTbPartInfo">
+			<result name="success">
+				/pages/baseinformation/tbpartinfo/TbPartInfoFind.jsp
+			</result>
+		</action>
+		<action name="addTbPartInfoAjaxAction" class="com.selfsoft.baseinformation.action.TbPartInfoAction" method="addTbPartInfoAjax">
+		</action>
+		
+		<!-- 维修预约 ccr -->
+		<action name="tbPartInfoSelectAction" class="com.selfsoft.baseinformation.action.TbPartInfoAction" method="selectTbPartInfo">
+			<result name="success">
+				/pages/business/tbBook/TbBookCreate.jsp
+			</result>
+		</action>
+		<!-- 维修预约 ccr -->
+		
+		<action name="tbPartInfoUpdateAction" class="com.selfsoft.baseinformation.action.TbPartInfoAction" method="updateTbPartInfo">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbPartInfoTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbPartInfoTable
+			</result>
+		</action>
+		
+		<action name="tbPartInfoForwardAction" class="com.selfsoft.baseinformation.action.TbPartInfoAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseinformation/tbpartinfo/TbPartInfoCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseinformation/tbpartinfo/TbPartInfoEdit.jsp
+			</result>
+		</action>
+		
+		<action name="tbPartInfoInsertAction" class="com.selfsoft.baseinformation.action.TbPartInfoAction" method="addTbPartInfo">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbPartInfoTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbPartInfoTable
+			</result>
+		</action>
+		
+		
+		<action name="initUpdateCostPircePageAction" class="com.selfsoft.baseinformation.action.TbPartInfoAction" method="initUpdateCostPircePage">
+			<result name="success">
+				/pages/baseinformation/tbpartinfo/TbPartInfoEditCostPrice.jsp
+			</result>
+		</action>
+		
+		<action name="updateCostPriceAction" class="com.selfsoft.baseinformation.action.TbPartInfoAction" method="updateCostPrice">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbPartInfoTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbPartInfoTable
+			</result>
+		</action>
+		
+		
+		
+		<action name="tbPartInfoDeleteAction" class="com.selfsoft.baseinformation.action.TbPartInfoAction" method="deleteTbPartInfo">
+		</action>
+		<action name="getPartInfoByCodeAction" class="com.selfsoft.baseinformation.action.TbPartInfoAction" method="getPartInfoByCode">
+			<result name="success">
+						/pages/baseinformation/tbpartinfo/TbPartCollectionFind.jsp
+				</result>
+		</action>
+		
+		<action name="deleteTbPartInfoRelationAction" class="com.selfsoft.baseinformation.action.TbPartInfoAction" method="deleteTbPartInfoRelation">
+		</action>
+		
+		<!-- 配件信息 -->
+		
+		
+		
+		<!-- 配件集 -->
+			<action name="initTbPartInfoCollectionAction" class="com.selfsoft.baseinformation.action.TbPartCollctionAction" method="initTbPartInfoCollctionMrg">
+				<result name="success">
+						/pages/baseinformation/tbpartinfo/TbPartInfoCollctionManager.jsp
+				</result>
+			</action>
+			<action name="tbPartCollectionFindAction" class="com.selfsoft.baseinformation.action.TbPartCollctionAction" method="findTbPartCollection">
+				<result name="success">
+						/pages/baseinformation/tbpartinfo/TbPartCollectionFind.jsp
+				</result>
+			</action>
+			<action name="insertPartCollectionAction" class="com.selfsoft.baseinformation.action.TbPartCollctionAction" method="insertPartCollection">
+				<result name="success">
+						/pages/baseinformation/tbpartinfo/TbPartInfoCollctionManager.jsp
+				</result>
+			</action>
+			<action name="isUniquecollectionCodeAction" class="com.selfsoft.baseinformation.action.TbPartCollctionAction" method="isUniquecollectionCode">
+			</action>
+			
+			<action name="deleteTbPartCollectionAction" class="com.selfsoft.baseinformation.action.TbPartCollctionAction" method="deleteTbPartCollection">
+			</action>
+			
+			
+			
+		<!-- 配件集 -->
+		
+		<!-- 工时工位 -->
+ 		<action name="tbWorkingInfoFindAction" class="com.selfsoft.baseinformation.action.TbWorkingInfoAction" method="findTbWorkingInfo">
+			<result name="success">
+				/pages/baseinformation/TbWorkingInfoFind.jsp
+			</result>
+			
+		</action>
+		<!-- 维修预约 -->
+		<action name="tbWorkingInfoSelectAction" class="com.selfsoft.baseinformation.action.TbWorkingInfoAction" method="selectTbWorkingInfo">
+			<result name="success">
+				/pages/business/tbBook/TbBookCreate.jsp
+			</result>
+			
+		</action>
+		
+		<!-- 修理委托书 -->
+		<action name="tbWorkingInfoQueryAction" class="com.selfsoft.baseinformation.action.TbWorkingInfoAction" method="queryTbWorkingInfo">
+			
+			<result name="success">
+				/pages/business/tbFixEntrust/TbWorkingInfoFind.jsp
+			</result>
+			
+		</action>
+		<!-- 特殊编辑 -->
+		<action name="tbWorkingInfoShowAction" class="com.selfsoft.baseinformation.action.TbWorkingInfoAction" method="showTbWorkingInfo">
+			
+			<result name="success">
+				/pages/business/tbBusinessSpecialBanance/TbWorkingInfoFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tbWorkingInfoDeleteAction" class="com.selfsoft.baseinformation.action.TbWorkingInfoAction" method="deleteTbWorkingInfo">
+			
+		</action>
+		
+		<action name="tbWorkingInfoFindByStationCodeAction" class="com.selfsoft.baseinformation.action.TbWorkingInfoAction" method="findByStationCode">
+		
+		</action>
+		
+		<action name="tbWorkingInfoFindByTmWorkingCollectionIdAction" class="com.selfsoft.baseinformation.action.TbWorkingInfoAction" method="findByTmWorkingCollectionId">
+		
+		</action>
+		
+		<action name="tbWorkingInfoFindByStationCodeAndCarStationTypeIdAction" class="com.selfsoft.baseinformation.action.TbWorkingInfoAction" method="findByStationCodeAndCarStationTypeId">
+		
+		</action>
+		<action name="tbWorkingInfoExportXlsAction" class="com.selfsoft.baseinformation.action.TbWorkingInfoAction" method="tbWorkingInfoExportXls">
+			
+		</action>
+		<action name="tbWorkingInfoImportXlsAction" class="com.selfsoft.baseinformation.action.TbWorkingInfoAction" method="tbWorkingInfoImportXls">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/importXlsSuccess.jsp?table=tbWorkingInfoTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/importXlsFail.jsp?table=tbWorkingInfoTable
+			</result>
+		</action>
+		
+		<action name="tbWorkingInfoInsertAction" class="com.selfsoft.baseinformation.action.TbWorkingInfoAction" method="insertTbWorkingInfo">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbWorkingInfoTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbWorkingInfoTable
+			</result>
+		</action>
+		<action name="tbWorkingInfoUpdateAction" class="com.selfsoft.baseinformation.action.TbWorkingInfoAction" method="updateTbWorkingInfo">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbWorkingInfoTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbWorkingInfoTable
+			</result>
+		</action>
+		
+		<action name="tbWorkingInfoForwardPageAction" class="com.selfsoft.baseinformation.action.TbWorkingInfoAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseinformation/TbWorkingInfoCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseinformation/TbWorkingInfoEdit.jsp
+			</result>
+			<result name="importXlsPage">
+				/pages/baseinformation/TbWorkingInfoImportXls.jsp
+			</result>
+			<result name="exportXlsPage">
+				/pages/baseinformation/TbWorkingInfoExportXls.jsp
+			</result>
+		</action>
+		
+		<action name="tbWorkingInfoWtsForwardPageAction" class="com.selfsoft.baseinformation.action.TbWorkingInfoAction" method="forwardPageWts">
+			<result name="addPage">
+				/pages/business/tbFixEntrust/TbWorkingInfoCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/business/tbFixEntrust/TbWorkingInfoEdit.jsp
+			</result>
+			<result name="importXlsPage">
+				/pages/business/tbFixEntrust/TbWorkingInfoImportXls.jsp
+			</result>
+			<result name="exportXlsPage">
+				/pages/business/tbFixEntrust/TbWorkingInfoExportXls.jsp
+			</result>
+		</action>
+ 		<!-- 工时工位 -->
+ 		
+ 		<!-- 工位集 -->
+ 		<action name="tbWorkingCollectionFindAction" class="com.selfsoft.baseinformation.action.TbWorkingCollectionAction" method="findTbWorkingCollection">
+			<result name="success">
+				/pages/baseinformation/TbWorkingCollectionFind.jsp
+			</result>
+			
+		</action>
+		
+		<!-- 委托书 -->
+		<action name="tbWorkingCollectionQueryAction" class="com.selfsoft.baseinformation.action.TbWorkingCollectionAction" method="queryTbWorkingCollection">
+			<result name="success">
+				/pages/business/tbFixEntrust/TbWorkingCollectionFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tbWorkingCollectionDetailAction" class="com.selfsoft.baseinformation.action.TbWorkingCollectionAction" method="findTbWorkingCollectionDetail">
+			
+		</action>
+		
+		
+		<!-- 预约单 -->
+		<action name="tbWorkingCollectionSelectAction" class="com.selfsoft.baseinformation.action.TbWorkingCollectionAction" method="selectTbWorkingCollection">
+			<result name="success">
+				/pages/business/tbBook/TbBookCreate.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tbWorkingCollectionDeleteAction" class="com.selfsoft.baseinformation.action.TbWorkingCollectionAction" method="deleteTbWorkingCollection">
+			
+		</action>
+		
+		<action name="tbWorkingCollectionFindByWorkingCollectionCodeAndTmCarStationTypeIdAction" class="com.selfsoft.baseinformation.action.TbWorkingCollectionAction" method="findTbWorkingCollectionByWorkingCollectionCodeAndTmCarStationTypeId">
+		
+		</action>
+		<action name="tbWorkingCollectionInsertAction" class="com.selfsoft.baseinformation.action.TbWorkingCollectionAction" method="insertTbWorkingCollection">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbWorkingCollectionTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbWorkingCollectionTable
+			</result>
+		</action>
+		<action name="tbWorkingCollectionUpdateAction" class="com.selfsoft.baseinformation.action.TbWorkingCollectionAction" method="updateTbWorkingCollection">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbWorkingCollectionTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbWorkingCollectionTable
+			</result>
+		</action>
+		
+		<action name="tbWorkingCollectionForwardPageAction" class="com.selfsoft.baseinformation.action.TbWorkingCollectionAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseinformation/TbWorkingCollectionCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseinformation/TbWorkingCollectionEdit.jsp
+			</result>
+			<result name="viewPage">
+				/pages/baseinformation/TbWorkingCollectionView.jsp
+			</result>
+		</action>
+ 		<!-- 工位集 -->
+ 		
+	</package>	
+ </struts> 	

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcatProjectProperties>
+    <rootDir>/</rootDir>
+    <exportSource>false</exportSource>
+    <reloadable>true</reloadable>
+    <redirectLogger>false</redirectLogger>
+    <updateXml>true</updateXml>
+    <warLocation></warLocation>
+    <extraInfo></extraInfo>
+    <webPath>CarFix</webPath>
+    <webClassPathEntries>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/classes</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/XmlSchema-1.1.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/activation-1.1.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/ajaxanywhere-1.2.1.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/ajaxtags-1.2-beta3.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/antlr-2.7.2.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/aopalliance-1.0.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/aspectjrt.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/aspectjweaver.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/bcprov-jdk15-143.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/c3p0-0.9.1.2.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/cglib-nodep-2.1_3.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/commons-beanutils-bean-collections-1.6.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/commons-beanutils-core-1.6.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/commons-codec-1.3.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/commons-collections-3.2.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/commons-digester-1.6.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/commons-fileupload-1.2.1.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/commons-httpclient-3.0.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/commons-io-1.3.2.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/commons-javaflow-20060411.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/commons-lang-2.0.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/commons-logging-1.0.4.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/commons-pool-1.3.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/commons-validator-1.3.0.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/displaytag-1.0.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/dom4j-1.6.1.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/dwr-1.1.4.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/e3-1.0.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/e3Calendar-1.0.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/ehcache-1.3.0.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/ejb3-persistence-1.0.2.GA.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/freemarker-2.3.8.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/gson-1.4.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/hibernate-annotations.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/hibernate-commons-annotations.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/hibernate-entitymanager.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/hibernate3.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/iTextAsian.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/iTextAsianCmaps.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/itext-1.3.1.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/jakarta-oro-2.0.8.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/jasperreports-3.0.0-javaflow.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/javaee.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/jaxb-api-2.0.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/jaxb-impl-2.0.1.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/jaxb-xjc-2.0.1.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/jaxen-1.1-beta-9.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/jaxws-api-2.0.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/jce.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/jdom-1.0.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/jericho-html-2.1.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/jsonplugin-0.32.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/jsr173_api-1.0.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/jstl-1.1.2.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/jstl-standard-1.1.2.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/jta.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/junit.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/jxl-2.6.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/log4j-1.2.14.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/mail-1.4.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/ognl-2.6.11.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/oro-2.0.8.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/pinyin4j-2.5.0.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/png-encoder-1.5.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/poi-3.0.1-FINAL-20070705.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/quartz-all-1.5.2.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/saaj-api-1.3.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/saaj-impl-1.3.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/spring-mock.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/spring.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/sqljdbc.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/stax-api-1.0.1.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/struts2-core-2.0.14.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/struts2-spring-plugin-2.0.14.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/velocity-1.4.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/wsdl4j-1.6.1.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/wstx-asl-3.2.0.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/xbean-2.2.0.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/xbean-spring-2.8.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/xfire-aegis-1.2.6.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/xfire-annotations-1.2.6.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/xfire-core-1.2.6.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/xfire-java5-1.2.6.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/xfire-jaxb2-1.2.6.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/xfire-jaxws-1.2.6.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/xfire-jsr181-api-1.0-M1.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/xfire-spring-1.2.6.jar</webClassPathEntry>
+        <webClassPathEntry>/CarFix/WebRoot/WEB-INF/lib/xwork-2.0.7.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.6.0_23/jre/lib/charsets.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.6.0_23/jre/lib/ext/bcprov-jdk15-143.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.6.0_23/jre/lib/ext/dnsns.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.6.0_23/jre/lib/ext/localedata.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.6.0_23/jre/lib/ext/sunjce_provider.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.6.0_23/jre/lib/ext/sunmscapi.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.6.0_23/jre/lib/ext/sunpkcs11.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.6.0_23/jre/lib/jce.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.6.0_23/jre/lib/jsse.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.6.0_23/jre/lib/resources.jar</webClassPathEntry>
+        <webClassPathEntry>C:/Program Files/Java/jdk1.6.0_23/jre/lib/rt.jar</webClassPathEntry>
+        <webClassPathEntry>D:/soft/Tomcat 6.0/lib/annotations-api.jar</webClassPathEntry>
+        <webClassPathEntry>D:/soft/Tomcat 6.0/lib/catalina-ant.jar</webClassPathEntry>
+        <webClassPathEntry>D:/soft/Tomcat 6.0/lib/catalina-ha.jar</webClassPathEntry>
+        <webClassPathEntry>D:/soft/Tomcat 6.0/lib/catalina-tribes.jar</webClassPathEntry>
+        <webClassPathEntry>D:/soft/Tomcat 6.0/lib/catalina.jar</webClassPathEntry>
+        <webClassPathEntry>D:/soft/Tomcat 6.0/lib/el-api.jar</webClassPathEntry>
+        <webClassPathEntry>D:/soft/Tomcat 6.0/lib/jasper-el.jar</webClassPathEntry>
+        <webClassPathEntry>D:/soft/Tomcat 6.0/lib/jasper-jdt.jar</webClassPathEntry>
+        <webClassPathEntry>D:/soft/Tomcat 6.0/lib/jasper.jar</webClassPathEntry>
+        <webClassPathEntry>D:/soft/Tomcat 6.0/lib/jsp-api.jar</webClassPathEntry>
+        <webClassPathEntry>D:/soft/Tomcat 6.0/lib/servlet-api.jar</webClassPathEntry>
+        <webClassPathEntry>D:/soft/Tomcat 6.0/lib/tomcat-coyote.jar</webClassPathEntry>
+        <webClassPathEntry>D:/soft/Tomcat 6.0/lib/tomcat-dbcp.jar</webClassPathEntry>
+        <webClassPathEntry>D:/soft/Tomcat 6.0/lib/tomcat-i18n-es.jar</webClassPathEntry>
+        <webClassPathEntry>D:/soft/Tomcat 6.0/lib/tomcat-i18n-fr.jar</webClassPathEntry>
+        <webClassPathEntry>D:/soft/Tomcat 6.0/lib/tomcat-i18n-ja.jar</webClassPathEntry>
+        <webClassPathEntry>melibrary.com.genuitec.eclipse.j2eedt.core.MYECLIPSE_JAVAEE_5_CONTAINER</webClassPathEntry>
+        <webClassPathEntry>org.eclipse.jst.j2ee.internal.module.container</webClassPathEntry>
+        <webClassPathEntry>org.eclipse.jst.j2ee.internal.web.container</webClassPathEntry>
+        <webClassPathEntry>org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v6.0</webClassPathEntry>
+    </webClassPathEntries>
+</tomcatProjectProperties>

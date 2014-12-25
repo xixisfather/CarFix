@@ -1,0 +1,918 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+ <struts>
+ 	<package name="strutsBaseparameter" extends="struts-default">
+ 		
+ 		<!-- 备份盘 -->
+ 		<action name="tmStoreDiskFindAction" class="com.selfsoft.baseparameter.action.TmStoreDiskAction" method="findTmStoreDisk">
+			<result name="success">
+				/pages/baseparameter/TmStoreDiskFind.jsp
+			</result>
+			
+		</action>
+ 		
+ 		<action name="tmStoreDiskUpdateAction" class="com.selfsoft.baseparameter.action.TmStoreDiskAction" method="updateTmStoreDisk">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStoreDiskTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStoreDiskTable
+			</result>
+		</action>
+ 		
+ 		<action name="tmStoreDiskForwardPageAction" class="com.selfsoft.baseparameter.action.TmStoreDiskAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseparameter/TmStoreDiskCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseparameter/TmStoreDiskEdit.jsp
+			</result>
+		</action>
+ 		
+ 		<!-- 维修回访天数 -->
+ 		<action name="tmMaintainAlertDayFindAction" class="com.selfsoft.baseparameter.action.TmMaintainAlertDayAction" method="findTmMaintainAlertDay">
+			<result name="success">
+				/pages/baseparameter/TmMaintainAlertDayFind.jsp
+			</result>
+			
+		</action>
+ 		
+ 		<action name="tmMaintainAlertDayUpdateAction" class="com.selfsoft.baseparameter.action.TmMaintainAlertDayAction" method="updateTmMaintainAlertDay">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmMaintainAlertDayTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmMaintainAlertDayTable
+			</result>
+		</action>
+ 		
+ 		<action name="tmMaintainAlertDayForwardPageAction" class="com.selfsoft.baseparameter.action.TmMaintainAlertDayAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseparameter/TmMaintainAlertDayCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseparameter/TmMaintainAlertDayEdit.jsp
+			</result>
+		</action>
+ 		
+ 		
+ 		<!-- 流失天数 -->
+ 		<action name="tmLostDayFindAction" class="com.selfsoft.baseparameter.action.TmLostDayAction" method="findTmLostDay">
+			<result name="success">
+				/pages/baseparameter/TmLostDayFind.jsp
+			</result>
+			
+		</action>
+ 		
+ 		<action name="tmLostDayUpdateAction" class="com.selfsoft.baseparameter.action.TmLostDayAction" method="updateTmLostDay">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmLostDayTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmLostDayTable
+			</result>
+		</action>
+ 		
+ 		<action name="tmLostDayForwardPageAction" class="com.selfsoft.baseparameter.action.TmLostDayAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseparameter/TmLostDayCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseparameter/TmLostDayEdit.jsp
+			</result>
+		</action>
+ 		
+ 		<!-- 提醒天数 -->
+ 		<action name="tmAlertDayFindAction" class="com.selfsoft.baseparameter.action.TmAlertDayAction" method="findTmAlertDay">
+			<result name="success">
+				/pages/baseparameter/TmAlertDayFind.jsp
+			</result>
+			
+		</action>
+ 		
+ 		<action name="tmAlertDayUpdateAction" class="com.selfsoft.baseparameter.action.TmAlertDayAction" method="updateTmAlertDay">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmAlertDayTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmAlertDayTable
+			</result>
+		</action>
+ 		
+ 		<action name="tmAlertDayForwardPageAction" class="com.selfsoft.baseparameter.action.TmAlertDayAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseparameter/TmAlertDayCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseparameter/TmAlertDayEdit.jsp
+			</result>
+		</action>
+ 		
+ 		<!-- 仓库 -->
+ 		<action name="tmStoreHouseFindAction" class="com.selfsoft.baseparameter.action.TmStoreHouseAction" method="findTmStoreHouse">
+			<result name="success">
+				/pages/baseparameter/TmStoreHouseFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tmStoreHouseDeleteAction" class="com.selfsoft.baseparameter.action.TmStoreHouseAction" method="deleteTmStoreHouse">
+			
+		</action>
+		<action name="tmStoreHouseInsertAction" class="com.selfsoft.baseparameter.action.TmStoreHouseAction" method="insertTmStoreHouse">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStoreHouseTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStoreHouseTable
+			</result>
+		</action>
+		
+		<action name="tmStoreHouseUpdateAction" class="com.selfsoft.baseparameter.action.TmStoreHouseAction" method="updateTmStoreHouse">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStoreHouseTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStoreHouseTable
+			</result>
+		</action>
+		
+		<action name="tmStoreHouseForwardPageAction" class="com.selfsoft.baseparameter.action.TmStoreHouseAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseparameter/TmStoreHouseCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseparameter/TmStoreHouseEdit.jsp
+			</result>
+		</action>
+		<!-- 仓库 -->
+
+ 		<!-- 工时单价 -->
+ 		
+ 		<action name="tmWorkingHourPriceFindAction" class="com.selfsoft.baseparameter.action.TmWorkingHourPriceAction" method="findAll">
+			<result name="success">
+				/pages/baseparameter/TmWorkingHourPriceFind.jsp
+			</result>
+		</action>
+		
+		<action name="tmWorkingHourPriceInsertAction" class="com.selfsoft.baseparameter.action.TmWorkingHourPriceAction" method="insertTmWorkingHourPrice">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmWorkingHourPriceTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmWorkingHourPriceTable
+			</result>
+		</action>
+		
+		<action name="tmWorkingHourPriceUpdateAction" class="com.selfsoft.baseparameter.action.TmWorkingHourPriceAction" method="updateTmWorkingHourPrice">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmWorkingHourPriceTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmWorkingHourPriceTable
+			</result>
+		</action>
+		
+		<action name="tmWorkingHourPriceDeleteAction" class="com.selfsoft.baseparameter.action.TmWorkingHourPriceAction" method="deleteTmWorkingHourPrice">
+			
+		</action>
+		
+		<action name="tmWorkingHourPriceForwardPageAction" class="com.selfsoft.baseparameter.action.TmWorkingHourPriceAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseparameter/TmWorkingHourPriceCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseparameter/TmWorkingHourPriceEdit.jsp
+			</result>
+		</action>
+		
+		<!-- 工时单价 -->	
+		
+		
+		<!-- 车型工位 -->
+		
+		<action name="tmCarStationTypeForwardPageAction" class="com.selfsoft.baseparameter.action.TmCarStationTypeAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseparameter/TmCarStationTypeCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseparameter/TmCarStationTypeEdit.jsp
+			</result>
+	     </action>
+	     
+	     <action name="tmCarStationTypeInsertAction" class="com.selfsoft.baseparameter.action.TmCarStationTypeAction" method="saveTmCarStationType">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmCarStationTypeTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmCarStationTypeTable
+			</result>
+		</action>
+		
+		<action name="tmCarStationTypeFindAction" class="com.selfsoft.baseparameter.action.TmCarStationTypeAction" method="findTmCarStationType">
+			<result name="success">
+				/pages/baseparameter/TmCarStationTypeFind.jsp
+			</result>
+		</action>
+		<action name="tmCarStationTypeUpdateAction" class="com.selfsoft.baseparameter.action.TmCarStationTypeAction" method="updateTmCarStationType">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmCarStationTypeTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmCarStationTypeTable
+			</result>
+		</action>		
+		<action name="tmCarStationTypeDeleteAction" class="com.selfsoft.baseparameter.action.TmCarStationTypeAction" method="deleteTmCarStationType">
+		
+		</action>
+		
+		<action name="tmCarStationTypeFindByCarModelIdAction" class="com.selfsoft.baseparameter.action.TmCarStationTypeAction" method="findTmCarStationTypeByCarModelId">
+		
+		</action>
+		<!-- 车型工位 -->
+		
+		<!-- 车辆类型  -->
+		<action name="tmCarModelTypeFindAction" class="com.selfsoft.baseparameter.action.TmCarModelTypeAction" method="findTmCarModelType">
+			<result name="success">
+				/pages/baseparameter/TmCarModelTypeFind.jsp
+			</result>
+		</action>
+		<action name="tmCarModelTypeDeleteAction" class="com.selfsoft.baseparameter.action.TmCarModelTypeAction" method="deleteTmCarModelType">
+			
+		</action>
+		<action name="tmCarModelTypeInsertAction" class="com.selfsoft.baseparameter.action.TmCarModelTypeAction" method="insertTmCarModelType">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmCarModelTypeTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmCarModelTypeTable
+			</result>
+		</action>
+		<action name="tmCarModelTypeUpdateAction" class="com.selfsoft.baseparameter.action.TmCarModelTypeAction" method="updateTmCarModelType">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmCarModelTypeTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmCarModelTypeTable
+			</result>
+		</action>
+		
+		<action name="tmCarModelTypeForwardPageAction" class="com.selfsoft.baseparameter.action.TmCarModelTypeAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseparameter/TmCarModelTypeCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseparameter/TmCarModelTypeEdit.jsp
+			</result>
+			<result name="importXlsPage">
+				/pages/baseparameter/TmCarModelTypeImportXls.jsp
+			</result>
+		</action>
+		
+		<action name="tmCarModelTypeImportXlsAction" class="com.selfsoft.baseparameter.action.TmCarModelTypeAction" method="tmCarModelTypeImportXls">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/importXlsSuccess.jsp?table=tmCarModelTypeTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/importXlsFail.jsp?table=tmCarModelTypeTable
+			</result>
+		</action>
+		<!-- 车辆类型  -->
+		
+		<!-- 配件类型 -->
+		<action name="tmPartTypeFindAction" class="com.selfsoft.baseparameter.action.TmPartTypeAction" method="findTmPartType">
+			<result name="success">
+				/pages/baseparameter/TmPartTypeFind.jsp
+			</result>
+		</action>
+		
+		<action name="tmPartTypeDeleteAction" class="com.selfsoft.baseparameter.action.TmPartTypeAction" method="deleteTmPartType">
+			
+		</action>
+		<action name="tmPartTypeInsertAction" class="com.selfsoft.baseparameter.action.TmPartTypeAction" method="insertTmPartType">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmPartTypeTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmPartTypeTable
+			</result>
+		</action>
+		<action name="tmPartTypeUpdateAction" class="com.selfsoft.baseparameter.action.TmPartTypeAction" method="updateTmPartType">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmPartTypeTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmPartTypeTable
+			</result>
+		</action>
+		
+		<action name="tmPartTypeForwardPageAction" class="com.selfsoft.baseparameter.action.TmPartTypeAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseparameter/TmPartTypeCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseparameter/TmPartTypeEdit.jsp
+			</result>
+		</action>
+		<!-- 配件类型 -->
+		
+		<!-- 计量单位 -->
+		<action name="tmUnitFindAction" class="com.selfsoft.baseparameter.action.TmUnitAction" method="findTmUnit">
+			<result name="success">
+				/pages/baseparameter/TmUnitFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tmUnitDeleteAction" class="com.selfsoft.baseparameter.action.TmUnitAction" method="deleteTmUnit">
+			
+		</action>
+		<action name="tmUnitInsertAction" class="com.selfsoft.baseparameter.action.TmUnitAction" method="insertTmUnit">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmUnitTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmUnitTable
+			</result>
+		</action>
+		<action name="tmUnitUpdateAction" class="com.selfsoft.baseparameter.action.TmUnitAction" method="updateTmUnit">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmUnitTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmUnitTable
+			</result>
+		</action>
+		
+		<action name="tmUnitForwardPageAction" class="com.selfsoft.baseparameter.action.TmUnitAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseparameter/TmUnitCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseparameter/TmUnitEdit.jsp
+			</result>
+		</action>
+		<!-- 计量单位 -->
+		
+		<!-- 客户类型 -->
+		<action name="tmCustomerTypeFindAction" class="com.selfsoft.baseparameter.action.TmCustomerTypeAction" method="findTmCustomerType">
+			<result name="success">
+				/pages/baseparameter/TmCustomerTypeFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tmCustomerTypeDeleteAction" class="com.selfsoft.baseparameter.action.TmCustomerTypeAction" method="deleteTmCustomerType">
+			
+		</action>
+		<action name="tmCustomerTypeInsertAction" class="com.selfsoft.baseparameter.action.TmCustomerTypeAction" method="insertTmCustomerType">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmCustomerTypeTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmCustomerTypeTable
+			</result>
+		</action>
+		<action name="tmCustomerTypeUpdateAction" class="com.selfsoft.baseparameter.action.TmCustomerTypeAction" method="updateTmCustomerType">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmCustomerTypeTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmCustomerTypeTable
+			</result>
+		</action>
+		
+		<action name="tmCustomerTypeForwardPageAction" class="com.selfsoft.baseparameter.action.TmCustomerTypeAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseparameter/TmCustomerTypeCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseparameter/TmCustomerTypeEdit.jsp
+			</result>
+		</action>
+		<!-- 客户类型 -->
+		
+		<!-- 销售类型 -->
+		<action name="tmSoleTypeFindAction" class="com.selfsoft.baseparameter.action.TmSoleTypeAction" method="findTmSoleType">
+			<result name="success">
+				/pages/baseparameter/TmSoleTypeFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tmSoleTypeDeleteAction" class="com.selfsoft.baseparameter.action.TmSoleTypeAction" method="deleteTmSoleType">
+			
+		</action>
+		<action name="tmSoleTypeInsertAction" class="com.selfsoft.baseparameter.action.TmSoleTypeAction" method="insertTmSoleType">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmSoleTypeTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmSoleTypeTable
+			</result>
+		</action>
+		<action name="tmSoleTypeUpdateAction" class="com.selfsoft.baseparameter.action.TmSoleTypeAction" method="updateTmSoleType">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmSoleTypeTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmSoleTypeTable
+			</result>
+		</action>
+		
+		<action name="tmSoleTypeForwardPageAction" class="com.selfsoft.baseparameter.action.TmSoleTypeAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseparameter/TmSoleTypeCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseparameter/TmSoleTypeEdit.jsp
+			</result>
+		</action>
+		<!-- 销售类型 -->
+		
+		<!-- 车身部位 -->
+		<action name="tmCarBodyFindAction" class="com.selfsoft.baseparameter.action.TmCarBodyAction" method="findTmCarBody">
+			<result name="success">
+				/pages/baseparameter/TmCarBodyFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tmCarBodyDeleteAction" class="com.selfsoft.baseparameter.action.TmCarBodyAction" method="deleteTmCarBody">
+			
+		</action>
+		<action name="tmCarBodyInsertAction" class="com.selfsoft.baseparameter.action.TmCarBodyAction" method="insertTmCarBody">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmCarBodyTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmCarBodyTable
+			</result>
+		</action>
+		<action name="tmCarBodyUpdateAction" class="com.selfsoft.baseparameter.action.TmCarBodyAction" method="updateTmCarBody">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmCarBodyTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmCarBodyTable
+			</result>
+		</action>
+		
+		<action name="tmCarBodyForwardPageAction" class="com.selfsoft.baseparameter.action.TmCarBodyAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseparameter/TmCarBodyCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseparameter/TmCarBodyEdit.jsp
+			</result>
+		</action>
+		<!-- 车身部位 -->
+		
+		<!-- 项目类型 -->
+		
+		<action name="tmProjectTypeFindAction" class="com.selfsoft.baseparameter.action.TmProjectTypeAction" method="findTmProjectType">
+			<result name="success">
+				/pages/baseparameter/TmProjectTypeFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tmProjectTypeDeleteAction" class="com.selfsoft.baseparameter.action.TmProjectTypeAction" method="deleteTmProjectType">
+			
+		</action>
+		<action name="tmProjectTypeInsertAction" class="com.selfsoft.baseparameter.action.TmProjectTypeAction" method="insertTmProjectType">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmProjectTypeTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmProjectTypeTable
+			</result>
+		</action>
+		<action name="tmProjectTypeUpdateAction" class="com.selfsoft.baseparameter.action.TmProjectTypeAction" method="updateTmProjectType">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmProjectTypeTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmProjectTypeTable
+			</result>
+		</action>
+		
+		<action name="tmProjectTypeForwardPageAction" class="com.selfsoft.baseparameter.action.TmProjectTypeAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseparameter/TmProjectTypeCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseparameter/TmProjectTypeEdit.jsp
+			</result>
+		</action>
+		<!-- 项目类型 -->
+		
+		<!-- 结算定义 -->
+		<action name="tmBalanceFindAction" class="com.selfsoft.baseparameter.action.TmBalanceAction" method="findTmBalance">
+			<result name="success">
+				/pages/baseparameter/TmBalanceFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tmBalanceDeleteAction" class="com.selfsoft.baseparameter.action.TmBalanceAction" method="deleteTmBalance">
+			
+		</action>
+		<action name="tmBalanceInsertAction" class="com.selfsoft.baseparameter.action.TmBalanceAction" method="insertTmBalance">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmBalanceTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmBalanceTable
+			</result>
+		</action>
+		<action name="tmBalanceUpdateAction" class="com.selfsoft.baseparameter.action.TmBalanceAction" method="updateTmBalance">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmBalanceTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmBalanceTable
+			</result>
+		</action>
+		
+		<action name="tmBalanceForwardPageAction" class="com.selfsoft.baseparameter.action.TmBalanceAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseparameter/TmBalanceCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseparameter/TmBalanceEdit.jsp
+			</result>
+		</action>
+		<!-- 结算定义 -->
+		
+		<!-- 结算明细 -->
+		<action name="tmBalanceItemFindAction" class="com.selfsoft.baseparameter.action.TmBalanceItemAction" method="findTmBalanceItem">
+			<result name="success">
+				/pages/baseparameter/TmBalanceFind.jsp
+			</result>
+		</action>
+		
+		<action name="tmBalanceItemCalcAction" class="com.selfsoft.baseparameter.action.TmBalanceItemAction" method="calcTmBalanceItem">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TmBalanceItemFind.jsp
+			</result>
+		</action>
+		
+		<action name="tmBalanceItemCalcViewAction" class="com.selfsoft.baseparameter.action.TmBalanceItemAction" method="viewCalcTmBalanceItem">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TmBalanceItemView.jsp
+			</result>
+		</action>
+		
+		<action name="tmBalanceItemGroupCalcViewAction" class="com.selfsoft.baseparameter.action.TmBalanceItemAction" method="viewCalcTmBalanceItemGroup">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TmBalanceItemView.jsp
+			</result>
+		</action>
+		
+		<action name="tmBalanceItemCalcXsdAction" class="com.selfsoft.baseparameter.action.TmBalanceItemAction" method="calcXsdTmBalanceItem">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TmBalanceItemXsdFind.jsp
+			</result>
+		</action>
+		
+		<action name="tmBalanceItemCalcXsdViewAction" class="com.selfsoft.baseparameter.action.TmBalanceItemAction" method="viewCalcXsdTmBalanceItem">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TmBalanceItemXsdView.jsp
+			</result>
+		</action>
+		
+		<action name="tmBalanceItemGroupCalcXsdViewAction" class="com.selfsoft.baseparameter.action.TmBalanceItemAction" method="viewCalcXsdTmBalanceItemGroup">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TmBalanceItemXsdView.jsp
+			</result>
+		</action>
+		
+		<action name="tmBalanceItemCalcAjaxAction" class="com.selfsoft.baseparameter.action.TmBalanceItemAction" method="calcTmBalanceItemAjax">
+			
+		</action>
+		
+		<action name="tmBalanceItemCalcXsdAjaxAction" class="com.selfsoft.baseparameter.action.TmBalanceItemAction" method="calcXsdTmBalanceItemAjax">
+			
+		</action>
+		
+		
+		<action name="tmBalanceItemDeleteAction" class="com.selfsoft.baseparameter.action.TmBalanceItemAction" method="deleteTmBalanceItem">
+			
+		</action>
+		
+		<action name="tmBalanceItemValidateFormulaAction" class="com.selfsoft.baseparameter.action.TmBalanceItemAction" method="validateFormula">
+			
+		</action>
+		
+		<action name="tmBalanceItemvalidateItemNameAction" class="com.selfsoft.baseparameter.action.TmBalanceItemAction" method="validateItemName">
+			
+		</action>
+		
+		<action name="tmBalanceItemInsertAction" class="com.selfsoft.baseparameter.action.TmBalanceItemAction" method="insertTmBalanceItem">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmBalanceItemTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmBalanceItemTable
+			</result>
+		</action>
+		<action name="tmBalanceItemUpdateAction" class="com.selfsoft.baseparameter.action.TmBalanceItemAction" method="updateTmBalanceItem">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmBalanceItemTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmBalanceItemTable
+			</result>
+		</action>
+		
+		<action name="tmBalanceItemForwardPageAction" class="com.selfsoft.baseparameter.action.TmBalanceItemAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseparameter/TmBalanceItemCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseparameter/TmBalanceItemEdit.jsp
+			</result>
+		</action>
+		<!-- 结算明细 -->
+		
+		<!-- 修理类型 -->
+		<action name="tmFixTypeFindAction" class="com.selfsoft.baseparameter.action.TmFixTypeAction" method="findTmFixType">
+			<result name="success">
+				/pages/baseparameter/TmFixTypeFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tmFixTypeDeleteAction" class="com.selfsoft.baseparameter.action.TmFixTypeAction" method="deleteTmFixType">
+			
+		</action>
+		<action name="tmFixTypeInsertAction" class="com.selfsoft.baseparameter.action.TmFixTypeAction" method="insertTmFixType">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmFixTypeTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmFixTypeTable
+			</result>
+		</action>
+		<action name="tmFixTypeUpdateAction" class="com.selfsoft.baseparameter.action.TmFixTypeAction" method="updateTmFixType">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmFixTypeTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmFixTypeTable
+			</result>
+		</action>
+		
+		<action name="tmFixTypeForwardPageAction" class="com.selfsoft.baseparameter.action.TmFixTypeAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseparameter/TmFixTypeCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseparameter/TmFixTypeEdit.jsp
+			</result>
+		</action>
+		<!-- 修理类型 -->
+		
+		
+		
+		<action name="tmInsuranceAlertDayFindAction" class="com.selfsoft.baseparameter.action.TmInsuranceAlertDayAction" method="findTmInsuranceAlertDay">
+			<result name="success">
+				/pages/baseparameter/TmInsuranceAlertDayFind.jsp
+			</result>
+			
+		</action>
+ 		
+ 		<action name="tmInsuranceAlertDayUpdateAction" class="com.selfsoft.baseparameter.action.TmInsuranceAlertDayAction" method="updateTmInsuranceAlertDay">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmInsuranceAlertDayTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmInsuranceAlertDayTable
+			</result>
+		</action>
+ 		
+ 		<action name="tmInsuranceAlertDayForwardPageAction" class="com.selfsoft.baseparameter.action.TmInsuranceAlertDayAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseparameter/TmInsuranceAlertDayCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseparameter/TmInsuranceAlertDayEdit.jsp
+			</result>
+		</action>
+		
+		<action name="tmCardCheckFindAction" class="com.selfsoft.baseparameter.action.TmCardCheckAction" method="findTmCardCheck">
+			<result name="success">
+				/pages/baseparameter/TmCardCheckFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tmCardCheckDeleteAction" class="com.selfsoft.baseparameter.action.TmCardCheckAction" method="deleteTmCardCheck">
+			
+		</action>
+		<action name="tmCardCheckInsertAction" class="com.selfsoft.baseparameter.action.TmCardCheckAction" method="insertTmCardCheck">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmCardCheckTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmCardCheckTable
+			</result>
+		</action>
+		<action name="tmCardCheckUpdateAction" class="com.selfsoft.baseparameter.action.TmCardCheckAction" method="updateTmCardCheck">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmCardCheckTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmCardCheckTable
+			</result>
+		</action>
+		
+		<action name="tmCardCheckForwardPageAction" class="com.selfsoft.baseparameter.action.TmCardCheckAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseparameter/TmCardCheckCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseparameter/TmCardCheckEdit.jsp
+			</result>
+		</action>
+		
+		
+		<!-- 加价率 -->
+		<action name="findTbPriceAddRateAction" class="com.selfsoft.baseparameter.action.TbPriceAddRateAction" method="findTbPriceAddRate">
+			<result name="success">
+				/pages/baseparameter/TbPriceAddRateFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="deleteTbPriceAddRateAction" class="com.selfsoft.baseparameter.action.TbPriceAddRateAction" method="deleteTbPriceAddRate">
+			
+		</action>
+		<action name="insertTbPriceAddRateAction" class="com.selfsoft.baseparameter.action.TbPriceAddRateAction" method="insertTbPriceAddRate">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbPriceAddRateTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbPriceAddRateTable
+			</result>
+		</action>
+		<action name="updateTbPriceAddRateAction" class="com.selfsoft.baseparameter.action.TbPriceAddRateAction" method="updateTbPriceAddRate">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbPriceAddRateTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbPriceAddRateTable
+			</result>
+		</action>
+		
+		<action name="tbPriceAddRateForwardPageAction" class="com.selfsoft.baseparameter.action.TbPriceAddRateAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseparameter/TbPriceAddRateCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseparameter/TbPriceAddRateEdit.jsp
+			</result>
+		</action>
+		
+		<action name="synPriceAddRateSellPriceAction" class="com.selfsoft.baseparameter.action.TbPriceAddRateAction" method="synPriceAddRateSellPrice">
+			
+		</action>
+		<!-- 加价率 -->
+		
+		<!-- 加价 -->
+		<action name="findTbPriceAddAction" class="com.selfsoft.baseparameter.action.TbPriceAddAction" method="findtbPriceAdd">
+			<result name="success">
+				/pages/baseparameter/TbPriceAddFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="deleteTbPriceAddAction" class="com.selfsoft.baseparameter.action.TbPriceAddAction" method="deleteTbPriceAdd">
+			
+		</action>
+		<action name="insertTbPriceAddAction" class="com.selfsoft.baseparameter.action.TbPriceAddAction" method="insertTbPriceAdd">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbPriceAddTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbPriceAddTable
+			</result>
+		</action>
+		<action name="updateTbPriceAddAction" class="com.selfsoft.baseparameter.action.TbPriceAddAction" method="updateTbPriceAdd">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbPriceAddTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbPriceAddTable
+			</result>
+		</action>
+		
+		<action name="tbPriceAddForwardPageAction" class="com.selfsoft.baseparameter.action.TbPriceAddAction" method="forwardPage">
+			<result name="addPage">
+				/pages/baseparameter/TbPriceAddCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/baseparameter/TbPriceAddEdit.jsp
+			</result>
+		</action>
+		
+		<action name="synPriceAddSellPriceAction" class="com.selfsoft.baseparameter.action.TbPriceAddAction" method="synPriceAddSellPrice">
+			
+		</action>
+		<!-- 加价 -->
+		
+		<!-- 负出库 -->
+		<action name="updateTmDictionaryAction" class="com.selfsoft.baseparameter.action.MinusAction" method="updateTmDictionary">
+			<result name="success">
+				/pages/baseparameter/MinusConfig.jsp
+			</result>
+		</action>
+		
+		<action name="minusConfigAction" class="com.selfsoft.baseparameter.action.MinusAction" method="minusConfig">
+			<result name="success">
+				/pages/baseparameter/MinusConfig.jsp
+			</result>
+		</action>
+		
+		<!-- 负出库 -->
+ 	</package>	
+ </struts>   

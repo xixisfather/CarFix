@@ -1,0 +1,97 @@
+@CHARSET "UTF-8";
+td{
+	font-family:"宋体";
+	font-size:12px;
+}
+th{
+	font-family:"宋体";
+	font-size:12px;
+}
+body{
+	font-family:"宋体";
+	font-size:12px;
+}
+
+.btn_mouseout{
+	height:24px; 
+	border:1px solid #87a3c1; 
+	background:url(1_091123212248_1.gif); 
+	color:#555; 
+	font-size:12px; 
+	line-height:180%; 
+	cursor:pointer;
+	font: normal 9pt "Tahoma", "宋体";
+}
+.btn_mouseover { 
+	height:24px; 
+	border:1px solid #a2904d; 
+	background:url(1_091123212248_1.gif)　0　-66px; 
+	color:#630; 
+	font-size:12px; 
+	cursor:pointer; 
+	line-height:180%;
+	font: normal 9pt "Tahoma", "宋体";
+}
+input{
+	zoom: expression(function(ele){(ele.className)?ele.className+=""+ele.type:ele.className=ele.type; ele.style.zoom = "1";}(this));
+}
+
+input.button{
+	height:24px; 
+	border:1px solid #87a3c1; 
+	background:url(1_091123212248_1.gif); 
+	color:#555; 
+	font-size:12px; 
+	line-height:180%; 
+	cursor:pointer;
+	font: normal 9pt "Tahoma", "宋体";
+	
+	event:expression(
+		onmouseover   =   function(){
+			this.className = 'btn_mouseover'
+		},
+		onmouseout   =   function(){
+			this.className = 'btn_mouseout'
+		}
+	)
+} 
+
+input.submit{
+	height:24px; 
+	border:1px solid #87a3c1; 
+	background:url(1_091123212248_1.gif); 
+	color:#555; 
+	font-size:12px; 
+	line-height:180%; 
+	cursor:pointer;
+	font: normal 9pt "Tahoma", "宋体";
+	
+	event:expression(
+		onmouseover   =   function(){
+			this.className = 'btn_mouseover'
+		},
+		onmouseout   =   function(){
+			this.className = 'btn_mouseout'
+		}
+	)
+}
+
+input.reset{
+	height:24px; 
+	border:1px solid #87a3c1; 
+	background:url(1_091123212248_1.gif); 
+	color:#555; 
+	font-size:12px; 
+	line-height:180%; 
+	cursor:pointer;
+	font: normal 9pt "Tahoma", "宋体";
+	
+	event:expression(
+		onmouseover   =   function(){
+			this.className = 'btn_mouseover'
+		},
+		onmouseout   =   function(){
+			this.className = 'btn_mouseout'
+		}
+	)
+}
