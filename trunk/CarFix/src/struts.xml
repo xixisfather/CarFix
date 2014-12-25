@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!-- struts2全局配置文件 -->
+<struts>
+	<constant name="struts.custom.i18n.resources" value="MessageResource"></constant>
+	<constant name="struts.devMode" value="false"></constant>
+	<constant name="struts.enable.DynamicMethod.Invocation" value="true"></constant>
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.ui.theme" value="simple"></constant>
+	<constant name="structs.objectFactory.spring.autoWire" value="type"></constant>
+	<constant name="struts.configuration.xml.reload" value="true"></constant>
+	<include file="struts_secrity.xml"/>
+	<include file="struts_baseparameter.xml"/>
+	<include file="struts_baseinformation.xml"/>
+	<include file="struts_business.xml"/>
+	<include file="struts_xls.xml"/>
+	<include file="strust-common.xml"/>
+	
+	
+</struts>

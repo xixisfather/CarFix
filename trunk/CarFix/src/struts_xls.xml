@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+ <struts>
+ 	<package name="/strutsXls" extends="struts-default">
+ 		
+		
+		<!-- 采购入库查询统计 -->
+		<action name="findStStockInAction" class="com.selfsoft.business.action.StatXlsAction" method="findStStockIn">
+			<result name="success">
+				/pages/business/xlsstat/StatStockInDetail.jsp
+			</result>
+		</action>
+		<action name="cgrkDeleteAction" class="com.selfsoft.business.action.StockXLSImportAction" method="cgrkDelete"></action>
+		<!-- 采购入库查询统计 -->
+		
+		<!-- 配件期间收发存统计 -->
+		<action name="findStPartReceiverAction" class="com.selfsoft.business.action.StatXlsAction" method="findStPartReceiver">
+			<result name="success">
+				/pages/business/xlsstat/StatPartInfoReceiver.jsp
+			</result>
+		</action>
+		<action name="pjqjsfcDeleteAction" class="com.selfsoft.business.action.StockXLSImportAction" method="pjqjsfcDelete"></action>
+		
+		<!-- 配件期间收发存统计 -->
+		
+		<!--仓库概貌统计 -->
+		<action name="findStStorehouseSurveyAction" class="com.selfsoft.business.action.StatXlsAction" method="findStStorehouseSurvey">
+			<result name="success">
+				/pages/business/xlsstat/StatStoreHouseSurvey.jsp
+			</result>
+		</action>
+		<action name="ckgmDeleteAction" class="com.selfsoft.business.action.StockXLSImportAction" method="ckgmDelete"></action>
+		<!-- 仓库概貌统计 -->
+		
+		<!-- 配件每日出库统计 -->
+		<action name="findStStockoutAction" class="com.selfsoft.business.action.StatXlsAction" method="findStStockout">
+			<result name="success">
+				/pages/business/xlsstat/StatDailyStockOut.jsp
+			</result>
+		</action>
+		<action name="pjmrckDeleteAction" class="com.selfsoft.business.action.StockXLSImportAction" method="pjmrckDelete"></action>
+		
+		<!-- 配件每日出库统计 -->
+		
+		
+		<!-- 仓库期间收发存  数据录入  统计 -->
+		<action name="stHouseRecforwardPageAction" class="com.selfsoft.business.action.StStoreHouseReceiverAction" method="forwardPage">
+			<result name="addPage">
+				/pages/business/xlsimport/addStStoreHouseReceiver.jsp
+			</result>
+			<result name="editPage">
+				/pages/business/xlsimport/editStStoreHouseReceiver.jsp
+			</result>
+		</action>
+		<action name="addStoreHouseReceiverAction" class="com.selfsoft.business.action.StStoreHouseReceiverAction" method="addStoreHouseReceiver">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=stStoreHouseReceiverTable
+			</result>
+		</action>
+		<action name="findStStoreHouseReceiverAction" class="com.selfsoft.business.action.StStoreHouseReceiverAction" method="findStStoreHouseReceiver">
+			<result name="success">
+				/pages/business/xlsimport/findStStoreHouseReceiver.jsp
+			</result>
+		</action>
+		<action name="hasAddStStoreHouseReceiverAction" class="com.selfsoft.business.action.StStoreHouseReceiverAction" method="hasAddStStoreHouseReceiver"></action>
+		
+		
+		<action name="updateStStoreHouseReceiverAction" class="com.selfsoft.business.action.StStoreHouseReceiverAction" method="updateStStoreHouseReceiver">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=stStoreHouseReceiverTable
+			</result>
+		</action>
+		
+		<action name="findStoreHouseReceiverAction" class="com.selfsoft.business.action.StatXlsAction" method="findStoreHouseReceiver">
+			<result name="success">
+				/pages/business/xlsstat/StatStoreHouseReceiver.jsp
+			</result>
+		</action>
+		
+		<!-- 仓库期间收发存  数据录入  统计 -->
+		
+ 	</package>	
+ </struts>   

@@ -1,0 +1,2390 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+ <struts>
+ 	<package name="/strutsBusiness" extends="struts-default">
+ 		<!-- 
+ 		<interceptors >
+ 			<interceptor name="permissionIntercepter" class="com.selfsoft.common.interceptor.CheckPermissionIntercepter"></interceptor>
+ 			
+ 			<interceptor-stack name="permissionStack">
+ 				<interceptor-ref name="permissionIntercepter"></interceptor-ref>
+ 				<interceptor-ref name="defaultStack"></interceptor-ref>
+ 			</interceptor-stack>
+ 			
+ 		</interceptors>
+ 		<default-interceptor-ref name="permissionStack"></default-interceptor-ref>
+ 		
+ 		<global-results>
+ 		>
+ 		</global-results>
+ 		 -->
+ 		<interceptors >
+ 			<interceptor name="loginIntercepter" class="com.selfsoft.common.interceptor.LoginIntercepter"></interceptor>
+ 			<interceptor-stack name="secrityStack">
+ 				<interceptor-ref name="loginIntercepter"></interceptor-ref>
+ 				<interceptor-ref name="defaultStack"></interceptor-ref>
+ 			</interceptor-stack>
+ 		</interceptors>
+ 		<default-interceptor-ref name="secrityStack"></default-interceptor-ref>
+ 		
+ 		 
+ 	
+ 		<global-results>
+ 			<result  type="redirect" name="globalLogin" >
+ 				/pages/login.jsp
+ 			</result>
+			<result  type="redirect" name="permissionFailed" >
+ 				/pages/error/fail.jsp
+ 			</result>
+ 		</global-results>
+ 		 
+ 		<action name="tbFixEntrustCostFindAction" class="com.selfsoft.business.action.TbFixEntrustCostAction" method="findTbFixEntrustCost">
+			<result name="success">
+				/pages/business/tbFixEntrustCost/TbFixEntrustCostFind.jsp
+			</result>
+		</action> 
+ 		 
+ 		<action name="tbFixEntrustCostForwardPageAction" class="com.selfsoft.business.action.TbFixEntrustCostAction" method="forwardPage">
+			<result name="addPage">
+				/pages/business/tbFixEntrustCost/TbFixEntrustCostCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/business/tbFixEntrustCost/TbFixEntrustCostEdit.jsp
+			</result>
+		</action> 
+ 		
+ 		 <action name="tbFixEntrustCostInsertAction" class="com.selfsoft.business.action.TbFixEntrustCostAction" method="insertTbFixEntrustCost">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbFixEntrustCostTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbFixEntrustCostTable
+			</result>
+		</action>
+		
+		<action name="tbFixEntrustCostUpdateAction" class="com.selfsoft.business.action.TbFixEntrustCostAction" method="updateTbFixEntrustCost">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbFixEntrustCostTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbFixEntrustCostTable
+			</result>
+		</action>
+		
+		<action name="tbFixEntrustCostDeleteAction" class="com.selfsoft.business.action.TbFixEntrustCostAction" method="deleteTbFixEntrustCost">
+			
+		</action>
+		
+ 		 
+ 		<action name="findAllRemoveStockAction" class="com.selfsoft.business.action.CommChooseAction" method="findAllRemoveStock">
+			<result name="success">
+				/pages/business/common/TmRemoveStockList.jsp
+			</result>
+		</action>
+ 		<action name="findAllTmTbCustomerAction" class="com.selfsoft.business.action.CommChooseAction" method="findAllTmTbCustomer">
+			<result name="success">
+				/pages/business/common/TbCustomerList.jsp
+			</result>
+		</action>
+		<action name="findAllTmStockOutBySellAction" class="com.selfsoft.business.action.CommChooseAction" method="findAllTmStockOutBySell">
+			<result name="success">
+				/pages/business/common/TmStockOutSellList.jsp
+			</result>
+		</action>
+		<action name="findAllTmLianceRegisterAction" class="com.selfsoft.business.action.CommChooseAction" method="findAllTmLianceRegister">
+			<result name="success">
+				/pages/business/common/TbLianceRegisterList.jsp
+			</result>
+		</action>
+		<action name="findAllTmLoanRegisterAction" class="com.selfsoft.business.action.CommChooseAction" method="findAllTmLoanRegister">
+			<result name="success">
+				/pages/business/common/TbLoanRegisterList.jsp
+			</result>
+		</action>
+		<action name="findAllTmUserAction" class="com.selfsoft.business.action.CommChooseAction" method="findAllTmUser">
+			<result name="success">
+				/pages/business/common/TmUserList.jsp
+			</result>
+		</action>
+		<action name="findMaintainTmUserAction" class="com.selfsoft.business.action.CommChooseAction" method="findMaintainTmUser">
+			<result name="success">
+				/pages/business/common/TmUserList.jsp
+			</result>
+		</action>
+		<action name="findAllTbFixEntrustAction" class="com.selfsoft.business.action.CommChooseAction" method="findAllTbFixEntrust">
+			<result name="success">
+				/pages/business/common/TbFixEntrustList.jsp
+			</result>
+		</action>
+		<action name="findAllCarInfoAction" class="com.selfsoft.business.action.CommChooseAction" method="findAllCarInfo">
+			<result name="success">
+				/pages/business/common/TbCarInfoList.jsp
+			</result>
+		</action>
+		<action name="findAllStockInByStockAction" class="com.selfsoft.business.action.CommChooseAction" method="findAllStockInByStock">
+			<result name="success">
+				/pages/business/common/TmStockInStockList.jsp
+			</result>
+		</action>
+		<action name="findAllTbPartInfoAction" class="com.selfsoft.business.action.CommChooseAction" method="findAllTbPartInfo">
+			<result name="success">
+				/pages/business/common/StockEditChoosePartInfo.jsp
+			</result>
+		</action>
+		<action name="findAllTmStoreHouseAction" class="com.selfsoft.business.action.CommChooseAction" method="findAllTmStoreHouse">
+			<result name="success">
+				/pages/business/common/chooseTmStoreHouse.jsp
+			</result>
+		</action>
+
+		<action name="findCommTmPartTypeAction" class="com.selfsoft.business.action.CommChooseAction" method="findCommTmPartType">
+			<result name="success">
+				/pages/business/common/chooseTmPartType.jsp
+			</result>
+		</action>
+ 		<!-- 配件入库 -->
+		<action name="deleteStockInAction" class="com.selfsoft.business.action.TmStockInAction" method="deleteStockIn">
+		</action>
+		
+		<action name="initStockInPageAction" class="com.selfsoft.business.action.TmStockInAction" method="initStockInPage">
+			<result name="success">
+				/pages/business/stockin/TmStockCreateV2.jsp
+			</result>
+		</action>
+		
+		<action name="initAllotInPageAction" class="com.selfsoft.business.action.TmStockInAction" method="initAllotPage">
+			<result name="success">
+				/pages/business/stockin/TmAllotCreate.jsp
+			</result>
+		</action>
+		
+		<action name="initOtherStockPageAction" class="com.selfsoft.business.action.TmStockInAction" method="initOtherStockPage">
+			<result name="success">
+				/pages/business/stockin/TmOtherStockCreate.jsp
+			</result>
+		</action>
+		
+		<action name="initOverFlowPageAction" class="com.selfsoft.business.action.TmStockInAction" method="initOverFlowPage">
+			<result name="success">
+				/pages/business/stockin/TmOverFlowCreate.jsp
+			</result>
+		</action>
+		
+		
+		<action name="insertStockInAction" class="com.selfsoft.business.action.TmStockInAction" method="insertStockIn">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockInTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStockInTable
+			</result>
+		</action>
+		<action name="updateStockInStateAction" class="com.selfsoft.business.action.TmStockInAction" method="updateStockInState">
+		</action>
+		<action name="insertAllotInAction" class="com.selfsoft.business.action.TmStockInAction" method="insertAllotIn">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockInTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStockInTable
+			</result>
+		</action>
+		<action name="updateAllotInStateAction" class="com.selfsoft.business.action.TmStockInAction" method="updateAllotInState">
+		</action>
+		<action name="insertOtherStockInAction" class="com.selfsoft.business.action.TmStockInAction" method="insertOtherStockIn">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockInTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStockInTable
+			</result>
+		</action>
+		<action name="updateOtherStockStateAction" class="com.selfsoft.business.action.TmStockInAction" method="updateOtherStockState">
+		</action>
+		<action name="insertOverFlowAction" class="com.selfsoft.business.action.TmStockInAction" method="insertOverFlow">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockInTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStockInTable
+			</result>
+		</action>
+		<action name="updateOverFlowStateAction" class="com.selfsoft.business.action.TmStockInAction" method="updateOverFlowState">
+		</action>
+		
+		<action name="findStockAction" class="com.selfsoft.business.action.TmStockInAction" method="findStock">
+			<result name="success">
+				/pages/business/stockout/TmStockReturnCollection.jsp
+			</result>
+		</action>
+		<action name="insertSellReturnAction" class="com.selfsoft.business.action.TmStockInAction" method="insertSellReturn">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockInTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStockInTable
+			</result>
+		</action>
+		<action name="updateSellReturnStateAction" class="com.selfsoft.business.action.TmStockInAction" method="updateSellReturnState">
+		</action>
+		
+		<action name="viewStockInAction" class="com.selfsoft.business.action.TmStockInAction" method="viewStockIn">
+			<result name="viewPage">
+				/pages/business/stockin/edit/TmStockView.jsp
+			</result>
+		</action>
+		
+		<action name="cgrkV2ImportXlsAction" class="com.selfsoft.business.action.TmStockInAction" method="cgrkV2ImportXls">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/importXlsSuccess.jsp?table=tmStockInTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/importXlsFail.jsp?table=tmStockInTable
+			</result>
+		</action>
+		
+		<action name="initcgrk2ImportXlsPageAction" class="com.selfsoft.business.action.TmStockInAction" method="initcgrk2ImportXlsPage">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/business/xlsimport/ckrk2ImportXls.jsp
+			</result>
+		</action>
+		
+		<!-- 配件入库 -->
+		
+		<!-- 借进登记 -->
+		<action name="initLianceRegisterPageAction" class="com.selfsoft.business.action.TmLianceRegisterAction" method="initLianceRegisterPage">
+			<result name="success">
+				/pages/business/stockin/TmLianceRegisterCreate.jsp
+			</result>
+		</action>
+		<action name="insertLianceRegisterAction" class="com.selfsoft.business.action.TmLianceRegisterAction" method="insertLianceRegister">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmLianceRegisterTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmLianceRegisterTable
+			</result>
+		</action>
+		<action name="updatePartInfoLianceAction" class="com.selfsoft.business.action.TmLianceRegisterAction" method="updatePartInfoLiance">
+		</action>
+		
+		<action name="findLianceRegisterAction" class="com.selfsoft.business.action.TmLianceRegisterAction" method="findLianceRegister">
+			<result name="success">
+				/pages/business/stockin/edit/TmLianceRegisterList.jsp
+			</result>
+		</action>
+		<action name="initEditLianceRegisterPageAction" class="com.selfsoft.business.action.TmLianceRegisterAction" method="initEditLianceRegisterPage">
+			<result name="editPage">
+				/pages/business/stockin/edit/TmLianceRegisterEdit.jsp
+			</result>
+		</action>
+		<action name="updateLianceRegisterAction" class="com.selfsoft.business.action.TmLianceRegisterAction" method="updateLianceRegister">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmLianceRegisterTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmLianceRegisterTable
+			</result>
+		</action>
+		<action name="deleteLianceRegisterAction" class="com.selfsoft.business.action.TmLianceRegisterAction" method="deleteLianceRegister">
+		</action>
+		
+		<!-- 借进登记 -->
+		<!-- 借进归还 -->
+		<action name="findLinaceRegDetailAction" class="com.selfsoft.business.action.TmLianceReturnAction" method="findLinaceRegDetail">
+			<result name="success">
+				/pages/business/stockin/TmLianceRegDetailCollection.jsp
+			</result>
+		</action>
+		<action name="insertLinaceReturnDetailAction" class="com.selfsoft.business.action.TmLianceReturnAction" method="insertLinaceReturnDetail">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=lianceReturnTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=lianceReturnTable
+			</result>
+		</action>
+		<action name="updateLianceReturnAction" class="com.selfsoft.business.action.TmLianceReturnAction" method="updateLianceReturn">
+		</action>
+		
+		<action name="findTmLianceReturnAction" class="com.selfsoft.business.action.TmLianceReturnAction" method="findTmLianceReturn">
+			<result name="success">
+				/pages/business/stockin/edit/TmLianceReturnList.jsp
+			</result>
+		</action>
+		<action name="initEditLianceReturnPageAction" class="com.selfsoft.business.action.TmLianceReturnAction" method="initEditLianceReturnPage">
+			<result name="editPage">
+				/pages/business/stockin/edit/TmLianceReturnEdit.jsp
+			</result>
+		</action>
+		<action name="updateLianceReturnDetailAction" class="com.selfsoft.business.action.TmLianceReturnAction" method="updateLianceReturnDetail">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=lianceReturnTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=lianceReturnTable
+			</result>
+		</action>
+		<action name="deleteLianceReturnAction" class="com.selfsoft.business.action.TmLianceReturnAction" method="deleteLianceReturn">
+		</action>
+		
+		<!-- 借进归还 -->
+		
+		<!-- 维修预约 -->
+		<action name="tbBookFindAction" class="com.selfsoft.business.action.TbBookAction" method="findTbBook">
+			<result name="success">
+				/pages/business/tbBook/TbBookFind.jsp
+			</result>
+			
+		</action>
+		<!-- 委托书 -->
+		<action name="tbBookQueryAction" class="com.selfsoft.business.action.TbBookAction" method="queryTbBook">
+			<result name="success">
+				/pages/business/tbFixEntrust/TbBookFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tbBookDeleteAction" class="com.selfsoft.business.action.TbBookAction" method="deleteTbBook">
+			
+		</action>
+		
+		<action name="tbBookeepAppointAction" class="com.selfsoft.business.action.TbBookAction" method="keepAppoint">
+			
+		</action>
+		
+		<action name="tbBookInsertAction" class="com.selfsoft.business.action.TbBookAction" method="insertTbBook">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbBookTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbBookTable
+			</result>
+		</action>
+		<action name="tbBookUpdateAction" class="com.selfsoft.business.action.TbBookAction" method="updateTbBook">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbBookTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbBookTable
+			</result>
+		</action>
+		
+		<action name="tbBookForwardPageAction" class="com.selfsoft.business.action.TbBookAction" method="forwardPage">
+			<result name="addPage">
+				/pages/business/tbBook/TbBookCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/business/tbBook/TbBookEdit.jsp
+			</result>
+		</action>
+		<!-- 维修预约 -->
+		
+		
+		<!-- 配件出库 -->
+		<action name="deleteStockOutAction" class="com.selfsoft.business.action.TmStockOutAction" method="deleteStockOut">
+		</action>
+		
+		<action name="initSellPageAction" class="com.selfsoft.business.action.TmStockOutAction" method="initSellPage">
+			<result name="success">
+				/pages/business/stockout/TmSellCreate.jsp
+			</result>
+		</action>
+		
+		<action name="initDrawPageAction" class="com.selfsoft.business.action.TmStockOutAction" method="initDrawPage">
+			<result name="success">
+				/pages/business/stockout/TmDrawCreate.jsp
+			</result>
+		</action>
+		
+		<action name="initShatterPageAction" class="com.selfsoft.business.action.TmStockOutAction" method="initShatterPage">
+			<result name="success">
+				/pages/business/stockout/TmShatterCreate.jsp
+			</result>
+		</action>
+		
+		<action name="initAllotPageAction" class="com.selfsoft.business.action.TmStockOutAction" method="initAllotPage">
+			<result name="success">
+				/pages/business/stockout/TmAllotCreate.jsp
+			</result>
+		</action>
+		
+		<action name="insertSellAction" class="com.selfsoft.business.action.TmStockOutAction" method="insertSell">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockOutTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStockOutTable
+			</result>
+		</action>
+		<action name="updateSellStateAction" class="com.selfsoft.business.action.TmStockOutAction" method="updateSellState">
+		</action>
+		
+		<action name="insertDrawAction" class="com.selfsoft.business.action.TmStockOutAction" method="insertDraw">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockOutTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStockOutTable
+			</result>
+		</action>
+		<action name="updateDrawStateAction" class="com.selfsoft.business.action.TmStockOutAction" method="updateDrawState">
+		</action>
+		
+		<action name="insertShatterAction" class="com.selfsoft.business.action.TmStockOutAction" method="insertShatter">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockOutTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStockOutTable
+			</result>
+		</action>
+		<action name="updateShatterStateAction" class="com.selfsoft.business.action.TmStockOutAction" method="updateShatterState">
+		</action>
+		
+		<action name="insertAllotAction" class="com.selfsoft.business.action.TmStockOutAction" method="insertAllot">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockOutTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStockOutTable
+			</result>
+		</action>
+		<action name="updateAllotStateAction" class="com.selfsoft.business.action.TmStockOutAction" method="updateAllotState">
+		</action>
+		
+		<action name="insertStockReturnAction" class="com.selfsoft.business.action.TmStockOutAction" method="insertStockReturn">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockOutTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStockOutTable
+			</result>
+		</action>
+		<action name="updateStockReturnStateAction" class="com.selfsoft.business.action.TmStockOutAction" method="updateStockReturnState">
+		</action>
+		
+		<action name="findSellReturnAction" class="com.selfsoft.business.action.TmStockOutAction" method="findSellReturn">
+			<result name="success">
+					/pages/business/stockout/TmSellReturnCreate.jsp
+				</result>
+		</action>
+		
+		<action name="getStockOutCustomerSellpriceAction" class="com.selfsoft.business.action.TmStockOutAction" method="getStockOutCustomerSellprice">
+		</action>
+		
+		<!-- 配件出库 -->
+		
+		<!-- 借出登记  -->
+			
+			<action name="initLoanRegisterPageAction" class="com.selfsoft.business.action.TmLoanRegisterAction" method="initLoanRegisterPage">
+				<result name="success">
+					/pages/business/stockout/TmLoanRegisterCreate.jsp
+				</result>
+			</action>
+			<action name="insertLoanRegisterAction" class="com.selfsoft.business.action.TmLoanRegisterAction" method="insertLoanRegister">
+				<result name="success">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/success.jsp?table=TmLoanRegisterTable
+				</result>
+				<result name="failure">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/fail.jsp?table=TmLoanRegisterTable
+				</result>
+			</action>
+			<action name="updatePartInfoLoanAction" class="com.selfsoft.business.action.TmLoanRegisterAction" method="updatePartInfoLoan">
+			</action>
+			
+			<action name="findLoanRegisterAction" class="com.selfsoft.business.action.TmLoanRegisterAction" method="findLoanRegister">
+				<result name="success">
+					/pages/business/stockout/edit/TmLoanRegisterList.jsp
+				</result>
+			</action>
+			<action name="initEditLoanRegisterPageAction" class="com.selfsoft.business.action.TmLoanRegisterAction" method="initEditLoanRegisterPage">
+				<result name="editPage">
+					/pages/business/stockout/edit/TmLoanRegisterEdit.jsp
+				</result>
+			</action>
+			<action name="updateLoanRegisterAction" class="com.selfsoft.business.action.TmLoanRegisterAction" method="updateLoanRegister">
+				<result name="success">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/success.jsp?table=TmLoanRegisterTable
+				</result>
+				<result name="failure">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/fail.jsp?table=TmLoanRegisterTable
+				</result>
+			</action>
+			<action name="deleteLoanRegisterAction" class="com.selfsoft.business.action.TmLoanRegisterAction" method="deleteLoanRegister">
+			</action>
+			
+		<!-- 借出登记  -->
+		<!-- 借出归还 -->			
+			<action name="findLoanRegDetailAction" class="com.selfsoft.business.action.TmLoanReturnAction" method="findLoanRegDetail">
+				<result name="success">
+					/pages/business/stockout/TmLoanRegDetailCollection.jsp
+				</result>
+			</action>
+			<action name="insertLoanReturnDetailAction" class="com.selfsoft.business.action.TmLoanReturnAction" method="insertLoanReturnDetail">
+				<result name="success">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/success.jsp?table=loanReturnTable
+				</result>
+				<result name="failure">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/fail.jsp?table=loanReturnTable
+				</result>
+			</action>
+			<action name="updateLoanReturnAction" class="com.selfsoft.business.action.TmLoanReturnAction" method="updateLoanReturn">
+			</action>
+			
+			<action name="findTmLoanReturnAction" class="com.selfsoft.business.action.TmLoanReturnAction" method="findTmLoanReturn">
+				<result name="success">
+					/pages/business/stockout/edit/TmLoanReturnList.jsp
+				</result>
+			</action>
+			<action name="initEditLoanReturnPageAction" class="com.selfsoft.business.action.TmLoanReturnAction" method="initEditLoanReturnPage">
+				<result name="editPage">
+					/pages/business/stockout/edit/TmLoanReturnEdit.jsp
+				</result>
+			</action>
+			<action name="updateLoanReturnDetailAction" class="com.selfsoft.business.action.TmLoanReturnAction" method="updateLoanReturnDetail">
+				<result name="success">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/success.jsp?table=loanReturnTable
+				</result>
+				<result name="failure">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/fail.jsp?table=loanReturnTable
+				</result>
+			</action>
+			<action name="deleteLoanReturnAction" class="com.selfsoft.business.action.TmLoanReturnAction" method="deleteLoanReturn">
+			</action>
+			
+		<!-- 借出归还 -->	
+		
+		<!-- 移库出仓 -->
+			<action name="initRemoveStockPageAction" class="com.selfsoft.business.action.TmRemoveStockAction" method="initRemoveStockPage">
+				<result name="success">
+					/pages/business/stockout/TmRemoveStockCreate.jsp
+				</result>
+			</action>
+			<action name="insertTmRemoveStockAction" class="com.selfsoft.business.action.TmRemoveStockAction" method="insertTmRemoveStock">
+				<result name="success">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/success.jsp?table=tmRemoveStockTable
+				</result>
+				<result name="failure">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/fail.jsp?table=tmRemoveStockTable
+				</result>
+			
+			</action>
+			<action name="updateTmRemoveStockAction" class="com.selfsoft.business.action.TmRemoveStockAction" method="updateTmRemoveStock">
+			</action>
+			
+			<action name="findRemStockAction" class="com.selfsoft.business.action.TmRemoveStockAction" method="findRemoveStock">
+				<result name="success">
+					/pages/business/stockout/edit/TmRemoveStockList.jsp
+				</result>
+			</action>
+			<action name="initEditRemoveStockPageAction" class="com.selfsoft.business.action.TmRemoveStockAction" method="initEditRemoveStockPage">
+				<result name="editPage">
+					/pages/business/stockout/edit/TmRemoveStockEdit.jsp
+				</result>
+			</action>
+			<action name="updateTmRemStockAction" class="com.selfsoft.business.action.TmRemoveStockAction" method="updateTmRemStock">
+				<result name="success">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/success.jsp?table=tmRemoveStockTable
+				</result>
+				<result name="failure">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/fail.jsp?table=tmRemoveStockTable
+				</result>
+				
+			</action>
+			<action name="deleteTmRemStockAction" class="com.selfsoft.business.action.TmRemoveStockAction" method="deleteTmRemStock">
+			</action>
+			
+			
+		<!-- 移库出仓 -->
+		
+		<!-- 移库进仓 -->
+		
+			
+			<action name="findRemoveStockAction" class="com.selfsoft.business.action.TmShiftinStockAction" method="findRemoveStock">
+				<result name="success">
+					/pages/business/stockout/TmShiftinStockCreate.jsp
+				</result>
+			</action>
+			<action name="insertTmShiftStockAction" class="com.selfsoft.business.action.TmShiftinStockAction" method="insertTmShiftStock">
+				<result name="success">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/success.jsp?table=tmShiftinStockTable
+				</result>
+				<result name="failure">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/fail.jsp?table=tmShiftinStockTable
+				</result>
+			</action>
+			<action name="updateTmShiftStockAction" class="com.selfsoft.business.action.TmShiftinStockAction" method="updateTmShiftStock">
+			</action>
+			
+			<action name="findShiftinStockAction" class="com.selfsoft.business.action.TmShiftinStockAction" method="findShiftinStock">
+				<result name="success">
+					/pages/business/stockout/edit/TmShiftinStockList.jsp
+				</result>
+			</action>
+			<action name="initEditShiftinStockPageAction" class="com.selfsoft.business.action.TmShiftinStockAction" method="initEditShiftinStockPage">
+				<result name="editPage">
+					/pages/business/stockout/edit/TmShiftinStockEdit.jsp
+				</result>
+			</action>
+			<action name="updateShiftAction" class="com.selfsoft.business.action.TmShiftinStockAction" method="updateShift">
+				<result name="success">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/success.jsp?table=tmShiftinStockTable
+				</result>
+				<result name="failure">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/fail.jsp?table=tmShiftinStockTable
+				</result>
+			</action>
+			
+			<action name="deleteTmShiftinStockAction" class="com.selfsoft.business.action.TmShiftinStockAction" method="deleteTmShiftinStock">
+			</action>
+			
+		<!-- 移库进仓 -->
+		
+		<!-- 修理委托书 -->
+		
+		
+		
+		<!-- 弹出选择委托书 -->	
+		<action name="tbFixEntrustSelectAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="selectTbFixEntrust">
+			<result name="success">
+				/pages/business/common/TbFixEntrustList.jsp
+			</result>
+		</action>
+		
+		<action name="getTbFixEntrustInfoAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="getTbFixEntrustInfo">
+		</action>
+		
+		
+		<action name="tbFixEntrustFindAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="findTbFixEntrust">
+			<result name="success">
+				/pages/business/tbFixEntrust/TbFixEntrustFind.jsp
+			</result>
+		</action>
+		
+		<action name="tbFixEntrustNotValidFindAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="findTbFixEntrustNotValid">
+			<result name="success">
+				/pages/business/tbFixEntrust/TbFixEntrustNotValidFind.jsp
+			</result>
+		</action>
+		
+		<action name="tbFixEntrustStatisticsAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="statisticsTbFixEntrust">
+			<result name="success">
+				/pages/business/tbFixEntrust/TbFixEntrustStatistics.jsp
+			</result>
+		</action>
+		
+		<action name="tbFixEntrustAnalyseAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="analyseTbFixEntrust">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TbFixEntrustAnalyse.jsp
+			</result>
+		</action>
+		
+		<action name="tbFixEntrustChooseAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="chooseTbFixEntrust">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TbFixEntrustFind.jsp
+			</result>
+		</action>
+		
+		<action name="tbFixEntrustChooseSpecialAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="chooseTbFixEntrustSpecial">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TbFixEntrustFindSpecial.jsp
+			</result>
+		</action>
+		
+		<action name="tbFixEntrustDeleteAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="deleteTbFixEntrust">
+			
+		</action>
+		
+		<action name="tbFixEntrustPrintAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="printTbFixEntrust">
+			
+		</action>
+		
+		<action name="tbFixEntrustPrintTemplateAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="printTbEntrustTemplate">
+			
+		</action>
+		
+		<action name="tbFixEntrustPrintTemplateBlankAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="printTbEntrustTemplateBlank">
+			
+		</action>
+		
+		<action name="tbFixEntrustPrintTemplateXTLAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="printTbEntrustTemplateXTL">
+			
+		</action>
+		
+		<action name="tbFixEntrustPrintTemplateBlankXTLAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="printTbEntrustTemplateBlankXTL">
+			
+		</action>
+		
+		<action name="tbFixEntrustSendPrintAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="sendPrintTbFixEntrust">
+			
+		</action>
+		
+		<action name="tbFixEntrustCancelFinishAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="cancelTbFixEntrustFinish">
+			
+		</action>
+		
+		<action name="tbFixEntrustFinishAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="finishTbFixEntrust">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbFixEntrustTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbFixEntrustTable
+			</result>
+		</action>
+		
+		<action name="tbFixEntrustInsertAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="insertTbFixEntrust">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbFixEntrustTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbFixEntrustTable
+			</result>
+		</action>
+		<action name="tbFixEntrustUpdateAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="updateTbFixEntrust">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbFixEntrustTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbFixEntrustTable
+			</result>
+		</action>
+		
+		<action name="tbFixEntrustReBalanceUpdateAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="updateTbFixEntrustReBalance">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbFixEntrustTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbFixEntrustTable
+			</result>
+		</action>
+		
+		<action name="tbFixEntrustViewAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="viewTbFixEntrust">
+			<result name="success">
+				/pages/business/tbFixEntrust/TbFixEntrustView.jsp
+			</result>
+			<result name="wxhf">
+				/pages/business/tbFixEntrust/TbFixEntrustView2.jsp
+			</result>
+		</action>
+		
+		<action name="tbFixEntrustForwardPageAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="forwardPage">
+			<result name="addPage">
+				/pages/business/tbFixEntrust/TbFixEntrustCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/business/tbFixEntrust/TbFixEntrustEdit.jsp
+			</result>
+			<result name="editPersonPage">
+				/pages/business/tbFixEntrust/TbFixEntrustEditPerson.jsp
+			</result>
+			<result name="reEditPage">
+				/pages/business/tbFixEntrust/TbFixEntrustReBalanceEdit.jsp
+			</result>
+			<result name="otherPage">
+				/pages/business/tbFixEntrust/TbFixEntrustFinish.jsp
+			</result>
+		</action>
+		<!-- 修理委托书 -->
+		
+		<!-- 修理人员工时分派 -->
+		<action name="tbFixShareWorkingInfoShareAction" class="com.selfsoft.business.action.TbFixShareAction" method="workingInfoShare">
+			<result name="success">
+				/pages/business/tbFixEntrust/TbFixEntrustShareCreate.jsp
+			</result>
+		</action>
+		
+		<!-- 修理人员工时分派 -->
+		
+		<!-- 修理工时工位内容 -->
+		<action name="tbFixEntrustContentFindAction" class="com.selfsoft.business.action.TbFixEntrustContentAction" method="findTbFixEntrustContentListByTbFixEntrustId">
+			
+			<result name="wtsPage">
+				/pages/business/tbFixEntrust/TbFixEntrustContentFind.jsp
+			</result>
+			<result name="jsdPage">
+				/pages/business/tbBusinessBalance/TbFixEntrustContentFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tbFixEntrustContentViewAction" class="com.selfsoft.business.action.TbFixEntrustContentAction" method="viewBusinessBalanceTbFixEntrustContent">
+			<result name="viewPage">
+				/pages/business/tbBusinessBalance/TbFixEntrustContentView.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tbFixEntrustContentGroupViewAction" class="com.selfsoft.business.action.TbFixEntrustContentAction" method="viewBusinessBalanceTbFixEntrustContentGroup">
+			<result name="viewPage">
+				/pages/business/tbBusinessBalance/TbFixEntrustContentGroupView.jsp
+			</result>
+			
+		</action>
+		
+		<!-- 修理工时工位内容 -->
+		
+		
+		<!-- 维修发料 -->
+		<action name="initMaintainPageAction" class="com.selfsoft.business.action.TmMaintainAction" method="initMaintainPage">
+			<result name="success">
+				/pages/business/stockout/TmMaintainCreate.jsp
+			</result>
+		</action>
+		<action name="tabFindPartInfoAction" class="com.selfsoft.business.action.TmMaintainAction" method="tabFindPartInfo">
+			<result name="success">
+				/pages/business/stockout/MaintainPartInfo.jsp
+			</result>
+		</action>
+		
+		<action name="tabShowInfoAction" class="com.selfsoft.business.action.TmMaintainAction" method="tabShowPartInfo">
+			<result name="success">
+				/pages/business/tbBusinessSpecialBanance/MaintainPartInfo.jsp
+			</result>
+		</action>
+		
+		<action name="partSellShowAction" class="com.selfsoft.business.action.TmMaintainAction" method="showPartSell">
+			<result name="success">
+				/pages/business/tbBusinessSpecialBanance/SellPartInfo.jsp
+			</result>
+		</action>
+		
+		
+		<action name="insertMaintainAction" class="com.selfsoft.business.action.TmMaintainAction" method="insertMaintain">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbMaintainTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbMaintainTable
+			</result>
+		</action>
+		
+		<action name="updateMaintainStateAction" class="com.selfsoft.business.action.TmMaintainAction" method="updateMaintainState">
+		</action>
+		
+		<action name="findMaintainContentAction" class="com.selfsoft.business.action.TmMaintainAction" method="findMaintainContent">
+			<result name="success">
+				/pages/business/stockout/edit/TbMaintainContentList.jsp
+			</result>
+		</action>
+		<action name="initMaintainContentPageAction" class="com.selfsoft.business.action.TmMaintainAction" method="initMaintainContentPage">
+			<result name="editPage">
+				/pages/business/stockout/edit/TmMaintainEdit.jsp
+			</result>
+		</action>
+		
+		<action name="updateMaintainContentAction" class="com.selfsoft.business.action.TmMaintainAction" method="updateMaintainContent">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbMaintainTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbMaintainTable
+			</result>
+		</action>
+		
+		<action name="deleteMaintainContentAction" class="com.selfsoft.business.action.TmMaintainAction" method="deleteMaintainContent">
+		</action>
+		
+		<action name="initConfirmMaintainContentPageAction" class="com.selfsoft.business.action.TmMaintainAction" method="initConfirmMaintainContentPage">
+			<result name="editPage">
+				/pages/business/stockout/edit/TmConfirmMaintainEdit.jsp
+			</result>
+		</action>
+		
+		<action name="updateConfirmMaintainContentAction" class="com.selfsoft.business.action.TmMaintainAction" method="updateConfirmMaintainContent">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbMaintainTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbMaintainTable
+			</result>
+		</action>
+		
+		<action name="getCustomerSellpriceAction" class="com.selfsoft.business.action.TmMaintainAction" method="getCustomerSellprice">
+		</action>
+		<action name="isMaintainEditAction" class="com.selfsoft.business.action.TmMaintainAction" method="isMaintainEdit">
+		</action>
+		<action name="findTbFixEntrustContentAction" class="com.selfsoft.business.action.TmMaintainAction" method="findTbFixEntrustContent">
+			<result name="success">
+				/pages/business/stockout/MaintainEnturstConenet.jsp
+			</result>
+		</action>
+		<action name="getSumPartInfoByStockoutAction" class="com.selfsoft.business.action.TmMaintainAction" method="getSumPartInfoByStockout">
+		</action>
+		<!-- 维修发料 -->
+		
+		<!-- 采购入库 -->
+		<action name="findStockInAction" class="com.selfsoft.business.action.TmStockInAction" method="findStockIn">
+			<result name="success">
+				/pages/business/stockin/edit/TmStockInList.jsp
+			</result>
+		</action>
+		<action name="initEditStockInPageAction" class="com.selfsoft.business.action.TmStockInAction" method="initEditStockInPage">
+			<result name="editPage">
+				/pages/business/stockin/edit/TmStockEditV2.jsp
+			</result>
+		</action>
+		<action name="updateStockInAction" class="com.selfsoft.business.action.TmStockInAction" method="updateStockIn">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockInTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStockInTable
+			</result>
+		</action>
+		<!-- 采购入库 -->
+		
+		<!-- 调拨入库 -->
+		<action name="findAllotInAction" class="com.selfsoft.business.action.TmStockInAction" method="findAllotIn">
+			<result name="success">
+				/pages/business/stockin/edit/TmAllotInList.jsp
+			</result>
+		</action>
+		<action name="initEditAllotPageAction" class="com.selfsoft.business.action.TmStockInAction" method="initEditAllotPage">
+			<result name="editPage">
+				/pages/business/stockin/edit/TmAllotEdit.jsp
+			</result>
+		</action>
+		<action name="updateAllotInAction" class="com.selfsoft.business.action.TmStockInAction" method="updateAllotIn">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockInTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStockInTable
+			</result>
+		</action>
+		<!-- 调拨入库 -->
+		
+		<!-- 其它入库 -->
+		<action name="findOtherStockInAction" class="com.selfsoft.business.action.TmStockInAction" method="findOtherStockIn">
+			<result name="success">
+				/pages/business/stockin/edit/TmOtherStockInList.jsp
+			</result>
+		</action>
+		<action name="initEditOtherStockInPageAction" class="com.selfsoft.business.action.TmStockInAction" method="initEditOtherStockInPage">
+			<result name="editPage">
+				/pages/business/stockin/edit/TmOtherStockInEdit.jsp
+			</result>
+		</action>
+		<action name="updateOtherStockInAction" class="com.selfsoft.business.action.TmStockInAction" method="updateOtherStockIn">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockInTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStockInTable
+			</result>
+		</action>
+		
+		
+		<!-- 其它入库 -->
+		
+		<!-- 报溢入库 -->
+		<action name="findOverFlowAction" class="com.selfsoft.business.action.TmStockInAction" method="findOverFlow">
+			<result name="success">
+				/pages/business/stockin/edit/TmOverFlowList.jsp
+			</result>
+		</action>
+		<action name="initEditOverFlowPageAction" class="com.selfsoft.business.action.TmStockInAction" method="initEditOverFlowPage">
+			<result name="editPage">
+				/pages/business/stockin/edit/TmOverFlowEdit.jsp
+			</result>
+		</action>
+		<action name="updateOverFlowAction" class="com.selfsoft.business.action.TmStockInAction" method="updateOverFlow">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockInTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStockInTable
+			</result>
+		</action>
+		
+		<!-- 报溢入库 -->
+		
+		
+		<!-- 预付款登记 -->
+		<action name="tbAnvancePayFindAction" class="com.selfsoft.business.action.TbAnvancePayAction" method="findTbAnvancePay">
+			<result name="success">
+				/pages/business/tbAnvancePay/TbAnvancePayFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tbAnvancePayDeleteAction" class="com.selfsoft.business.action.TbAnvancePayAction" method="deleteTbAnvancePay">
+			
+		</action>
+		<action name="tbAnvancePayInsertAction" class="com.selfsoft.business.action.TbAnvancePayAction" method="insertTbAnvancePay">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbAnvancePayTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbAnvancePayTable
+			</result>
+		</action>
+		<action name="tbAnvancePayUpdateAction" class="com.selfsoft.business.action.TbAnvancePayAction" method="updateTbAnvancePay">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbAnvancePayTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbAnvancePayTable
+			</result>
+		</action>
+		
+		<action name="tbAnvancePayForwardPageAction" class="com.selfsoft.business.action.TbAnvancePayAction" method="forwardPage">
+			<result name="addPage">
+				/pages/business/tbAnvancePay/TbAnvancePayCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/business/tbAnvancePay/TbAnvancePayEdit.jsp
+			</result>
+		</action>
+		<!-- 预付款登记 -->
+		
+
+		
+		<!-- 结算处理 -->
+		<action name="tbBusinessBalanceFindAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="findTbBusinessBalance">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tbBusinessBalanceOrderFindAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="findTbBusinessBalanceOrder">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceCustomerOrder.jsp
+			</result>
+			
+		</action>
+		<action name="tbBusinessBalanceCarOrderFindAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="findTbBusinessBalanceCarOrder">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceCarOrder.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tbBusinessBalanceGroupFindAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="findGroupTbBusinessBalance">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceGroupFind.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessBalanceGroupFavourFindAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="findGroupTbBusinessBalanceFavour">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceGroupFavourFind.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessBalanceGroupSumAmountFindAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="findGroupTbBusinessBalanceSumAmount">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceGroupSumAmountFind.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessBalanceGroupOweFindAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="findOweGroupTbBusinessBalance">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceGroupOweFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tbBusinessBalanceGroupOweExportXlsAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="tbBusinessBalanceGroupOweExportXls">
+			
+		</action>
+		
+		<action name="tbBusinessBalanceSelectAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="selectTbBusinessBalance">
+			<result name="success">
+				/pages/business/tbBusinessSpecialBanance/TbBusinessBalanceFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tbBusinessReBalanceFindAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="findTbBusinessReBalance">
+			<result name="success">
+				/pages/business/tbBusinessReBalance/TbBusinessReBalanceFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tbBusinessBalanceReBalanceAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="reBalanceTbBusinessBalance">
+			
+		</action>
+		
+		<action name="tbBusinessBalanceDeleteAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="deleteTbBusinessBalance">
+			
+		</action>
+		
+		<action name="tbBusinessBalanceCalcAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="calcTbBusinessBalance">
+			
+		</action>
+		
+		<action name="tbBusinessBalanceCalcXsdAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="calcXsdTbBusinessBalance">
+			
+		</action>
+		
+		<action name="tbBusinessBalanceCalcFinanceAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="calcTbBusinessBalanceFinance">
+			
+		</action>
+		
+		<action name="tbBusinessBalanceWtsPrintAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="printWtsTbBusinessBalance">
+			
+		</action>
+		
+		<action name="tbBusinessBalanceXsdPrintAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="printXsdTbBusinessBalance">
+			
+		</action>
+		
+		<action name="tbBusinessBalanceTemplatePrintAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="printTbBusinessBalanceTemplate">
+			
+		</action>
+		
+		<action name="tbBusinessBalanceGroupExportXlsAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="exportTbBusinessBalanceGroupXls">
+			
+		</action>
+		
+		<action name="tbBusinessBalanceViewAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="viewTbBusinessBalance">
+			<result name="viewPage">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceWtsView.jsp
+			</result>
+			<result name="otherPage">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceXsdView.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessBalanceGroupViewAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="viewGroupTbBusinessBalance">
+			<result name="viewPage">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceWtsGroupView.jsp
+			</result>
+			<result name="otherPage">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceXsdGroupView.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessBalanceEditAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="editTbBusinessBalance">
+			<result name="viewPage">
+				/pages/business/tbBusinessSpecialBanance/TbBusinessBalanceWtsEdit.jsp
+			</result>
+			<result name="otherPage">
+				/pages/business/tbBusinessSpecialBanance/TbBusinessBalanceXsdEdit.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessBalanceTotalFindAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="findTbBusinessBalanceTotal">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceTotal.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessBalanceTotalViewAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="viewTbBusinessBalanceTotal">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceTotalView.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessBalanceTotalGroupViewAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="viewTbBusinessBalanceTotalGroup">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceTotalGroupView.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessBalanceTotalXsdFindAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="findTbBusinessBalanceTotalXsd">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceTotalXsd.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessBalanceTotalXsdViewAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="viewTbBusinessBalanceTotalXsd">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceTotalXsdView.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessBalanceTotalXsdGroupViewAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="viewTbBusinessBalanceTotalXsdGroup">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceTotalXsdGroupView.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessBalanceChooseAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="chooseTbBusinessBalance">
+			<result name="wtsPage">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceWtsCreate.jsp
+			</result>
+			<result name="xsdPage">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceXsdCreate.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessBalanceWtsInsertAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="insertTbBusinessBalanceWts">
+			<!--
+			<result name="success">
+				/pages/message/success_href.jsp?param=tbBusinessBalanceForwardPage
+			</result>
+			<result name="failure">
+				/pages/message/fail_href.jsp?param=tbBusinessBalanceForwardPage
+			</result>
+			-->
+			<result name="success" type="redirect">
+				tbBusinessBalanceGroupViewAction.action?id=${tbBusinessBalance.id}
+			</result>
+		</action>
+		
+		<action name="tbBusinessBalanceXsdInsertAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="insertTbBusinessBalanceXsd">
+			<!-- 
+			<result name="success">
+				
+				/pages/message/success_href.jsp?param=tbBusinessBalanceForwardPage
+			</result>
+			<result name="failure">
+				
+				/pages/message/fail_href.jsp?param=tbBusinessBalanceForwardPage
+			</result>
+			 -->
+			 <result name="success" type="redirect">
+				tbBusinessBalanceGroupViewAction.action?id=${tbBusinessBalance.id}
+			</result>
+		</action>
+		
+		<action name="tbBusinessBalanceUpdateAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="updateTbBusinessBalance">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbBusinessBalanceTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbBusinessBalanceTable
+			</result>
+		</action>
+		
+		<action name="tbBusinessBalanceForwardPageAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="forwardPage">
+			<result name="addPage">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceAlternative.jsp
+			</result>
+			<result name="editPage">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceEdit.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessBalanceReceiveAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="receiveTbBusinessBalance">
+			<result name="viewPage">
+				/pages/business/tbBusinessBalance/TbBusinessBalanceReceive.jsp
+			</result>
+		</action>
+		
+		<action name="tbReceiveFreeInsertAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="insertTbReceiveFree">
+			<result name="success">
+				/pages/message/success.jsp?table=tbBusinessBalanceTable
+			</result>
+			<result name="failure">
+				/pages/message/fail.jsp?table=tbBusinessBalanceTable
+			</result>
+		</action>
+		
+		<action name="tbReceiveFreeFindAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="findTbReceiveFree">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TbReceiveFeeFind.jsp
+			</result>
+		</action>
+		
+		<action name="tbReceiveFreeDeleteAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="deleteTbReceiveFree">
+			
+		</action>
+		
+		<action name="businessAnalyseAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="analyseBusiness">
+			<result name="success">
+				/pages/business/tbBusinessBalance/BusinessAnalyse.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessItemAnalyseAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="analyseTbBusinessItem">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TbBusinessItemAnalyse.jsp
+			</result>
+		</action>
+		<!-- 结算处理 -->
+
+		<!-- 销售出库 -->
+		<action name="findSellAction" class="com.selfsoft.business.action.TmStockOutAction" method="findSell">
+			<result name="success">
+				/pages/business/stockout/edit/TmSellList.jsp
+			</result>
+		</action>
+		<action name="initEditSellPageAction" class="com.selfsoft.business.action.TmStockOutAction" method="initEditSellPage">
+			<result name="editPage">
+				/pages/business/stockout/edit/TmSellEdit.jsp
+			</result>
+		</action>
+		<action name="updateSellAction" class="com.selfsoft.business.action.TmStockOutAction" method="updateSell">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockOutTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStockOutTable
+			</result>
+		</action>
+		
+		<action name="initEditConfirmSellPageAction" class="com.selfsoft.business.action.TmStockOutAction" method="initEditConfirmSellPage">
+			<result name="editPage">
+				/pages/business/stockout/edit/TmConfirmSellEdit.jsp
+			</result>
+		</action>
+		
+		<action name="updateConfirmSellAction" class="com.selfsoft.business.action.TmStockOutAction" method="updateConfirmSell">
+				<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockOutTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStockOutTable
+			</result>
+		</action>
+		
+		<!-- 销售出库 -->
+		
+		<!-- 调拨出库 -->
+		<action name="findAllotOutAction" class="com.selfsoft.business.action.TmStockOutAction" method="findAllotOut">
+			<result name="success">
+				/pages/business/stockout/edit/TmAllotOutList.jsp
+			</result>
+		</action>
+		<action name="initEditAllotOutPageAction" class="com.selfsoft.business.action.TmStockOutAction" method="initEditAllotOutPage">
+			<result name="editPage">
+				/pages/business/stockout/edit/TmAllotOutEdit.jsp
+			</result>
+		</action>
+		<action name="updateAllotOutAction" class="com.selfsoft.business.action.TmStockOutAction" method="updateAllotOut">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockOutTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStockOutTable
+			</result>
+		</action>
+		<!-- 调拨出库 -->
+		
+		
+		<!-- 领用出库 -->
+		<action name="findDrawAction" class="com.selfsoft.business.action.TmStockOutAction" method="findDraw">
+			<result name="success">
+				/pages/business/stockout/edit/TmDrawList.jsp
+			</result>
+		</action>
+		<action name="initEditDrawPageAction" class="com.selfsoft.business.action.TmStockOutAction" method="initEditDrawPage">
+			<result name="editPage">
+				/pages/business/stockout/edit/TmDrawEdit.jsp
+			</result>
+		</action>
+		<action name="updateDrawAction" class="com.selfsoft.business.action.TmStockOutAction" method="updateDraw">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockOutTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStockOutTable
+			</result>
+		</action>
+		
+		<!-- 领用出库 -->
+		
+		<!-- 报损出库 -->
+		<action name="findShatterAction" class="com.selfsoft.business.action.TmStockOutAction" method="findShatter">
+			<result name="success">
+				/pages/business/stockout/edit/TmShatterList.jsp
+			</result>
+		</action>
+		<action name="initEditShatterPageAction" class="com.selfsoft.business.action.TmStockOutAction" method="initEditShatterPage">
+			<result name="editPage">
+				/pages/business/stockout/edit/TmShatterEdit.jsp
+			</result>
+		</action>
+		
+		<action name="updateShatterAction" class="com.selfsoft.business.action.TmStockOutAction" method="updateShatter">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockOutTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStockOutTable
+			</result>
+		</action>
+		<!-- 报损出库 -->
+		
+		<!-- 销售退货 -->
+		<action name="findSellRtnAction" class="com.selfsoft.business.action.TmStockInAction" method="findSellReturn">
+			<result name="success">
+				/pages/business/stockin/edit/TmSellReturnList.jsp
+			</result>
+		</action>
+		<action name="initEditSellReturnPageAction" class="com.selfsoft.business.action.TmStockInAction" method="initEditSellReturnPage">
+			<result name="editPage">
+				/pages/business/stockin/edit/TmSellReturnEdit.jsp
+			</result>
+		</action>
+		<action name="updateSellReturnAction" class="com.selfsoft.business.action.TmStockInAction" method="updateSellReturn">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockInTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStockInTable
+			</result>
+		</action>
+		
+		<!-- 销售退货 -->
+		
+		<!-- 采购退货 -->
+		<action name="findStockReturnAction" class="com.selfsoft.business.action.TmStockOutAction" method="findStockReturn">
+			<result name="success">
+				/pages/business/stockout/edit/TmStockReturnList.jsp
+			</result>
+		</action>
+		<action name="initEditStockReturnPageAction" class="com.selfsoft.business.action.TmStockOutAction" method="initEditStockReturnPage">
+			<result name="editPage">
+				/pages/business/stockout/edit/TmStockReturnEdit.jsp
+			</result>
+		</action>
+		
+		<action name="updateStockReturnAction" class="com.selfsoft.business.action.TmStockOutAction" method="updateStockReturn">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockOutTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmStockOutTable
+			</result>
+		</action>
+		
+		<!-- 采购退货 -->
+		<action name="findEntrustSellDetailAction" class="com.selfsoft.business.action.TmEntrustSellStockAction" method="findEntrustSellDetail">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TmSellCustomerList.jsp
+			</result>
+		</action>
+		<action name="viewEntrustSellDetailAction" class="com.selfsoft.business.action.TmEntrustSellStockAction" method="viewEntrustSellDetail">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TmSellCustomerListView.jsp
+			</result>
+		</action>
+		
+		<action name="viewEntrustSellDetailGroupAction" class="com.selfsoft.business.action.TmEntrustSellStockAction" method="viewEntrustSellDetailGroup">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TmSellCustomerListGroupView.jsp
+			</result>
+		</action>
+		
+		<action name="findEntrustSellStockAction" class="com.selfsoft.business.action.TmEntrustSellStockAction" method="findEntrustSellStock">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TmSellEntrustList.jsp
+			</result>
+		</action>
+		<action name="findEntrustCustomerAction" class="com.selfsoft.business.action.TmEntrustSellStockAction" method="findEntrustCustomer">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TmSellCustomerList.jsp
+			</result>
+		</action>
+		
+		<action name="viewEntrustSellStockAction" class="com.selfsoft.business.action.TmEntrustSellStockAction" method="viewEntrustSellStock">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TmSellEntrustListView.jsp
+			</result>
+		</action>
+		
+		<action name="viewEntrustSellStockGroupAction" class="com.selfsoft.business.action.TmEntrustSellStockAction" method="viewEntrustSellStockGroup">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TmSellEntrustListGroupView.jsp
+			</result>
+		</action>
+		
+		<action name="viewEntrustCustomerAction" class="com.selfsoft.business.action.TmEntrustSellStockAction" method="viewEntrustCustomer">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TmSellCustomerListView.jsp
+			</result>
+		</action>
+		
+		<action name="findBalanceSellAction" class="com.selfsoft.business.action.TmEntrustSellStockAction" method="findBalanceSell">
+			<result name="success">
+				/pages/business/tbBusinessBalance/TmBalanceSellList.jsp
+			</result>
+		</action>
+		<action name="tmStockOutDetailShowAction" class="com.selfsoft.business.action.TmEntrustSellStockAction" method="showTmStockOutDetail">
+			<result name="success">
+				/pages/business/tbBusinessBalance/tmStockOutDetail.jsp
+			</result>
+		</action>
+		<action name="tmStockOutDetailViewAction" class="com.selfsoft.business.action.TmEntrustSellStockAction" method="viewTmStockOutDetail">
+			<result name="success">
+				/pages/business/tbBusinessBalance/tmStockOutDetailView.jsp
+			</result>
+		</action>
+		
+		<action name="tmStockOutDetailGroupViewAction" class="com.selfsoft.business.action.TmEntrustSellStockAction" method="viewTmStockOutDetailGroup">
+			<result name="success">
+				/pages/business/tbBusinessBalance/tmStockOutDetailGroupView.jsp
+			</result>
+		</action>
+		
+		<action name="findBespokePartContentAction" class="com.selfsoft.business.action.TmEntrustSellStockAction" method="findBespokePartContent">
+			<result name="success">
+				/pages/business/tbFixEntrust/TbBespokePartContentFind.jsp
+			</result>
+		</action>
+		<action name="findEnstrustTbMaintainDetailAction" class="com.selfsoft.business.action.TmEntrustSellStockAction" method="findEnstrustTbMaintainDetail">
+			<result name="success">
+				/pages/business/tbFixEntrust/TbMaintainContentFind.jsp
+			</result>
+		</action>
+		<!-- 财务录入 -->
+		<action name="tbBusinessSpecialBalanceHandleFinanceDeleteAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="deleteTbBusinessSpecialBalanceHandleFinance">
+			
+		</action>
+		
+		<action name="tbBusinessSpecialBalanceFinanceFindAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="findTbBusinessSpecialBalanceFinance">
+			<result name="success">
+				/pages/business/tbBusinessSpecialBanance/TbBusinessSpecialBalanceFinanceFind.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessSpecialBalanceFinanceStaticsAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="staticsTbBusinessSpecialBalanceFinance">
+			<result name="success">
+				/pages/business/tbBusinessSpecialBanance/TbBusinessSpecialBalanceFinanceStatics.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessSpecialBalanceFinanceShowAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="showTbBusinessSpecialBalanceFinance">
+			<result name="success">
+				/pages/business/tbBusinessSpecialBanance/TbBusinessSpecialBalanceFinanceShow.jsp
+			</result>
+		</action>
+		<!-- 财务录入 -->
+		
+		<!-- 结算单特殊编辑 -->
+		<action name="tbBusinessSpecialBalanceFindAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="findTbBusinessSpecialBalance">
+			<result name="success">
+				/pages/business/tbBusinessSpecialBanance/TbBusinessSpecialBalanceFind.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessSpecialBalanceViewAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="viewTbBusinessSpecialBalance">
+			<result name="success">
+				/pages/business/tbBusinessSpecialBanance/TbBusinessSpecialBalanceView.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessSpecialBalanceDeleteAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="deleteTbBusinessSpecialBalance">
+			
+		</action>
+		
+		<action name="tbBusinessSpecialBalanceTemplatePrintAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="printTbBusinessSpecialBalanceCdjd">
+			
+		</action>
+		
+		<action name="tbBusinessSpecialBalanceFinancePrintAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="printFinanceTbBusinessSpecialBalance">
+			
+		</action>
+		
+		<action name="tbBusinessSpecialBalanceWtsPrintAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="printWtsTbBusinessSpecialBalance">
+			
+		</action>
+		
+		<action name="tbBusinessSpecialBalanceXsdPrintAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="printXsdTbBusinessSpecialBalance">
+			
+		</action>
+		
+		<action name="tbBusinessSpecialBalanceFinanceInsertAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="insertTbBusinessSpecialBalanceFinance">
+			
+			<result name="success">
+				/pages/message/success.jsp?table=tbBusinessSpecialBalanceTable
+			</result>
+			
+			<result name="failure">
+				/pages/message/fail.jsp?table=tbBusinessSpecialBalanceTable
+			</result>
+			
+		</action>
+		
+		<action name="tbBusinessSpecialBalanceFinanceUpdateAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="updateTbBusinessSpecialBalanceFinance">
+			
+			<result name="success">
+				/pages/message/success.jsp?table=tbBusinessSpecialBalanceTable
+			</result>
+			
+			<result name="failure">
+				/pages/message/fail.jsp?table=tbBusinessSpecialBalanceTable
+			</result>
+			
+		</action>
+		
+		<action name="tbBusinessSpecialBalanceInsertAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="insertTbBusinessSpecialBalance">
+			<!--
+			<result name="success">
+				
+				/pages/message/success.jsp?table=tbBusinessSpecialBalanceTable
+			</result>
+			<result name="failure">
+				
+				/pages/message/fail.jsp?table=tbBusinessSpecialBalanceTable
+			</result>
+			-->
+			<result name="success" type="redirect">
+				tbBusinessSpecialBalanceForwardViewPageAction.action?id=${tbBusinessSpecialBalance.id}
+			</result>
+		</action>
+		
+		<action name="tbBusinessSpecialBalanceXsdInsertAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="insertTbBusinessSpecialBalanceXsd">
+			<!--
+			<result name="success">
+				
+				/pages/message/success.jsp?table=tbBusinessSpecialBalanceTable
+			</result>
+			<result name="failure">
+				
+				/pages/message/fail.jsp?table=tbBusinessSpecialBalanceTable
+			</result>
+			-->
+			<result name="success" type="redirect">
+				tbBusinessSpecialBalanceForwardViewPageAction.action?id=${tbBusinessSpecialBalance.id}
+			</result>
+		</action>
+		<action name="tbBusinessSpecialBalanceUpdateAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="updateTbBusinessSpecialBalance">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbBusinessSpecialBalanceTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbBusinessSpecialBalanceTable
+			</result>
+		</action>
+		
+		<action name="tbBusinessSpecialBalanceXsdUpdateAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="updateTbBusinessSpecialBalanceXsd">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbBusinessSpecialBalanceTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbBusinessSpecialBalanceTable
+			</result>
+		</action>
+		
+		<action name="tbBusinessSpecialBalanceForwardPageAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="forwardPage">
+			<result name="editPage">
+				/pages/business/tbBusinessSpecialBanance/TbBusinessSpecialBalanceWtsEdit.jsp
+			</result>
+			<result name="otherPage">
+				/pages/business/tbBusinessSpecialBanance/TbBusinessSpecialBalanceXsdEdit.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessSpecialBalanceForwardViewPageAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="forwardViewPage">
+			<result name="editPage">
+				/pages/business/tbBusinessSpecialBanance/TbBusinessSpecialBalanceWtsView.jsp
+			</result>
+			<result name="otherPage">
+				/pages/business/tbBusinessSpecialBanance/TbBusinessSpecialBalanceXsdView.jsp
+			</result>
+		</action>
+		<!-- 结算单特殊编辑 -->
+		
+		<!-- 财务录入 -->
+		<action name="tbBusinessSpecialBalanceFinanceForwardPageAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="forwardPageFinance">
+			<result name="addPage">
+				/pages/business/tbBusinessSpecialBanance/TbBusinessBalanceFinanceCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/business/tbBusinessSpecialBanance/TbBusinessBalanceFinanceEdit.jsp
+			</result>
+			<result name="viewPage">
+				/pages/business/tbBusinessSpecialBanance/TbBusinessBalanceFinanceView.jsp
+			</result>
+		</action>
+		
+		
+		<!-- 财务录入 -->
+		
+		<!-- 经营状态统计 -->
+		<action name="tbBusinessSpecialBalanceHandleFinanceForwardPageAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="forwardPageHandleFinance">
+			<result name="addPage">
+				/pages/business/tbBusinessSpecialBanance/TbBusinessSpecialBalanceHandleFinanceCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/business/tbBusinessSpecialBanance/TbBusinessSpecialBalanceHandleFinanceEdit.jsp
+			</result>
+			<result name="viewPage">
+				/pages/business/tbBusinessSpecialBanance/TbBusinessSpecialBalanceHandleFinanceView.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessSpecialBalanceHandleFinanceFindAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="findTbBusinessSpecialBalanceHandleFinance">
+			<result name="success">
+				/pages/business/tbBusinessSpecialBanance/TbBusinessSpecialBalanceHandleFinanceFind.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessSpecialBalanceHandleFinanceViewAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="viewTbBusinessSpecialBalanceHandleFinance">
+			<result name="success">
+				/pages/business/tbBusinessSpecialBanance/TbBusinessSpecialBalanceHandleFinanceView.jsp
+			</result>
+		</action>
+		
+		<action name="tbBusinessSpecialBalanceHandleFinanceCreateAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="createTbBusinessSpecialBalanceHandleFinance">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbBusinessSpecialBalanceHandleFinanceTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbBusinessSpecialBalanceHandleFinanceTable
+			</result>
+		</action>	
+		<action name="tbBusinessSpecialBalanceHandleFinanceUpdateAction" class="com.selfsoft.business.action.TbBusinessSpecialBalanceAction" method="updateTbBusinessSpecialBalanceHandleFinance">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbBusinessSpecialBalanceHandleFinanceTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbBusinessSpecialBalanceHandleFinanceTable
+			</result>
+		</action>	
+		<!-- 经营状态统计 -->
+		
+		<!-- 查询统计 -->
+		
+		<!-- 配件积压查询 -->
+		<action name="overStockTbPartInfoStatAction" class="com.selfsoft.business.action.StatisticsAction" method="overStockTbPartInfoStat">
+			<result name="success">
+				/pages/business/statistics/StatoverStockTbPartInfo.jsp
+			</result>
+		</action>
+		<!-- 配件积压查询 -->
+		
+		<!-- 采购入库查询 -->
+		<action name="stockInGroupCustomerByStatAction" class="com.selfsoft.business.action.StatisticsAction" method="stockInGroupCustomerByStat">
+			<result name="success">
+				/pages/business/statistics/StatStockInCustomer.jsp
+			</result>
+		</action>
+		<action name="stockInTbPartInfoByStatActon" class="com.selfsoft.business.action.StatisticsAction" method="stockInTbPartInfoByStat">
+			<result name="success">
+				/pages/business/statistics/StatStockInDetail.jsp
+			</result>
+		</action>
+		
+		<action name="stockInByStatActon" class="com.selfsoft.business.action.StatisticsAction" method="stockInByStat">
+			<result name="success">
+				/pages/business/statistics/StatStockIn.jsp
+			</result>
+		</action>
+		
+		<action name="stockInMasterBillByStatAction" class="com.selfsoft.business.action.StatisticsAction" method="stockInMasterBillByStat">
+			<result name="success">
+				/pages/business/statistics/StatMasterStockIn.jsp
+			</result>
+		</action>
+		
+		<action name="updateStockPanMentAction" class="com.selfsoft.business.action.StatisticsAction" method="updateStockPanMent">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=stockMasterTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=stockMasterTable
+			</result>
+		</action>
+		<action name="stockInDetailsExportXlsAction" class="com.selfsoft.business.action.StatisticsAction" method="stockInDetailsExportXls">
+		</action>
+		
+		
+		<!-- 采购入库查询 -->
+		
+		<!-- 收发单据查询 -->
+			<action name="stockInOutBillStatActon" class="com.selfsoft.business.action.StatisticsAction" method="stockInOutBillStat">
+				<result name="success">
+					/pages/business/statistics/StatStockInOutMaster.jsp
+				</result>
+			</action>
+			<action name="cgrkStatExportXlsAction" class="com.selfsoft.business.action.StatisticsAction" method="cgrkStatExportXls">
+			</action>
+			<action name="wxflStatExportXlsAction" class="com.selfsoft.business.action.StatisticsAction" method="wxflStatExportXls">
+			</action>
+		<!-- 收发单据查询 -->
+		
+		<!-- 配件期间收发存统计 -->
+			<action name="getPartReceiveListStatActon" class="com.selfsoft.business.action.StatisticsAction" method="getPartReceiveListStat">
+				<result name="success">
+					/pages/business/statistics/StatPartInfoReceiver.jsp
+				</result>
+			</action>
+			
+		<!--配件期间收发存统计 -->
+		
+		<!-- 配件月度期间收发存统计 -->
+			<action name="getPartMounthReceiveListStatAction" class="com.selfsoft.business.action.StatisticsAction" method="getPartMounthReceiveListStat">
+				<result name="success">
+					/pages/business/statistics/StatPartInfoMounthReceiver.jsp
+				</result>
+			</action>
+			
+		<!--配件月度期间收发存统计 -->
+		
+		
+		<!-- 仓库概貌统计 -->
+			<action name="getStoreHouseSurveyStatAction" class="com.selfsoft.business.action.StatisticsAction" method="getStoreHouseSurveyStat">
+				<result name="success">
+					/pages/business/statistics/StatStoreHouseSurvey.jsp
+				</result>
+			</action>
+			
+		<!--仓库概貌统计 -->
+		
+		
+		<!--配件流量及流向统计 -->
+			<action name="findTbPartInfoReFlowStatAction" class="com.selfsoft.business.action.StatisticsAction" method="findTbPartInfoReFlowStat">
+				<result name="success">
+					/pages/business/statistics/StatPartInfoReflow.jsp
+				</result>
+			</action>
+			<action name="getAllTypeSumReFlowStatAction" class="com.selfsoft.business.action.StatisticsAction" method="getAllTypeSumReFlowStat">
+				<result name="success">
+					/pages/business/statistics/StatPartInfoReflow.jsp
+				</result>
+			</action>
+			<action name="getPartInfoReFlowDetailStatAction" class="com.selfsoft.business.action.StatisticsAction" method="getPartInfoReFlowDetailStat">
+				<result name="success">
+					/pages/business/statistics/StatPartInfoReflow.jsp
+				</result>
+			</action>
+			
+		<!--配件流量及流向统计 -->
+		
+		<!-- 配件出库排行榜 -->
+			<action name="getToppartInfoStockOutStatAction" class="com.selfsoft.business.action.StatisticsAction" method="getToppartInfoStockOutStat">
+				<result name="success">
+					/pages/business/statistics/StatTopPartInfoStockOut.jsp
+				</result>
+			</action>
+		<!-- 配件出库排行榜 -->
+		
+		
+		<!-- 仓库期间收发统计 -->
+			<action name="getStoreHouseReceiverStatAction" class="com.selfsoft.business.action.StatisticsAction" method="getStoreHouseReceiverStat">
+				<result name="success">
+					/pages/business/statistics/StatStoreHouseReceiver.jsp
+				</result>
+			</action>
+		<!-- 仓库期间收发统计 -->
+		
+		<!-- 仓库月度期间收发统计 -->
+			<action name="getStoreHouseMounthReceiverStatAction" class="com.selfsoft.business.action.StatisticsAction" method="getStoreHouseMounthReceiverStat">
+				<result name="success">
+					/pages/business/statistics/StatStoreHouseMounthReceiver.jsp
+				</result>
+			</action>
+		<!-- 仓库月度期间收发统计 -->
+		
+		<!-- 配件领用统计 -->
+			<action name="getDrawStockOutStatAction" class="com.selfsoft.business.action.StatisticsAction" method="getDrawStockOutStat">
+				<result name="success">
+					/pages/business/statistics/StatDrawStockOut.jsp
+				</result>
+			</action>
+		<!-- 配件领用统计 -->
+		
+		
+		<!-- 修理工工时统计 -->
+			<action name="getSendHourGroupPersonStatAction" class="com.selfsoft.business.action.StatisticsWorkBusinessAction" method="getSendHourGroupPersonStat">
+				<result name="success">
+					/pages/business/statistics/StatFixPersonSendHour.jsp
+				</result>
+			</action>
+			
+			<action name="getTbFixShareDetailStatAction" class="com.selfsoft.business.action.StatisticsWorkBusinessAction" method="getTbFixShareDetailStat">
+				<result name="success">
+					/pages/business/statistics/StatFixPersonSendHour.jsp
+				</result>
+			</action>
+		<!-- 修理工工时统计 -->
+		
+		
+		<!-- 配件每日出库查询 -->
+			<action name="getDailyStockOutStatAction" class="com.selfsoft.business.action.StatisticsAction" method="getDailyStockOutStat">
+				<result name="success">
+					/pages/business/statistics/StatDailyStockOut.jsp
+				</result>
+			</action>
+		<!-- 配件每日出库查询 -->
+		
+		<action name="getNotBalanceFixSellCostDetailStatAction" class="com.selfsoft.business.action.StatisticsAction" method="getNotBalanceFixSellCostDetailStat">
+			<result name="success">
+				/pages/business/statistics/StatNotBalanceFixSellCost.jsp
+			</result>
+		</action>
+		<action name="getIsBalanceFixSellCostDetailStatAction" class="com.selfsoft.business.action.StatisticsAction" method="getIsBalanceFixSellCostDetailStat">
+			<result name="success">
+				/pages/business/statistics/StatIsBalanceFixSellCost.jsp
+			</result>
+		</action>
+		
+		<!-- 查询统计 -->
+		
+		
+		<!-- 打印 -->
+			<action name="printCGRKAction" class="com.selfsoft.business.action.PrintReportAction" method="printCGRK">
+			</action>
+			
+			<action name="printCGTHAction" class="com.selfsoft.business.action.PrintReportAction" method="printCGTH">
+			</action>
+			
+			<action name="printJCDJAction" class="com.selfsoft.business.action.PrintReportAction" method="printJCDJ">
+			</action>
+			
+			<action name="printJCGHAction" class="com.selfsoft.business.action.PrintReportAction" method="printJCGH">
+			</action>
+			
+			<action name="printJJDJAction" class="com.selfsoft.business.action.PrintReportAction" method="printJJDJ">
+			</action>
+			
+			<action name="printJJGHAction" class="com.selfsoft.business.action.PrintReportAction" method="printJJGH">
+			</action>
+			
+			<action name="printYKCCAction" class="com.selfsoft.business.action.PrintReportAction" method="printYKCC">
+			</action>
+			
+			<action name="printYKJCAction" class="com.selfsoft.business.action.PrintReportAction" method="printYKJC">
+			</action>
+			
+			<action name="printWXFLAction" class="com.selfsoft.business.action.PrintReportAction" method="printWXFL">
+			</action>
+			
+			<action name="printDBCKAction" class="com.selfsoft.business.action.PrintReportAction" method="printDBCK">
+			</action>
+			
+			<action name="printDBJCAction" class="com.selfsoft.business.action.PrintReportAction" method="printDBJC">
+			</action>
+			
+			<action name="printPJBSAction" class="com.selfsoft.business.action.PrintReportAction" method="printPJBS">
+			</action>
+			
+			<action name="printPJBYAction" class="com.selfsoft.business.action.PrintReportAction" method="printPJBY">
+			</action>
+			
+			<action name="printPJXSAction" class="com.selfsoft.business.action.PrintReportAction" method="printPJXS">
+			</action>
+			
+			<action name="printLYCKAction" class="com.selfsoft.business.action.PrintReportAction" method="printLYCK">
+			</action>
+			
+		<!-- 打印 -->
+		
+		
+		<!-- 特殊车辆提醒 -->
+			<action name="insertTmSpecialCarAlertAction" class="com.selfsoft.business.action.TmSpecialCarAlertAction" method="insertTmSpecialCarAlert">
+				<result name="success">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/success.jsp?table=tmSpecialCarAlertTable
+				</result>
+				<result name="failure">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/fail.jsp?table=tmSpecialCarAlertTable
+				</result>
+			</action>
+			
+			
+			<action name="updateTmSpecialCarAlertAction" class="com.selfsoft.business.action.TmSpecialCarAlertAction" method="updateTmSpecialCarAlert">
+				<result name="success">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/success.jsp?table=tmSpecialCarAlertTable
+				</result>
+				<result name="failure">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/fail.jsp?table=tmSpecialCarAlertTable
+				</result>
+			</action>
+		
+			<action name="tmSpecialCarAlertPageAction" class="com.selfsoft.business.action.TmSpecialCarAlertAction" method="forwardPage">
+				<result name="addPage">
+					/pages/business/tmSpecialCarAlert/tmSpecialCarAlertCreate.jsp
+				</result>
+				<result name="editPage">
+					/pages/business/tmSpecialCarAlert/tmSpecialCarAlertEdit.jsp
+				</result>
+			</action>
+		
+			<action name="findTmSpecialCarAlertAction" class="com.selfsoft.business.action.TmSpecialCarAlertAction" method="findTmSpecialCarAlert">
+				<result name="success">
+					/pages/business/tmSpecialCarAlert/tmSpecialCarAlertList.jsp
+				</result>
+			</action>
+			
+			<action name="deleteTmSpecialCarAlertAction" class="com.selfsoft.business.action.TmSpecialCarAlertAction" method="deleteTmSpecialCarAlert">
+			</action>
+			
+			<action name="getCarAlertContentAction" class="com.selfsoft.business.action.TmSpecialCarAlertAction" method="getCarAlertContent">
+			</action>
+			
+			<action name="getCarInfoCheckYearBackAction" class="com.selfsoft.business.action.TmSpecialCarAlertAction" method="getCarInfoCheckYearBack">
+			</action>
+			
+		<!-- 特殊车辆提醒 -->
+		
+		<!-- 自动下拉提示 -->
+			<action name="mainTainEntrustCodePromptAction" class="com.selfsoft.business.action.AutocompleteAction" method="mainTainEntrustCodePrompt">
+			</action>
+			<action name="stockOutEntrustCodePromptAction" class="com.selfsoft.business.action.AutocompleteAction" method="stockOutEntrustCodePrompt">
+			</action>
+		<!-- 自动下拉提示 -->
+		
+		<!-- 配件每日出库 数据导入 -->
+		<action name="initPjmrckImportXlsPageAction" class="com.selfsoft.business.action.StockXLSImportAction" method="initPjmrckImportXlsPage">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/business/xlsimport/pjmrckImportXls.jsp
+			</result>
+		</action>
+		
+		<action name="pjmrckImportXlsAction" class="com.selfsoft.business.action.StockXLSImportAction" method="pjmrckImportXls">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/importXlsSuccess.jsp?table=tbPartInfoTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/importXlsFail.jsp?table=tbPartInfoTable
+			</result>
+		</action>
+		<action name="pjmrckImportXlsResultAction" class="com.selfsoft.business.action.StockXLSImportAction" method="pjmrckImportXlsResult">
+			<result name="success">
+				/pages/business/xlsimport/pjmrckImprotResult.jsp
+			</result>
+		</action>
+		<!-- 配件每日出库 数据导入 -->
+		
+		
+		<!-- 配件期间收发存 数据导入 -->
+		<action name="initPjqjsfcmportXlsPageAction" class="com.selfsoft.business.action.StockXLSImportAction" method="initPjqjsfcmportXlsPage">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/business/xlsimport/pjqjsfcImportXls.jsp
+			</result>
+		</action>
+		
+		<action name="pjqjsfcImportXlsAction" class="com.selfsoft.business.action.StockXLSImportAction" method="pjqjsfcImportXls">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/importXlsSuccess.jsp?table=tbPartInfoTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/importXlsFail.jsp?table=tbPartInfoTable
+			</result>
+		</action>
+		<action name="pjqjsfcImportXlsResultAction" class="com.selfsoft.business.action.StockXLSImportAction" method="pjqjsfcImportXlsResult">
+			<result name="success">
+				/pages/business/xlsimport/pjqjsfcImprotResult.jsp
+			</result>
+		</action>
+		<!-- 配件期间收发存 数据导入 -->
+		
+		<!-- 仓库概貌 数据导入 -->
+		<action name="initCkgmImportXlsPageAction" class="com.selfsoft.business.action.StockXLSImportAction" method="initCkgmImportXlsPage">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/business/xlsimport/ckgmImportXls.jsp
+			</result>
+		</action>
+		
+		<action name="ckgmImportXlsAction" class="com.selfsoft.business.action.StockXLSImportAction" method="ckgmImportXls">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/importXlsSuccess.jsp?table=tbPartInfoTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/importXlsFail.jsp?table=tbPartInfoTable
+			</result>
+		</action>
+		<action name="ckgmImportXlsResultAction" class="com.selfsoft.business.action.StockXLSImportAction" method="ckgmImportXlsResult">
+			<result name="success">
+				/pages/business/xlsimport/ckgmImprotResult.jsp
+			</result>
+		</action>
+		<!-- 仓库概貌 数据导入 -->
+		
+		<!-- 采购入库查询 数据导入 -->
+		<action name="initCgrkImportXlsPageAction" class="com.selfsoft.business.action.StockXLSImportAction" method="initCgrkImportXlsPage">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/business/xlsimport/cgrkcxtjImportXls.jsp
+			</result>
+		</action>
+		
+		<action name="cgrkImportXlsAction" class="com.selfsoft.business.action.StockXLSImportAction" method="cgrkImportXls">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/importXlsSuccess.jsp?table=tbPartInfoTable,customerTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/importXlsFail.jsp?table=tbPartInfoTable,customerTable
+			</result>
+		</action>
+		<action name="cgrkImportXlsResultAction" class="com.selfsoft.business.action.StockXLSImportAction" method="cgrkImportXlsResult">
+			<result name="success">
+				/pages/business/xlsimport/cgrkcxtjImprotResult.jsp
+			</result>
+		</action>
+		<!-- 采购入库查询 数据导入导出 -->
+		
+		<!-- 配件信息 数据导入 -->
+		<action name="initPjxxImportXlsPageAction" class="com.selfsoft.baseinformation.action.TbPartInfoAction" method="initPjxxImportXlsPage">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/business/xlsimport/pjxxImportXls.jsp
+			</result>
+		</action>
+		<action name="pjxxImportXlsAction" class="com.selfsoft.baseinformation.action.TbPartInfoAction" method="pjxxImportXls">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/importXlsSuccess.jsp?table=tbPartInfoTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/importXlsFail.jsp?table=tbPartInfoTable
+			</result>
+		</action>
+		<action name="pjxxExportXlsAction" class="com.selfsoft.baseinformation.action.TbPartInfoAction" method="pjxxExportXls">
+		</action>
+		<!-- 配件信息 数据导入导出 -->
+		
+		
+		<!-- 内部领用 -->
+		<action name="forwardInnerStockOutPageAction" class="com.selfsoft.business.action.TmStockOutAction" method="forwardInnerStockOutPage">
+			<result name="addPage">
+				/pages/business/stockout/TmInnerStockOutCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/business/stockout/edit/TmInnerStockOutEdit.jsp
+			</result>
+		</action>
+		<action name="insertInnerStockOutAction" class="com.selfsoft.business.action.TmStockOutAction" method="insertInnerStockOut">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockOutTable
+			</result>
+		</action>
+		<action name="updateInnerStockOutAction" class="com.selfsoft.business.action.TmStockOutAction" method="updateInnerStockOut">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmStockOutTable
+			</result>
+		</action>
+		
+		<action name="findInnerStockOutAction" class="com.selfsoft.business.action.TmStockOutAction" method="findInnerStockOut">
+			<result name="success">
+				/pages/business/stockout/edit/TmInnerStockOutList.jsp
+			</result>
+		</action>
+
+		<!-- 内部领用 -->
+		
+		
+		
+		<!-- 维修发料打印 -->
+		<action name="printStatMaintainAction" class="com.selfsoft.business.action.StatisticsAction" method="printStatMaintain">
+			<result name="success">
+				/pages/business/statistics/StatmaintainPrint.jsp
+			</result>
+		</action>
+		<!-- 维修发料打印 -->
+		<action name="printStatStockOutAction" class="com.selfsoft.business.action.StatisticsAction" method="printStatStockOut">
+			<result name="success">
+				/pages/business/statistics/StatstockoutPrint.jsp
+			</result>
+		</action>
+		
+		<action name="printAllStockOutStatAction" class="com.selfsoft.business.action.StatisticsAction" method="printAllStockOutStat">
+			<result name="success">
+				/pages/business/statistics/StatallstockoutPrint.jsp
+			</result>
+		</action>
+		
+		<!-- 盘点 -->
+		<action name="findTbStoreHouseCheckAction" class="com.selfsoft.business.action.TbStoreHouseCheckAction" method="findTbStoreHouseCheck">
+			<result name="success">
+				/pages/business/check/TbStoreHouseCheckList.jsp
+			</result>
+		</action>
+		<action name="deleteTbStoreHouseCheckAction" class="com.selfsoft.business.action.TbStoreHouseCheckAction" method="deleteTbStoreHouseCheck">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbStoreHouseCheckTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbStoreHouseCheckTable
+			</result>
+		</action>
+		<action name="tbStoreHouseCheckForwardPageAction" class="com.selfsoft.business.action.TbStoreHouseCheckAction" method="forwardPage">
+			<result name="addPage">
+				/pages/business/check/TbStoreHouseCheckList.jsp
+			</result>
+			<result name="editPage">
+				/pages/business/check/CheckTbPartInfoEdit.jsp
+			</result>
+		</action>
+		<action name="initAddTbStoreHouseCheckAction" class="com.selfsoft.business.action.TbStoreHouseCheckAction" method="initAddTbStoreHouseCheck">
+			<result name="success">
+				/pages/business/check/TbStoreHousechoseHouse.jsp
+			</result>
+		</action>
+		
+		<action name="checkHousePartInfoAction" class="com.selfsoft.business.action.TbStoreHouseCheckAction" method="checkHousePartInfo">
+			<result name="success">
+				/pages/business/check/CheckTbPartInfo.jsp
+			</result>
+		</action>
+		
+		<action name="insertStoreHouseCheckAction" class="com.selfsoft.business.action.TbStoreHouseCheckAction" method="insertStoreHouseCheck">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbStoreHouseCheckTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbStoreHouseCheckTable
+			</result>
+		</action>
+		
+		<action name="updateStoreHouseCheckAction" class="com.selfsoft.business.action.TbStoreHouseCheckAction" method="updateStoreHouseCheck">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbStoreHouseCheckTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbStoreHouseCheckTable
+			</result>
+		</action>
+		<action name="viewStoreHouseCheckAction" class="com.selfsoft.business.action.TbStoreHouseCheckAction" method="viewStoreHouseCheck">
+			<result name="success">
+				/pages/business/check/CheckTbPartInfoView.jsp
+			</result>
+		</action>
+		<action name="printStoreHouseCheckAction" class="com.selfsoft.business.action.TbStoreHouseCheckAction" method="printStoreHouseCheck">
+			<result name="success">
+				/pages/business/check/TbStoreHouseCheckPrint.jsp
+			</result>
+		</action>
+		
+		<!-- 盘点 -->
+		
+		<!-- 配件月度期间收发存打印 -->
+		<action name="printPartMounthReceiveListAction" class="com.selfsoft.business.action.StatisticsAction" method="printPartMounthReceiveList">
+			<result name="success">
+				/pages/business/statistics/StatPartInfoMounthReceiverPrint.jsp
+			</result>
+		</action>
+		<!-- 配件月度期间收发存打印 -->
+		
+		<!-- 仓库月度期间收发存打印 -->
+		<action name="printStoreHouseMounthReceiverAction" class="com.selfsoft.business.action.StatisticsAction" method="printStoreHouseMounthReceiver">
+			<result name="success">
+				/pages/business/statistics/StatStoreHouseMounthReceiverPrint.jsp
+			</result>
+		</action>
+		<!-- 仓库月度期间收发存打印 -->
+		
+ 	</package>	
+ </struts>   

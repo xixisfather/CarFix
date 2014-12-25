@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.selfsoft.baseinformation.model.TbPriceAdd" table="TB_PRICE_ADD"
+    dynamic-insert="true"
+    dynamic-update="true"
+    lazy="false"
+    >
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        
+        <property name="schemeName" type="java.lang.String">
+            <column name="scheme_Name"/>
+        </property>
+        
+        <property name="maxPrice" type="java.lang.Double">
+            <column name="max_Price"/>
+        </property>
+        
+        <property name="minPrice" type="java.lang.Double">
+            <column name="min_Price"/>
+        </property>
+        
+        <property name="price" type="java.lang.Double">
+            <column name="price"/>
+        </property>
+    </class>
+</hibernate-mapping>

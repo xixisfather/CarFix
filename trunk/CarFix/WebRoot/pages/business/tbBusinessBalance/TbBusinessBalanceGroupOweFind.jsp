@@ -1,0 +1,165 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="e3t" uri="http://www.jcreate.net/e3/table"%>
+<%@ taglib prefix="e3c" uri="/e3/calendar/E3Calendar.tld"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>结算单欠款汇总查询</title>
+		<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/global.css" />
+	</head>
+
+	<body>
+		<s:form action="tbBusinessBalanceGroupOweFindAction.action">
+			<table>
+				<tr>
+					<td>
+						结算单号
+					</td>
+					<td>
+						<s:textfield name="tbBusinessBalance.balanceCode"></s:textfield>
+					</td>
+					<td>
+						委托书号
+					</td>
+					<td>	
+						<s:textfield name="tbBusinessBalance.entrustCode"></s:textfield>
+					</td>
+					<td>
+						结算日期
+					</td>
+					<td>
+						<s:textfield id="bananceDateStart" name="tbBusinessBalance.bananceDateStart">
+						
+							<s:param name="value"><s:date name="tbBusinessBalance.bananceDateStart" format="yyyy-MM-dd"/></s:param>
+						
+						</s:textfield>
+						
+						
+						<e3c:calendar for="bananceDateStart" dataFmt="yyyy-MM-dd"/>
+					</td>
+					<td>
+						至
+					</td>
+					<td>
+						<s:textfield id="bananceDateEnd" name="tbBusinessBalance.bananceDateEnd">
+						
+							<s:param name="value"><s:date name="tbBusinessBalance.bananceDateEnd" format="yyyy-MM-dd"/></s:param>
+						
+						</s:textfield>
+						
+						
+						
+						<e3c:calendar for="bananceDateEnd" dataFmt="yyyy-MM-dd"/>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="8" align="center">
+						<input type="submit" value="查询"/>
+						<input type="reset" value="重置"/>
+					</td>
+				</tr>
+			</table>
+		</s:form>
+		<e3t:table id="tbBusinessBalanceTable" uri="tbBusinessBalanceGroupOweFindAction.action" var="tbBusinessBalance"
+			scope="request" items="tbBusinessBalanceList" mode="ajax"
+			toolbarPosition="bottom" skin="E3002" pageSize="10" width="1100"
+			height="320" caption="结算单">
+			<e3t:column property="no" title="操作"
+				sortable="false" width="180">
+				<a href="javascript:editObject('${tbBusinessBalance.id}','tbBusinessBalanceGroupViewAction.action',600,300);">
+					<font color="blue">
+						结算明细
+					</font>
+				</a>
+				&nbsp;&nbsp;
+				<a href="javascript:forwardPage('${tbBusinessBalance.id}','tbBusinessBalanceReceiveAction.action','receive',600,300);">
+					<font color="blue">
+						到款确认
+					</font>
+				</a>
+				
+				<a href="javascript:forwardPage('${tbBusinessBalance.id}','tbBusinessBalanceReceiveAction.action','free',600,300);">
+					<font color="blue">
+						费用减免
+					</font>
+				</a>
+			</e3t:column>
+			<e3t:column property="balanceCode" title="结算单号" />
+			<e3t:column property="licenseCode" title="车牌号" />
+			<e3t:column property="customerCode" title="客户号" />
+			<e3t:column property="customerName" title="客户姓名" />
+			<e3t:column property="entrustCode" title="委托书号" />
+			<e3t:column property="stockOutCode" title="销售单号" />
+			<e3t:column property="bananceDate" title="结算日期" width="120">
+				<fmt:formatDate value="${tbBusinessBalance.bananceDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+			</e3t:column>
+			<e3t:column property="balanceTotalAll" title="结算金额" />
+			<e3t:column property="shouldPayAmount" title="收款金额" />
+			<e3t:column property="oweAmount" title="欠款金额" />
+			<e3t:column property="userRealName" title="结算员" />
+			<e3t:column property="remark" title="备注" />
+		</e3t:table>
+		<table>
+			<tr>
+				<td>
+					欠款总计:
+				</td>
+				<td>${request.totalQK}</td>
+			</tr>
+		</table>
+	</body>
+</html>
+		<link rel="stylesheet" type="text/css"
+			href="<%=request.getContextPath() %>/ext/css/tableIcon.css" />
+		<script type="text/javascript" src="<%=request.getContextPath() %>/js/prototype.js"></script>
+		<link rel="stylesheet" type="text/css"
+			href="<%=request.getContextPath() %>/ext/resources/css/ext-all.css" />
+		<script type="text/javascript" src="<%=request.getContextPath() %>/ext/js/ext-base.js"></script>
+		<script type="text/javascript" src="<%=request.getContextPath() %>/ext/js/ext-all.js"></script>
+		<script type="text/javascript" src="<%=request.getContextPath() %>/ext/js/ext-lang-zh_CN.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="<%=request.getContextPath() %>/js/common.js" charset="UTF-8"></script>
+		
+		<script language="javascript">
+function tbBusinessBalanceTableConfigHandler(pConfig) {
+
+	pConfig.tbar = [
+
+	{
+		text : '刷新',
+		iconCls : 'refreshIcon',
+		handler : function() {
+			refresh_tbBusinessBalanceTable();
+		}
+	}
+	
+	, '', '-', '',
+	{	
+		text : '导出',
+		iconCls : 'viewIcon',
+		handler : function() {
+			
+			var date = new Date();
+			
+			var time = date.getTime();
+			
+			window.open('tbBusinessBalanceGroupOweExportXlsAction.action?timeId='+time,'_blank');
+		}
+	}
+	
+	];
+
+	// pConfig.autoExpandColumn='no';
+}
+
+function tbBusinessBalanceTableE3ConfigHandler(pConfig) {
+	pConfig.emptyReload = false;
+	// 参数form,pConfig指定form的参数会提交到后台
+	pConfig.form = "tbBusinessBalanceGroupOweFindAction";
+	pConfig.showLoadingMsg = true;
+}
+			
+		</script>

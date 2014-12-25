@@ -1,0 +1,162 @@
+TB_BUSINESS_BALANCE 增加字段  结算单 状态 [BALANCE_STATUS] [int] NULL 	
+TB_FIX_ENTRUST_CONTENT 增加字段   结算单ID  [BALANCE_ID] [int] NULL 
+TB_MAINTAIN_PART_CONTENT 增加字段 [IS_FREE]  [int]	 null [BALANCE_ID]	[int]	 null
+TM_STOCKOUT_DETAIL 增加字段 [IS_FREE]  [int]	 null [BALANCE_ID]	[int]	 null
+TM_BUSINESS_BALANCE  ,增加字段 结算批次   [SN_NO] [int] NULL 
+
+
+新增表
+---TB_BUSINESS_SPECIAL_BALANCE--特殊编辑
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TB_BUSINESS_SPECIAL_BALANCE]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[TB_BUSINESS_SPECIAL_BALANCE]
+GO
+
+CREATE TABLE [dbo].[TB_BUSINESS_SPECIAL_BALANCE] (
+	[ID] [int] IDENTITY (1, 1) NOT NULL ,
+	[EDIT_CODE] [varchar] (20) COLLATE Chinese_PRC_CI_AS NULL ,
+	[BALANCE_ID] [int] NULL ,
+	[ENTRUST_ID] [int] NULL ,
+	[BANANCE_DATE] [datetime] NULL ,
+	[STOCK_OUT_ID] [int] NULL ,
+	[WORKING_HOUR_FAVOUR_RATE] [numeric](10, 2) NULL ,
+	[WORKING_HOUR_TOTAL_ALL] [numeric](10, 2) NULL ,
+	[FIX_PART_FAVOUR_RATE] [numeric](10, 2) NULL ,
+	[FIX_PART_TOTAL_ALL] [numeric](10, 2) NULL ,
+	[SOLE_PART_FAVOUR_RATE] [numeric](10, 2) NULL ,
+	[SOLE_PART_TOTAL_ALL] [numeric](10, 2) NULL ,
+	[BALANCE_TOTAL_ALL] [numeric](10, 2) NULL ,
+	[USER_ID] [int] NULL ,
+	[OLD_PART_DEAL] [int] NULL ,
+	[PAY_PATTERN] [int] NULL ,
+	[CHEQUE_CODE] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[BALANCE_DEAD_TIME] [datetime] NULL ,
+	[REMARK] [varchar] (1000) COLLATE Chinese_PRC_CI_AS NULL ,
+	[SAVE_AMOUNT] [numeric](10, 2) NULL ,
+	[USED_SAVE_AMOUNT] [numeric](10, 2) NULL ,
+	[CASH_AMOUNT] [numeric](10, 2) NULL ,
+	[PAYED_AMOUNT] [numeric](10, 2) NULL ,
+	[SHOULD_PAY_AMOUNT] [numeric](10, 2) NULL 
+) ON [PRIMARY]
+GO
+
+
+TB_PART_INFO 增加字段 LAST_MODIFY_DATE [datetime] NULL
+
+
+TB_MAINTAIN_PART_CONTENT 增加字段 STOCK_OUT_DATE [datetime] NULL
+
+增加表
+
+TB_SPECIAL_WORKING_CONTENT
+
+TB_SPECIAL_PART_CONTENT
+
+TB_BUSINESS_SPECIAL_BALANCE_ITEM
+
+
+
+
+
+
+
+
+[TB_FIX_ENTRUST]
+	[ENTER_STATION_KILO] [numeric](20, 2) NULL ,
+	[OUT_STATION_KILO] [numeric](20, 2) NULL ,
+	
+2010-7-15	
+TB_CAR_INFO  增加 LICENSE_DATE DATETIME 
+
+
+-- 新增表 -- 特殊车辆提醒 2010-7-16 
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TM_SPECIALCAR_ALERT]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[TM_SPECIALCAR_ALERT]
+GO
+
+CREATE TABLE [dbo].[TM_SPECIALCAR_ALERT] (
+	[ID] [int] IDENTITY (1, 1) NOT NULL ,
+	[BEGINDATE] [datetime] NULL ,
+	[ENDDATE] [datetime] NULL ,
+	[ALERTCOUNT] [int] NULL ,
+	[ALERTCONTENT] [varchar] (100) COLLATE Chinese_PRC_CI_AS NULL ,
+	[ALERTRANGE] [varchar](50) NULL ,
+	[CAR_INFO_ID] [int] NULL ,
+	[ISALERT] [int] NULL 
+) ON [PRIMARY]
+GO
+
+TB_CUSTOMER 字段长度修改
+CUSTOMER_CODE[50]
+PINYIN_CODE[50]
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TB_RECEIVE_FREE]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[TB_RECEIVE_FREE]
+GO
+
+--到款登记核销
+CREATE TABLE [dbo].[TB_RECEIVE_FREE] (
+	[ID] [int] IDENTITY (1, 1) NOT NULL ,
+	[BALANCE_ID] [int] NULL ,
+	[AMOUNT_TYPE] [int] NULL ,
+	[FEE_AMOUNT] [numeric](10, 2) NULL ,
+	[REMARK] [varchar] (1000) COLLATE Chinese_PRC_CI_AS NULL ,
+	[CUSTOMER_ID] [int] NULL ,
+	[AMOUNT_DATE] [datetime] NULL 
+) ON [PRIMARY]
+GO
+
+
+
+
+
+TB_FIX_ENTRUST_CONTENT    [STATION_NAME] [varchar] (20) COLLATE Chinese_PRC_CI_AS NULL ,
+
+--系统序列号
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TM_SYS_REGEDIT]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[TM_SYS_REGEDIT]
+GO
+
+CREATE TABLE [dbo].[TM_SYS_REGEDIT] (
+	[ID] [int] IDENTITY (1, 1) NOT NULL ,
+	[SYS_SN] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL 
+) ON [PRIMARY]
+GO
+
+
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[ST_STOREHOUSE_RECEIVER]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[ST_STOREHOUSE_RECEIVER]
+GO
+
+CREATE TABLE [dbo].[ST_STOREHOUSE_RECEIVER] (
+	[ID] [int] IDENTITY (1, 1) NOT NULL ,
+	[STORE_HOUSE_ID] [int] NULL ,
+	[STOCKOUT_TYPE] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[STOCKIN_COST_PRICE] [numeric](18, 2) NULL ,
+	[STOCKOUT_COST_PRICE] [numeric](18, 2) NULL ,
+	[SELL_TOTAL_PRICE] [numeric](18, 2) NULL ,
+	[Q_START] [numeric](18, 2) NULL ,
+	[Q_FINAL] [numeric](18, 2) NULL ,
+	[CREATE_DATE] [datetime] NULL ,
+	[STOCKIN_SUB_TOTAL] [numeric](18, 2) NULL ,
+	[STOCKOUT_SUB_TOTAL] [numeric](18, 2) NULL 
+) ON [PRIMARY]
+GO
+
+
+
+
+
+
+
+
+
+
+
+
+2012-5-6
+TB_FIX_ENTRUST_CONTENT
+ZL VARCHAR 50
+XMLX VARCHAR 50

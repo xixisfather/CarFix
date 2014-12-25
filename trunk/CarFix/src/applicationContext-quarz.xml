@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+     <!-- 要调度的对象 -->
+	<bean id="billQuarz" class="com.selfsoft.framework.common.QuarzDao" >
+		<property name="sessionFactory" ref="sessionFactory" ></property>
+	</bean>
+	
+	<!--定义定时执行testQuarz 这个bean中的sayHello()方法-->
+	<bean id="billTask"	class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="billQuarz" />
+		</property>
+		<property name="targetMethod">
+			<value>backUpDataBase</value>
+		</property>
+	</bean>
+
+	<!--触发器的bean的设置，在这里我们设置了我们要触发的jobDetail是哪个。这里我们定义了要触发的jobDetail是helloworldTask，即触发器去触发哪个bean..并且我们还定义了触发的时间:每天5:17pm-->
+	<bean id="cronTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="billTask" />
+		</property>
+		<property name="cronExpression">
+			<!-- 关键在配置此表达式 -->
+			
+			<!-- 每个月1号0点执行 -->
+			<!-- <value>0 00 00 1 * ?</value> -->
+			
+			<!-- 每天中午12点执行 -->
+			<value>0 0 12 * * ?</value>
+		</property>
+	</bean>
+
+	<!--管理触发器的总设置,管理我们的触发器列表,可以在bean的list中放置多个触发器。 
+	-->
+	<bean autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref local="cronTrigger" />
+			</list>
+		</property>
+	</bean>
+</beans>

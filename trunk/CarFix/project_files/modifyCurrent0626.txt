@@ -1,0 +1,298 @@
+
+增加菜单后注意给系统管理员增加权限
+
+create table TM_ALERT_DAY (
+   ID                   int                  identity,
+   ALERT_DAY            int                  null,
+   constraint PK_TM_ALERT_DAY primary key (ID)
+)
+gO
+
+增加提醒天数15天
+
+增加菜单 提前提醒天数定义
+baseparameter/tmAlertDayFindAction.action
+
+
+车辆保养提醒
+findTmCarMaintainAlertAction.action
+
+
+
+create table TM_LOST_DAY (
+   ID                   int                  identity,
+   LOST_DAY             int                  null,
+   constraint PK_TM_LOST_DAY primary key (ID)
+)
+go
+
+增加流失天数90天
+
+
+增加菜单 提前流失天数定义
+baseparameter/tmLostDayFindAction.action
+
+
+create table TB_RETURN_VISIT (
+   ID                   int                  identity,
+   CAR_INFO_ID          int                  null,
+   RETURN_TYPE          varchar(20)          null,
+   VISIT_REMARK         varchar(1000)        null,
+   VISIT_DATE           datetime             null,
+   ENTRUST_ID           int                  null,
+   constraint PK_TB_RETURN_VISIT primary key (ID)
+)
+go
+
+alter table TB_RETURN_VISIT
+   add constraint FK_TB_RETURN_REFERENCE_TB_CAR_I foreign key (CAR_INFO_ID)
+      references dbo.TB_CAR_INFO (ID)
+go
+
+
+流失客户回访
+tbCarInfoLostAction.action?flag=1
+
+常规满意度回访
+tbReturnVisitFindAction.action?flag=2
+
+客户投诉抱怨登记
+tbReturnVisitFindAction.action?flag=3
+
+
+
+
+create table TM_MAINTAIN_ALERT_DAY (
+   ID                   int                  identity,
+   ALERT_DAY            int                  null,
+   CONTINUE_DAY         int                  null,
+   constraint PK_TM_MAINTAIN_ALERT_DAY primary key (ID)
+)
+go
+
+insert into TM_MAINTAIN_ALERT_DAY values (3,2)
+
+增加提醒天数 3天 持续天数两天
+
+增加菜单
+维修回访天数定义 
+tmMaintainAlertDayFindAction.action
+
+
+增加菜单--维修回访
+tbCarInfoWXHFAction.action
+
+
+
+
+
+
+--单据成本
+create table TB_FIX_ENTRUST_COST (
+   ID                   int                  identity,
+   COST_PRICE           numeric(10,2)        null,
+   COST_TYPE            varchar(20)          null,
+   ENTRUST_ID           int                  null,
+   constraint PK_TB_FIX_ENTRUST_COST primary key (ID)
+)
+go
+
+
+
+
+
+增加特殊结算单  TB_SPECIAL_WORKING_CONTENT--STATION_NAME, TB_SPECIAL_PART_CONTENT--PART_NAME
+
+
+create table TM_STORE_DISK (
+   ID                   int                  identity,
+   DISK_PATH            varchar(1000)        null,
+   constraint PK_TM_STORE_DISK primary key (ID)
+)
+go
+
+insert into tm_store_disk values ('d:\selfsoft');
+
+
+增加菜单  备份盘管理  tmStoreDiskFindAction.action
+备份盘中必须要有selfsoft.txt才能起效
+
+
+create table TM_CARD_TYPE (
+   ID                   int                  identity,
+   CARD_DESC            varchar(100)         null,
+   GS_M_FULL_MONEY      int                  null,
+   GS_M_GIVE_MONEY      int                  null,
+   PJ_M_FULL_MONEY      int                  null,
+   PJ_M_GIVE_MONEY      int                  null,
+   GS_P_FULL_MONEY      int                  null,
+   GS_P_GIVE_POINT      int                  null,
+   PJ_P_FULL_MONEY      int                  null,
+   PJ_P_GIVE_POINT      int                  null,
+   C_FULL_MONEY         int                  null,
+   C_GIVE_MONEY         int                  null,
+   C_GIVE_POINT         int                  null,
+   GS_YHL               numeric(10,2)        null,
+   PJ_YHL               numeric(10,2)        null,
+   constraint PK_TM_CARD_TYPE primary key (ID)
+)
+go
+
+
+
+create table dbo.TB_MEMBERSHIP_CARD (
+   ID                   int                  identity,
+   CAR_ID               int                  null,
+   CARD_NO              varchar(100)         null,
+   CARD_POINT           int                  null,
+   CARD_SAVING          numeric(14,2)        null,
+   CARD_STATUS          int                  null,
+   CREATE_DATE          datetime             null,
+   VALID_DATE           datetime             null,
+   CARD_TYPE_ID         int                  null,
+   CARD_PASSWORD        varchar(10)          null,
+   constraint PK_TB_MEMBERSHIP_CARD primary key (ID)
+)
+go
+
+alter table dbo.TB_MEMBERSHIP_CARD
+   add constraint FK_TB_MEMBE_REFERENCE_TM_CARD_ foreign key (CARD_TYPE_ID)
+      references TM_CARD_TYPE (ID)
+go
+
+alter table dbo.TB_MEMBERSHIP_CARD
+   add constraint FK_TB_MEMBE_REFERENCE_TB_CAR_I foreign key (CAR_ID)
+      references dbo.TB_CAR_INFO (ID)
+go
+
+
+create table TB_CARD_HIS (
+   ID                   int                  identity,
+   CARD_ID              int                  null,
+   CARD_NO              varchar(100)         null,
+   OPERATION_TYPE       varchar(20)          null,
+   OPERATION_DESC       varchar(1000)        null,
+   OPERATION_DATE       datetime             null,
+   USER_ID              int                  null,
+   ORI_CARD_POINT       int                  null,
+   ORI_CARD_SAVING      numeric(10,2)        null,
+   GS_GIVE_MONEY        int                  null,
+   PJ_GIVE_MONEY        int                  null,
+   GS_GIVE_POINT        int                  null,
+   PJ_GIVE_POINT        int                  null,
+   GIVE_MONEY           int                  null,
+   GIVE_POINT           int                  null,
+   AFT_CARD_SAVING      numeric(10,2)        null,
+   AFT_CARD_POINT       int                  null,
+   CZJE                 numeric(10,2)        null,
+   CZJF                 int                  null,
+   GS_JEXF              numeric(10,2)        null,
+   PJ_JEXF              numeric(10,2)        null,
+   JEXF                 numeric(10,2)        null,
+   JFXF                 int                  null,
+   USER_NAME            varchar(20)          null,
+   USER_REAL_NAME       varchar(20)          null,
+   LICENSE_CODE         varchar(20)          null,
+   constraint PK_TB_CARD_HIS primary key (ID)
+)
+go
+
+增加主菜单 会员管理 》》会员卡管理
+
+tbMembershipCardFindAction.action
+
+会员卡种定义
+tmCardTypeFindAction.action
+
+
+会员卡历史信息查询
+tbCardHisFindAction.action
+
+
+
+create table TM_INSURANCE_ALERT_DAY (
+   ID                   int                  identity,
+   ALERT_DAY            int                  null,
+   CONTINUE_DAY         int                  null,
+   constraint PK_TM_INSURANCE_ALERT_DAY primary key (ID)
+)
+go
+
+insert into TM_INSURANCE_ALERT_DAY values (15,7);
+
+增加主菜单 优先参数设置》》保险提醒天数定义
+tmInsuranceAlertDayFindAction.action
+
+修改 优先参数设置》》保养提醒天数定义  并修改表 TM_ALERT_DAY 增加 CONTINUE_DAY int  增加数值 7
+
+
+更改表委托书表 增加字段REMIND_INSURANCE_DATE datetime
+
+增加菜单 车辆提醒管理》》车辆保险提醒 
+findTmCarInsuranceAlertAction.action
+
+
+create table TM_CARD_CHECK (
+   ID                   int                  identity,
+   CARD_NO              varchar(20)          null,
+   constraint PK_TM_CARD_CHECK primary key (ID)
+)
+go
+
+增加  优先参数设置 >>会员卡内码管理  tmCardCheckFindAction.action
+
+alter table tm_stockin_detail
+ add has_quantity numeric(10, 2) NULL default 0
+ 
+ 
+ 
+ --2011-09-04
+ exec sp_password null,'siesoft','sa';
+ 
+ alter table tm_user
+ add USER_STATUS varchar(10) ;
+
+update tm_user set user_status = '正常';
+
+
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TB_PRICEADD_RATE]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[TB_PRICEADD_RATE]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TB_PRICE_ADD]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[TB_PRICE_ADD]
+GO
+
+CREATE TABLE [dbo].[TB_PRICEADD_RATE] (
+	[ID] [int] IDENTITY (1, 1) NOT NULL ,
+	[scheme_Name] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[max_Price] [numeric](18, 2) NULL ,
+	[min_Price] [numeric](18, 2) NULL ,
+	[rate] [numeric](18, 2) NULL 
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[TB_PRICE_ADD] (
+	[ID] [int] IDENTITY (1, 1) NOT NULL ,
+	[scheme_Name] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[max_Price] [numeric](18, 2) NULL ,
+	[min_Price] [numeric](18, 2) NULL ,
+	[price] [numeric](18, 2) NULL 
+) ON [PRIMARY]
+GO
+
+
+findTbPriceAddRateAction.action  --加价率管理（信息管理）
+findTbPriceAddAction.action          --加价管理（信息管理）
+findInnerStockOutAction.action  --内部领用出库（出库管理）
+
+
+ALTER TABLE dbo.TB_CARD_HIS ADD
+	BALANCE_CODE varchar(20) NULL
+	
+ALTER TABLE dbo.TB_CARD_HIS ADD
+	BALANCE_ID int NULL
+	
+ALTER table dbo.TB_MAINTAIN_PART_CONTENT add IS_PRINT VARCHAR(50)

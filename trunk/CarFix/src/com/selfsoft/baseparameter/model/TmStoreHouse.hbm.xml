@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.selfsoft.baseparameter.model.TmStoreHouse" table="TM_STORE_HOUSE" 
+        dynamic-insert="true"
+    	dynamic-update="true" 
+    	lazy="false" >
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="houseCode" type="java.lang.String">
+            <column name="HOUSE_CODE" not-null="true" unique="true" />
+        </property>
+        <property name="houseName" type="java.lang.String">
+            <column name="HOUSE_NAME"/>
+        </property>
+        <property name="houseRemark" type="java.lang.String">
+            <column name="HOUSE_REMARK"/>
+        </property>
+        <property name="isMixed" type="java.lang.Long">
+        	<column name="ISMIXED"/>
+        </property>
+        <set name="tbPartInfos" table="TB_PART_INFO" inverse="true" cascade="none">
+            <key>
+                <column name="STORE_HOUSE_ID" />
+            </key>
+            <one-to-many class="com.selfsoft.baseinformation.model.TbPartInfo" />
+        </set>
+        <set name="stStorehouseReceivers" table="ST_STOREHOUSE_RECEIVER" inverse="true" cascade="none">
+            <key>
+                <column name="STORE_HOUSE_ID" />
+            </key>
+            <one-to-many class="com.selfsoft.business.model.StStorehouseReceiver" />
+        </set>
+    </class>
+</hibernate-mapping>

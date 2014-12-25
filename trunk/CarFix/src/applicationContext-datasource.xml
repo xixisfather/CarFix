@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans default-lazy-init="true" default-autowire="autodetect"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+ 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+ 		<property name="dataSource">
+ 			<ref bean="dataSourceSQL"/>
+ 		</property>
+ 		<property name="mappingResources">
+ 			<list>
+ 				<value>com/selfsoft/secrity/model/TmUser.hbm.xml</value>
+ 				<value>com/selfsoft/secrity/model/TmResource.hbm.xml</value>
+ 				<value>com/selfsoft/secrity/model/TmRole.hbm.xml</value>
+ 				<value>com/selfsoft/secrity/model/TmRoleResource.hbm.xml</value>
+ 				<value>com/selfsoft/secrity/model/TmBackMenu.hbm.xml</value>
+				<value>com/selfsoft/secrity/model/TmUserRole.hbm.xml</value>
+				<value>com/selfsoft/secrity/model/TmDepartment.hbm.xml</value>
+				<value>com/selfsoft/secrity/model/TmWorkType.hbm.xml</value>
+				<value>com/selfsoft/secrity/model/TmPermission.hbm.xml</value>
+				<value>com/selfsoft/secrity/model/TmCompany.hbm.xml</value>
+				<value>com/selfsoft/secrity/model/TmSysRegedit.hbm.xml</value>
+				
+				<value>com/selfsoft/baseparameter/model/TmStoreHouse.hbm.xml</value>
+ 				<value>com/selfsoft/baseparameter/model/TmCarStationType.hbm.xml</value>
+ 				<value>com/selfsoft/baseparameter/model/TmWorkingHourPrice.hbm.xml</value>
+ 				<value>com/selfsoft/baseparameter/model/TmCarModelType.hbm.xml</value>
+ 				<value>com/selfsoft/baseparameter/model/TmPartType.hbm.xml</value>
+ 				<value>com/selfsoft/baseparameter/model/TmUnit.hbm.xml</value>
+ 				<value>com/selfsoft/baseparameter/model/TmCustomerType.hbm.xml</value>
+ 				<value>com/selfsoft/baseparameter/model/TmSoleType.hbm.xml</value>
+ 				<value>com/selfsoft/baseparameter/model/TmCarBody.hbm.xml</value>
+ 				<value>com/selfsoft/baseparameter/model/TmDictionary.hbm.xml</value>
+ 				<value>com/selfsoft/baseparameter/model/TmBalance.hbm.xml</value>
+ 				<value>com/selfsoft/baseparameter/model/TmBalanceItem.hbm.xml</value>
+ 				<value>com/selfsoft/baseparameter/model/TmFixType.hbm.xml</value>
+ 				
+ 				
+ 				<value>com/selfsoft/baseparameter/model/TmAlertDay.hbm.xml</value>
+ 				 
+ 				<value>com/selfsoft/baseparameter/model/TmLostDay.hbm.xml</value>
+ 				
+ 				<value>com/selfsoft/baseparameter/model/TmMaintainAlertDay.hbm.xml</value>
+ 				
+ 				<value>com/selfsoft/baseparameter/model/TmInsuranceAlertDay.hbm.xml</value>
+ 				
+ 				<value>com/selfsoft/baseparameter/model/TmCardCheck.hbm.xml</value>
+ 				
+ 				<value>com/selfsoft/baseparameter/model/TmProjectType.hbm.xml</value>
+ 				 
+ 				<value>com/selfsoft/baseinformation/model/TbPartInfo.hbm.xml</value>
+ 				<value>com/selfsoft/baseinformation/model/TbCustomer.hbm.xml</value>
+ 				<value>com/selfsoft/baseinformation/model/TbCarInfo.hbm.xml</value>
+ 				<value>com/selfsoft/baseinformation/model/TbPartCollection.hbm.xml</value>
+ 				<value>com/selfsoft/baseinformation/model/TbWorkingInfo.hbm.xml</value>
+ 				<value>com/selfsoft/baseinformation/model/TbWorkingCollection.hbm.xml</value>
+ 				<value>com/selfsoft/baseinformation/model/TbCarStationWorkingRelation.hbm.xml</value>
+ 				<value>com/selfsoft/baseinformation/model/TbWorkingRelation.hbm.xml</value>
+ 				<value>com/selfsoft/baseinformation/model/TbPartSolePrice.hbm.xml</value>
+ 				
+ 				<value>com/selfsoft/baseparameter/model/TmStoreDisk.hbm.xml</value>
+ 				<value>com/selfsoft/baseinformation/model/TbMembershipCard.hbm.xml</value>
+ 				<value>com/selfsoft/baseinformation/model/TmCardType.hbm.xml</value>
+ 				<value>com/selfsoft/baseinformation/model/TbCardHis.hbm.xml</value>
+ 				
+ 				<value>com/selfsoft/baseinformation/model/TbPriceAddRate.hbm.xml</value>
+ 				<value>com/selfsoft/baseinformation/model/TbPriceAdd.hbm.xml</value>
+ 				
+ 				<value>com/selfsoft/business/model/TmStockIn.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TmStockinDetail.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TmLianceRegister.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TmLianceRegisterDetail.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TmLianceReturn.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TmLianceReturnDetail.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TmStockOut.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TmRemoveStock.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TmRemoveStockDetail.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TmShiftinStock.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TmLoanRegisterDetail.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TmLoanRegister.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TmLoanReturn.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TmLoanReturnDetail.hbm.xml</value>
+ 				
+ 				<value>com/selfsoft/business/model/TbBook.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TbBookFixStation.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TbBookFixPart.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TbFixEntrust.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TbFixEntrustContent.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TbFixShare.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TbAnvancePay.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TbBusinessBalance.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TbBusinessBalanceItem.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TbBusinessSpecialBalance.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TbSpecialPartContent.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TbSpecialWorkingContent.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TbBusinessSpecialBalanceItem.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TbReceiveFree.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TbBusinessSpecialBalanceHandleFinance.hbm.xml</value>
+ 				
+ 				
+ 				<value>com/selfsoft/business/model/TbMaintainPartContent.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TmStockoutDetail.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TbBespokePartContent.hbm.xml</value>
+ 				
+ 				<value>com/selfsoft/business/model/TmSpecialCarAlert.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/StStockin.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/StStorehouseSurvey.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/StPartReceiver.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/StStockout.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/StStorehouseReceiver.hbm.xml</value>
+ 				
+ 				<value>com/selfsoft/business/model/TbReturnVisit.hbm.xml</value>
+ 				
+ 				<value>com/selfsoft/business/model/TbFixEntrustCost.hbm.xml</value>
+ 				
+ 				<value>com/selfsoft/business/model/TbStoreHouseCheckDetail.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TbStoreHouseCheck.hbm.xml</value>
+ 				
+ 			</list>
+ 		</property> 		
+ 		<property name="hibernateProperties">
+ 			<props>
+ 				<prop key="hibernate.dialect">
+ 					org.hibernate.dialect.SQLServerDialect
+ 				</prop>
+ 				<prop key="hibernate.show_sql">${jdbc.showsql}</prop>
+ 				<prop key="hibernate.jdbc.batch_size">20</prop>
+ 			</props>
+ 		</property>
+ 	</bean>
+ 	
+	<bean id="transactionManagerSQL" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="sessionFactory"/>
+		</property>
+	</bean>
+	  
+	<context:annotation-config />
+
+	<context:component-scan base-package="com.selfsoft" scoped-proxy="interfaces" />
+    
+    <aop:config proxy-target-class="true"> 
+        <aop:advisor pointcut="execution(* com..service.impl.*.*(..))" advice-ref="txAdvice"/>
+    </aop:config>
+   
+    <tx:advice id="txAdvice" transaction-manager="transactionManagerSQL"> 
+        <tx:attributes>
+        	<tx:method name="*" rollback-for="com.selfsoft.common.exception.MinusException" />
+			<tx:method name="insert*" rollback-for="com.selfsoft.common.exception.MinusException" />
+			<tx:method name="save*"	rollback-for="com.selfsoft.common.exception.MinusException"   />
+            <tx:method name="update*" rollback-for="com.selfsoft.common.exception.MinusException"  />
+            <tx:method name="delete*"/>
+            <tx:method name="find*" read-only="true"/>
+            <tx:method name="Query*" read-only="true"/>
+            <tx:method name="*Execute"/>
+        </tx:attributes>
+    </tx:advice> 
+    
+</beans>

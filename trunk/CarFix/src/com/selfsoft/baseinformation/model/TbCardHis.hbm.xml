@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.selfsoft.baseinformation.model.TbCardHis" table="TB_CARD_HIS"
+    dynamic-insert="true"
+    dynamic-update="true"
+    lazy="false"
+    >
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        
+        <property name="cardId" type="java.lang.Long">
+            <column name="CARD_ID"/>
+        </property>
+        
+        <property name="cardNo" type="java.lang.String">
+            <column name="CARD_NO"/>
+        </property>
+        
+        <property name="operationType" type="java.lang.String">
+            <column name="OPERATION_TYPE"/>
+        </property>
+        
+        <property name="operationDesc" type="java.lang.String">
+            <column name="OPERATION_DESC"/>
+        </property>
+        
+        <property name="operationDate" type="java.util.Date">
+            <column name="OPERATION_DATE"/>
+        </property>
+        
+        <property name="operationDateFrom" type="java.util.Date" update="false" insert="false">
+            <column name="OPERATION_DATE"/>
+        </property>
+        
+        <property name="operationDateTo" type="java.util.Date" update="false" insert="false">
+            <column name="OPERATION_DATE"/>
+        </property>
+       
+       	<property name="userId" type="java.lang.Long">
+            <column name="USER_ID"/>
+        </property>
+        
+        <property name="oriCardPoint" type="java.lang.Long">
+            <column name="ORI_CARD_POINT"/>
+        </property>
+        
+        <property name="oriCardSaving" type="java.lang.Double">
+            <column name="ORI_CARD_SAVING"/>
+        </property>
+        
+        <property name="gsGiveMoney" type="java.lang.Integer">
+            <column name="GS_GIVE_MONEY"/>
+        </property>
+        
+        <property name="pjGiveMoney" type="java.lang.Integer">
+            <column name="PJ_GIVE_MONEY"/>
+        </property>
+        
+        <property name="gsGivePoint" type="java.lang.Integer">
+            <column name="GS_GIVE_POINT"/>
+        </property>
+        
+        <property name="pjGivePoint" type="java.lang.Integer">
+            <column name="PJ_GIVE_POINT"/>
+        </property>
+        
+        <property name="giveMoney" type="java.lang.Integer">
+            <column name="GIVE_MONEY"/>
+        </property>
+        
+        <property name="givePoint" type="java.lang.Integer">
+            <column name="GIVE_POINT"/>
+        </property>
+        
+        <property name="aftCardPoint" type="java.lang.Long">
+            <column name="AFT_CARD_POINT"/>
+        </property>
+        
+        <property name="aftCardSaving" type="java.lang.Double">
+            <column name="AFT_CARD_SAVING"/>
+        </property>
+        
+        <property name="czje" type="java.lang.Double">
+            <column name="CZJE"/>
+        </property>
+        
+        <property name="czjf" type="java.lang.Long">
+            <column name="CZJF"/>
+        </property>
+        
+        <property name="gsJexf" type="java.lang.Double">
+            <column name="GS_JEXF"/>
+        </property>
+        
+        <property name="pjJexf" type="java.lang.Double">
+            <column name="PJ_JEXF"/>
+        </property>
+        
+        <property name="jexf" type="java.lang.Double">
+            <column name="JEXF"/>
+        </property>
+        
+        <property name="jfxf" type="java.lang.Integer">
+            <column name="JFXF"/>
+        </property>
+        
+        <property name="licenseCode" type="java.lang.String">
+        	<column name="LICENSE_CODE"/>
+        </property>
+        
+         <property name="userName" type="java.lang.String">
+        	<column name="USER_NAME"/>
+        </property>
+        
+         <property name="userRealName" type="java.lang.String">
+        	<column name="USER_REAL_NAME"/>
+        </property>
+        
+        <property name="balanceCode" type="java.lang.String">
+            <column name="BALANCE_CODE"/>
+        </property>
+        
+        <property name="balanceId" type="java.lang.Long">
+            <column name="BALANCE_ID"/>
+        </property>
+        
+    </class>
+</hibernate-mapping>

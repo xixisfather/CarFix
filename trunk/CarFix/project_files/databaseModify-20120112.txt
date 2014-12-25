@@ -1,0 +1,36 @@
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TB_STOREHOUSE_CHECK]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[TB_STOREHOUSE_CHECK]
+GO
+
+CREATE TABLE [dbo].[TB_STOREHOUSE_CHECK] (
+	[ID] [int] IDENTITY (1, 1) NOT NULL ,
+	[CHECK_CODE] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[CHECK_DATE] [datetime] NULL ,
+	[ZZ_DATE] [datetime] NULL ,
+	[MEMO] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[IS_CONFIRM] [int] NULL ,
+	[USER_ID] [int] NULL ,
+	[STORE_HOUSE_IDS] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
+	[ZZ_TYPE] [int] NULL ,
+	[STORE_HOUSE_NAMES] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL 
+) ON [PRIMARY]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'[dbo].[TB_STOREHOUSE_CHECK_DETAIL]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)
+drop table [dbo].[TB_STOREHOUSE_CHECK_DETAIL]
+GO
+CREATE TABLE [dbo].[TB_STOREHOUSE_CHECK_DETAIL] (
+	[ID] [int] IDENTITY (1, 1) NOT NULL ,
+	[STORE_QUANTITY] [numeric](18, 2) NULL ,
+	[COST_PRICE] [numeric](18, 2) NULL ,
+	[JS_PRICE] [numeric](18, 2) NULL ,
+	[CHECK_QUANTITY] [numeric](18, 2) NULL ,
+	[CHECK_PRICE] [numeric](18, 2) NULL ,
+	[DIV_QUANTITY] [numeric](18, 2) NULL ,
+	[DIV_PRICE] [numeric](18, 2) NULL ,
+	[PARTINFO_ID] [int] NULL ,
+	[STOREHOUSE_ID] [int] NULL ,
+	[STOREHOUSECHECK_ID] [int] NULL 
+) ON [PRIMARY]
+GO
+

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+ <struts>
+ 	<package name="/strutsSecrity" extends="struts-default">
+ 	
+ 		<action name="tmUserFindAction" class="com.selfsoft.secrity.action.TmUserAction" method="findTmUser">
+			<result name="success">
+				/pages/secrity/TmUserFind.jsp
+			</result>
+			
+		</action>
+		<action name="tmUserResetPasswordAction" class="com.selfsoft.secrity.action.TmUserAction" method="resetTmUser">
+			
+		</action>
+		<action name="tmUserDeleteAction" class="com.selfsoft.secrity.action.TmUserAction" method="deleteTmUser">
+			
+		</action>
+		<action name="tmUserValidAction" class="com.selfsoft.secrity.action.TmUserAction" method="validTmUser">
+			
+		</action>
+		<action name="tmUserInsertAction" class="com.selfsoft.secrity.action.TmUserAction" method="insertTmUser">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmUserTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmUserTable
+			</result>
+		</action>
+		<action name="tmUserUpdateAction" class="com.selfsoft.secrity.action.TmUserAction" method="updateTmUser">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmUserTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmUserTable
+			</result>
+		</action>
+		
+		<action name="tmUserForwardPageAction" class="com.selfsoft.secrity.action.TmUserAction" method="forwardPage">
+			<result name="addPage">
+				/pages/secrity/TmUserCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/secrity/TmUserEdit.jsp
+			</result>
+		</action>
+		<action name="tmUserLoginAction" class="com.selfsoft.secrity.action.TmUserAction" method="login">
+			<result name="success" type="redirect-action">
+			    <param name="actionName">tmRoleResourceTreeAction.action</param>
+			</result>
+			<result name="failure">
+				/pages/error/fail.jsp
+			</result>
+			<result name="addPage" type="redirect-action">
+			    <param name="actionName">editTmCompanyInitPageAction.action</param>
+			</result>
+		</action>
+		
+		
+		<!-- 系统资源管理 BEGIN  -->
+			
+			<action name="tmResourceloadsubTreeAction" class="com.selfsoft.secrity.action.TmResourceAction" method="loadsubTree">
+			</action>
+			
+			<action name="tmResourceInitAction" class="com.selfsoft.secrity.action.TmResourceAction" method="initManagerPage">
+				<result name="success">
+					/pages/secrity/tmresource/initTmResourceManager.jsp
+				</result>
+			</action>
+			
+			<action name="tmResourceViewAction" class="com.selfsoft.secrity.action.TmResourceAction" method="viewTmResource">
+				<result name="viewPage">
+					/pages/secrity/tmresource/TmResourceView.jsp
+				</result>
+			</action>
+			
+			<action name="tmResourceForwardPageAction" class="com.selfsoft.secrity.action.TmResourceAction" method="forwardPage">
+				<result name="addPage">
+					/pages/secrity/tmresource/TmResourceCreate.jsp
+				</result>
+				<result name="editPage">
+					/pages/secrity/tmresource/TmResourceEdit.jsp
+				</result>
+			</action>
+			
+			<action name="tmResourceInsertAction" class="com.selfsoft.secrity.action.TmResourceAction" method="insertTmResource">
+				<result name="success">
+					/pages/secrity/tmresource/TmResourceView.jsp
+				</result>
+			</action>
+			
+			<action name="tmResourceDeleteAction" class="com.selfsoft.secrity.action.TmResourceAction" method="deleteTmResource">
+			</action>
+			
+			<action name="tmResourceUpdateAction" class="com.selfsoft.secrity.action.TmResourceAction" method="editTmResource">
+			</action>
+		<!-- 系统资源管理 END  -->
+		
+		<!-- 角色管理 BEGIN -->
+			<action name="tmRoleFindAction" class="com.selfsoft.secrity.action.TmRoleAction" method="findTmRole">
+				<result name="success">
+					/pages/secrity/tmrole/TmRoleFind.jsp
+				</result>
+			</action>
+			<action name="tmRoleDeleteAction" class="com.selfsoft.secrity.action.TmRoleAction" method="deleteTmRole">
+				
+			</action>
+			<action name="tmRoleInsertAction" class="com.selfsoft.secrity.action.TmRoleAction" method="insertTmRole">
+				<result name="success">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/success.jsp?table=tmRoleTable
+				</result>
+				<result name="failure">
+					<!--将定义的E3表格的ID传入URL-->
+					/pages/message/fail.jsp?table=tmRoleTable
+				</result>
+			</action>
+			
+			<action name="tmRoleForwardPageAction" class="com.selfsoft.secrity.action.TmRoleAction" method="forwardPage">
+				<result name="addPage">
+					/pages/secrity/tmrole/TmRoleCreate.jsp
+				</result>
+				<result name="editPage">
+					/pages/secrity/tmrole/TmRoleEdit.jsp
+				</result>
+			</action>
+			
+			<action name="tmRoleResourceAction" class="com.selfsoft.secrity.action.TmRoleAction" method="getRoleResource">
+				<result name="success">
+					/pages/secrity/tmrole/TmRoleResourceManager.jsp
+				</result>
+			</action>
+			
+			<action name="tmRoleResourceInsertAction" class="com.selfsoft.secrity.action.TmRoleAction" method="insertRoleResource">
+				<result name="success">
+					/pages/secrity/tmrole/TmRoleFind.jsp
+				</result>
+			</action>
+			
+			<action name="tmRoleUpdateAction" class="com.selfsoft.secrity.action.TmRoleAction" method="updateTmRole">
+				
+			</action>
+			
+			<action name="tmRoleResourceTreeAction" class="com.selfsoft.secrity.action.TmRoleAction" method="getUserResource">
+				<result name="success">
+					/pages/secrity/tmrole/TmRoleResourceTree.jsp
+				</result>
+			</action>
+		<!-- 角色管理 END -->
+		
+		<!-- 后台资源树管理 BEGIN -->
+			<action name="tmBackMenuTreeAction" class="com.selfsoft.secrity.action.TmBackMenuAction" method="getTmBackMenuTree">
+				<result name="success">
+					/pages/secrity/tmbackmenu/TmBackMenuManager.jsp
+				</result>
+			</action>
+		<!-- 后台资源树管理 END -->
+		
+		<!-- 部门 -->
+		<action name="tmDepartmentFindAction" class="com.selfsoft.secrity.action.TmDepartmentAction" method="findTmDepartment">
+			<result name="success">
+				/pages/secrity/TmDepartmentFind.jsp
+			</result>
+			
+		</action>
+		<action name="tmDepartmentDeleteAction" class="com.selfsoft.secrity.action.TmDepartmentAction" method="deleteTmDepartment">
+			
+		</action>
+		<action name="tmDepartmentInsertAction" class="com.selfsoft.secrity.action.TmDepartmentAction" method="insertTmDepartment">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmDepartmentTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmDepartmentTable
+			</result>
+		</action>
+		<action name="tmDepartmentUpdateAction" class="com.selfsoft.secrity.action.TmDepartmentAction" method="updateTmDepartment">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmDepartmentTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmDepartmentTable
+			</result>
+		</action>
+		
+		<action name="tmDepartmentForwardPageAction" class="com.selfsoft.secrity.action.TmDepartmentAction" method="forwardPage">
+			<result name="addPage">
+				/pages/secrity/TmDepartmentCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/secrity/TmDepartmentEdit.jsp
+			</result>
+		</action>
+		<!-- 部门 -->
+		
+		<!-- 工种 -->
+		<action name="tmWorkTypeFindAction" class="com.selfsoft.secrity.action.TmWorkTypeAction" method="findTmWorkType">
+			<result name="success">
+				/pages/secrity/TmWorkTypeFind.jsp
+			</result>
+			
+		</action>
+		<action name="tmWorkTypeDeleteAction" class="com.selfsoft.secrity.action.TmWorkTypeAction" method="deleteTmWorkType">
+			
+		</action>
+		<action name="tmWorkTypeInsertAction" class="com.selfsoft.secrity.action.TmWorkTypeAction" method="insertTmWorkType">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmWorkTypeTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmWorkTypeTable
+			</result>
+		</action>
+		<action name="tmWorkTypeUpdateAction" class="com.selfsoft.secrity.action.TmWorkTypeAction" method="updateTmWorkType">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tmWorkTypeTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tmWorkTypeTable
+			</result>
+		</action>
+		
+		<action name="tmWorkTypeForwardPageAction" class="com.selfsoft.secrity.action.TmWorkTypeAction" method="forwardPage">
+			<result name="addPage">
+				/pages/secrity/TmWorkTypeCreate.jsp
+			</result>
+			<result name="editPage">
+				/pages/secrity/TmWorkTypeEdit.jsp
+			</result>
+		</action>
+		<!-- 工种 -->
+		
+		<!-- 公司信息 -->
+ 			<action name="editTmCompanyInitPageAction" class="com.selfsoft.secrity.action.TmCompanyAction" method="editTmCompanyInitPage">
+				<result name="editPage">
+					/pages/secrity/tmComapnyEdit.jsp
+				</result>
+			</action>
+ 			
+ 			<action name="updateTmCompanyAction" class="com.selfsoft.secrity.action.TmCompanyAction" method="updateTmCompany">
+ 				<result name="success" type="redirect-action">
+				    <param name="actionName">editTmCompanyInitPageAction.action</param>
+				</result>
+ 			</action>
+ 		<!-- 公司信息 -->
+ 		<!-- 系统序列号 -->
+ 			<action name="showTmSysRegeditAction" class="com.selfsoft.secrity.action.TmSysRegeditAction" method="showTmSysRegedit">
+				<result name="success">
+					/pages/secrity/TmSysRegeditEdit.jsp
+				</result>
+			</action>
+			<action name="operateTmSysRegeditAction" class="com.selfsoft.secrity.action.TmSysRegeditAction" method="insertOrUpdateTmSysRegedit">
+				<result name="success">
+					/pages/secrity/TmSysRegeditEdit.jsp
+				</result>
+				<result name="loginPage">
+					/pages/login.jsp
+				</result>
+			</action>
+ 		<!-- 系统序列号 -->
+ 	</package>	
+ </struts>   

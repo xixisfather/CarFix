@@ -1,0 +1,150 @@
+------------------------------登录角色菜单--------------------------------------------------------------
+http://localhost:8080/CarFix/tmResourceInitAction.action  -- 所有资源列表
+http://localhost:8080/CarFix/tmRoleFindAction.action    -- 角色列表，角色资源维护
+http://localhost:8080/CarFix/tmUserFindAction.action    -- 用户列表
+http://localhost:8080/CarFix/tmRoleResourceTreeAction.action?userId=? -- 登陆的用户之后所得到的资源
+-------------------------------------------------------------------------------------------------------
+
+------------------------------优先参数设置-------------------------------------------------------------
+http://localhost:8080/CarFix/pages/baseparameter/tmStoreHouseFindAction.action         	   --仓库
+http://localhost:8080/CarFix/pages/baseparameter/tmWorkingHourPriceFindAction.action       --工时单价
+http://localhost:8080/CarFix/pages/baseparameter/tmCarStationTypeFindAction.action         --车型工位标志
+http://localhost:8080/CarFix/pages/baseparameter/tmCarModelTypeFindAction.action           --车辆类型 
+http://localhost:8080/CarFix/pages/baseparameter/tmPartTypeFindAction.action               --配件类型
+http://localhost:8080/CarFix/pages/baseparameter/tmUnitFindAction.action                   --计量单位
+http://localhost:8080/CarFix/pages/baseparameter/tmCustomerTypeFindAction.action           --客户类型
+http://localhost:8080/CarFix/pages/baseparameter/tmSoleTypeFindAction.action               --销售类型
+http://localhost:8080/CarFix/pages/secrity/tmWorkTypeFindAction.action                     --工种
+http://localhost:8080/CarFix/pages/secrity/tmDepartmentFindAction.action                   --部门 
+http://localhost:8080/CarFix/pages/baseparameter/minusConfigAction.action                  --车身部位
+http://localhost:8080/CarFix/pages/baseparameter/tmProjectTypeFindAction.action            --维修项目类型定义
+------------------------------------------------------------------------------------------------------
+
+------------------------------信息管理-----------------------------------------------------------------
+http://localhost:8080/CarFix/pages/tbPartInfoFindAction.action							 --配件管理
+http://localhost:8080/CarFix/pages/baseinformation/tbCustomerFindAction.action           --客户车辆管理
+http://localhost:8080/CarFix/pages/initTbPartInfoCollectionAction.action				 --添加配件集
+http://localhost:8080/CarFix/pages/tbPartCollectionFindAction.action					 --配件集管理
+http://localhost:8080/CarFix/pages/baseinformation/tbWorkingInfoFindAction.action        --工时工位管理
+http://localhost:8080/CarFix/pages/baseinformation/tbWorkingCollectionFindAction.action  --工位集管理
+http://localhost:8080/CarFix/pages/baseparameter/tmBalanceFindAction.action              --结算定义
+http://localhost:8080/CarFix/pages/baseparameter/tmFixTypeFindAction.action              --修理类型
+http://localhost:8080/CarFix/pages/findTbPriceAddRateAction.action						 --加价率管理
+http://localhost:8080/CarFix/pages/findtbPriceAddAction.action							 --加价管理
+http://localhost:8080/CarFix/pages/minusConfigAction.action							 --负出库管理
+
+------------------------------业务实现-----------------------------------------------------------------
+http://localhost:8080/CarFix/pages/initStockInPageAction.action					 	 		--采购入库
+http://localhost:8080/CarFix/pages/initAllotPageAction.action							 	--调拨入库
+http://localhost:8080/CarFix/pages/initOtherStockPageAction.action					 		--其他入库
+http://localhost:8080/CarFix/pages/initOverFlowPageAction.action						 	--报溢入库
+http://localhost:8080/CarFix/pages/initLianceRegisterPageAction.action				 		--借进登记
+http://localhost:8080/CarFix/pages/findLinaceRegDetailAction.action					 		--借进归还
+
+http://localhost:8080/CarFix/pages/initSellPageAction.action								 --销售出库
+http://localhost:8080/CarFix/pages/initDrawPageAction.action							 	 --领用出库
+http://localhost:8080/CarFix/pages/initShatterPageAction.action								 --报损出库
+http://localhost:8080/CarFix/pages/initAllotPageAction.action								 --调拨出库
+http://localhost:8080/CarFix/pages/initLoanRegisterPageAction.action				 		 --借出登记
+http://localhost:8080/CarFix/pages/findLoanRegDetailAction.action					 		 --借出归还
+http://localhost:8080/CarFix/pages/initRemoveStockPageAction.action				 			 --移库出仓
+http://localhost:8080/CarFix/pages/findInnerStockOutAction.action							 --内部领用出库
+
+http://localhost:8080/CarFix/pages/business/tbBook/tbBookFindAction.action               --维修预约
+http://localhost:8080/CarFix/pages/business/tbFixEntrust/tbFixEntrustFindAction.action   --创建委托书
+http://localhost:8080/CarFix/pages/business/tbAnvancePay/tbAnvancePayFindAction.action   --预付款登记
+
+需改变  原来:
+http://localhost:8080/CarFix/pages/business/tbBusinessBalance/tbBusinessBalanceFindAction.action 结算处理
+现在:
+	http://localhost:8080/CarFix/pages/business/tbBusinessBalance/tbBusinessBalanceForwardPageAction!forwardPage.action
+
+
+http://localhost:8080/CarFix/pages/business/tbBusinessReBalance/tbBusinessReBalanceFindAction.action 再结算处理
+
+
+
+结算特殊编辑
+http://localhost:8080/CarFix/pages/business/tbBusinessSpecialBalance/tbBusinessSpecialBalanceFindAction.action 
+
+
+结算汇总查询
+http://localhost:8080/CarFix/pages/business/tbBusinessBalance/tbBusinessBalanceGroupFindAction.action 结算汇总查询
+
+
+委托书作废查询
+http://localhost:8080/CarFix/pages/business/tbFixEntrust/tbFixEntrustNotValidFindAction.action  
+
+修理业务统计
+http://localhost:8080/CarFix/pages/business/tbFixEntrust/tbFixEntrustStatisticsAction.action
+
+客户流失报警
+http://localhost:8080/CarFix/pages/business/tbCustomerRunOffFindAction.action
+
+结算档案查询
+http://localhost:8080/CarFix/pages/business/tbBusinessBalance/tbBusinessBalanceFindAction.action
+
+车辆修理情况排名
+http://localhost:8080/CarFix/pages/business/tbBusinessBalance/TbBusinessBalanceOrderFind.jsp
+
+结算特殊编辑查询
+http://localhost:8080/CarFix/pages/business/tbBusinessSpecialBalance/tbBusinessSpecialBalanceViewAction.action 
+
+
+
+
+
+
+业务接待--到款登记核销
+http://localhost:8080/CarFix/pages/business/tbBusinessBalance/tbBusinessBalanceGroupOweFindAction.action
+
+查询统计报表管理--到款登记费用减免查询
+http://localhost:8080/CarFix/pages/business/tbBusinessBalance/tbReceiveFreeFindAction.action
+
+查询统计报表管理--实际到款查询
+http://localhost:8080/CarFix/pages/business/tbBusinessBalance/tbBusinessBalanceGroupSumAmountFindAction.action
+
+查询统计报表管理--优惠金额减免去零查询
+http://localhost:8080/CarFix/pages/business/tbBusinessBalance/tbBusinessBalanceGroupFavourFindAction.action
+
+查询统计报表管理--经营状况统计
+http://localhost:8080/CarFix/pages/business/tbBusinessBalance/businessAnalyseAction.action
+
+系统管理--序列号管理
+http://localhost:8080/CarFix/showTmSysRegeditAction.action
+
+财务管理--财务录入
+http://localhost:8080/CarFix/pages/business/tbBusinessSpecialBalance/tbBusinessSpecialBalanceFinanceFindAction.action 
+
+查询统计报表管理--财务录入统计
+http://localhost:8080/CarFix/pages/business/tbBusinessSpecialBalance/tbBusinessSpecialBalanceFinanceStaticsAction.action 
+
+
+
+会员管理--会员卡管理
+http://localhost:8080/CarFix/tbMembershipCardFindAction.action
+
+
+
+
+
+
+
+
+长沙版
+查询统计--维修业务查询统计
+http://localhost:8080/CarFix/pages/business/tbBusinessSpecialBalance/tbBusinessSpecialBalanceFinanceShowAction.action 
+
+经营状况数据录入
+http://localhost:8080/CarFix/pages/business/tbBusinessSpecialBalance/tbBusinessSpecialBalanceHandleFinanceFindAction.action 
+
+经营状况数据统计
+http://localhost:8080/CarFix/pages/business/tbBusinessSpecialBalance/tbBusinessSpecialBalanceHandleFinanceForwardPageAction.action?flag=view 
+
+
+仓库月度期间收发统计
+http://localhost:8080/CarFix/pages/getStoreHouseMounthReceiverStatAction.action
+配件月度期间收发统计
+http://localhost:8080/CarFix/pages/getPartMounthReceiveListStatAction.action
+盘点
+http://localhost:8080/CarFix/pages/findTbStoreHouseCheckAction.action
