@@ -117,6 +117,42 @@ public class TbMaintainPartContentDaoImpl extends BaseDaoImpl<TbMaintainPartCont
 		
 	}
 	
+	public List<TbMaintianVo> getTbMaintianDetailVosByPrint(String maintainCode,Long entrustId,Long balanceId,Long balanceType){
+
+		StringBuilder hql = new StringBuilder();
+		hql.append("select new com.selfsoft.business.vo.TbMaintianVo(t.partId,t.partQuantity,t.price,");
+		hql.append("pi.partCode,pi.partName,pi.tmStoreHouse.houseCode,pi.tmStoreHouse.houseName,pi.tmUnit.unitName,");
+		hql.append("t.cliamPartPersonId,u.userRealName,t.maintainCode,t.isFree,fe.tbCustomer.customerName,");
+		hql.append("fe.tbCarInfo.licenseCode,fe.tmFixType.fixType,fe.fixDate,t.balanceId,fe.entrustCode,pi.storeLocation,t.totalPrice,t.zl,t.xmlx,t.projectType,t.isPrint,t.id)");
+		hql.append(" from TbMaintainPartContent t , TbPartInfo pi , TmUser u,TbFixEntrust fe");
+		hql.append(" where t.partId = pi.id and t.cliamPartPersonId = u.id and t.entrustId = fe.id and t.isPrint='Y'");
+		if(StringUtils.isNotBlank(maintainCode))
+			hql.append(" and t.maintainCode = '").append(maintainCode).append("'");
+		if(entrustId != null)
+			hql.append(" and t.entrustId = "+ entrustId);
+		if(balanceId != null)
+			hql.append(" and t.balanceId = "+ balanceId);
+		//else 
+		
+		if(balanceType != null){
+			if(balanceType.equals(Constants.BALANCE_ALL)){
+				//得到所有明细 无论是否结算都取出来
+			}
+			if(balanceType.equals(Constants.BALANCE_ISNULL)){
+				//得到未结算的明细
+				hql.append(" and t.balanceId is null");
+			}
+			if(balanceType.equals(Constants.BALANCE_NOTNULL)){
+				//得到已结算的明细
+				hql.append(" and t.balanceId is not null");
+			}
+		}
+		
+		hql.append(" order by t.id ");
+		List<TbMaintianVo> result = this.getHibernateTemplate().find(hql.toString());
+		return result;
+	}
+	
 	public List<TbMaintianVo> findTbMaintainBySql(final String sql){
 		List<TbMaintianVo> result  = (List<TbMaintianVo>) this.getHibernateTemplate().execute(
 				new HibernateCallback() {

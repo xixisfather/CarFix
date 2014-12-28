@@ -119,4 +119,6 @@ ALTER table dbo.TB_MAINTAIN_PART_CONTENT add IS_PRINT VARCHAR(50)
 
 采购入库增加税率字段
 alter table dbo.tm_stock_in add RATE numeric(10, 2) NULL;
+维修发料增加成本价字段
+alter table Tb_Maintain_Part_Content add cost_price numeric(10,2)
 

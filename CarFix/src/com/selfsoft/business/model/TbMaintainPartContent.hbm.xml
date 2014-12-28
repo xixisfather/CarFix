@@ -57,5 +57,8 @@
         <property name="isPrint" type="java.lang.String">
             <column name="IS_PRINT"  length="50" />
         </property>
+         <property name="costPrice" type="java.lang.Double">
+            <column name="COST_PRICE" precision="10" />
+        </property>
     </class>
 </hibernate-mapping>

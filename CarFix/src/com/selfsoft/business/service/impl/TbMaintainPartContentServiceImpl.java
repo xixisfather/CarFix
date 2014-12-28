@@ -97,6 +97,9 @@ public class TbMaintainPartContentServiceImpl implements
 			if(null!=tbMaintainPartContent.getEntrustId()){
 				detachedCriteria.add(Restrictions.eq("entrustId", tbMaintainPartContent.getEntrustId()));
 			}
+			if(null!=tbMaintainPartContent.getIsPrint()){
+				detachedCriteria.add(Restrictions.eq("isPrint", tbMaintainPartContent.getIsPrint()));
+			}
 			
 			if(tbMaintainPartContent.getBalanceId() != null){
 				detachedCriteria.add(Restrictions.eq("balanceId", tbMaintainPartContent.getBalanceId()));
@@ -166,6 +169,7 @@ public class TbMaintainPartContentServiceImpl implements
 				}
 				String isPrint = parts.split(":")[6];
 				
+				
 				TbMaintainPartContent maintainContent = new TbMaintainPartContent();
 				maintainContent.setMaintainCode(code);
 				maintainContent.setPartId(new Long(tbPartInfoId));
@@ -181,6 +185,10 @@ public class TbMaintainPartContentServiceImpl implements
 				maintainContent.setXmlx(xmlx);
 				maintainContent.setZl(zl);
 				maintainContent.setIsPrint(isPrint);
+				TbPartInfo tbPartInfo = this.tbPartInfoDao.findById(new Long(tbPartInfoId));
+				if(null != tbPartInfo){
+					maintainContent.setCostPrice(tbPartInfo.getCostPrice());
+				}
 				tbMaintainPartContentDao.insert(maintainContent);
 				
 			
@@ -312,6 +320,27 @@ public class TbMaintainPartContentServiceImpl implements
 		return result;
 	}
 	
+	/**
+	 * 委托书ID 下维修发料明细(显示明细为是需要打印的)
+	 * @Date      2010-6-29
+	 * @Function  
+	 * @param entrustId
+	 * @return
+	 */
+	public List<TbMaintianVo> getTbMaintianDetailVosByEntrustIdPrint(Long entrustId,Long balanceType){
+		TbMaintainPartContent queryEntity = new TbMaintainPartContent();
+		queryEntity.setEntrustId(entrustId);
+		queryEntity.setIsPrint("Y");
+		List<TbMaintainPartContent> list = this.findByEntity(queryEntity,balanceType);
+		
+		List<TbMaintianVo> result = new ArrayList<TbMaintianVo>();
+		
+		if(null!=list&&list.size()>0){
+			result = tbMaintainPartContentDao.getTbMaintianDetailVosByPrint(list.get(0).getMaintainCode(),null,null,balanceType);
+		
+		}	
+		return result;
+	}
 	
 	public void updateMaintain(String maintainCode ,String partCol,Double totalPrice,Long entrustId,Long isConfirm,Long userId) throws NumberFormatException, MinusException{
 		
@@ -355,6 +384,10 @@ public class TbMaintainPartContentServiceImpl implements
 				maintainContent.setXmlx(xmlx);
 				maintainContent.setProjectType(projectType);
 				maintainContent.setIsPrint(isPrint);
+				TbPartInfo tbPartInfo = this.tbPartInfoDao.findById(new Long(tbPartInfoId));
+				if(null != tbPartInfo){
+					maintainContent.setCostPrice(tbPartInfo.getCostPrice());
+				}
 				tbMaintainPartContentDao.insert(maintainContent);
 				
 				
@@ -458,6 +491,10 @@ public class TbMaintainPartContentServiceImpl implements
 				}
 				maintainContent.setIsFree(new Long(isFree));
 				maintainContent.setStockOutDate(new Date());
+				TbPartInfo tbPartInfo = this.tbPartInfoDao.findById(new Long(tbPartInfoId));
+				if(null != tbPartInfo){
+					maintainContent.setCostPrice(tbPartInfo.getCostPrice());
+				}
 				tbMaintainPartContentDao.insert(maintainContent);
 				
 				

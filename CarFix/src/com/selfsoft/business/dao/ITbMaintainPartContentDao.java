@@ -35,4 +35,5 @@ public interface ITbMaintainPartContentDao extends IDao<TbMaintainPartContent> {
 	public double sumMaintainPriceByBalanceId(Long balanceId);
 	
 	public double getAllStockOutNum(Long partId);
+	public List<TbMaintianVo> getTbMaintianDetailVosByPrint(String maintainCode,Long entrustId,Long balanceId,Long balanceType);
 }

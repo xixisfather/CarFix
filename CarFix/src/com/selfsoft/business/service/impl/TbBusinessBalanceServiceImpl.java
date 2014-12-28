@@ -1279,9 +1279,14 @@ public class TbBusinessBalanceServiceImpl implements ITbBusinessBalanceService {
 		}
 
 		// 发料配件列表
+		/*
 		List<TbMaintianVo> maintianvos = tbMaintainPartContentService
 				.getTbMaintianDetailVosByEntrustId(tbFixEntrust.getId(),
 						Constants.BALANCE_ALL);
+						*/
+		/*update by baijx 显示需要打印的明细列表*/
+		List<TbMaintianVo> maintianvos = tbMaintainPartContentService
+		.getTbMaintianDetailVosByEntrustIdPrint(tbFixEntrust.getId(), Constants.BALANCE_ALL);
 		// 销售单列表
 		List<TmStockOutDetVo> tmStockOutDetVos = tmStockOutService
 				.getSellDetailByEntrustCode(tbFixEntrust.getEntrustCode(),
