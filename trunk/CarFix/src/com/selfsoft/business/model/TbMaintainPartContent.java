@@ -39,8 +39,19 @@ public class TbMaintainPartContent implements java.io.Serializable {
 	
 	private String isPrint;
 	
+	private Double costPrice;							//成本价
+	
+	
 	// Constructors
 
+
+	public Double getCostPrice() {
+		return costPrice;
+	}
+
+	public void setCostPrice(Double costPrice) {
+		this.costPrice = costPrice;
+	}
 
 	public String getIsPrint() {
 		return isPrint;
