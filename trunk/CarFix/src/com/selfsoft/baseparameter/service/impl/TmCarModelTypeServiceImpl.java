@@ -179,6 +179,8 @@ public class TmCarModelTypeServiceImpl implements ITmCarModelTypeService{
 					
 					_tmCarModelType.setTmWorkingHourPrice(tmWorkingHourPrice);
 					
+					this.insert(_tmCarModelType);
+					
 					success_flag += "成功导入车型  " + _tmCarModelType.getModelCode() ;
 				}
 				
