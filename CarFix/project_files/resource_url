@@ -18,6 +18,7 @@ http://localhost:8080/CarFix/pages/secrity/tmWorkTypeFindAction.action          
 http://localhost:8080/CarFix/pages/secrity/tmDepartmentFindAction.action                   --部门 
 http://localhost:8080/CarFix/pages/baseparameter/minusConfigAction.action                  --车身部位
 http://localhost:8080/CarFix/pages/baseparameter/tmProjectTypeFindAction.action            --维修项目类型定义
+http://localhost:8080/CarFix/pages/baseinformation/tbSalePriceForwardPageAction.action	   --销售价系数
 ------------------------------------------------------------------------------------------------------
 
 ------------------------------信息管理-----------------------------------------------------------------
