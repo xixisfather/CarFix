@@ -39,6 +39,8 @@ public class TbPartInfo implements java.io.Serializable {
 	private Double minStoreQuantity;			//最小库存
 	private Double storeQuantity;				//库存数量
 	private Double costPrice;					//成本价
+	private Double rateCostPrice;				//含税成本价
+
 	private Double stockPrice;					//进货价(记录最后一次的进货价)
 	private Double stockMoney;					//库存金额
 
@@ -399,7 +401,7 @@ public class TbPartInfo implements java.io.Serializable {
 	private BigDecimal pageCostPrice;
 
 	public BigDecimal getPageCostPrice() {
-		
+		/*&
 		if(null != this.costPrice){
 			
 			pageCostPrice = new BigDecimal(this.costPrice).multiply(new BigDecimal(1.17)).setScale(0, BigDecimal.ROUND_HALF_UP);
@@ -408,11 +410,20 @@ public class TbPartInfo implements java.io.Serializable {
 		}
 		
 		return pageCostPrice;
+		*/
+		return new BigDecimal(rateCostPrice);
 	}
 
 	public void setPageCostPrice(BigDecimal pageCostPrice) {
 		this.pageCostPrice = pageCostPrice;
 	}
 
-	
+	public Double getRateCostPrice() {
+		return rateCostPrice;
+	}
+
+	public void setRateCostPrice(Double rateCostPrice) {
+		this.rateCostPrice = rateCostPrice;
+	}
+
 }
