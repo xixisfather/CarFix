@@ -15,7 +15,8 @@
 		<link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/css/global.css" />
 	</head>
 	<script type="text/javascript">
-	
+
+		var sellpricerate = "${salePriceRate}";
 		function addTbPartInfo(){
 			if(!isvalide()) return;
 		
@@ -100,8 +101,9 @@
 			var costPrice = document.getElementById("costPrice");
 			costPrice.value = formatFloat(rateCostPrice.value/1.17,2);
 			var soleType = document.getElementById("soleType");
-			soleType.value=rateCostPrice.value*1.6;
+			soleType.value=rateCostPrice.value*sellpricerate;
 		}
+
 	</script>
 	<body>
 	
