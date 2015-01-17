@@ -56,6 +56,9 @@
         <property name="costPrice" type="java.lang.Double">
             <column name="COST_PRICE" precision="10" />
         </property>
+          <property name="rateCostPrice" type="java.lang.Double">
+            <column name="RATE_COST_PRICE" precision="10" />
+        </property>
         <property name="stockPrice" type="java.lang.Double">
             <column name="STOCK_PRICE" precision="10" />
         </property>

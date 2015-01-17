@@ -127,6 +127,8 @@
  				<value>com/selfsoft/business/model/TbStoreHouseCheckDetail.hbm.xml</value>
  				<value>com/selfsoft/business/model/TbStoreHouseCheck.hbm.xml</value>
  				
+ 				<value>com/selfsoft/baseinformation/model/TbSalePrice.hbm.xml</value>
+ 				
  			</list>
  		</property> 		
  		<property name="hibernateProperties">

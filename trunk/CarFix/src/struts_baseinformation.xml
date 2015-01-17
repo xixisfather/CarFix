@@ -783,5 +783,17 @@
 		</action>
  		<!-- 工位集 -->
  		
+ 		
+ 		<action name="tbSalePriceForwardPageAction" class="com.selfsoft.baseinformation.action.SalePriceAction" method="forwardPage">
+			<result name="editPage">
+				/pages/baseinformation/TbSalePriceEdit.jsp
+			</result>
+		</action>
+		
+		<action name="updateTbSalPriceAction" class="com.selfsoft.baseinformation.action.SalePriceAction" method="updateTbSalPrice">
+			<result name="success">
+				/pages/baseinformation/TbSalePriceEdit.jsp
+			</result>
+		</action>
 	</package>	
  </struts> 	

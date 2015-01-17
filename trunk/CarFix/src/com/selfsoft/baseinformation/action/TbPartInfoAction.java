@@ -29,10 +29,12 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.selfsoft.baseinformation.model.TbPartCollection;
 import com.selfsoft.baseinformation.model.TbPartInfo;
 import com.selfsoft.baseinformation.model.TbPartSolePrice;
+import com.selfsoft.baseinformation.model.TbSalePrice;
 import com.selfsoft.baseinformation.model.TbWorkingInfo;
 import com.selfsoft.baseinformation.service.ITbPartCollectionService;
 import com.selfsoft.baseinformation.service.ITbPartInfoService;
 import com.selfsoft.baseinformation.service.ITbPartSolePriceService;
+import com.selfsoft.baseinformation.service.ITbSalePriceService;
 import com.selfsoft.baseinformation.vo.TbPartInfoVo;
 import com.selfsoft.baseparameter.model.TmCarModelType;
 import com.selfsoft.baseparameter.model.TmPartType;
@@ -92,6 +94,8 @@ ServletRequestAware, ServletResponseAware{
 	private IStockXLSImportService stockXLSImportService;
 	@Autowired
 	private ITmProjectTypeService tmProjectTypeService;
+	@Autowired
+	private ITbSalePriceService tbSalePriceService;
 	
 	private TbPartInfo tbPartInfo;
 	
@@ -296,12 +300,13 @@ ServletRequestAware, ServletResponseAware{
 		List<TmUnit> unitList = tmUnitService.findAll();
 		List<TmPartType> partTypeList = tmPartTypeService.findAll();
 		List<TmSoleType> soleTypeList = tmSoleTypeService.findAll();
-		
+		TbSalePrice tbsaleprice = tbSalePriceService.findAll();
 		request.setAttribute("stroeHouseList", stroeHouseList);
 		request.setAttribute("carModelTypeList", carModelTypeList);
 		request.setAttribute("unitList", unitList);
 		request.setAttribute("partTypeList", partTypeList);
 		request.setAttribute("soleTypeList", soleTypeList);
+		request.setAttribute("salePriceRate", tbsaleprice!=null?tbsaleprice.getRate():"1.6");
 		
 		if (null != id && !"".equals(id)) {
 
