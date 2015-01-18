@@ -757,6 +757,10 @@
 			
 		</action>
 		
+		<action name="tbFixEntrustPrePrintAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="printPreTbFixEntrust">
+			
+		</action>
+		
 		<action name="tbFixEntrustPrintTemplateAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="printTbEntrustTemplate">
 			
 		</action>
