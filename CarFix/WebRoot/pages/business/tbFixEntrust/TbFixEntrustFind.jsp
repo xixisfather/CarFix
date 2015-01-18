@@ -125,8 +125,8 @@
 	<e3t:table id="tbFixEntrustTable" uri="tbFixEntrustFindAction.action"
 		var="tbFixEntrust" scope="request" items="tbFixEntrustList"
 		mode="ajax" toolbarPosition="bottom" skin="E3002" pageSize="10"
-		width="1100" height="340" caption="委托书">
-		<e3t:column property="no" title="操作(前按下刷新)" sortable="false" width="460">
+		width="1100" height="340" caption="委托书(操作前请先按下刷新)">
+		<e3t:column property="no" title="操作" sortable="false" width="460">
 			<c:if
 				test="${tbFixEntrust.entrustStatus==1||tbFixEntrust.entrustStatus==0||tbFixEntrust.entrustStatus==4||tbFixEntrust.entrustStatus==5}">
 				<a
@@ -208,6 +208,12 @@
 				        <a
 						href="javascript:editObject('${tbFixEntrust.id}','tbFixEntrustPrintAction.action',600,300);">
 						<font color="blue"> 打印委托书 </font>
+					</a>
+					
+					&nbsp;&nbsp;
+				        <a
+						href="javascript:editObject('${tbFixEntrust.id}','tbFixEntrustPrePrintAction.action',600,300);">
+						<font color="blue"> 打印预结算 </font>
 					</a>
 
 				</c:otherwise>

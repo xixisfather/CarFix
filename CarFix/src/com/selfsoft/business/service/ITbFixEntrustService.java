@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.selfsoft.business.model.TbFixEntrust;
 import com.selfsoft.business.vo.StatisticsTbFixBusinessVo;
 
@@ -69,4 +71,6 @@ public interface ITbFixEntrustService {
 	
 	public void printTbFixEntrustTemplateBlankXTL(OutputStream os, String tpl, Long tbFixEntrustId);
 	
+	public Map putEntrustBalanceReportParamMap(Long id,
+			HttpServletRequest request);
 }

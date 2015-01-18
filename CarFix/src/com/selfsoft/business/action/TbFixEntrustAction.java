@@ -1142,4 +1142,17 @@ public class TbFixEntrustAction extends ActionSupport implements
 		
 		os.close();
 	} 
+	
+	
+	public String printPreTbFixEntrust() throws Exception{
+		
+		String id = request.getParameter("id");
+			
+		Map map = tbFixEntrustService.putEntrustBalanceReportParamMap(Long.valueOf(id),request);
+			
+		ReportFileFromStream.parsePdfFromStream(request, response,map);
+			
+		return null;
+		
+	}
 }
