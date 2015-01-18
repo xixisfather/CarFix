@@ -274,7 +274,7 @@
 				</a>
 			</c:if>
 				 &nbsp;&nbsp;
-				<a href="#" onclick="alert('定制4S店打印模板,请联系荣经理,手机号码:15921514987');"><font
+				<a href="#" onclick="alert('定制4S店打印模板,请联系荣经理,手机号码:18116345709');"><font
 				color="blue">4S店打印模板</font></a>
 		</e3t:column>
 		<e3t:column property="entrustCode" title="委托书号" />
