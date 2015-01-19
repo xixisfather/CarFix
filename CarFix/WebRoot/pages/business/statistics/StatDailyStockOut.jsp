@@ -91,8 +91,8 @@
 			<e3t:column property="stockOutCode" title="单据号码" />
 			<e3t:column property="outTypeName" title="出库类型" />
 			<e3t:column width="40" property="quantity" title="数量" />
-			<e3t:column width="60"property="costPrice" title="成本价" />
-			<e3t:column width="60"property="sellPrice" title="销售价" />
+			<e3t:column width="60" property="costPrice" title="成本价" />
+			<e3t:column width="60" property="sellPrice" title="销售价" />
 			<e3t:column property="stockOutDate" title="出库日期" >
 				<fmt:formatDate value="${tbPartInfo.stockOutDate}" />
 			</e3t:column>
