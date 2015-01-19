@@ -4643,9 +4643,18 @@ public class TbFixEntrustServiceImpl implements ITbFixEntrustService {
 		 * Constants.BALANCE_ALL);
 		 */
 		/* update by baijx 显示需要打印的明细列表 */
-		List<TbMaintianVo> maintianvos = tbMaintainPartContentService
-				.getTbMaintianDetailVosByEntrustIdPrint(tbFixEntrust.getId(),
-						Constants.BALANCE_ALL);
+//		List<TbMaintianVo> maintianvos = tbMaintainPartContentService
+//				.getTbMaintianDetailVosByEntrustIdPrint(tbFixEntrust.getId(),
+//						Constants.BALANCE_ALL);
+		List<TbMaintainPartContent> result = tbMaintainPartContentService.getViewEntrustMaintianContent(tbFixEntrust.getId());
+		List<TbMaintianVo> maintianvos  = null;
+		
+		if(result != null && result.size()>0){
+			maintianvos  = tbMaintainPartContentService.getTbMaintianDetailVos(result.get(0).getMaintainCode());
+			
+			
+		}
+		
 		// 销售单列表
 		List<TmStockOutDetVo> tmStockOutDetVos = tmStockOutService
 				.getSellDetailByEntrustCode(tbFixEntrust.getEntrustCode(),
