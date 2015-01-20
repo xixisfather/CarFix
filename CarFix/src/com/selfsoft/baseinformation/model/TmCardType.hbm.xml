@@ -70,5 +70,13 @@
         <property name="pjYhl" type="java.lang.Double">
         	<column name="PJ_YHL"/>
         </property>
+        
+        <property name="dhFullMoney" type="java.lang.Integer">
+            <column name="DH_FULL_MONEY"/>
+        </property>
+        
+        <property name="dhFullGf" type="java.lang.Integer">
+            <column name="DH_FULL_GF"/>
+        </property>
     </class>
 </hibernate-mapping>
