@@ -134,6 +134,6 @@ insert into tb_sale_price values ('1.6');
 
 2015-01-20 ADD BY CCR
 alter table TM_CARD_TYPE add DH_FULL_MONEY int；
-alter table TM_CARD_TYPE add DH_FULL_GF int；
+alter table TM_CARD_TYPE add DH_FULL_POINT int；
 
 
