@@ -165,6 +165,25 @@
 				</tr>
 				
 				<tr>
+					<td><hr/></td>
+				</tr>
+				
+				
+				<tr>
+					<td>D.积&nbsp;分&nbsp;兑&nbsp;换&nbsp;规&nbsp;则:(<font color="red">100积分兑换1元，如果250积分则兑换2元，依次类推</font>)</td>
+				</tr>
+				
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				
+				<tr>
+					<td>
+						&nbsp;&nbsp;&nbsp;&nbsp;<s:textfield id="dhFullPoint" name="tmCardType.dhFullPoint" size="4"/><font color="red">*</font>&nbsp;积&nbsp;分&nbsp;兑&nbsp;换<s:textfield id="dhFullMoney" name="tmCardType.dhFullMoney" size="4"/><font color="red">*</font>&nbsp;元
+					</td>
+				</tr>
+				
+				<tr>
 
 					<td align="center" colspan="2">
 						<input type="submit" value="修改" />

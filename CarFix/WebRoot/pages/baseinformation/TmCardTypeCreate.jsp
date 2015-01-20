@@ -160,6 +160,32 @@
 				<tr>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;2.配&nbsp;件&nbsp;优&nbsp;惠&nbsp;率<s:textfield id="pjYhl" name="tmCardType.pjYhl" size="4" value="0.00" onkeyup="clearNoNum22(this,0.01,1.00)"/><font color="red">*</font></td>
 				</tr>
+				
+				<tr>
+					<td><hr/></td>
+				</tr>
+				
+				
+				<tr>
+					<td>D.积&nbsp;分&nbsp;兑&nbsp;换&nbsp;规&nbsp;则:(<font color="red">100积分兑换1元，如果250积分则兑换2元，依次类推</font>)</td>
+				</tr>
+				
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				
+				<tr>
+					<td>
+						&nbsp;&nbsp;&nbsp;&nbsp;<s:textfield id="dhFullPoint" name="tmCardType.dhFullPoint" size="4" value="100"/><font color="red">*</font>&nbsp;积&nbsp;分&nbsp;兑&nbsp;换<s:textfield id="dhFullMoney" name="tmCardType.dhFullMoney" size="4" value="0"/><font color="red">*</font>&nbsp;元
+					</td>
+				</tr>
+				
+				
+				
+				
+				
+				
+				
 				<tr>
 
 					<td align="center" colspan="2">
