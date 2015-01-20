@@ -34,7 +34,7 @@ public class TmCardType implements java.io.Serializable{
 	
 	private Integer dhFullMoney;
 	
-	private Integer dhFullGf;
+	private Integer dhFullPoint;
 
 	public Long getId() {
 		return id;
@@ -164,13 +164,15 @@ public class TmCardType implements java.io.Serializable{
 		this.dhFullMoney = dhFullMoney;
 	}
 
-	public Integer getDhFullGf() {
-		return dhFullGf;
+	public Integer getDhFullPoint() {
+		return dhFullPoint;
 	}
 
-	public void setDhFullGf(Integer dhFullGf) {
-		this.dhFullGf = dhFullGf;
+	public void setDhFullPoint(Integer dhFullPoint) {
+		this.dhFullPoint = dhFullPoint;
 	}
+
+	
 	
 	
 }
