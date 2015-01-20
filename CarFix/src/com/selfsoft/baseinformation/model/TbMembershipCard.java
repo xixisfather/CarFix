@@ -15,7 +15,11 @@ public class TbMembershipCard implements java.io.Serializable{
 	private Long cardPoint;
 	
 	private Double cardSaving;
-	
+	/**
+	 * 1-正常
+	 * 2-失效
+	 * 3-挂失
+	 */
 	private Long cardStatus;
 	
 	private TbCustomer tbCustomer;
