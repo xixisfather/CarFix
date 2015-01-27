@@ -96,9 +96,10 @@
 			</table>
 		
 		</s:form>
+		<font color="red">重要：修改现有维修发料单前请按下刷新按钮</font>
 		<e3t:table id="tbMaintainTable" uri="findMaintainContentAction.action" var="maintain"
 			scope="request" items="maintianVos" mode="ajax" caption="维修发料列表"
-			toolbarPosition="bottom" skin="E3002" pageSize="10" width="800"
+			toolbarPosition="bottom" skin="E3002" pageSize="10" width="1000"
 			height="320" >
 			<e3t:column property="maintainCode" title="维修发料单号" />
 			<e3t:column property="entrustCode" title="委托书号" />
@@ -106,7 +107,7 @@
 			<e3t:column property="customerName" title="客户姓名" />
 			<e3t:column property="totalPrice" title="金额合计" />
 			<e3t:column property="confirmName"  title="状态" />
-			<e3t:column property="no" title="操作"
+			<e3t:column property="no" title="操作(修改现有维修发料单前请按下刷新按钮)"
 				sortable="false">
 				<a href="javascript:isMaintainEdit('${maintain.maintainCode}','${maintain.entrustId}','${maintain.isConfirm}');">
 					<font color="blue">
