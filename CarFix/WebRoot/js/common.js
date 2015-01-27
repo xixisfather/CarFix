@@ -537,7 +537,7 @@ TabPanel.create=function(renderToId,height,tabpageArray){
 //保留小数  val值  p小数位数
 function formatFloat(val,p){
 	with(Math){  
-			return round(val*pow(10,p))/pow(10,p);  
+			return round(val*pow(10,p))/pow(10,p).toFixed(2);  
 	}  
 }
 
