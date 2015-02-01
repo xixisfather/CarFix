@@ -38,7 +38,7 @@
 				</tr>
 				
 				<tr>
-					<td>A.消&nbsp;费&nbsp;奖&nbsp;励&nbsp;规&nbsp;则:(<font color="red">满100返回3元,如果消费530元,那么返还  500/100 * 3 = 5*3 = 15元</font>)</td>
+					<td>A1.一&nbsp;般&nbsp;消&nbsp;费(修理类型中没有【保险】关键字的)&nbsp;奖&nbsp;励&nbsp;规&nbsp;则:(<font color="red">满100返回3元,如果消费530元,那么返还  500/100 * 3 = 5*3 = 15元</font>)</td>
 				</tr>
 				
 				<tr>
@@ -117,6 +117,96 @@
 					</td>
 				</tr>
 				
+				
+				<tr>
+					<td><hr/></td>
+				</tr>
+				
+				<tr>
+					<td>A2.保&nbsp;险&nbsp;消&nbsp;费(修理类型中有【保险】关键字的)&nbsp;奖&nbsp;励&nbsp;规&nbsp;则:(<font color="red">满100返回3元,如果消费530元,那么返还  500/100 * 3 = 5*3 = 15元</font>)</td>
+				</tr>
+				
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				
+				<tr>
+					<td>
+					
+						&nbsp;&nbsp;&nbsp;&nbsp;1.工&nbsp;时&nbsp;消&nbsp;费&nbsp;满&nbsp;
+						
+						<s:textfield id="gsBxMFullMoney" name="tmCardType.gsBxMFullMoney" size="4" value="100"/><font color="red">*</font>
+						
+						&nbsp;元&nbsp;返&nbsp;还&nbsp;
+						
+						<s:textfield id="gsBxMGiveMoney" name="tmCardType.gsBxMGiveMoney" size="4" value="0"/><font color="red">*</font>
+						
+						&nbsp;元
+					</td>
+				</tr>
+				
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				
+				<tr>
+					<td>
+					
+						&nbsp;&nbsp;&nbsp;&nbsp;2.配&nbsp;件&nbsp;消&nbsp;费&nbsp;满&nbsp;
+						
+						<s:textfield id="pjBxMFullMoney" name="tmCardType.pjBxMFullMoney" size="4" value="100"/><font color="red">*</font>
+						
+						&nbsp;元&nbsp;返&nbsp;还&nbsp;
+						
+						<s:textfield id="pjBxMGiveMoney" name="tmCardType.pjBxMGiveMoney" size="4" value="0"/><font color="red">*</font>
+						
+						&nbsp;元
+					</td>
+				</tr>
+				
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				
+				<tr>
+					<td>
+					
+						&nbsp;&nbsp;&nbsp;&nbsp;3.工&nbsp;时&nbsp;消&nbsp;费&nbsp;满&nbsp;
+						
+						<s:textfield id="gsBxPFullMoney" name="tmCardType.gsBxPFullMoney" size="4" value="100"/><font color="red">*</font>
+						
+						&nbsp;元&nbsp;返&nbsp;还&nbsp;
+						
+						<s:textfield id="gsBxPGivePoint" name="tmCardType.gsBxPGivePoint" size="4" value="0"/><font color="red">*</font>
+						
+						&nbsp;积分
+					</td>
+				</tr>
+				
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				
+				
+				
+				
+				
+				
+				<tr>
+					<td>
+					
+						&nbsp;&nbsp;&nbsp;&nbsp;4.配&nbsp;件&nbsp;消&nbsp;费&nbsp;满&nbsp;
+						
+						<s:textfield id="pjBxPFullMoney" name="tmCardType.pjBxPFullMoney" size="4" value="100"/><font color="red">*</font>
+						
+						&nbsp;元&nbsp;返&nbsp;还&nbsp;
+						
+						<s:textfield id="pjBxPGivePoint" name="tmCardType.pjBxPGivePoint" size="4" value="0"/><font color="red">*</font>
+						
+						&nbsp;积分
+					</td>
+				</tr>
+				
 				<tr>
 					<td><hr/></td>
 				</tr>
@@ -141,7 +231,7 @@
 				
 				<tr>
 					<td>
-						C.优&nbsp;惠&nbsp;率&nbsp;设&nbsp;定&nbsp;规&nbsp;则:(<font color="red">原价=0.00&nbsp;&nbsp;95折=0.05&nbsp;&nbsp;9折=0.10&nbsp;&nbsp;8折=0.2&nbsp;&nbsp;依次类推</font>)
+						C1.一&nbsp;般&nbsp;消&nbsp;费&nbsp;优&nbsp;惠&nbsp;率&nbsp;设&nbsp;定&nbsp;规&nbsp;则:(<font color="red">原价=0.00&nbsp;&nbsp;95折=0.05&nbsp;&nbsp;9折=0.10&nbsp;&nbsp;8折=0.2&nbsp;&nbsp;依次类推</font>)
 					</td>
 				</tr>
 				
@@ -159,6 +249,33 @@
 				
 				<tr>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;2.配&nbsp;件&nbsp;优&nbsp;惠&nbsp;率<s:textfield id="pjYhl" name="tmCardType.pjYhl" size="4" value="0.00" onkeyup="clearNoNum22(this,0.01,1.00)"/><font color="red">*</font></td>
+				</tr>
+				
+				
+				<tr>
+					<td><hr/></td>
+				</tr>
+				
+				<tr>
+					<td>
+						C2.保&nbsp;险&nbsp;消&nbsp;费&nbsp;优&nbsp;惠&nbsp;率&nbsp;设&nbsp;定&nbsp;规&nbsp;则:(<font color="red">原价=0.00&nbsp;&nbsp;95折=0.05&nbsp;&nbsp;9折=0.10&nbsp;&nbsp;8折=0.2&nbsp;&nbsp;依次类推</font>)
+					</td>
+				</tr>
+				
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				
+				<tr>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;1.工&nbsp;时&nbsp;优&nbsp;惠&nbsp;率<s:textfield id="gsBxYhl" name="tmCardType.gsBxYhl" size="4" value="0.00" onkeyup="clearNoNum22(this,0.01,1.00)"/><font color="red">*</font></td>
+				</tr>
+				
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				
+				<tr>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;2.配&nbsp;件&nbsp;优&nbsp;惠&nbsp;率<s:textfield id="pjBxYhl" name="tmCardType.pjBxYhl" size="4" value="0.00" onkeyup="clearNoNum22(this,0.01,1.00)"/><font color="red">*</font></td>
 				</tr>
 				
 				<tr>
@@ -181,6 +298,34 @@
 				</tr>
 				
 				
+				
+				<tr>
+					<td><hr/></td>
+				</tr>
+				
+				
+				<tr>
+					<td>D.增&nbsp;值&nbsp;服&nbsp;务&nbsp;定&nbsp;义:(<font color="red">定义刷卡结算的服务,如果无限次,尽量填写大数字如9999999</font>)</td>
+				</tr>
+				
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				
+				<%for(int i =0 ; i< 20; i++){%>
+				
+				<tr>
+					<td>
+						&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="serviceName<%= i%>" name="serviceName<%= i%>" size="4" value=""/>服务<font color="red">*</font>&nbsp;<input type="text" id="serviceCount<%=i %>" name="serviceCount<%=i %>" size="4" value=""/><font color="red">*</font>&nbsp;次
+					</td>
+				</tr>
+				<tr>
+					<td>
+						&nbsp;
+					</td>
+				</tr>
+				
+				<%}%>
 				
 				
 				

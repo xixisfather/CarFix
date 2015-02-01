@@ -97,6 +97,10 @@
 						
 						</s:textfield>
 						
+						<s:textfield id="dhMoney" name="tbBusinessBalance.dhMoney" value="0">
+						
+						</s:textfield>
+						
 						<input type="text" id="passFlag" value="${request.pass}"/>
 					</td>
 				</tr>
@@ -139,10 +143,12 @@
 
 		var passFlag = document.getElementById('passFlag');
 		
+		var payPattern = document.getElementById('payPattern');
+		
 		TabPanel.create('tabPlaceHolder',350,
 		[
 			{
-				id:'tbBusinessBalanceTab' , title:'结算清单',disabled:false,url:'tbBusinessBalanceTotalXsdFindAction.action?cardNo=' + cardNo.value+'&passFlag='+passFlag.value
+				id:'tbBusinessBalanceTab' , title:'结算清单',disabled:false,url:'tbBusinessBalanceTotalXsdFindAction.action?cardNo=' + cardNo.value+'&passFlag='+passFlag.value + '&payPattern=' + payPattern.value
 			},
 			{
 				id:'tbFixEntrustPartSoleContent' , title:'销售材料',disabled:false,url:'tmStockOutDetailShowAction.action?tmStockOutId='+tmStockOutId.value + '&cardNo=' + cardNo.value

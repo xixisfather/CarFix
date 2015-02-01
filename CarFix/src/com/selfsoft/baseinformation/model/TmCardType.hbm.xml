@@ -78,5 +78,48 @@
         <property name="dhFullPoint" type="java.lang.Integer">
             <column name="DH_FULL_POINT"/>
         </property>
+        
+        
+        
+        
+        <property name="gsBxMFullMoney" type="java.lang.Integer">
+            <column name="GS_BX_M_FULL_MONEY"/>
+        </property>
+        
+        <property name="pjBxMFullMoney" type="java.lang.Integer">
+            <column name="PJ_BX_M_FULL_MONEY"/>
+        </property>
+        
+        <property name="gsBxMGiveMoney" type="java.lang.Integer">
+            <column name="GS_BX_M_GIVE_MONEY"/>
+        </property>
+        
+        <property name="pjBxMGiveMoney" type="java.lang.Integer">
+            <column name="PJ_BX_M_GIVE_MONEY"/>
+        </property>
+        
+        <property name="gsBxPFullMoney" type="java.lang.Integer">
+            <column name="GS_BX_P_FULL_MONEY"/>
+        </property>
+        
+        <property name="pjBxPFullMoney" type="java.lang.Integer">
+            <column name="PJ_BX_P_FULL_MONEY"/>
+        </property>
+        
+        <property name="gsBxPGivePoint" type="java.lang.Integer">
+            <column name="GS_BX_P_GIVE_POINT"/>
+        </property>
+        
+        <property name="pjBxPGivePoint" type="java.lang.Integer">
+            <column name="PJ_BX_P_GIVE_POINT"/>
+        </property>
+        
+        <property name="gsBxYhl" type="java.lang.Double">
+        	<column name="GS_BX_YHL"/>
+        </property>
+        
+        <property name="pjBxYhl" type="java.lang.Double">
+        	<column name="PJ_BX_YHL"/>
+        </property>
     </class>
 </hibernate-mapping>

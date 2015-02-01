@@ -11,13 +11,17 @@ import org.springframework.stereotype.Service;
 
 import com.selfsoft.baseinformation.dao.ITmCardTypeDao;
 import com.selfsoft.baseinformation.model.TmCardType;
+import com.selfsoft.baseinformation.model.TmCardTypeService;
 import com.selfsoft.baseinformation.service.ITmCardTypeService;
+import com.selfsoft.baseinformation.service.ITmCardTypeServiceService;
 @Service("tmCardTypeService")
 public class TmCardTypeServiceImpl implements ITmCardTypeService{
 	
 	
 	@Autowired
 	private ITmCardTypeDao tmCardTypeDao;
+	@Autowired
+	private ITmCardTypeServiceService tmCardTypeServiceService;
 	
 	public List<TmCardType> findAll(){
 		
@@ -54,17 +58,54 @@ public class TmCardTypeServiceImpl implements ITmCardTypeService{
 	public void insert(TmCardType tmCardType) {
 		// TODO Auto-generated method stub
 		tmCardTypeDao.insert(tmCardType);
+		
+		List<TmCardTypeService> tmCardTypeServiceList = tmCardType.getTmCardTypeServiceList();
+		
+		if(null != tmCardTypeServiceList && tmCardTypeServiceList.size() > 0) {
+			
+			for (TmCardTypeService tmCardTypeService : tmCardTypeServiceList) {
+				
+				tmCardTypeService.setCardTypeId(tmCardType.getId());
+				
+				tmCardTypeServiceService.insertTmCardTypeService(tmCardTypeService);
+			}
+			
+		}
 	}
 
 	@Override
 	public void update(TmCardType tmCardType) {
-		// TODO Auto-generated method stub
+		
+		tmCardTypeServiceService.deleteByTmCardTypeServiceId(tmCardType.getId());
+		
 		tmCardTypeDao.update(tmCardType);
+		
+		List<TmCardTypeService> tmCardTypeServiceList = tmCardType.getTmCardTypeServiceList();
+		
+		if(null != tmCardTypeServiceList && tmCardTypeServiceList.size() > 0) {
+			
+			for (TmCardTypeService tmCardTypeService : tmCardTypeServiceList) {
+				
+				tmCardTypeService.setCardTypeId(tmCardType.getId());
+				
+				tmCardTypeServiceService.insertTmCardTypeService(tmCardTypeService);
+			}
+			
+		}
 	}
 	
 	public TmCardType findById(Long id){
 		
-		return tmCardTypeDao.findById(id);
+		TmCardType tmCardType = tmCardTypeDao.findById(id);
+		
+		if(null != tmCardType) {
+			
+			List<TmCardTypeService> tmCardTypeServiceList = tmCardTypeServiceService.findByTmCardTypeServiceId(id);
+			
+			tmCardType.setTmCardTypeServiceList(tmCardTypeServiceList);
+		}
+		
+		return tmCardType;
 	}
 	
 	/**
@@ -194,19 +235,30 @@ public class TmCardTypeServiceImpl implements ITmCardTypeService{
 	 * @param cardTypeId
 	 * @return
 	 */
-	public Integer calcGsGiveMoney(Double gsMoney, Long cardTypeId){
+	public Integer calcGsGiveMoney(Double gsMoney, Long cardTypeId,String fixType){
 		
 		TmCardType tmCardType = tmCardTypeDao.findById(cardTypeId);
 		
 		BigDecimal d_gsMoney = new BigDecimal(gsMoney);
 		
-		Integer gsMFullMoney = tmCardType.getGsMFullMoney();
+		Integer gsMFullMoney = 0;
+		Integer gsMGiveMoney = 0;
+		if(fixType.indexOf("保险") == -1){
+			gsMFullMoney = tmCardType.getGsMFullMoney();
+			gsMGiveMoney = tmCardType.getGsMGiveMoney();
+		}
+		else {
+			gsMFullMoney = tmCardType.getGsBxMFullMoney();
+			gsMGiveMoney = tmCardType.getGsBxMGiveMoney();
+		}
+				
+				
 		
 		BigDecimal bs = d_gsMoney.divide(new BigDecimal(gsMFullMoney),2,
 				BigDecimal.ROUND_HALF_UP).setScale(2,
 						BigDecimal.ROUND_HALF_UP);
 		
-		return bs.intValue() * tmCardType.getGsMGiveMoney();
+		return bs.intValue() * gsMGiveMoney;
 		
 	}
 	
@@ -216,19 +268,27 @@ public class TmCardTypeServiceImpl implements ITmCardTypeService{
 	 * @param cardTypeId
 	 * @return
 	 */
-	public Integer calcGsGivePoint(Double gsMoney, Long cardTypeId){
+	public Integer calcGsGivePoint(Double gsMoney, Long cardTypeId, String fixType){
 		
 		TmCardType tmCardType = tmCardTypeDao.findById(cardTypeId);
 		
 		BigDecimal d_gsMoney = new BigDecimal(gsMoney);
-		
-		Integer gsPFullMoney = tmCardType.getGsPFullMoney();
+		Integer gsPFullMoney = 0;
+		Integer gsPGivePoint = 0;
+		if(fixType.indexOf("保险")==-1) {
+			gsPFullMoney = tmCardType.getGsPFullMoney();
+			gsPGivePoint = tmCardType.getGsPGivePoint();
+		}
+		else {
+			gsPFullMoney = tmCardType.getGsBxPFullMoney();
+			gsPGivePoint = tmCardType.getGsBxPGivePoint();
+		}
 		
 		BigDecimal bs = d_gsMoney.divide(new BigDecimal(gsPFullMoney),2,
 				BigDecimal.ROUND_HALF_UP).setScale(2,
 						BigDecimal.ROUND_HALF_UP);
 		
-		return bs.intValue() * tmCardType.getGsPGivePoint();
+		return bs.intValue() * gsPGivePoint;
 		
 	}
 	
@@ -238,19 +298,30 @@ public class TmCardTypeServiceImpl implements ITmCardTypeService{
 	 * @param cardTypeId
 	 * @return
 	 */
-	public Integer calcPjGiveMoney(Double pjMoney, Long cardTypeId){
+	public Integer calcPjGiveMoney(Double pjMoney, Long cardTypeId,String fixType){
 		
 		TmCardType tmCardType = tmCardTypeDao.findById(cardTypeId);
 		
 		BigDecimal d_pjMoney = new BigDecimal(pjMoney);
 		
-		Integer pjMFullMoney = tmCardType.getPjMFullMoney();
+		Integer pjMFullMoney = 0;
+		Integer pjMGiveMoney = 0;
+		if(fixType.indexOf("保险")==-1) {
+			pjMFullMoney = tmCardType.getPjMFullMoney();
+			pjMGiveMoney = tmCardType.getPjMGiveMoney();
+		}
+		else {
+			pjMFullMoney = tmCardType.getPjBxMFullMoney();
+			pjMGiveMoney = tmCardType.getPjBxMGiveMoney();
+		}
+		
+		
 		
 		BigDecimal bs = d_pjMoney.divide(new BigDecimal(pjMFullMoney),2,
 				BigDecimal.ROUND_HALF_UP).setScale(2,
 						BigDecimal.ROUND_HALF_UP);
 		
-		return bs.intValue() * tmCardType.getPjMGiveMoney();
+		return bs.intValue() * pjMGiveMoney;
 		
 	}
 	
@@ -260,19 +331,29 @@ public class TmCardTypeServiceImpl implements ITmCardTypeService{
 	 * @param cardTypeId
 	 * @return
 	 */
-	public Integer calcPjGivePoint(Double pjMoney, Long cardTypeId){
+	public Integer calcPjGivePoint(Double pjMoney, Long cardTypeId, String fixType){
 		
 		TmCardType tmCardType = tmCardTypeDao.findById(cardTypeId);
 		
 		BigDecimal d_pjMoney = new BigDecimal(pjMoney);
+		Integer pjPFullMoney = 0;
+		Integer pjPGivePoint = 0;
+		if(fixType.indexOf("保险") == -1){
+			pjPFullMoney = tmCardType.getPjPFullMoney();
+			pjPGivePoint = tmCardType.getPjPGivePoint();
+		}
+		else {
+			pjPFullMoney = tmCardType.getPjBxPFullMoney();
+			pjPGivePoint = tmCardType.getPjBxPGivePoint();
+		}
 		
-		Integer pjPFullMoney = tmCardType.getPjPFullMoney();
+		
 		
 		BigDecimal bs = d_pjMoney.divide(new BigDecimal(pjPFullMoney),2,
 				BigDecimal.ROUND_HALF_UP).setScale(2,
 						BigDecimal.ROUND_HALF_UP);
 		
-		return bs.intValue() * tmCardType.getPjPGivePoint();
+		return bs.intValue() * pjPGivePoint;
 		
 	}
 	

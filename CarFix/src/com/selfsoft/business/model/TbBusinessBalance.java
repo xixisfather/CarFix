@@ -387,6 +387,10 @@ public class TbBusinessBalance implements java.io.Serializable {
 				payPatternShow = Constants.PAYCARDSHOW;
 			}
 			
+			else if(Constants.PAYMEMBERCARD.equals(this.payPattern)){
+				payPatternShow = Constants.PAYMEMBERCARDSHOW;
+			}
+			
 		}
 		
 		return payPatternShow;
@@ -839,6 +843,17 @@ public class TbBusinessBalance implements java.io.Serializable {
 
 	public void setUserRealNameServer(String userRealNameServer) {
 		this.userRealNameServer = userRealNameServer;
+	}
+	
+	private Integer dhMoney;
+
+	public Integer getDhMoney() {
+		return dhMoney;
+	}
+
+
+	public void setDhMoney(Integer dhMoney) {
+		this.dhMoney = dhMoney;
 	}
 	
 	

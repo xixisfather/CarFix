@@ -131,17 +131,17 @@ ServletRequestAware, ServletResponseAware{
 		
 		tbMembershipCard.setCardStatus(Constants.CARD_VALID_STATUS);
 		
-		if(null!=tbMembershipCard.getTbCarInfo()){
-			
-			if(null != tbMembershipCardService.findByCarInfo(tbMembershipCard.getTbCarInfo())){
-				
-				ActionContext.getContext().put("msg","车牌号【 "+ tbMembershipCard.getLicenseCode() +"】已经办理了会员卡,卡号为【" +tbMembershipCardService.findByCarInfo(tbMembershipCard.getTbCarInfo()).getCardNo()+"】");
-				
-				return Constants.FAILURE;
-				
-			}
-			
-		}
+//		if(null!=tbMembershipCard.getTbCarInfo()){
+//			
+//			if(null != tbMembershipCardService.findByCarInfo(tbMembershipCard.getTbCarInfo())){
+//				
+//				ActionContext.getContext().put("msg","车牌号【 "+ tbMembershipCard.getLicenseCode() +"】已经办理了会员卡,卡号为【" +tbMembershipCardService.findByCarInfo(tbMembershipCard.getTbCarInfo()).getCardNo()+"】");
+//				
+//				return Constants.FAILURE;
+//				
+//			}
+//			
+//		}
 		
 		String pass = CommonMethod.encryptBASE64(tbMembershipCard.getCardPassword()).toString();
 		
@@ -168,26 +168,26 @@ ServletRequestAware, ServletResponseAware{
 	
 	public String updateTbMembershipCard() throws Exception{
 		
-		if(null!=tbMembershipCard.getTbCarInfo()){
-			
-			if(null != tbMembershipCardService.findByCarInfo(tbMembershipCard.getTbCarInfo())){
-				
-				if(!tbMembershipCardService.findByCarInfo(tbMembershipCard.getTbCarInfo()).getId().equals(tbMembershipCard.getId())){
-				
-					ActionContext.getContext().put("msg","车牌号【 "+ tbMembershipCard.getLicenseCode() +"】已经办理了会员卡,卡号为【" +tbMembershipCardService.findByCarInfo(tbMembershipCard.getTbCarInfo()).getCardNo()+"】");
-				
-					return Constants.FAILURE;
-				}
-			}
-			
-		}
+//		if(null!=tbMembershipCard.getTbCarInfo()){
+//			
+//			if(null != tbMembershipCardService.findByCarInfo(tbMembershipCard.getTbCarInfo())){
+//				
+//				if(!tbMembershipCardService.findByCarInfo(tbMembershipCard.getTbCarInfo()).getId().equals(tbMembershipCard.getId())){
+//				
+//					ActionContext.getContext().put("msg","车牌号【 "+ tbMembershipCard.getLicenseCode() +"】已经办理了会员卡,卡号为【" +tbMembershipCardService.findByCarInfo(tbMembershipCard.getTbCarInfo()).getCardNo()+"】");
+//				
+//					return Constants.FAILURE;
+//				}
+//			}
+//			
+//		}
 		
 		TbMembershipCard _tbMembershipCard = tbMembershipCardService.findById(tbMembershipCard.getId());
 		
 		tbMembershipCard.setCardPassword(_tbMembershipCard.getCardPassword());
 		
 		if(tbMembershipCardService.validateCarNo(tbMembershipCard)){
-			tbMembershipCardService.updateTbMembershipCard(tbMembershipCard);
+			tbMembershipCardService.updateTbMembershipCard(tbMembershipCard,(TmUser)request.getSession().getAttribute("tmUser"),"修改卡信息!");
 		}else{
 			
 			ActionContext.getContext().put("msg","会员卡内码错误.");
@@ -227,7 +227,7 @@ ServletRequestAware, ServletResponseAware{
 			
 			try{
 				
-				tbMembershipCardService.updateTbMembershipCard(tbMembershipCard);
+				tbMembershipCardService.updateTbMembershipCard(tbMembershipCard, (TmUser)request.getSession().getAttribute("tmUser"),"修改卡" + tbMembershipCard.getCardStatusShow());
 				
 				flag = true;
 				
@@ -252,6 +252,7 @@ ServletRequestAware, ServletResponseAware{
 		return null;
 	}
 	
+	//生效
 	public String validTbMembershipCard() throws Exception{
 		
 		String id = request.getParameter("id");
@@ -266,7 +267,7 @@ ServletRequestAware, ServletResponseAware{
 			
 			try{
 				
-				tbMembershipCardService.updateTbMembershipCard(tbMembershipCard);
+				tbMembershipCardService.updateTbMembershipCard(tbMembershipCard,(TmUser)request.getSession().getAttribute("tmUser"),"修改卡生效");
 				
 				flag = true;
 				
@@ -322,6 +323,7 @@ ServletRequestAware, ServletResponseAware{
 		return Constants.SUCCESS;
 	}
 	
+	//积分消费
 	public String xfjfTbMembershipCard() throws Exception{
 		
 		try{
@@ -338,6 +340,11 @@ ServletRequestAware, ServletResponseAware{
 		return Constants.SUCCESS;
 	}
 	
+	/**
+	 * 换卡
+	 * @return
+	 * @throws Exception
+	 */
 	public String hkTbMembershipCard() throws Exception{
 		
 		try{
@@ -347,7 +354,7 @@ ServletRequestAware, ServletResponseAware{
 				
 				if(!tbMembershipCardService.findById(tbMembershipCard.getId()).getCardNo().equals(currentCardNo)){
 					
-					ActionContext.getContext().put("msg","会员卡号【" + currentCardNo + "】已经为车牌号【" + tbMembershipCardService.findById(tbMembershipCard.getId()).getTbCarInfo().getLicenseCode() + "】办理");
+					ActionContext.getContext().put("msg","会员卡号【" + currentCardNo + "】已经为客户号【" + tbMembershipCardService.findById(tbMembershipCardService.findByCardNo(currentCardNo).getId()).getTbCustomer().getCustomerCode() + tbMembershipCardService.findById(tbMembershipCardService.findByCardNo(currentCardNo).getId()).getTbCustomer().getCustomerName()+"】办理");
 					
 					return Constants.FAILURE;
 					
@@ -395,7 +402,7 @@ ServletRequestAware, ServletResponseAware{
 		
 		return null;
 	}
-	
+	//重置密码
 	public String resetPassword() throws Exception{
 
 		String cardPassword = CommonMethod.encryptBASE64(tbMembershipCard.getCardPassword()).toString();
@@ -404,7 +411,7 @@ ServletRequestAware, ServletResponseAware{
 		
 		tbMembershipCard.setCardPassword(cardPassword);
 		
-		tbMembershipCardService.updateTbMembershipCard(tbMembershipCard);
+		tbMembershipCardService.updateTbMembershipCard(tbMembershipCard, (TmUser)request.getSession().getAttribute("tmUser"), "修改密码");
 		
 		return Constants.SUCCESS;
 	}
@@ -427,4 +434,6 @@ ServletRequestAware, ServletResponseAware{
 		
 		return null;
 	}
+	
+
 }

@@ -37,8 +37,13 @@
 					<td>
 						<s:textfield id="cardNo" name="tbCardHis.cardNo"/><font color="red">(请先刷会员卡)</font>
 					</td>
-					<td>车牌号</td>
-					<td><s:textfield id="licenseCode" name="tbCardHis.licenseCode"/></td>
+					<td>客户号</td>
+					<td><s:textfield id="customerCode" name="tbCardHis.customerCode" onfocus="openWin();"/>
+					<img src="<%= request.getContextPath() %>/images/icons/find.gif"
+				style="cursor: pointer;" onclick="openWin();" />
+					</td>
+					<td>客户姓名</td>
+					<td><s:textfield id="customerName" name="tbCardHis.customerName"/></td>
 					<td>
 						操作日期从
 						<s:textfield id="operationDateFrom" name="tbCardHis.operationDateFrom">
@@ -85,10 +90,12 @@
 		
 		<e3t:table id="tbCardHisTable" uri="tbCardHisFindAction.action" var="tbCardHis"
 			scope="request" items="tbCardHisList" mode="ajax"
-			toolbarPosition="bottom" skin="E3002" pageSize="200" width="1200"
+			toolbarPosition="bottom" skin="E3002" pageSize="200" width="1800"
 			height="400" caption="会员卡历史记录">
 			
-			<e3t:column property="licenseCode" title="车牌号"/>
+			<e3t:column property="customerCode" title="客户号"/>
+			
+			<e3t:column property="customerName" title="客户姓名"/>
 			
 			<e3t:column property="operationType" title="操作类型"/>
 			

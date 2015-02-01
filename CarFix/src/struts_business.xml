@@ -2390,5 +2390,49 @@
 		</action>
 		<!-- 仓库月度期间收发存打印 -->
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!-- 洗车结算 -->
+		<action name="getMemberShipCardInfoAction" class="com.selfsoft.business.action.TbSmartBalanceAction" method="getMemberShipCardInfo">
+			<result name="success">
+				
+				/pages/business/tbSmartBalance/tbSmartBalanceCreate.jsp
+			</result>
+			<result name="failure">
+				
+				/pages/business/tbSmartBalance/tbSmartBalanceCreate.jsp
+			</result>
+		</action>
+		
+		
+		<action name="tbSmartBalanceCreateAction" class="com.selfsoft.business.action.TbSmartBalanceAction" method="tbSmartBalanceCreate">
+			<result name="success">
+				
+				/pages/business/tbSmartBalance/tbSmartBalancePrint.jsp
+			</result>
+			<result name="failure">
+				
+				/pages/business/tbSmartBalance/tbSmartBalanceCreate.jsp
+				
+			</result>
+		</action>
+		
+		<action name="tbSmartBalanceFindAction" class="com.selfsoft.business.action.TbSmartBalanceAction" method="tbSmartBalanceFind">
+			
+			<result name="success">
+				
+				/pages/business/tbSmartBalance/tbSmartBalanceFind.jsp
+			</result>
+			
+		</action>
+		
+		<!-- 洗车结算 -->
+		
  	</package>	
  </struts>   

@@ -29,3 +29,9 @@ function tbCardHisTableE3ConfigHandler(pConfig) {
 	pConfig.form = "tbCardHisFindAction";
 	pConfig.showLoadingMsg = true;
 }
+
+function openWin() {
+	var props = "customerId,customerCode,customerName";
+	showCommonWin('findAllTmTbCustomerAction.action', '客户列表', 650, 350, props,
+			null);
+}

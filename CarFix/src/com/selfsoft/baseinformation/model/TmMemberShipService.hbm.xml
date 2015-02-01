@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.selfsoft.baseinformation.model.TmMemberShipService" table="TM_MEMBERSHIP_SERVICE"
+    dynamic-insert="true"
+    dynamic-update="true"
+    lazy="false"
+    >
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        
+        <property name="memberShipId" type="java.lang.Long">
+            <column name="MEMBERSHIP_ID"/>
+        </property>
+        
+        <property name="serviceName" type="java.lang.String">
+            <column name="SERVICE_NAME"/>
+        </property>
+        
+        <property name="serviceCount" type="java.lang.Integer">
+            <column name="SERVICE_COUNT"/>
+        </property>
+        
+    </class>
+</hibernate-mapping>

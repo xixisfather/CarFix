@@ -25,84 +25,82 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/pages/baseinformation/TbMembershipCard.js"
 	charset="UTF-8"></script>
+<!--
 <script type="text/javascript"
-	src="<%= request.getContextPath() %>/pages/business/tbFixEntrust/TbFixEntrust.js"
-	charset="UTF-8"></script>	
+	src="<%=request.getContextPath()%>/pages/business/tbFixEntrust/TbFixEntrust.js"
+	charset="UTF-8"></script>
+  -->
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/global.css" />
 </head>
 
 <body onload="document.getElementById('cardNo').focus();">
-<s:form action="tbMembershipCardUpdateAction.action" onsubmit="return tbMembershipCardFormValidate();">
+	<s:form action="tbMembershipCardUpdateAction.action"
+		onsubmit="return tbMembershipCardFormValidate();">
 
-	<table>
-		<tr>
-			<td>会员卡号</td>
+		<table>
+			<tr>
+				<td>会员卡号</td>
 
-			<td>
-			<s:hidden name="tbMembershipCard.id"></s:hidden>
-			<s:hidden name="tbMembershipCard.cardStatus"></s:hidden>
-			<s:hidden id="cardPoint"
-				name="tbMembershipCard.cardPoint"/>
-			<s:hidden id="cardSaving"
-				name="tbMembershipCard.cardSaving" />	
-			<s:textfield id="cardNo" name="tbMembershipCard.cardNo"
-				maxlength="50" onkeydown="EnterTab();"></s:textfield></td>
-
-			<td>卡种</td>
-			<td><s:select id="tmCardTypeId"
-				name="tbMembershipCard.tmCardType.id" list="#request.tmCardTypeMap"
-				emptyOption="false" listKey="key" listValue="value" /></td>
-		</tr>
-
-		<tr>
+				<td><s:hidden name="tbMembershipCard.id"></s:hidden> <s:hidden
+						name="tbMembershipCard.cardStatus"></s:hidden> <s:hidden
+						id="cardPoint" name="tbMembershipCard.cardPoint" /> <s:hidden
+						id="cardSaving" name="tbMembershipCard.cardSaving" /> <s:textfield
+						id="cardNo" name="tbMembershipCard.cardNo" maxlength="50"
+						onkeydown="EnterTab();"></s:textfield></td>
+			</tr>
 			
-			<td>车牌号</td>
-			<td><s:hidden id="tbCarInfoId"
-				name="tbMembershipCard.tbCarInfo.id"></s:hidden> <s:textfield
-				id="licenseCode" name="tbMembershipCard.tbCarInfo.licenseCode"
-				onblur="getInfoByCarLicense();" size="10" /> <font color="red">*</font>
-			<img src="<%= request.getContextPath() %>/images/icons/find.gif"
-				style="cursor: pointer;" onclick="openWin();" /></td>
-			<!--
-			<td>客户</td>
+			<tr>
+				<td>卡种</td>
+				<td><s:select id="tmCardTypeId"
+						name="tbMembershipCard.tmCardType.id"
+						list="#request.tmCardTypeMap" emptyOption="false" listKey="key"
+						listValue="value" /></td>
+			</tr>
 
-			<td>
-				<s:hidden id="customerId" name="tbMembershipCard.tbCustomer.id"></s:hidden>
-				<s:textfield id="customerName" name="tbMembershipCard.customerName"  onfocus="openWin();"  readonly="true"/><font color="red">*</font>
-			</td>
-			-->
-			<td>有效期</td>
 
-			<td><s:textfield id="validDate"
-				name="tbMembershipCard.validDate" size="15"
-				> 
-				<s:param name="value"><s:date name="tbMembershipCard.validDate" format="yyyy-MM-dd"/></s:param>
-				</s:textfield>
-				<e3c:calendar for="validDate" minDay="0"
-				dataFmt="yyyy-MM-dd" /></td>
+			<tr>
+			
+				<td>客户号：</td>
+				<td><s:hidden id="customerId"
+						name="tbMembershipCard.tbCustomer.id" /> <s:textfield
+						id="customerCode" onfocus="openWin();"
+						name="tbMembershipCard.tbCustomer.customerCode" /> <font
+					color="red">*</font> <img
+					src="<%=request.getContextPath()%>/images/icons/find.gif"
+					style="cursor: pointer;" onclick="openWin();" /></td>
+			</tr>
+			<tr>
+				<td>客户名称：</td>
+				<td><s:textfield id="customerName"
+						name="tbMembershipCard.tbCustomer.customerName" /></td>
 
-		</tr>
-		
-		<!--
-		<tr>
-			<td>初始积分</td>
-			<td><s:textfield id="cardPoint"
-				name="tbMembershipCard.cardPoint" maxlength="10"></s:textfield>
-			</td>
-			<td>初始卡内金额</td>
-			<td><s:textfield id="cardSaving"
-				name="tbMembershipCard.cardSaving" maxlength="10"></s:textfield>
-			</td>
-		</tr>
-		-->
-		<tr>
 
-			<td align="center" colspan="2"><input type="button" value="确定" onclick="formSubmit();"/>
-			&nbsp;&nbsp; <input type="reset" value="重置" /></td>
 
-		</tr>
-	</table>
-</s:form>
+
+
+			</tr>
+
+			<tr>
+				<td>有效期</td>
+
+				<td><s:textfield id="validDate"
+						name="tbMembershipCard.validDate" size="15">
+						<s:param name="value">
+							<s:date name="tbMembershipCard.validDate" format="yyyy-MM-dd" />
+						</s:param>
+					</s:textfield> <e3c:calendar for="validDate" minDay="0" dataFmt="yyyy-MM-dd" /></td>
+
+			</tr>
+
+			<tr>
+
+				<td align="center" colspan="2"><input type="button" value="确定"
+					onclick="formSubmit();" /> &nbsp;&nbsp; <input type="reset"
+					value="重置" /></td>
+
+			</tr>
+		</table>
+	</s:form>
 </body>
 </html>

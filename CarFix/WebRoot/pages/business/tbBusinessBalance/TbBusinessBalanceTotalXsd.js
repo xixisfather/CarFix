@@ -305,3 +305,22 @@ function acquireCardPass(originalRequest){
 	}
 	
 }
+
+function dhMoneyClick() {
+	
+	var dhMoney = document.getElementById("dhMoney");
+	var dhMoneyShow = document.getElementById("dhMoneyShow");
+	var shouldPayAmount = document.getElementById("shouldPayAmount");
+	var shouldPayAmountParent = parent.document.getElementById("shouldPayAmount");
+	
+	if(dhMoney.checked) {
+		
+		shouldPayAmount.value=shouldPayAmount.value-dhMoneyShow.value;
+		parent.document.getElementById('dhMoney').value=dhMoneyShow.value;  
+	}
+	else {
+		shouldPayAmount.value=parseFloat(shouldPayAmount.value)+parseInt(dhMoneyShow.value);
+		parent.document.getElementById('dhMoney').value=0;
+	}
+	
+}

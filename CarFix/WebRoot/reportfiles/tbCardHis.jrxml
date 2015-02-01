@@ -28,7 +28,7 @@ ORI_CARD_POINT as oriCardPointI,AFT_CARD_SAVING as aftCardSavingD,AFT_CARD_POINT
 OPERATION_DATE as operationDate,USER_NAME as userName,OPERATION_DESC as operationDesc from tb_card_his]]></queryString>
 
 	<field name="cardNo" class="java.lang.String"/>
-	<field name="licenseCode" class="java.lang.String"/>
+	<field name="customerName" class="java.lang.String"/>
 	<field name="operationType" class="java.lang.String"/>
 	<field name="oriCardSavingD" class="java.math.BigDecimal"/>
 	<field name="oriCardPointI" class="java.lang.Integer"/>
@@ -81,7 +81,7 @@ OPERATION_DATE as operationDate,USER_NAME as userName,OPERATION_DESC as operatio
 					<textElement textAlignment="Left" verticalAlignment="Middle">
 						<font fontName="新宋体" pdfFontName="STSong-Light" size="10" isBold="false" pdfEncoding ="UniGB-UCS2-H"/>
 					</textElement>
-				<text><![CDATA[车牌号]]></text>
+				<text><![CDATA[客户姓名]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
@@ -247,7 +247,7 @@ OPERATION_DATE as operationDate,USER_NAME as userName,OPERATION_DESC as operatio
 					<textElement textAlignment="Left" verticalAlignment="Middle">
 						<font fontName="新宋体" pdfFontName="STSong-Light" pdfEncoding ="UniGB-UCS2-H"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{licenseCode}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{customerName}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement

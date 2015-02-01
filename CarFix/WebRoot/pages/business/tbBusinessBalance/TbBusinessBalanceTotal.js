@@ -252,6 +252,8 @@ function sendCardNo(pass)
 	{
 		
 		var url = unescape(parent.window.location.href);
+		
+		//alert(url);
        
 		var urlSite = url.split("?")[0] + '?';
 		
@@ -322,6 +324,25 @@ function acquireCardPass(originalRequest){
 		alert("验证会员卡失败,请重新输入密码");
 		
 		cardPassword.value = '';
+	}
+	
+}
+
+function dhMoneyClick() {
+	
+	var dhMoney = document.getElementById("dhMoney");
+	var dhMoneyShow = document.getElementById("dhMoneyShow");
+	var shouldPayAmount = document.getElementById("shouldPayAmount");
+	var shouldPayAmountParent = parent.document.getElementById("shouldPayAmount");
+	
+	if(dhMoney.checked) {
+		
+		shouldPayAmount.value=shouldPayAmount.value-dhMoneyShow.value;
+		parent.document.getElementById('dhMoney').value=dhMoneyShow.value;  
+	}
+	else {
+		shouldPayAmount.value=parseFloat(shouldPayAmount.value)+parseInt(dhMoneyShow.value);
+		parent.document.getElementById('dhMoney').value=0;
 	}
 	
 }

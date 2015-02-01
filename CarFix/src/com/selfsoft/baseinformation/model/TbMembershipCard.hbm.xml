@@ -31,8 +31,8 @@
             <column name="CARD_STATUS"/>
         </property>
         
-        <many-to-one name="tbCarInfo" class="com.selfsoft.baseinformation.model.TbCarInfo" fetch="select">
-            <column name="CAR_ID" />
+        <many-to-one name="tbCustomer" class="com.selfsoft.baseinformation.model.TbCustomer" fetch="select">
+            <column name="CUSTOMER_ID" />
         </many-to-one>
         
         <property name="createDate" type="java.util.Date" update="false">

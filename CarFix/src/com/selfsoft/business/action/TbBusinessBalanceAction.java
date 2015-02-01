@@ -537,22 +537,22 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			/**
 			 * 工时返回金额
 			 */
-			Integer gsGiveMoney = tmCardTypeService.calcGsGiveMoney(gsMoney, tbMembershipCard.getTmCardType().getId());
+			Integer gsGiveMoney = tmCardTypeService.calcGsGiveMoney(gsMoney, tbMembershipCard.getTmCardType().getId(), tbFixEntrust.getTmFixType().getFixType());
 		
 			/**
 			 * 配件返回金额
 			 */
-			Integer pjGiveMoney = tmCardTypeService.calcPjGiveMoney(pjMoney, tbMembershipCard.getTmCardType().getId());
+			Integer pjGiveMoney = tmCardTypeService.calcPjGiveMoney(pjMoney, tbMembershipCard.getTmCardType().getId(),tbFixEntrust.getTmFixType().getFixType());
 		
 			/**
 			 * 工时返回积分
 			 */
-			Integer gsGivePoint = tmCardTypeService.calcGsGivePoint(gsMoney, tbMembershipCard.getTmCardType().getId());
+			Integer gsGivePoint = tmCardTypeService.calcGsGivePoint(gsMoney, tbMembershipCard.getTmCardType().getId(),tbFixEntrust.getTmFixType().getFixType());
 			
 			/**
 			 * 配件返回积分
 			 */
-			Integer pjGivePoint = tmCardTypeService.calcPjGivePoint(pjMoney, tbMembershipCard.getTmCardType().getId());
+			Integer pjGivePoint = tmCardTypeService.calcPjGivePoint(pjMoney, tbMembershipCard.getTmCardType().getId(),tbFixEntrust.getTmFixType().getFixType());
 		
 			/**
 			 * 消费后金额
@@ -592,8 +592,18 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			
 			tbMembershipCard.setPjJexf(pjMoney);
 			
+			tbMembershipCard.setTbCustomer(tbFixEntrust.getTbCarInfo().getTbCustomer());
+			
 			tbBusinessBalance.setTbMembershipCard(tbMembershipCard);
+			
+			if(!tbBusinessBalance.getDhMoney().equals(0)) {
+				tbMembershipCard.setCardPoint(0L);
+				
+			}
+			tbMembershipCard.setDhMoney(Long.valueOf(tbBusinessBalance.getDhMoney()));
 		}
+		
+		
 		
 		tbBusinessBalanceService.insertAll(tbBusinessBalance);
 
@@ -727,22 +737,22 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			/**
 			 * 工时返回金额
 			 */
-			Integer gsGiveMoney = tmCardTypeService.calcGsGiveMoney(gsMoney, tbMembershipCard.getTmCardType().getId());
+			Integer gsGiveMoney = tmCardTypeService.calcGsGiveMoney(gsMoney, tbMembershipCard.getTmCardType().getId(),"");
 		
 			/**
 			 * 配件返回金额
 			 */
-			Integer pjGiveMoney = tmCardTypeService.calcPjGiveMoney(pjMoney, tbMembershipCard.getTmCardType().getId());
+			Integer pjGiveMoney = tmCardTypeService.calcPjGiveMoney(pjMoney, tbMembershipCard.getTmCardType().getId(),"");
 		
 			/**
 			 * 工时返回积分
 			 */
-			Integer gsGivePoint = tmCardTypeService.calcGsGivePoint(gsMoney, tbMembershipCard.getTmCardType().getId());
+			Integer gsGivePoint = tmCardTypeService.calcGsGivePoint(gsMoney, tbMembershipCard.getTmCardType().getId(),"");
 			
 			/**
 			 * 配件返回积分
 			 */
-			Integer pjGivePoint = tmCardTypeService.calcPjGivePoint(pjMoney, tbMembershipCard.getTmCardType().getId());
+			Integer pjGivePoint = tmCardTypeService.calcPjGivePoint(pjMoney, tbMembershipCard.getTmCardType().getId(),"");
 		
 			/**
 			 * 消费后金额
@@ -781,6 +791,14 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			tbMembershipCard.setGsJexf(gsMoney);
 			
 			tbMembershipCard.setPjJexf(pjMoney);
+			
+			if(!tbBusinessBalance.getDhMoney().equals(0)) {
+				tbMembershipCard.setCardPoint(0L);
+				
+			}
+			tbMembershipCard.setDhMoney(Long.valueOf(tbBusinessBalance.getDhMoney()));
+			
+			tbMembershipCard.setTbCustomer(tbCustomerService.findById(tmStockOut.getCustomerBill()));
 			
 			tbBusinessBalance.setTbMembershipCard(tbMembershipCard);
 		}
@@ -848,12 +866,22 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 		String cardNo = request.getParameter("cardNo");
 		
 		String cardPassword = request.getParameter("pass");
+		
+		tbBusinessBalance = new TbBusinessBalance();
 
 		if(null != cardNo && !"".equals(cardNo)){
 			
+			tbBusinessBalance.setPayPattern(Constants.PAYMEMBERCARD);
+			
 			tbMembershipCard = tbMembershipCardService.findByCardNo(cardNo);
 			
+			
+			
 			if(null != tbMembershipCard){
+				
+				//Long dhMoney = tbMembershipCardService.calcDhMoney(cardNo);
+				
+				//tbMembershipCard.setDhMoney(dhMoney);
 				
 				if(!cardPassword.equals(tbMembershipCard.getCardPassword().trim())){
 					
@@ -899,8 +927,6 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 		ActionContext.getContext().put("tmBalanceMap",
 				tmBalanceService.findAllTmBalanceMap());
 
-		tbBusinessBalance = new TbBusinessBalance();
-
 		if ("entrust".equals(flag)) {
 			
 			TbBusinessBalance historyBalance = tbBusinessBalanceService.findByEntrustId(Long
@@ -943,7 +969,17 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			
 			if(null != tbMembershipCard){
 				
-				gsYhl = tbMembershipCard.getTmCardType().getGsYhl();
+				if(tbFixEntrust.getTmFixType().getFixType().indexOf("保险") == -1) {
+					
+					gsYhl = tbMembershipCard.getTmCardType().getGsYhl();
+				}
+				
+				else {
+					
+					gsYhl = tbMembershipCard.getTmCardType().getGsBxYhl();
+				}
+				
+				
 				
 				workingHourTotalAll = new BigDecimal(workingHourTotalAll).multiply(new BigDecimal(1 - gsYhl)).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
 				
@@ -961,7 +997,15 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 							null);
 			if(null != tbMembershipCard){
 				
-				pjYhl = tbMembershipCard.getTmCardType().getPjYhl();
+				if(tbFixEntrust.getTmFixType().getFixType().indexOf("保险") == -1) {
+					
+					pjYhl = tbMembershipCard.getTmCardType().getPjYhl();
+				}	
+				else {
+					
+					pjYhl = tbMembershipCard.getTmCardType().getPjBxYhl();
+				}
+				
 				
 				fixPartTotalAll = new BigDecimal(fixPartTotalAll).multiply(new BigDecimal(1 - pjYhl)).setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
 				
@@ -975,6 +1019,8 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			
 			request.setAttribute("solePartFavourRate", new BigDecimal(pjYhl).setScale(2,BigDecimal.ROUND_HALF_UP));
 			*/
+			
+			
 			tbBusinessBalance.setWorkingHourFavourRate(gsYhl);
 			
 			tbBusinessBalance.setFixPartFavourRate(pjYhl);
@@ -1079,6 +1125,8 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			ActionContext.getContext().getSession().put("calcMapReturn",
 					calcMapReturn);
 
+			//request.setAttribute("tbMembershipCard", tbMembershipCard);
+			
 			return this.WTSPAGE;
 		} else if ("stockOut".equals(flag)) {
 			
@@ -1240,6 +1288,8 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 
 			ActionContext.getContext().getSession().put("calcMapReturn",
 					calcMapReturn);
+			
+			request.setAttribute("tbMembershipCard", tbMembershipCard);
 
 			return this.XSDPAGE;
 		}
@@ -1532,6 +1582,8 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			
 			tbMembershipCard = tbMembershipCardService.findByCardNo(cardNo);
 			
+			tbMembershipCard.setDhMoney(tbMembershipCardService.calcDhMoney(cardNo));
+			
 		}
 		
 		//tbMembershipCard = tbMembershipCardService.findByCarInfo(tbCarInfoService.findById(Long.valueOf(carInfoId)));
@@ -1617,6 +1669,13 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 		if(null != cardNo && !"".equals(cardNo)){
 			
 			tbMembershipCard = tbMembershipCardService.findByCardNo(cardNo);
+			
+			tbMembershipCard.setDhMoney(tbMembershipCardService.calcDhMoney(cardNo));
+		}
+		
+		if(null != tbMembershipCard){
+			
+			tbMembershipCard.setAftCardSaving(tbMembershipCard.getCardSaving());
 			
 		}
 		// Double saveAmount =

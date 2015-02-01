@@ -39,12 +39,14 @@
 				name="tbMembershipCard.cardStatus" list="#request.cardStatusMap"
 				emptyOption="true" listKey="key" listValue="value" /></td>
 				</tr>
+<!--				
 				<tr>
 					<td>车牌号</td>
 					<td>
 						<s:textfield id="licenseCode" name="tbMembershipCard.licenseCode"></s:textfield>
 					</td>
 				</tr>
+ -->				
 				<tr>
 					<td>
 						<input type="button" value="查询"
@@ -68,7 +70,7 @@
 					<font color="blue">充值</font>
 				</a>
 				<a href="javascript:forwardPage('${tbMembershipCard.id}','tbMembershipCardForwardPageAction!forwardPage.action','cjf',800,500);">
-					<font color="blue">充积分</font>
+					<font color="blue">送积分</font>
 				</a>
 				<a href="javascript:forwardPage('${tbMembershipCard.id}','tbMembershipCardForwardPageAction!forwardPage.action','jfxf',800,500);">
 					<font color="blue">积分消费</font>
@@ -92,9 +94,7 @@
 			<e3t:column property="cardStatusShow" title="当前状态" />
 			
 			<e3t:column property="cardNo" title="会员卡号" />
-			
-			<e3t:column property="licenseCode" title="车牌号" />
-			
+		
 			<e3t:column property="customerCode" title="客户号" />
 			
 			<e3t:column property="customerName" title="客户姓名" />

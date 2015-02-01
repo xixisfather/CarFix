@@ -86,6 +86,12 @@
         <property name="shouldPayAmount" type="java.lang.Double">
             <column name="SHOULD_PAY_AMOUNT"/>
         </property>
+        <property name="cardZFJE" type="java.lang.Double">
+            <column name="CARD_ZFJE"/>
+        </property>
+        <property name="dhMoney" type="java.lang.Integer">
+            <column name="DH_MONEY"/>
+        </property>
         <property name="balanceStatus" type="java.lang.Long">
             <column name="BALANCE_STATUS"/>
         </property>

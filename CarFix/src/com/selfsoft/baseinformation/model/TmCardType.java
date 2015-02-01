@@ -1,5 +1,7 @@
 package com.selfsoft.baseinformation.model;
 
+import java.util.List;
+
 public class TmCardType implements java.io.Serializable{
 	
 	private Long id;
@@ -35,6 +37,28 @@ public class TmCardType implements java.io.Serializable{
 	private Integer dhFullMoney;
 	
 	private Integer dhFullPoint;
+	
+	private List<TmCardTypeService> tmCardTypeServiceList;
+	
+	private Integer gsBxMFullMoney;
+	
+	private Integer gsBxMGiveMoney;
+	
+	private Integer pjBxMFullMoney;
+	
+	private Integer pjBxMGiveMoney;
+	
+	private Integer gsBxPFullMoney;
+	
+	private Integer gsBxPGivePoint;
+	
+	private Integer pjBxPFullMoney;
+	
+	private Double gsBxYhl;
+	
+	private Double pjBxYhl;
+	
+	private Integer pjBxPGivePoint; 
 
 	public Long getId() {
 		return id;
@@ -170,6 +194,95 @@ public class TmCardType implements java.io.Serializable{
 
 	public void setDhFullPoint(Integer dhFullPoint) {
 		this.dhFullPoint = dhFullPoint;
+	}
+
+	public List<TmCardTypeService> getTmCardTypeServiceList() {
+		return tmCardTypeServiceList;
+	}
+
+	public void setTmCardTypeServiceList(
+			List<TmCardTypeService> tmCardTypeServiceList) {
+		this.tmCardTypeServiceList = tmCardTypeServiceList;
+	}
+
+	public Integer getGsBxMFullMoney() {
+		return gsBxMFullMoney;
+	}
+
+	public void setGsBxMFullMoney(Integer gsBxMFullMoney) {
+		this.gsBxMFullMoney = gsBxMFullMoney;
+	}
+
+	public Integer getGsBxMGiveMoney() {
+		return gsBxMGiveMoney;
+	}
+
+	public void setGsBxMGiveMoney(Integer gsBxMGiveMoney) {
+		this.gsBxMGiveMoney = gsBxMGiveMoney;
+	}
+
+	public Integer getPjBxMFullMoney() {
+		return pjBxMFullMoney;
+	}
+
+	public void setPjBxMFullMoney(Integer pjBxMFullMoney) {
+		this.pjBxMFullMoney = pjBxMFullMoney;
+	}
+
+	public Integer getPjBxMGiveMoney() {
+		return pjBxMGiveMoney;
+	}
+
+	public void setPjBxMGiveMoney(Integer pjBxMGiveMoney) {
+		this.pjBxMGiveMoney = pjBxMGiveMoney;
+	}
+
+	public Integer getGsBxPFullMoney() {
+		return gsBxPFullMoney;
+	}
+
+	public void setGsBxPFullMoney(Integer gsBxPFullMoney) {
+		this.gsBxPFullMoney = gsBxPFullMoney;
+	}
+
+	public Integer getGsBxPGivePoint() {
+		return gsBxPGivePoint;
+	}
+
+	public void setGsBxPGivePoint(Integer gsBxPGivePoint) {
+		this.gsBxPGivePoint = gsBxPGivePoint;
+	}
+
+	public Integer getPjBxPFullMoney() {
+		return pjBxPFullMoney;
+	}
+
+	public void setPjBxPFullMoney(Integer pjBxPFullMoney) {
+		this.pjBxPFullMoney = pjBxPFullMoney;
+	}
+
+	public Double getGsBxYhl() {
+		return gsBxYhl;
+	}
+
+	public void setGsBxYhl(Double gsBxYhl) {
+		this.gsBxYhl = gsBxYhl;
+	}
+
+	public Double getPjBxYhl() {
+		return pjBxYhl;
+	}
+
+	public void setPjBxYhl(Double pjBxYhl) {
+		this.pjBxYhl = pjBxYhl;
+	}
+
+	public Integer getPjBxPGivePoint() {
+		return pjBxPGivePoint;
+	}
+
+	public void setPjBxPGivePoint(Integer pjBxPGivePoint) {
+		this.pjBxPGivePoint = pjBxPGivePoint;
 	}
 
 	

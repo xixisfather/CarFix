@@ -464,6 +464,13 @@ public class Constants {
     
     public static final String PAYCARDSHOW = "刷卡";
     
+    /**
+     * 支付方式 会员卡
+     */
+    public static final Long PAYMEMBERCARD = 5L;
+    
+    public static final String PAYMEMBERCARDSHOW = "会员卡";
+    
     public static final Map<Long,String> getPayMap(){
     	Map<Long,String> map = new LinkedHashMap<Long, String>();
     	
@@ -474,6 +481,8 @@ public class Constants {
     	map.put(PAYACCOUNT, PAYACCOUNTSHOW);
     	
     	map.put(PAYCARD, PAYCARDSHOW);
+    	
+    	map.put(PAYMEMBERCARD, PAYMEMBERCARDSHOW);
     	
     	return map;
     }
@@ -726,19 +735,25 @@ public class Constants {
     
     public static final String CARD_KK = "开卡";
     
+    public static final String CARD_XG = "修改";
+    
     public static final String CARD_CZ = "充值";
     
-    public static final String CARD_CJF = "充积分";
+    public static final String CARD_CJF = "送积分";
     
     public static final String CARD_JS = "结算";
     
     public static final String CARD_JFXF = "积分消费";
+    
+    public static final String CARD_HK = "换卡";
     
     public static Map<String, String> getOperationCardMap(){
     	
     	Map<String, String> map = new LinkedHashMap<String, String>();
     	
     	map.put(CARD_KK, CARD_KK);
+    	
+    	map.put(CARD_XG, CARD_XG);
     	
     	map.put(CARD_CZ, CARD_CZ);
     	
@@ -747,6 +762,8 @@ public class Constants {
     	map.put(CARD_JS, CARD_JS);
     	
     	map.put(CARD_JFXF, CARD_JFXF);
+    	
+    	map.put(CARD_HK, CARD_HK);
     
     	return map;
     	

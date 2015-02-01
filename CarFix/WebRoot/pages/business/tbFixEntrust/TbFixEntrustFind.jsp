@@ -121,12 +121,14 @@
 					type="reset" value="重置" /></td>
 			</tr>
 		</table>
+		
 	</s:form>
+	<font color="red">重要：操作现有委托书前请先按下面的刷新按钮</font><br/>
 	<e3t:table id="tbFixEntrustTable" uri="tbFixEntrustFindAction.action"
 		var="tbFixEntrust" scope="request" items="tbFixEntrustList"
 		mode="ajax" toolbarPosition="bottom" skin="E3002" pageSize="10"
-		width="1100" height="340" caption="委托书(操作前请先按下刷新)">
-		<e3t:column property="no" title="操作" sortable="false" width="460">
+		width="1100" height="340" caption="委托书(操作现有委托书前请先按下面的刷新按钮)">
+		<e3t:column property="no" title="操作(操作现有委托书前请先按上面的刷新按钮)" sortable="false" width="460">
 			<c:if
 				test="${tbFixEntrust.entrustStatus==1||tbFixEntrust.entrustStatus==0||tbFixEntrust.entrustStatus==4||tbFixEntrust.entrustStatus==5}">
 				<a

@@ -461,6 +461,26 @@ public class TbMembershipCard implements java.io.Serializable{
 		this.balanceId = balanceId;
 	}
 	
+	private String serviceName;
+
+	public String getServiceName() {
+		return serviceName;
+	}
+
+	public void setServiceName(String serviceName) {
+		this.serviceName = serviceName;
+	}
+	
+	private Long dhMoney;
+
+	public Long getDhMoney() {
+		return dhMoney;
+	}
+
+	public void setDhMoney(Long dhMoney) {
+		this.dhMoney = dhMoney;
+	}
+	
 	
 	
 }
