@@ -1,6 +1,7 @@
 package com.selfsoft.baseparameter.action;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.selfsoft.baseinformation.model.TbMembershipCard;
 import com.selfsoft.baseinformation.model.TmCardType;
+import com.selfsoft.baseinformation.model.TmCardTypeService;
 import com.selfsoft.baseinformation.service.ITbMembershipCardService;
 import com.selfsoft.baseinformation.service.ITmCardTypeService;
 import com.selfsoft.framework.common.CommonMethod;
@@ -63,6 +65,30 @@ ServletRequestAware, ServletResponseAware{
 		
 		try{
 			
+			List<TmCardTypeService> tmCardTypeServiceList = new ArrayList<TmCardTypeService>();
+			
+			for(int i = 0 ; i < 20; i++) {
+				
+				String serviceName = request.getParameter("serviceName" + i);
+				
+				String serviceCount = request.getParameter("serviceCount" + i);
+				
+				if(null ==serviceName|| null==serviceCount || "".equals(serviceName) || "".equals(serviceCount)) {
+					break;
+				}
+				
+				TmCardTypeService tmCardTypeService = new TmCardTypeService();
+				
+				tmCardTypeService.setServiceName(serviceName);
+				
+				tmCardTypeService.setServiceCount(Integer.valueOf(serviceCount));
+				
+				tmCardTypeServiceList.add(tmCardTypeService);
+				
+			}
+			
+			tmCardType.setTmCardTypeServiceList(tmCardTypeServiceList);
+			
 			tmCardTypeService.insert(tmCardType);
 			
 		}catch(Exception e){
@@ -80,9 +106,45 @@ ServletRequestAware, ServletResponseAware{
 	}
 
 	public String updateTmCardType() throws Exception{
-		
-		tmCardTypeService.update(tmCardType);
+		try{
+			
+			List<TmCardTypeService> tmCardTypeServiceList = new ArrayList<TmCardTypeService>();
+			
+			for(int i = 0 ; i < 20; i++) {
+				
+				String serviceName = request.getParameter("serviceName" + i);
+				
+				String serviceCount = request.getParameter("serviceCount" + i);
+				
+				if(null ==serviceName|| null==serviceCount || "".equals(serviceName) || "".equals(serviceCount)) {
+					break;
+				}
+				
+				TmCardTypeService tmCardTypeService = new TmCardTypeService();
+				
+				tmCardTypeService.setServiceName(serviceName);
+				
+				tmCardTypeService.setServiceCount(Integer.valueOf(serviceCount));
+				
+				tmCardTypeServiceList.add(tmCardTypeService);
+				
+			}
+			
+			tmCardType.setTmCardTypeServiceList(tmCardTypeServiceList);
+			
+			tmCardTypeService.update(tmCardType);
 
+		} catch(Exception e) {
+			
+			e.printStackTrace();
+			
+			ActionContext.getContext().put("msg","*号为必填项,必须填入整数");
+			
+			return Constants.FAILURE;
+		}
+		
+		
+		
 		return Constants.SUCCESS;
 		
 	}
@@ -113,6 +175,8 @@ ServletRequestAware, ServletResponseAware{
 		if (null != id && !"".equals(id)) {
 
 			tmCardType = tmCardTypeService.findById(Long.valueOf(id));
+			
+			request.setAttribute("tmCardTypeServiceList", tmCardType.getTmCardTypeServiceList());
 
 			return Constants.EDITPAGE;
 		}

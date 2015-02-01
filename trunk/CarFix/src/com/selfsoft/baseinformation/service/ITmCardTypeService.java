@@ -67,7 +67,7 @@ public interface ITmCardTypeService {
 	 * @param cardTypeId
 	 * @return
 	 */
-	public Integer calcGsGiveMoney(Double gsMoney, Long cardTypeId);
+	public Integer calcGsGiveMoney(Double gsMoney, Long cardTypeId, String fixType);
 	
 	/**
 	 * 工时结算积分返回
@@ -75,7 +75,7 @@ public interface ITmCardTypeService {
 	 * @param cardTypeId
 	 * @return
 	 */
-	public Integer calcGsGivePoint(Double gsMoney, Long cardTypeId);
+	public Integer calcGsGivePoint(Double gsMoney, Long cardTypeId, String fixType);
 	
 	/**
 	 * 配件结算金额返回
@@ -83,7 +83,7 @@ public interface ITmCardTypeService {
 	 * @param cardTypeId
 	 * @return
 	 */
-	public Integer calcPjGiveMoney(Double pjMoney, Long cardTypeId);
+	public Integer calcPjGiveMoney(Double pjMoney, Long cardTypeId, String fixType);
 	
 	/**
 	 * 配件积分返回
@@ -91,5 +91,5 @@ public interface ITmCardTypeService {
 	 * @param cardTypeId
 	 * @return
 	 */
-	public Integer calcPjGivePoint(Double pjMoney, Long cardTypeId);
+	public Integer calcPjGivePoint(Double pjMoney, Long cardTypeId, String fixType);
 }

@@ -76,6 +76,18 @@ public class TbCardHisServiceImpl implements ITbCardHisService{
 				detachedCriteria.add(Restrictions.like("balanceCode","%" + tbCardHis.getBalanceCode() + "%"));
 			}
 			
+			if(null != tbCardHis.getCustomerCode() && !"".equals(tbCardHis.getCustomerCode())){
+				
+				detachedCriteria.add(Restrictions.eq("customerCode",tbCardHis.getCustomerCode()));
+				
+			}
+			
+			if(null != tbCardHis.getCustomerName() && !"".equals(tbCardHis.getCustomerName())){
+				
+				detachedCriteria.add(Restrictions.eq("customerName",tbCardHis.getCustomerName()));
+				
+			}
+			
 		}
 		
 		else {
@@ -106,6 +118,59 @@ public class TbCardHisServiceImpl implements ITbCardHisService{
 		
 		return tbCardHisDao.findByCriteria(detachedCriteria, tbCardHis);
 	}
+	
+	/**
+	 * 历史记录
+	 * 
+	 */
+	public void insertCardHis(TbMembershipCard tbMembershipCard,TmUser tmUser,String desc){
+		
+		TbCardHis tbCardHis = new TbCardHis();
+		
+		tbCardHis.setCardId(tbMembershipCard.getId());
+		
+		tbCardHis.setCardNo(tbMembershipCard.getCardNo());
+		/**
+		 * 存取之前的金额积分
+		 */
+		tbCardHis.setOriCardPoint(tbMembershipCard.getOriCardPoint());
+		
+		tbCardHis.setOriCardSaving(tbMembershipCard.getOriCardSaving());
+		
+		tbCardHis.setAftCardPoint(tbMembershipCard.getCardPoint());
+		
+		tbCardHis.setAftCardSaving(tbMembershipCard.getCardSaving());
+		
+		tbCardHis.setGiveMoney(tbMembershipCard.getGiveMoney());
+		
+		tbCardHis.setGivePoint(tbMembershipCard.getGivePoint());
+		
+		tbCardHis.setCzje(tbMembershipCard.getCzje());
+		
+		tbCardHis.setOperationDate(new Date());
+		
+		tbCardHis.setOperationDesc(desc);
+		
+		tbCardHis.setOperationType(Constants.CARD_XG);
+		
+		//tbCardHis.setUserId(userId);
+		
+		tbCardHis.setLicenseCode(tbMembershipCard.getLicenseCode());
+		
+		tbCardHis.setUserName(tmUser.getUserName());
+		
+		tbCardHis.setUserRealName(tmUser.getUserRealName());
+		
+		tbCardHis.setCustomerId(tbMembershipCard.getTbCustomer().getId());
+		
+		tbCardHis.setCustomerCode(tbMembershipCard.getTbCustomer().getCustomerCode());
+		
+		tbCardHis.setCustomerName(tbMembershipCard.getTbCustomer().getCustomerName());
+		
+		tbCardHisDao.insert(tbCardHis);
+	}
+	
+	
 	/**
 	 * 充值历史记录
 	 * @param tbMembershipCard
@@ -137,7 +202,7 @@ public class TbCardHisServiceImpl implements ITbCardHisService{
 		
 		tbCardHis.setOperationDate(new Date());
 		
-		tbCardHis.setOperationDesc("充值金额【 " + tbMembershipCard.getCzje() +"】元" );
+		tbCardHis.setOperationDesc("充值金额【 " + tbMembershipCard.getCzje() +"】元,原始金额【 " + tbMembershipCard.getOriCardSaving() +"】元,原始积分【 " + tbMembershipCard.getOriCardPoint() +"】,目前金额【 " + tbMembershipCard.getCardSaving() +"】元,目前积分【 " + tbMembershipCard.getCardPoint() +"】" );
 		
 		tbCardHis.setOperationType(Constants.CARD_CZ);
 		
@@ -148,6 +213,12 @@ public class TbCardHisServiceImpl implements ITbCardHisService{
 		tbCardHis.setUserName(tmUser.getUserName());
 		
 		tbCardHis.setUserRealName(tmUser.getUserRealName());
+		
+		tbCardHis.setCustomerId(tbMembershipCard.getTbCustomer().getId());
+		
+		tbCardHis.setCustomerCode(tbMembershipCard.getTbCustomer().getCustomerCode());
+		
+		tbCardHis.setCustomerName(tbMembershipCard.getTbCustomer().getCustomerName());
 		
 		tbCardHisDao.insert(tbCardHis);
 	}
@@ -175,7 +246,7 @@ public class TbCardHisServiceImpl implements ITbCardHisService{
 		
 		tbCardHis.setOperationDate(new Date());
 		
-		tbCardHis.setOperationDesc("车牌号【"+ tbMembershipCard.getTbCarInfo().getLicenseCode() +"】客户办理【" + tbMembershipCard.getTmCardType().getCardDesc() +"】会员卡号【" + tbMembershipCard.getCardNo() + "】初始金额【 " + tbMembershipCard.getCardSaving() +"】元;初始积分 【" + tbMembershipCard.getCardPoint()+ "】" );
+		tbCardHis.setOperationDesc("客户号【"+ tbMembershipCard.getTbCustomer().getCustomerCode() +"】【"+tbMembershipCard.getTbCustomer().getCustomerName()+"】办理【" + tbMembershipCard.getTmCardType().getCardDesc() +"】会员卡号【" + tbMembershipCard.getCardNo() + "】初始金额【 " + tbMembershipCard.getCardSaving() +"】元;初始积分 【" + tbMembershipCard.getCardPoint()+ "】" );
 		
 		tbCardHis.setOperationType(Constants.CARD_KK);
 		
@@ -186,6 +257,12 @@ public class TbCardHisServiceImpl implements ITbCardHisService{
 		tbCardHis.setUserName(tmUser.getUserName());
 		
 		tbCardHis.setUserRealName(tmUser.getUserRealName());
+		
+		tbCardHis.setCustomerId(tbMembershipCard.getTbCustomer().getId());
+		
+		tbCardHis.setCustomerName(tbMembershipCard.getTbCustomer().getCustomerName());
+		
+		tbCardHis.setCustomerCode(tbMembershipCard.getTbCustomer().getCustomerCode());
 		
 		tbCardHisDao.insert(tbCardHis);
 	}
@@ -221,7 +298,7 @@ public class TbCardHisServiceImpl implements ITbCardHisService{
 		
 		tbCardHis.setOperationDate(new Date());
 		
-		tbCardHis.setOperationDesc("充【 " + tbMembershipCard.getCzjf() +"】积分" );
+		tbCardHis.setOperationDesc("送【 " + tbMembershipCard.getCzjf() +"】积分,原始金额【 " + tbMembershipCard.getOriCardSaving() +"】元,原始积分【 " + tbMembershipCard.getOriCardPoint() +"】,目前金额【 " + tbMembershipCard.getCardSaving() +"】元,目前积分【 " + tbMembershipCard.getCardPoint() +"】" );
 		
 		tbCardHis.setOperationType(Constants.CARD_CJF);
 		
@@ -232,6 +309,12 @@ public class TbCardHisServiceImpl implements ITbCardHisService{
 		tbCardHis.setUserName(tmUser.getUserName());
 		
 		tbCardHis.setUserRealName(tmUser.getUserRealName());
+		
+		tbCardHis.setCustomerId(tbMembershipCard.getTbCustomer().getId());
+		
+		tbCardHis.setCustomerName(tbMembershipCard.getTbCustomer().getCustomerName());
+		
+		tbCardHis.setCustomerCode(tbMembershipCard.getTbCustomer().getCustomerCode());
 		
 		tbCardHisDao.insert(tbCardHis);
 		
@@ -260,9 +343,9 @@ public class TbCardHisServiceImpl implements ITbCardHisService{
 		
 		tbCardHis.setOperationDate(new Date());
 		
-		tbCardHis.setOperationDesc("原会员卡号【 " + tbMembershipCard.getPreviousCardNo() +"】;现会员卡号【 " + tbMembershipCard.getCardNo() +"】");
+		tbCardHis.setOperationDesc("原会员卡号【 " + tbMembershipCard.getPreviousCardNo() +"】;现会员卡号【 " + tbMembershipCard.getCardNo() +"】原始金额【 " + tbMembershipCard.getCardSaving() +"】元,原始积分【 " + tbMembershipCard.getCardPoint() +"】,目前金额【 " + tbMembershipCard.getCardSaving() +"】元,目前积分【 " + tbMembershipCard.getCardPoint() +"】");
 		
-		tbCardHis.setOperationType(Constants.CARD_CJF);
+		tbCardHis.setOperationType(Constants.CARD_HK);
 		
 		//tbCardHis.setUserId(userId);
 		
@@ -271,6 +354,12 @@ public class TbCardHisServiceImpl implements ITbCardHisService{
 		tbCardHis.setUserName(tmUser.getUserName());
 		
 		tbCardHis.setUserRealName(tmUser.getUserRealName());
+		
+		tbCardHis.setCustomerId(tbMembershipCard.getTbCustomer().getId());
+		
+		tbCardHis.setCustomerName(tbMembershipCard.getTbCustomer().getCustomerName());
+		
+		tbCardHis.setCustomerCode(tbMembershipCard.getTbCustomer().getCustomerCode());
 		
 		tbCardHisDao.insert(tbCardHis);
 	}
@@ -352,7 +441,7 @@ public class TbCardHisServiceImpl implements ITbCardHisService{
 		
 		tbCardHis.setOperationDate(new Date());
 		
-		tbCardHis.setOperationDesc("结算单【" + tbMembershipCard.getBalanceCode() + "】共结算【"+tbCardHis.getJexf()+"】元,工时结算【" + tbCardHis.getGsJexf()+ "】元返还【"+tbCardHis.getGsGiveMoney()+"】元【"+tbCardHis.getGsGivePoint()+"】积分,配件结算【" + tbCardHis.getPjJexf() + "】元返还【"+tbCardHis.getPjGiveMoney()+"】元【"+tbCardHis.getPjGivePoint()+"】积分,共返还【"+tbCardHis.getGiveMoney()+"】元【"+ tbCardHis.getGivePoint()+"】积分,会员卡支付【" + tbMembershipCard.getCardZFJE() +"】元.");
+		tbCardHis.setOperationDesc("结算单【" + tbMembershipCard.getBalanceCode() + "】共结算【"+tbCardHis.getJexf()+"】元,工时结算【" + tbCardHis.getGsJexf()+ "】元返还【"+tbCardHis.getGsGiveMoney()+"】元【"+tbCardHis.getGsGivePoint()+"】积分,配件结算【" + tbCardHis.getPjJexf() + "】元返还【"+tbCardHis.getPjGiveMoney()+"】元【"+tbCardHis.getPjGivePoint()+"】积分,共返还【"+tbCardHis.getGiveMoney()+"】元【"+ tbCardHis.getGivePoint()+"】积分,会员卡支付【" + tbMembershipCard.getCardZFJE() +"】元,积分兑换【" + tbMembershipCard.getDhMoney() +"】元");
 		
 		tbCardHis.setBalanceCode(tbMembershipCard.getBalanceCode());
 		
@@ -368,6 +457,128 @@ public class TbCardHisServiceImpl implements ITbCardHisService{
 		
 		tbCardHis.setUserRealName(tmUser.getUserRealName());
 		
+		tbCardHis.setCustomerId(tbMembershipCard.getTbCustomer().getId());
+		
+		tbCardHis.setCustomerName(tbMembershipCard.getTbCustomer().getCustomerName());
+		
+		tbCardHis.setCustomerCode(tbMembershipCard.getTbCustomer().getCustomerCode());
+		
+		tbCardHisDao.insert(tbCardHis);
+	}
+	
+	
+	/**
+	 * 快速结算
+	 * @param tbMembershipCard
+	 * @param tmUser
+	 */
+	public void insertSmartBalanceCardHis(TbMembershipCard tbMembershipCard,TmUser tmUser){
+		
+		TbCardHis tbCardHis = new TbCardHis();
+		
+		tbCardHis.setCardId(tbMembershipCard.getId());
+		
+		tbCardHis.setCardNo(tbMembershipCard.getCardNo());
+		/**
+		 * 结算之前的金额积分
+		 */
+		tbCardHis.setOriCardPoint(tbMembershipCard.getOriCardPoint());
+		
+		tbCardHis.setOriCardSaving(tbMembershipCard.getOriCardSaving());
+		
+		/**
+		 * 结算之后的金额积分
+		 */
+		tbCardHis.setAftCardPoint(tbMembershipCard.getCardPoint());
+		
+		tbCardHis.setAftCardSaving(tbMembershipCard.getCardSaving());
+		
+		/**
+		 * 结算金额
+		 */
+		tbCardHis.setJexf(tbMembershipCard.getJexf());
+		
+		/**
+		 * 积分消费
+		 */
+		//tbCardHis.setJfxf(0);
+		
+		tbCardHis.setOperationDate(new Date());
+		
+		tbCardHis.setOperationDesc(tbMembershipCard.getServiceName() + ",结算【"+tbCardHis.getJexf()+"】元,会员卡支付【" + tbMembershipCard.getJexf() +"】元.原始金额【 " + tbMembershipCard.getOriCardSaving() +"】元,原始积分【 " + tbMembershipCard.getOriCardPoint() +"】,目前金额【 " + tbMembershipCard.getCardSaving() +"】元,目前积分【 " + tbMembershipCard.getCardPoint() +"】");
+		
+		tbCardHis.setOperationType(Constants.CARD_JS);
+		
+		tbCardHis.setLicenseCode(tbMembershipCard.getLicenseCode());
+		
+		tbCardHis.setUserName(tmUser.getUserName());
+		
+		tbCardHis.setUserRealName(tmUser.getUserRealName());
+		
+		tbCardHis.setCustomerId(tbMembershipCard.getTbCustomer().getId());
+		
+		tbCardHis.setCustomerName(tbMembershipCard.getTbCustomer().getCustomerName());
+		
+		tbCardHis.setCustomerCode(tbMembershipCard.getTbCustomer().getCustomerCode());
+		
+		tbCardHisDao.insert(tbCardHis);
+	}
+	
+	
+	/**
+	 * 快速结算
+	 * @param tbMembershipCard
+	 * @param tmUser
+	 */
+	public void insertSmartBalanceUseServiceCardHis(TbMembershipCard tbMembershipCard,TmUser tmUser){
+		
+		TbCardHis tbCardHis = new TbCardHis();
+		
+		tbCardHis.setCardId(tbMembershipCard.getId());
+		
+		tbCardHis.setCardNo(tbMembershipCard.getCardNo());
+		/**
+		 * 结算之前的金额积分
+		 */
+		tbCardHis.setOriCardPoint(tbMembershipCard.getOriCardPoint());
+		
+		tbCardHis.setOriCardSaving(tbMembershipCard.getOriCardSaving());
+		
+		/**
+		 * 结算之后的金额积分
+		 */
+		tbCardHis.setAftCardPoint(tbMembershipCard.getCardPoint());
+		
+		tbCardHis.setAftCardSaving(tbMembershipCard.getCardSaving());
+		
+		/**
+		 * 结算金额
+		 */
+		tbCardHis.setJexf(tbMembershipCard.getJexf());
+		
+		/**
+		 * 积分消费
+		 */
+		//tbCardHis.setJfxf(0);
+		
+		tbCardHis.setOperationDate(new Date());
+		
+		tbCardHis.setOperationDesc(tbMembershipCard.getServiceName() + ",结算【"+tbCardHis.getJexf()+"】元,使用赠送服务【" + tbMembershipCard.getServiceName() +"】1次.原始金额【 " + tbMembershipCard.getOriCardSaving() +"】元,原始积分【 " + tbMembershipCard.getOriCardPoint() +"】,目前金额【 " + tbMembershipCard.getCardSaving() +"】元,目前积分【 " + tbMembershipCard.getCardPoint() +"】");
+		
+		tbCardHis.setOperationType(Constants.CARD_JS);
+		
+		tbCardHis.setLicenseCode(tbMembershipCard.getLicenseCode());
+		
+		tbCardHis.setUserName(tmUser.getUserName());
+		
+		tbCardHis.setUserRealName(tmUser.getUserRealName());
+		
+		tbCardHis.setCustomerId(tbMembershipCard.getTbCustomer().getId());
+		
+		tbCardHis.setCustomerName(tbMembershipCard.getTbCustomer().getCustomerName());
+		
+		tbCardHis.setCustomerCode(tbMembershipCard.getTbCustomer().getCustomerCode());
+		
 		tbCardHisDao.insert(tbCardHis);
 	}
 	
@@ -376,6 +587,7 @@ public class TbCardHisServiceImpl implements ITbCardHisService{
 	 */
 	public Map putCardHisReportParamMap(List<TbCardHis> tbCardHisList, HttpServletRequest request){
 		
+		@SuppressWarnings("rawtypes")
 		Map map =  new HashMap();
 		
 		map.put("dataSourceList", tbCardHisList);
@@ -418,7 +630,7 @@ public class TbCardHisServiceImpl implements ITbCardHisService{
 		
 		tbCardHis.setOperationDate(new Date());
 		
-		tbCardHis.setOperationDesc("消费【 " + tbMembershipCard.getCzjf() +"】积分," +  tbMembershipCard.getRemark());
+		tbCardHis.setOperationDesc("消费【 " + tbMembershipCard.getCzjf() +"】积分," +  tbMembershipCard.getRemark() + ",原始金额【 " + tbMembershipCard.getOriCardSaving() +"】元,原始积分【 " + tbMembershipCard.getOriCardPoint() +"】,目前金额【 " + tbMembershipCard.getCardSaving() +"】元,目前积分【 " + tbMembershipCard.getCardPoint() +"】");
 		
 		tbCardHis.setOperationType(Constants.CARD_JFXF);
 		
@@ -429,6 +641,12 @@ public class TbCardHisServiceImpl implements ITbCardHisService{
 		tbCardHis.setUserName(tmUser.getUserName());
 		
 		tbCardHis.setUserRealName(tmUser.getUserRealName());
+		
+		tbCardHis.setCustomerId(tbMembershipCard.getTbCustomer().getId());
+		
+		tbCardHis.setCustomerName(tbMembershipCard.getTbCustomer().getCustomerName());
+		
+		tbCardHis.setCustomerCode(tbMembershipCard.getTbCustomer().getCustomerCode());
 		
 		tbCardHisDao.insert(tbCardHis);
 		

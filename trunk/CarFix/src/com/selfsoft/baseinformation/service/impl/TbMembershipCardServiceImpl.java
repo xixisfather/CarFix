@@ -14,9 +14,14 @@ import com.selfsoft.baseinformation.dao.ITbCardHisDao;
 import com.selfsoft.baseinformation.dao.ITbMembershipCardDao;
 import com.selfsoft.baseinformation.model.TbCarInfo;
 import com.selfsoft.baseinformation.model.TbMembershipCard;
+import com.selfsoft.baseinformation.model.TmCardType;
+import com.selfsoft.baseinformation.model.TmCardTypeService;
+import com.selfsoft.baseinformation.model.TmMemberShipService;
 import com.selfsoft.baseinformation.service.ITbCardHisService;
 import com.selfsoft.baseinformation.service.ITbMembershipCardService;
 import com.selfsoft.baseinformation.service.ITmCardTypeService;
+import com.selfsoft.baseinformation.service.ITmCardTypeServiceService;
+import com.selfsoft.baseinformation.service.ITmMemberShipServiceService;
 import com.selfsoft.baseparameter.model.TmCardCheck;
 import com.selfsoft.baseparameter.service.ITmCardCheckService;
 import com.selfsoft.framework.common.CommonMethod;
@@ -35,6 +40,12 @@ public class TbMembershipCardServiceImpl implements ITbMembershipCardService{
 	
 	@Autowired
 	private ITmCardCheckService tmCardCheckService;
+	
+	@Autowired
+	private ITmMemberShipServiceService tmMemberShipServiceService;
+	
+	@Autowired
+	private ITmCardTypeServiceService tmCardTypeServiceService;
 	
 	public List<TbMembershipCard> findByTbMembershipCard(TbMembershipCard tbMembershipCard){
 		
@@ -56,32 +67,32 @@ public class TbMembershipCardServiceImpl implements ITbMembershipCardService{
 			
 			if(null!=tbMembershipCard.getTmCardType()&&null!=tbMembershipCard.getTmCardType().getId()){
 				
-				detachedCriteria.setFetchMode("tbMembershipCard.tmCardType", FetchMode.JOIN);
+				detachedCriteria.createAlias("tmCardType", "tmCardType");
 				
-				detachedCriteria.add(Restrictions.eq("tbMembershipCard.tmCardType.id",tbMembershipCard.getTmCardType().getId()));
+				detachedCriteria.add(Restrictions.eq("tmCardType.id",tbMembershipCard.getTmCardType().getId()));
 				
 			}
 			
-			boolean flag = false;
+			//boolean flag = false;
 			
-			if(null!=tbMembershipCard.getLicenseCode()&&!"".equals(tbMembershipCard.getLicenseCode())){
+			//if(null!=tbMembershipCard.getLicenseCode()&&!"".equals(tbMembershipCard.getLicenseCode())){
 				
-				flag = true;
+			//	flag = true;
+			//	
+			//	detachedCriteria.createAlias("tbCarInfo", "tbCarInfo");
 				
-				detachedCriteria.createAlias("tbCarInfo", "tbCarInfo");
-				
-				detachedCriteria.add(Restrictions.like("tbCarInfo.licenseCode","%"+tbMembershipCard.getLicenseCode()+"%"));
-			}
+			//	detachedCriteria.add(Restrictions.like("tbCarInfo.licenseCode","%"+tbMembershipCard.getLicenseCode()+"%"));
+			//}
 			//if(null!=tbMembershipCard.getTbCustomer()){
 				
 				if((null!=tbMembershipCard.getCustomerName()&&!"".equals(tbMembershipCard.getCustomerName()))||(null!=tbMembershipCard.getTelephone()&&!"".equals(tbMembershipCard.getTelephone()))){
 					
 					//detachedCriteria.setFetchMode("tbMembershipCard.tbCustomer", FetchMode.JOIN);
 					
-					if(!flag)
-					detachedCriteria.createAlias("tbCarInfo", "tbCarInfo");
+					//if(!flag)
+					detachedCriteria.createAlias("tbCustomer", "tbCustomer");
 					
-					detachedCriteria.createAlias("tbCarInfo.tbCustomer", "tbCustomer");
+					
 				}
 				
 				if(null!=tbMembershipCard.getCustomerName()&&!"".equals(tbMembershipCard.getCustomerName())){
@@ -119,6 +130,14 @@ public class TbMembershipCardServiceImpl implements ITbMembershipCardService{
 	public void updateTbMembershipCard(TbMembershipCard tbMembershipCard) {
 		
 		tbMembershipCardDao.update(tbMembershipCard);
+		
+	}
+	
+	public void updateTbMembershipCard(TbMembershipCard tbMembershipCard,TmUser tmUser,String desc) {
+		
+		tbMembershipCardDao.update(tbMembershipCard);
+		
+		tbCardHisService.insertCardHis(tbMembershipCard, tmUser, desc);
 		
 	}
 	
@@ -214,6 +233,26 @@ public class TbMembershipCardServiceImpl implements ITbMembershipCardService{
 	public void insertKkTbMembershipCard(TbMembershipCard tbMembershipCard, TmUser tmUser){
 		
 		tbMembershipCardDao.insert(tbMembershipCard);
+		
+		List<TmCardTypeService> tmCardTypeServiceList = tmCardTypeServiceService.findByTmCardTypeServiceId(tbMembershipCard.getTmCardType().getId());
+		
+		if(null != tmCardTypeServiceList) {
+			
+			for(TmCardTypeService tmCardTypeService : tmCardTypeServiceList) {
+				
+				TmMemberShipService tmMemberShipService = new TmMemberShipService();
+				
+				tmMemberShipService.setMemberShipId(tbMembershipCard.getId());
+				
+				tmMemberShipService.setServiceName(tmCardTypeService.getServiceName());
+				
+				tmMemberShipService.setServiceCount(tmCardTypeService.getServiceCount());
+			
+				tmMemberShipServiceService.insertTmMemberShipService(tmMemberShipService);
+				
+			}
+		}
+		
 		
 		tbCardHisService.insertKkCardHis(tbMembershipCard, tmUser);
 		
@@ -338,5 +377,28 @@ public class TbMembershipCardServiceImpl implements ITbMembershipCardService{
 		this.updateTbMembershipCard(tbMembershipCard);
 		
 		tbCardHisService.insertJfxfCardHis(tbMembershipCard, tmUser);
+	}
+	
+	public void insertSmartBalanceTbMembershipCard(TbMembershipCard tbMembershipCard, TmUser tmUser){
+		
+		this.updateTbMembershipCard(tbMembershipCard);
+		
+		tbCardHisService.insertSmartBalanceCardHis(tbMembershipCard, tmUser);
+		
+	}
+	
+	public Long calcDhMoney(String cardNo) {
+		
+		TbMembershipCard tbMembershipCard = this.findByCardNo(cardNo);
+		
+		Long cardPoint = tbMembershipCard.getCardPoint();
+		
+		TmCardType tmCardType = tbMembershipCard.getTmCardType();
+		
+		Integer dhFullPoint = tmCardType.getDhFullPoint();
+		
+		Integer dhFullMoney = tmCardType.getDhFullMoney();
+		
+		return (cardPoint/dhFullPoint) * dhFullMoney;
 	}
 }

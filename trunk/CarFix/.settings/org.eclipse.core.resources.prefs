@@ -1,4 +1,3 @@
-#Fri Jul 30 01:07:40 CST 2010
 eclipse.preferences.version=1
 encoding//WebRoot/js/common.js=UTF-8
 encoding//WebRoot/pages/baseinformation/TbCustomer.js=UTF-8
@@ -11,6 +10,7 @@ encoding//WebRoot/pages/business/stockout/sell.js=UTF-8
 encoding//WebRoot/pages/business/stockout/stockout.js=UTF-8
 encoding//WebRoot/pages/business/tbFixEntrust/TbBespokerPartConent.js=UTF-8
 encoding//WebRoot/pages/business/tbFixEntrust/TbFixEntrust.js=UTF-8
+encoding//WebRoot/pages/business/tbSmartBalance/tbSmartBalancePrint.jsp=UTF-8
 encoding//src/com/selfsoft/baseparameter/model/TmCarModelType.java=UTF-8
 encoding//src/com/selfsoft/business/action/CommChooseAction.java=UTF-8
 encoding//src/com/selfsoft/business/action/PrintReportAction.java=UTF-8

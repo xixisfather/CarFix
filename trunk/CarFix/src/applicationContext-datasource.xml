@@ -72,7 +72,10 @@
  				<value>com/selfsoft/baseparameter/model/TmStoreDisk.hbm.xml</value>
  				<value>com/selfsoft/baseinformation/model/TbMembershipCard.hbm.xml</value>
  				<value>com/selfsoft/baseinformation/model/TmCardType.hbm.xml</value>
+ 				<value>com/selfsoft/baseinformation/model/TmCardTypeService.hbm.xml</value>
  				<value>com/selfsoft/baseinformation/model/TbCardHis.hbm.xml</value>
+ 				<value>com/selfsoft/baseinformation/model/TmMemberShipService.hbm.xml</value>
+ 				
  				
  				<value>com/selfsoft/baseinformation/model/TbPriceAddRate.hbm.xml</value>
  				<value>com/selfsoft/baseinformation/model/TbPriceAdd.hbm.xml</value>
@@ -126,6 +129,7 @@
  				
  				<value>com/selfsoft/business/model/TbStoreHouseCheckDetail.hbm.xml</value>
  				<value>com/selfsoft/business/model/TbStoreHouseCheck.hbm.xml</value>
+ 				<value>com/selfsoft/business/model/TbSmartBalance.hbm.xml</value>
  				
  				<value>com/selfsoft/baseinformation/model/TbSalePrice.hbm.xml</value>
  				

@@ -25,9 +25,10 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/pages/baseinformation/TbMembershipCard.js"
 	charset="UTF-8"></script>
+<!--
 <script type="text/javascript"
 	src="<%= request.getContextPath() %>/pages/business/tbFixEntrust/TbFixEntrust.js"
-	charset="UTF-8"></script>
+	charset="UTF-8"></script>  -->	
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/global.css" />
 </head>
@@ -62,7 +63,9 @@
 				emptyOption="false" listKey="key" listValue="value" /></td>
 		</tr>
 
+ 
 		<tr>
+		<!--
 			<td>车牌号</td>
 			<td><s:hidden id="tbCarInfoId"
 				name="tbMembershipCard.tbCarInfo.id"></s:hidden> <s:textfield
@@ -70,6 +73,22 @@
 				onblur="getInfoByCarLicense();" size="10" /> <font color="red">*</font>
 			<img src="<%= request.getContextPath() %>/images/icons/find.gif"
 				style="cursor: pointer;" onclick="openWin();" /></td>
+ -->				
+				<td>客户号：</td>
+					<td>
+						<s:hidden id="customerId" name="tbMembershipCard.tbCustomer.id"  />
+						<s:textfield id="customerCode" onfocus="openWin();"  name="tbMembershipCard.tbCustomer.customerCode"/>
+						<font color="red">*</font>
+						<img src="<%= request.getContextPath() %>/images/icons/find.gif"
+				style="cursor: pointer;" onclick="openWin();" />
+					</td>
+		</tr>
+		<tr>			
+					<td>客户名称：</td>
+					<td><s:textfield id="customerName" name="tbMembershipCard.tbCustomer.customerName"/></td>
+				
+				
+				
 			<!-- 
 			<td>客户</td>
 

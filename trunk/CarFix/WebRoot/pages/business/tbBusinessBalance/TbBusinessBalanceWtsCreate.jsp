@@ -135,6 +135,10 @@
 						
 						</s:textfield>
 						
+						<s:textfield id="dhMoney" name="tbBusinessBalance.dhMoney" value="0">
+						
+						</s:textfield>
+						
 						<input type="text" id="passFlag" value="${request.pass}"/>
 					</td>
 				</tr>
@@ -189,10 +193,12 @@
 
 		var passFlag = document.getElementById('passFlag');
 		
+		var payPattern = document.getElementById('payPattern');
+		
 		TabPanel.create('tabPlaceHolder',350,
 		[
 			{
-				id:'tbBusinessBalanceTab' , title:'结算清单',disabled:false,url:'tbBusinessBalanceTotalFindAction.action?carInfoId='+carInfoId.value+'&cardNo='+cardNo.value+'&passFlag='+passFlag.value
+				id:'tbBusinessBalanceTab' , title:'结算清单',disabled:false,url:'tbBusinessBalanceTotalFindAction.action?carInfoId='+carInfoId.value+'&cardNo='+cardNo.value+'&passFlag='+passFlag.value + '&payPattern=' + payPattern.value
 			},
 			{
 				id:'tbFixEntrustContent' , title:'修理工时',disabled:false,url:'tbFixEntrustContentFindAction.action?tbFixEntrustId='+tbFixEntrustId.value + '&flag=jsd&cardNo='+cardNo.value

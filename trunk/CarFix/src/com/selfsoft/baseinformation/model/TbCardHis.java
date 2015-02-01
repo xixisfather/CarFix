@@ -64,6 +64,12 @@ public class TbCardHis implements java.io.Serializable{
 	private String userRealName;
 	
 	//private String balanceCode;
+	
+	private Long customerId;
+	
+	private String customerName;
+	
+	private String customerCode;
 
 	public TbCardHis() {
 		
@@ -371,6 +377,30 @@ public class TbCardHis implements java.io.Serializable{
 
 	public void setBalanceId(Long balanceId) {
 		this.balanceId = balanceId;
+	}
+
+	public Long getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
+	}
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
+	public String getCustomerCode() {
+		return customerCode;
+	}
+
+	public void setCustomerCode(String customerCode) {
+		this.customerCode = customerCode;
 	}
 	
 	

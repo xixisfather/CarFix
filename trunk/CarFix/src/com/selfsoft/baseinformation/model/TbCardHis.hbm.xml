@@ -128,5 +128,17 @@
             <column name="BALANCE_ID"/>
         </property>
         
+        <property name="customerId" type="java.lang.Long">
+            <column name="CUSTOMER_ID"/>
+        </property>
+        
+        <property name="customerCode" type="java.lang.String">
+            <column name="CUSTOMER_CODE"/>
+        </property>
+        
+        <property name="customerName" type="java.lang.String">
+            <column name="CUSTOMER_NAME"/>
+        </property>
+        
     </class>
 </hibernate-mapping>

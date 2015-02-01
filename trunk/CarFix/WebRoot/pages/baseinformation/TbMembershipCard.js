@@ -36,7 +36,7 @@ function tbMembershipCardFormValidate() {
 
 	var cardSaving = document.getElementById('cardSaving');
 	
-	var tbCarInfoId = document.getElementById('tbCarInfoId');
+	var tbCustomerId = document.getElementById('customerId');
 	
 	var cardPassword = document.getElementById('cardPassword');
 	
@@ -54,9 +54,9 @@ function tbMembershipCardFormValidate() {
 		errorMsg += '初始卡内金额必须为正数\n';
 	}
 	
-	if(''==tbCarInfoId.value){
+	if(''==tbCustomerId.value){
 		
-		errorMsg += '请选择车辆\n';
+		errorMsg += '请选择客户\n';
 		
 	}
 	
@@ -88,11 +88,11 @@ function tbMembershipCardFormValidate() {
 	return true;
 }
 
-/*function openWin() {
+function openWin() {
 	var props = "customerId,customerCode,customerName";
 	showCommonWin('findAllTmTbCustomerAction.action', '客户列表', 650, 350, props,
 			null);
-}*/
+}
 
 function formSubmit(){
 	

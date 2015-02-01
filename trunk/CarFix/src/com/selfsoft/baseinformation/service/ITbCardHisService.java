@@ -58,4 +58,11 @@ public interface ITbCardHisService {
 	public void insertJfxfCardHis(TbMembershipCard tbMembershipCard,TmUser tmUser);
 	
 	public List<TbCardHis> findCardHisByBalanceId(Long balanceId);
+	
+	public void insertCardHis(TbMembershipCard tbMembershipCard,TmUser tmUser,String desc);
+	
+	public void insertSmartBalanceCardHis(TbMembershipCard tbMembershipCard,TmUser tmUser);
+	
+	public void insertSmartBalanceUseServiceCardHis(TbMembershipCard tbMembershipCard,TmUser tmUser);
+		
 }

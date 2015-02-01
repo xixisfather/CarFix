@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.selfsoft.business.model.TbSmartBalance" table="TB_SMART_BALANCE"
+    dynamic-insert="true"
+    dynamic-update="true"
+    lazy="false"
+    >
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        
+        <property name="serviceName" type="java.lang.String">
+            <column name="SERVICE_NAME"/>
+        </property>
+        
+        <property name="serviceMoney" type="java.lang.Double">
+            <column name="SERVICE_MONEY"/>
+        </property>
+        
+        <property name="payPatten" type="java.lang.Long">
+            <column name="PAY_PATTEN"/>
+        </property>
+        
+        <property name="cardNo" type="java.lang.String">
+            <column name="CARD_NO"/>
+        </property>
+        
+        <property name="cardSaving" type="java.lang.Double">
+            <column name="CARD_SAVING"/>
+        </property>
+        
+        <property name="workerName" type="java.lang.String">
+            <column name="WORKER_NAME"/>
+        </property>
+        
+        <property name="balanceDate" type="java.util.Date">
+            <column name="BALANCE_DATE"/>
+        </property>
+        
+        <property name="balanceDateStart" type="java.util.Date" insert="false" update="false">
+            <column name="BALANCE_DATE" />
+        </property>
+         <property name="balanceDateEnd" type="java.util.Date" insert="false" update="false">
+            <column name="BALANCE_DATE" />
+        </property>
+        
+        <property name="licenseCode" type="java.lang.String">
+            <column name="LICENSE_CODE"/>
+        </property>
+        
+        <property name="userId" type="java.lang.Long">
+            <column name="USER_ID"/>
+        </property>
+        
+        <property name="useCardService" type="java.lang.Long">
+            <column name="USE_CARD_SERVICE"/>
+        </property>
+        
+    </class>
+</hibernate-mapping>

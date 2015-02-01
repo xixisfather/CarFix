@@ -130,11 +130,20 @@
 				</tr>
 				
 				<tr>
+					<td>积分可抵扣金额</td>
+					<td>
+						<s:textfield id="dhMoneyShow" name="tbMembershipCard.dhMoney" disabled="true"></s:textfield>
+						<input type="checkbox" name= "dhMoney" id="dhMoney" onclick="dhMoneyClick();"/>
+					</td>
+				</tr>
+				
+				<tr>
 					<td>
 						付款方式
 					</td>
+					<%request.setAttribute("payPattern",request.getParameter("payPattern"));%>
 					<td>
-						<s:select id="payPattern" name="tbBusinessBalance.payPattern" list="#request.payMap" listKey="key" listValue="value" onchange="payMethodChange();parentValueSet();"></s:select>
+						<s:select id="payPattern" name="tbBusinessBalance.payPattern" list="#request.payMap" listKey="key" listValue="value" onchange="payMethodChange();parentValueSet();" value="#request.payPattern"></s:select>
 					</td>
 				</tr>
 				<tr>
@@ -211,6 +220,10 @@
 	}
 	
 	parentValueSet();
+	
+	var dhMoneyShow = document.getElementById('dhMoneyShow').value;
+	
+	document.getElementById('dhMoney').value = dhMoneyShow;
 	
 </script>
 
