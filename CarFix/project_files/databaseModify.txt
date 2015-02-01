@@ -133,7 +133,69 @@ GO
 insert into tb_sale_price values ('1.6');
 
 2015-01-20 ADD BY CCR
-alter table TM_CARD_TYPE add DH_FULL_MONEY int；
-alter table TM_CARD_TYPE add DH_FULL_POINT int；
+alter table TM_CARD_TYPE add DH_FULL_MONEY int;
+alter table TM_CARD_TYPE add DH_FULL_POINT int;
+alter table TB_MEMBERSHIP_CARD drop constraint FK_TB_MEMBE_REFERENCE_TB_CAR_I;
+exec sp_rename 'TB_MEMBERSHIP_CARD.CAR_ID','CUSTOMER_ID','column';
+alter table dbo.TB_MEMBERSHIP_CARD
+   add constraint FK_TB_MEMBE_REFERENCE_TB_CUSTO foreign key (CUSTOMER_ID)
+      references dbo.TB_CUSTOMER (ID);
+alter table TB_CARD_HIS add CUSTOMER_ID int;  
+alter table TB_CARD_HIS add CUSTOMER_CODE varchar(200); 
+alter table TB_CARD_HIS add CUSTOMER_NAME varchar(200); 
+
+create table TM_CARD_TYPE_SERVICE (
+   ID                   int                  identity,
+   CARD_TYPE_ID         int                  null,
+   SERVICE_NAME         varchar(200)         null,
+   SERVICE_COUNT        int                  null,
+   constraint PK_TM_CARD_TYPE_SERVICE primary key (ID)
+)
+go    
+      
+      
+alter table TM_CARD_TYPE add GS_BX_M_FULL_MONEY int;      
+alter table TM_CARD_TYPE add GS_BX_M_GIVE_MONEY int; 
+alter table TM_CARD_TYPE add PJ_BX_M_FULL_MONEY int; 
+alter table TM_CARD_TYPE add PJ_BX_M_GIVE_MONEY int; 
+alter table TM_CARD_TYPE add GS_BX_P_FULL_MONEY int; 
+alter table TM_CARD_TYPE add GS_BX_P_GIVE_POINT int; 
+alter table TM_CARD_TYPE add PJ_BX_P_FULL_MONEY int; 
+alter table TM_CARD_TYPE add PJ_BX_P_GIVE_POINT int; 
+alter table TM_CARD_TYPE add GS_BX_YHL          numeric(10,2); 
+alter table TM_CARD_TYPE add PJ_BX_YHL          numeric(10,2); 
+
+
+
+create table TM_MEMBERSHIP_SERVICE (
+   ID                   int                  identity,
+   MEMBERSHIP_ID        int                  null,
+   SERVICE_NAME         varchar(200)         null,
+   SERVICE_COUNT        int                  null,
+   constraint PK_TM_MEMBERSHIP_SERVICE primary key (ID)
+)
+go
+
+
+
+create table TB_SMART_BALANCE (
+   ID                   int                  identity,
+   SERVICE_NAME         varchar(200)         null,
+   SERVICE_MONEY        numeric(10,2)        null,
+   PAY_PATTEN           int                  null,
+   CARD_NO              varchar(200)         null,
+   CARD_SAVING          numeric(10,2)        null,
+   WORKER_NAME          varchar(20)          null,
+   WORKER_ID            int                  null,
+   BALANCE_DATE         datetime             null,
+   CUSTOMER_ID          int                  null,
+   MEMBERSHIP_ID        int                  null,
+   LICENSE_CODE         varchar(200)         null,
+   constraint PK_TB_SMART_BALANCE primary key (ID)
+)
+go
+
+alter table TB_BUSINESS_BALANCE add DH_MONEY int; 
+alter table TB_BUSINESS_BALANCE add CARD_ZFJE          numeric(10,2); 
 
 
