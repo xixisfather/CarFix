@@ -149,3 +149,15 @@ http://localhost:8080/CarFix/pages/getStoreHouseMounthReceiverStatAction.action
 http://localhost:8080/CarFix/pages/getPartMounthReceiveListStatAction.action
 盘点
 http://localhost:8080/CarFix/pages/findTbStoreHouseCheckAction.action
+
+
+
+add 2015-01-25
+洗车结算
+http://localhost:8080/CarFix/pages/business/tbSmartBalance/tbSmartBalanceCreate.jsp
+洗车结算查询
+/pages/business/tbSmartBalance/tbSmartBalanceFindAction.action
+
+
+
+
