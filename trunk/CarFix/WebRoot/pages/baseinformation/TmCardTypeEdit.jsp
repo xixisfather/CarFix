@@ -313,6 +313,14 @@
 					<td><hr/></td>
 				</tr>
 				
+				<tr>
+					<td>D.增&nbsp;值&nbsp;服&nbsp;务&nbsp;定&nbsp;义:(<font color="red">定义刷卡结算的服务,如果无限次,尽量填写大数字如9999999</font>)</td>
+				</tr>
+				
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				
 				
 				<%
 				
