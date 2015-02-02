@@ -178,6 +178,16 @@ go
 
 
 
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('TB_SMART_BALANCE')
+            and   type = 'U')
+   drop table TB_SMART_BALANCE
+go
+
+/*==============================================================*/
+/* Table: TB_SMART_BALANCE                                      */
+/*==============================================================*/
 create table TB_SMART_BALANCE (
    ID                   int                  identity,
    SERVICE_NAME         varchar(200)         null,
@@ -188,8 +198,8 @@ create table TB_SMART_BALANCE (
    WORKER_NAME          varchar(20)          null,
    BALANCE_DATE         datetime             null,
    LICENSE_CODE         varchar(200)         null,
-   USE_CARD_SERVICE     int                  null,
    USER_ID              int                  null,
+   USE_CARD_SERVICE     int                  null,
    constraint PK_TB_SMART_BALANCE primary key (ID)
 )
 go
