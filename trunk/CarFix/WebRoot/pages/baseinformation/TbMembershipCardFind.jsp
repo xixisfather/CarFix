@@ -59,10 +59,10 @@
 		
 		<e3t:table id="tbMembershipCardTable" uri="tbMembershipCardFindAction.action" var="tbMembershipCard"
 			scope="request" items="tbMembershipCardList" mode="ajax"
-			toolbarPosition="bottom" skin="E3002" pageSize="10" width="1100"
+			toolbarPosition="bottom" skin="E3002" pageSize="10" width="1500"
 			height="360" caption="会员卡信息">
 			
-			<e3t:column property="no" title="操作" sortable="false" width="340">
+			<e3t:column property="no" title="操作" sortable="false" width="400">
 				<a href="javascript:editObject('${tbMembershipCard.id}','tbMembershipCardForwardPageAction!forwardPage.action',800,500);">
 					<font color="blue">修改</font>
 				</a>
@@ -89,7 +89,7 @@
 					<font color="blue">重置密码</font>
 				</a>
 				
-				<a href="javascript:editObject('${tbMembershipCard.id}','<%= request.getContextPath() %>/pages/baseinformation/TbMembershipCardViewService.jsp',600,300);">
+				<a href="javascript:editObject('${tbMembershipCard.id}','viewTbMemberCardServiceAction.action',600,300);">
 					<font color="blue">查看服务</font>
 				</a>
 				

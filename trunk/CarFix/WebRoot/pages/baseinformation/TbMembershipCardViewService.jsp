@@ -1,8 +1,5 @@
 <%@page import="com.selfsoft.baseinformation.model.TmMemberShipService"%>
 <%@page import="java.util.List"%>
-<%@page import="com.selfsoft.baseinformation.service.ITmMemberShipServiceService"%>
-<%@page import="org.springframework.context.support.ClassPathXmlApplicationContext"%>
-<%@page import="org.springframework.context.ApplicationContext"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,14 +12,7 @@
 <center>
 <%
 
-String id = request.getParameter("id");
-
-ApplicationContext appContext = new ClassPathXmlApplicationContext(
-		"classpath:applicationContext*.xml");
-
-ITmMemberShipServiceService tmMemberShipServiceService = (ITmMemberShipServiceService)appContext.getBean("tmMemberShipServiceService");
-
-List<TmMemberShipService> tmMemberShipServiceList = tmMemberShipServiceService.findByMemberShipId(Long.valueOf(id));
+List<TmMemberShipService> tmMemberShipServiceList = (List<TmMemberShipService>)request.getAttribute("tmMemberShipServiceList");
 
 if(null != tmMemberShipServiceList && tmMemberShipServiceList.size() > 0) {
 	
@@ -38,6 +28,13 @@ if(null != tmMemberShipServiceList && tmMemberShipServiceList.size() > 0) {
 	}
 	
 	
+}
+else {
+%>	
+
+没有赠送的服务
+
+<%	
 }
 
 %>
