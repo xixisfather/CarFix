@@ -89,6 +89,10 @@
 					<font color="blue">重置密码</font>
 				</a>
 				
+				<a href="javascript:editObject('${tbMembershipCard.id}','<%= request.getContextPath() %>/pages/baseinformation/TbMembershipCardViewService.jsp',600,300);">
+					<font color="blue">查看服务</font>
+				</a>
+				
 			</e3t:column>
 			
 			<e3t:column property="cardStatusShow" title="当前状态" />
