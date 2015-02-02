@@ -186,11 +186,9 @@ create table TB_SMART_BALANCE (
    CARD_NO              varchar(200)         null,
    CARD_SAVING          numeric(10,2)        null,
    WORKER_NAME          varchar(20)          null,
-   WORKER_ID            int                  null,
    BALANCE_DATE         datetime             null,
-   CUSTOMER_ID          int                  null,
-   MEMBERSHIP_ID        int                  null,
    LICENSE_CODE         varchar(200)         null,
+   USE_CARD_SERVICE     int                  null,
    USER_ID              int                  null,
    constraint PK_TB_SMART_BALANCE primary key (ID)
 )
