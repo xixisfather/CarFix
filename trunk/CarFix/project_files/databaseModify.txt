@@ -191,6 +191,7 @@ create table TB_SMART_BALANCE (
    CUSTOMER_ID          int                  null,
    MEMBERSHIP_ID        int                  null,
    LICENSE_CODE         varchar(200)         null,
+   USER_ID              int                  null,
    constraint PK_TB_SMART_BALANCE primary key (ID)
 )
 go
