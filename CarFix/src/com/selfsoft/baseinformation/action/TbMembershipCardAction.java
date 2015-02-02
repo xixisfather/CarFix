@@ -16,9 +16,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.selfsoft.baseinformation.model.TbMembershipCard;
+import com.selfsoft.baseinformation.model.TmMemberShipService;
 import com.selfsoft.baseinformation.service.ITbCardHisService;
 import com.selfsoft.baseinformation.service.ITbMembershipCardService;
 import com.selfsoft.baseinformation.service.ITmCardTypeService;
+import com.selfsoft.baseinformation.service.ITmMemberShipServiceService;
 import com.selfsoft.framework.common.CommonMethod;
 import com.selfsoft.framework.common.Constants;
 import com.selfsoft.secrity.model.TmUser;
@@ -31,6 +33,7 @@ ServletRequestAware, ServletResponseAware{
 	private HttpServletRequest request;
 
 	private HttpServletResponse response;
+	
 
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
@@ -59,6 +62,9 @@ ServletRequestAware, ServletResponseAware{
 	
 	@Autowired
 	private ITbCardHisService tbCardHisService;
+	
+	@Autowired
+	private ITmMemberShipServiceService tmMemberShipServiceService;
 	
 	public String findTbMembershipCard() throws Exception{
 		
@@ -435,5 +441,15 @@ ServletRequestAware, ServletResponseAware{
 		return null;
 	}
 	
+	public String viewTbMemberCardService() throws Exception {
+		
+		String id = request.getParameter("id");
+		
+		List<TmMemberShipService> tmMemberShipServiceList = tmMemberShipServiceService.findByMemberShipId(Long.valueOf(id));
 
+		request.setAttribute("tmMemberShipServiceList", tmMemberShipServiceList);
+		
+		return Constants.SUCCESS;
+		
+	}
 }
