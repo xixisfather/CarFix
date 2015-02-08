@@ -21,7 +21,6 @@ import jxl.Workbook;
 import jxl.write.Label;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
-
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 import org.apache.commons.beanutils.BeanUtils;
@@ -5770,5 +5769,54 @@ public class TbBusinessBalanceServiceImpl implements ITbBusinessBalanceService {
 			}
 		}
 		
+	}
+	
+	public boolean updateTbBusinessBalanceReback(String balanceCode){
+		
+		try{
+			
+			List<TbBusinessBalance> tbBusinessBalanceList = this.findTbBusinessBalanceByBalanceCode(balanceCode);
+			
+			for(TbBusinessBalance tbBusinessBalance : tbBusinessBalanceList) {
+				
+				tbBusinessBalanceItemService.deleteByBalanceId(tbBusinessBalance.getId());
+			
+				tbReceiveFreeService.deleteByBalanceId(tbBusinessBalance.getId());
+				
+				this.deleteById(tbBusinessBalance.getId());
+				
+				TbFixEntrust tbFixEntrust = tbBusinessBalance.getTbFixEntrust();
+
+				if (null != tbFixEntrust && null != tbFixEntrust.getId()) {
+
+					tbFixEntrust = tbFixEntrustService.findById(tbFixEntrust.getId());
+
+					tbFixEntrust.setEntrustStatus(Constants.NOFINISH);
+
+					tbMaintainPartContentService.updateTbMaintainStatusNoBalance(
+							tbFixEntrust.getId(), Constants.CONFIRM);
+
+					tmStockOutService.updateTrustBill(tbFixEntrust.getEntrustCode(),
+							Constants.CONFIRM);
+
+					tbFixEntrustService.update(tbFixEntrust);
+				}
+				
+				if (null != tbBusinessBalance.getTmStockOut()) {
+
+					tmStockOutService.updateSellStatus(tbBusinessBalance
+							.getTmStockOut().getId(), Constants.CONFIRM);
+
+				}
+			}
+		} catch(Exception e) {
+			
+			e.printStackTrace();
+			
+			return false;
+		}
+		
+		
+		return true;
 	}
 }

@@ -16,7 +16,7 @@
 				
 	</script>
 	<body>
-		<s:form action="tbBusinessBalanceXsdInsertAction.action" >
+		<s:form id="balanceForm" action="tbBusinessBalanceXsdInsertAction.action" >
 			<s:hidden id="tmStockOutId" name="tbBusinessBalance.tmStockOut.id" ></s:hidden>
 			<s:hidden id="tmBalanceId" name="tmBalanceId" value="%{#request.tmBalanceId}"></s:hidden>
 			<table>
@@ -108,7 +108,7 @@
 				<tr>
 
 					<td align="center" colspan="6">
-						<input type="submit" value="结算" />
+						<input type="button" value="结算" onclick="confirmBalance();"/>
 						&nbsp;&nbsp;
 						<input type="reset" value="重置"/>
 						&nbsp;&nbsp;

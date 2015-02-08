@@ -74,4 +74,5 @@ public interface ITbBusinessBalanceService {
 	
 	public void exportOweXls(OutputStream os,String tpl,List<TbBusinessBalance> tbBusinessBalanceList);
 		
+	public boolean updateTbBusinessBalanceReback(String balanceCode);
 }

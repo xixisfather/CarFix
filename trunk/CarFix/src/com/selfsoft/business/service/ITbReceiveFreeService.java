@@ -21,4 +21,6 @@ public interface ITbReceiveFreeService {
 	public StatisticsTbFixBusinessVo staticsTbReceiveFree(List<TbBusinessBalance> tbBusinessBalanceList);
 	
 	public List<TbReceiveFree> findByBalanceId(Long balanceId);
+	
+	public void deleteByBalanceId(Long balanceId);
 }

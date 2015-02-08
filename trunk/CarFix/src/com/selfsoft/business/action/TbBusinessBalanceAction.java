@@ -2343,6 +2343,29 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 
 		return null;
 	}
+	
+	public String rebackTbBusinessBalance() throws Exception {
+
+		String balanceCode = request.getParameter("balanceCode");
+
+		if (null != balanceCode && !"".equals(balanceCode)) {
+
+			boolean flag = tbBusinessBalanceService.updateTbBusinessBalanceReback(balanceCode);
+			// 回传时字符格式为 E3表的id,操作标示
+			if (flag) {
+				response.getWriter().print(
+						"tbBusinessBalanceTable," + Constants.SUCCESS);
+			} else {
+				response.getWriter().print(
+						"tbBusinessBalanceTable," + Constants.FAILURE);
+			}
+		} else {
+			response.getWriter().print(
+					"tbBusinessBalanceTable," + Constants.EXCEPTION);
+		}
+
+		return null;
+	}
 
 	public String selectTbBusinessBalance() throws Exception {
 

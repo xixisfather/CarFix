@@ -13,7 +13,7 @@
 
 	<body>
 	
-		<s:form action="tbBusinessBalanceWtsInsertAction.action" onsubmit="return formValidate();">
+		<s:form id="balanceForm" action="tbBusinessBalanceWtsInsertAction.action" onsubmit="return formValidate();">
 			<table>
 				<tr>
 					<td>
@@ -150,7 +150,7 @@
 					<td align="center" colspan="6">
 						<input type="button" value="结算预览" onclick="prePrint();"/>
 						&nbsp;&nbsp;
-						<input type="submit" value="结算"/>
+						<input type="button" value="结算" onclick="confirmBalance();"/>
 						&nbsp;&nbsp;
 						<input type="reset" value="重置"/>
 						&nbsp;&nbsp;

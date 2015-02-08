@@ -543,6 +543,38 @@ public class TbMaintainPartContentServiceImpl implements
 		
 	}
 	
+	
+	/**
+	 * 更新维修发料单状态
+	 * @param entrustId
+	 * @Function  
+	 * @param status
+	 */
+	public void updateTbMaintainStatusNoBalance(Long entrustId , Long status){
+		
+		TbMaintainPartContent queryEntity = new TbMaintainPartContent();
+		
+		queryEntity.setEntrustId(entrustId);
+		
+		List<TbMaintainPartContent> maintaincontnets = this.findByEntity(queryEntity);
+		
+		if(null!=maintaincontnets&&maintaincontnets.size()>0){
+			
+			for(TbMaintainPartContent maintainPartContent : maintaincontnets ){
+				
+				maintainPartContent.setIsConfirm(status);
+				
+				maintainPartContent.setBalanceId(null);
+				
+				tbMaintainPartContentDao.update(maintainPartContent);
+			}
+			
+		}
+		
+		
+	}
+	
+	
 	/**
 	 * 更新维修发料单状态
 	 * @Date      2010-6-28

@@ -58,3 +58,42 @@ function getReTbBusinessBalanceInfo(originalRequest){
 	}
 	eval('refresh_' + reBalanceInfo[0] + '()');
 }
+
+function reBackTbBusinessBalance(balanceCode)
+{
+	Ext.MessageBox.confirm('信息', '您确定要重新结算？', function(btn) {
+		if (btn == 'yes') {
+
+			var date = new Date();
+			
+			var time = date.getTime();
+			
+			var url = 'tbBusinessBalanceReBackBalanceAction.action?balanceCode=' + balanceCode + '&time=' + time;
+			
+			var reBackTbBusinessBalanceAjax = new Ajax.Request(url, {
+				method : 'post',
+
+				onComplete : getReBackTbBusinessBalanceInfo,
+
+				asynchronous : true
+
+			});
+		}
+
+	});
+}
+
+function getReBackTbBusinessBalanceInfo(originalRequest){
+	
+	var reBackBalanceInfo = originalRequest.responseText.split(',');
+
+	if (reBackBalanceInfo[1] == 'success') {
+		//Ext.MessageBox.alert('信息', '删除成功');
+	} else if (reBackBalanceInfo[1] == 'failure') {
+		Ext.MessageBox.alert('信息', '操作失败,操作异常或已被结算重新结算');
+	} else {
+		Ext.MessageBox.alert('信息', '操作失败,操作异常或已被重新结算');
+	}
+	eval('refresh_' + reBackBalanceInfo[0] + '()');
+}
+

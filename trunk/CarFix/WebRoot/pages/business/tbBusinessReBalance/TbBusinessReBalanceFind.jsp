@@ -70,7 +70,7 @@
 			toolbarPosition="bottom" skin="E3002" pageSize="10" width="1000"
 			height="320" caption="结算单">
 			<e3t:column property="no" title="操作"
-				sortable="false">
+				sortable="false" width="200">
 				<a href="javascript:editObject('${tbBusinessBalance.id}','tbBusinessBalanceViewAction.action',600,300);">
 					<font color="blue">
 						结算明细
@@ -81,6 +81,13 @@
 						再结算
 					</font>
 				</a>
+				
+				<a href="javascript:reBackTbBusinessBalance('${tbBusinessBalance.balanceCode}');">
+					<font color="blue">
+						重新结算
+					</font>
+				</a>
+				
 			</e3t:column>
 			<e3t:column property="balanceCode" title="结算单号" />
 			<e3t:column property="entrustCode" title="委托书号" />
