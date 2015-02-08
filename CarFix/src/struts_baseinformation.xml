@@ -255,6 +255,14 @@
 				/pages/message/fail.jsp?table=tbMembershipCardTable
 			</result>
 			
+		</action>	
+		
+		<action name="viewTbMemberCardServiceAction" class="com.selfsoft.baseinformation.action.TbMembershipCardAction" method="viewTbMemberCardService">
+			<result name="success">
+				
+				/pages/baseinformation/TbMembershipCardViewService.jsp
+			</result>
+			
 		</action>		
  		<!-- 会员卡信息 -->
  		

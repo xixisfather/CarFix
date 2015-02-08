@@ -123,4 +123,18 @@ public class TbReceiveFreeServiceImpl implements ITbReceiveFreeService{
 		
 		return tbReceiveFreeDao.findBySQL(hql, null);
 	}
+	
+	public void deleteByBalanceId(Long balanceId) {
+		
+		List<TbReceiveFree> tbReceiveFreeList = this.findByBalanceId(balanceId);
+		
+		if(null != tbReceiveFreeList && tbReceiveFreeList.size() > 0) {
+			
+			for(TbReceiveFree tr : tbReceiveFreeList) {
+				
+				this.deleteById(tr.getId());
+			}
+		}
+		
+	}
 }

@@ -69,4 +69,6 @@ public interface ITbMaintainPartContentService {
 	public double getAllStockOutNum(Long partId);
 	
 	public List<TbMaintianVo> getTbMaintianDetailVosByEntrustIdPrint(Long entrustId,Long balanceType);
+
+	public void updateTbMaintainStatusNoBalance(Long entrustId , Long status);
 }

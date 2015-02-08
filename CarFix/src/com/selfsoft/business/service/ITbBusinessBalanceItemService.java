@@ -17,4 +17,6 @@ public interface ITbBusinessBalanceItemService {
 	public List<TbBusinessBalanceItem> findGroupTbBusinessBalanceItemListByTbBusinessBalanceId(Long tbBusinessBalanceId);
 
 	public List<StatisticsTbFixBusinessVo> staticsBalanceItem(TbBusinessBalance tbBusinessBalance);
+
+	public void deleteByBalanceId(Long tbBusinessBalanceId);
 }

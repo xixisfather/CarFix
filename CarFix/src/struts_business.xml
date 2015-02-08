@@ -1192,6 +1192,10 @@
 			
 		</action>
 		
+		<action name="tbBusinessBalanceReBackBalanceAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="rebackTbBusinessBalance">
+			
+		</action>
+		
 		<action name="tbBusinessBalanceReBalanceAction" class="com.selfsoft.business.action.TbBusinessBalanceAction" method="reBalanceTbBusinessBalance">
 			
 		</action>

@@ -41,6 +41,23 @@ public class TbBusinessBalanceItemServiceImpl implements ITbBusinessBalanceItemS
 		tbBusinessBalanceItemDao.update(tbBusinessBalanceItem);
 	}
 	
+	public void deleteByBalanceId(Long tbBusinessBalanceId) {
+		
+		List<TbBusinessBalanceItem> tbBusinessBalanceItemList = this.findTbBusinessBalanceItemListByTbBusinessBalanceId(tbBusinessBalanceId);
+	
+		if(null != tbBusinessBalanceItemList && tbBusinessBalanceItemList.size() > 0) {
+			
+			for(TbBusinessBalanceItem ti : tbBusinessBalanceItemList) {
+				
+				tbBusinessBalanceItemDao.deleteById(ti.getId());
+				
+			}
+			
+		}
+		
+		
+	}
+	
 	public List<TbBusinessBalanceItem> findTbBusinessBalanceItemListByTbBusinessBalanceId(Long tbBusinessBalanceId){
 		
 		List<TbBusinessBalanceItem> tbBusinessBalanceItemList= new ArrayList<TbBusinessBalanceItem>();

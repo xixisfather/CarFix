@@ -307,3 +307,14 @@ function prePrint(){
 	
 	
 }
+
+
+function confirmBalance() {
+	
+	if(confirm('结算金额请仔细核对,确定要结算吗?')){
+		
+		document.getElementById('balanceForm').submit();
+	}
+	
+	
+}
