@@ -5796,7 +5796,7 @@ public class TbBusinessBalanceServiceImpl implements ITbBusinessBalanceService {
 					tbMaintainPartContentService.updateTbMaintainStatusNoBalance(
 							tbFixEntrust.getId(), Constants.CONFIRM);
 
-					tmStockOutService.updateTrustBill(tbFixEntrust.getEntrustCode(),
+					tmStockOutService.updateTrustBillNotBalance(tbFixEntrust.getEntrustCode(),
 							Constants.CONFIRM);
 
 					tbFixEntrustService.update(tbFixEntrust);
@@ -5806,7 +5806,7 @@ public class TbBusinessBalanceServiceImpl implements ITbBusinessBalanceService {
 				
 				if (null != tbBusinessBalance.getTmStockOut()) {
 
-					tmStockOutService.updateSellStatus(tbBusinessBalance
+					tmStockOutService.updateSellStatusNotBalance(tbBusinessBalance
 							.getTmStockOut().getId(), Constants.CONFIRM);
 
 				}

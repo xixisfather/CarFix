@@ -124,4 +124,8 @@ public interface ITmStockOutService {
 	public Double sumSingleSellByBanalceCode(String balanceCode);
 	
 	public List<TmStockOutDetVo> getStockOutDetVos(TmStockOut tmStockOut , Long stockOutId,Long stockOutType);
+
+	public void updateTrustBillNotBalance(String trustBill, Long status);
+	
+	public void updateSellStatusNotBalance(Long id ,Long status);
 }
