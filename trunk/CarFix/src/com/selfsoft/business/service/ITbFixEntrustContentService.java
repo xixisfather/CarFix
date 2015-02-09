@@ -12,6 +12,8 @@ public interface ITbFixEntrustContentService {
 	
 	public void update(TbFixEntrustContent tbFixEntrustContent);
 	
+	public void updateTbFixEntrustContentUnBalance(Long tbFixEntrustId);
+	
 	public TbFixEntrustContent findById(Long id);
 	
 	public boolean deleteById(Long id);

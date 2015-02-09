@@ -71,4 +71,6 @@ public interface ITbMaintainPartContentService {
 	public List<TbMaintianVo> getTbMaintianDetailVosByEntrustIdPrint(Long entrustId,Long balanceType);
 
 	public void updateTbMaintainStatusNoBalance(Long entrustId , Long status);
+	
+	public List<TbMaintainPartContent> findByEntrustId(Long entrustId);
 }

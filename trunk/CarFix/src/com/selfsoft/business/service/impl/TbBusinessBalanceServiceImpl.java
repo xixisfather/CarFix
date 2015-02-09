@@ -5800,6 +5800,8 @@ public class TbBusinessBalanceServiceImpl implements ITbBusinessBalanceService {
 							Constants.CONFIRM);
 
 					tbFixEntrustService.update(tbFixEntrust);
+					
+					tbFixEntrustContentService.updateTbFixEntrustContentUnBalance(tbFixEntrust.getId());
 				}
 				
 				if (null != tbBusinessBalance.getTmStockOut()) {

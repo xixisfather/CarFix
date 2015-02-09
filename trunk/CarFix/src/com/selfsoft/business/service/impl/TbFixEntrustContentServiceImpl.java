@@ -51,6 +51,24 @@ public class TbFixEntrustContentServiceImpl implements ITbFixEntrustContentServi
 		tbFixEntrustContentDao.update(tbFixEntrustContent);
 	}
 	
+	public void updateTbFixEntrustContentUnBalance(Long tbFixEntrustId) {
+		
+		List<TbFixEntrustContent> tbFixEntrustContentList = this.findTbFixEnTrustContentListByTbFixEntrustId(tbFixEntrustId);
+		
+		if(null != tbFixEntrustContentList && tbFixEntrustContentList.size() > 0) {
+			
+			for(TbFixEntrustContent tt : tbFixEntrustContentList) {
+				
+				tt.setBalanceId(null);
+				
+				this.update(tt);
+				
+			}
+			
+		}
+		
+	}
+	
 	//根据委托书ID查找修理内容LIST
 	public List<TbFixEntrustContent> findTbFixEnTrustContentListByTbFixEntrustId(Long tbFixEntrustId){
 		
