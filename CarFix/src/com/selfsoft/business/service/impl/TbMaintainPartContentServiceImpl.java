@@ -58,6 +58,16 @@ public class TbMaintainPartContentServiceImpl implements
 		return result;
 	}
 	
+	public List<TbMaintainPartContent> findByEntrustId(Long entrustId){
+		DetachedCriteria detachedCriteria=DetachedCriteria.forClass(TbMaintainPartContent.class);
+		
+		detachedCriteria.add(Restrictions.eq("entrustId", entrustId));
+		
+			return tbMaintainPartContentDao.findByCriteria(detachedCriteria, null);
+		
+		
+	}
+	
 	
 	public List<TbMaintainPartContent> findByEntity(TbMaintainPartContent tbMaintainPartContent){
 		DetachedCriteria detachedCriteria=DetachedCriteria.forClass(TbMaintainPartContent.class);
@@ -535,6 +545,8 @@ public class TbMaintainPartContentServiceImpl implements
 				
 				maintainPartContent.setIsConfirm(status);
 				
+				maintainPartContent.setBalanceId(null);
+				
 				tbMaintainPartContentDao.update(maintainPartContent);
 			}
 			
@@ -552,11 +564,11 @@ public class TbMaintainPartContentServiceImpl implements
 	 */
 	public void updateTbMaintainStatusNoBalance(Long entrustId , Long status){
 		
-		TbMaintainPartContent queryEntity = new TbMaintainPartContent();
+		//TbMaintainPartContent queryEntity = new TbMaintainPartContent();
 		
-		queryEntity.setEntrustId(entrustId);
+		//queryEntity.setEntrustId(entrustId);
 		
-		List<TbMaintainPartContent> maintaincontnets = this.findByEntity(queryEntity);
+		List<TbMaintainPartContent> maintaincontnets = this.findByEntrustId(entrustId);
 		
 		if(null!=maintaincontnets&&maintaincontnets.size()>0){
 			
