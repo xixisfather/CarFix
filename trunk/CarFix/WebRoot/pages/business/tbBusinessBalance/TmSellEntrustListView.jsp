@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="e3t" uri="http://www.jcreate.net/e3/table"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -81,7 +81,7 @@
 			<e3t:column width="70" property="partQuantity" title="发料数量" />
 			<e3t:column width="70" property="price" title="发料价" />
 			<e3t:column width="70" property="total" title="发料金额" />
-			<e3t:column width="70"property="userRealName" title="领用人" />
+			<e3t:column width="70" property="userRealName" title="领用人" />
 			<e3t:column width="70" property="freeName" title="免费标识" />
 			<e3t:column width="80" property="zl" title="账类" />
 			<e3t:column width="80" property="xmlx" title="项目类型" />
