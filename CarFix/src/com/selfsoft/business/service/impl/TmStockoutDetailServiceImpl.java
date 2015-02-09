@@ -64,6 +64,27 @@ public class TmStockoutDetailServiceImpl implements ITmStockoutDetailService {
 		tmStockoutDetailDao.insert(tmStockoutDetail);
 	}
 	
+	public void updateTmStockoutDetailNotBalance(Long stockoutId) {
+		
+		TmStockoutDetail td = new TmStockoutDetail();
+		
+		td.setStockoutId(stockoutId);
+		
+		List<TmStockoutDetail> list = this.findByEntity(td);
+		
+		if(null !=list && list.size() > 0) {
+			
+			for(TmStockoutDetail tl : list) {
+				
+				tl.setBalanceId(null);
+				
+				tmStockoutDetailDao.update(tl);
+				
+			}
+		}
+		
+	}
+	
 	public List<TmStockoutDetail> findByEntity(TmStockoutDetail tmStockoutDetail) {
 		DetachedCriteria detachedCriteria=DetachedCriteria.forClass(TmStockoutDetail.class);
 		if(null!=tmStockoutDetail){

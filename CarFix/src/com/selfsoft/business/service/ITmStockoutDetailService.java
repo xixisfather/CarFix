@@ -59,4 +59,6 @@ public interface ITmStockoutDetailService {
 	public Map<Double,List<TbCustomerVo>> getStockOutCustomerTotalPriceByStat(TmStockIn tmStockIn);
 	
 	public void insert(TmStockoutDetail tmStockoutDetail);
+	
+	public void updateTmStockoutDetailNotBalance(Long stockoutId);
 }

@@ -23,6 +23,7 @@ import com.selfsoft.business.service.ITbBusinessBalanceService;
 import com.selfsoft.business.service.ITmStockInService;
 import com.selfsoft.business.service.ITmStockOutService;
 import com.selfsoft.business.service.ITmStockinDetailService;
+import com.selfsoft.business.service.ITmStockoutDetailService;
 import com.selfsoft.business.vo.BalanceSellCountVo;
 import com.selfsoft.business.vo.TmStockOutDetVo;
 import com.selfsoft.business.vo.TmStockOutVo;
@@ -43,6 +44,8 @@ public class TmStockOutSerivceImpl implements ITmStockOutService {
 	private ITbCustomerService tbCustomerService;
 	@Autowired
 	private ITbBusinessBalanceService tbBusinessBalanceService;
+	@Autowired
+	private ITmStockoutDetailService tmStockoutDetailService;
 	
 	public void insert(TmStockOut tmStockOut){
 		tmStockOutDao.insert(tmStockOut);
@@ -184,6 +187,14 @@ public class TmStockOutSerivceImpl implements ITmStockOutService {
 		tmStockOutDao.update(tmStockOut);
 	}
 	
+	
+	public void updateSellStatusNotBalance(Long id ,Long status){
+		TmStockOut tmStockOut = tmStockOutDao.findById(id);
+		tmStockOut.setIsConfirm(status);
+		tmStockOutDao.update(tmStockOut);
+		tmStockoutDetailService.updateTmStockoutDetailNotBalance(tmStockOut.getId());
+	}
+	
 	/**
 	 * 查找出委托书号所对应的销售单，更新此销售单的状态
 	 * @param trustBill
@@ -201,7 +212,19 @@ public class TmStockOutSerivceImpl implements ITmStockOutService {
 		}
 	}
 	
-
+	public void updateTrustBillNotBalance(String trustBill, Long status){
+		TmStockOut queryEntity = new TmStockOut();
+		queryEntity.setTrustBill(trustBill);
+		List<TmStockOut> stockoutList = this.findByEntity(queryEntity);
+		TmStockOut updateEntity = null;
+		if(stockoutList != null && stockoutList.size() > 0){
+			updateEntity = stockoutList.get(0);
+			updateEntity.setIsConfirm(status);
+			tmStockOutDao.update(updateEntity);
+			tmStockoutDetailService.updateTmStockoutDetailNotBalance(updateEntity.getId());
+		}
+	}
+	
 	/**
 	 * 根据委托书号 查询明细中LIST
 	 * @param entrustId
