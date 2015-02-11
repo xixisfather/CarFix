@@ -22,7 +22,7 @@
 		var ctx = "<%=request.getContextPath() %>";		//项目路径
 		
 		
-		function tmCustomerTableConfigHandler(pConfig) {
+		function tbCustomerTableConfigHandler(pConfig) {
 			pConfig.tbar = [
 			{	
 				text : '新增',
@@ -30,19 +30,21 @@
 				handler : function() {
 					var url = "tbCustomerForwardPageAction!forwardPage.action";
 					url += "?types=${param.types}&properties=${param.properties}&e3Table=${e3Table}";
-					window.location.href = url;
+					//window.location.href = url;
+					addObject(url,
+							600, 300);
 				}
 			}, '', '-', '', {
 				text : '刷新',
 				iconCls : 'refreshIcon',
 				handler : function() {
-					refresh_tbMaintainTable();
+					refresh_tbCustomerTable();
 				}
 			} ];
 			// pConfig.autoExpandColumn='no';
 		}
 		
-		function tmCustomerTableE3ConfigHandler(pConfig) {
+		function tbCustomerTableE3ConfigHandler(pConfig) {
 			pConfig.emptyReload = false;
 			// 参数form,pConfig指定form的参数会提交到后台
 			pConfig.form = "findAllTmTbCustomerAction";
@@ -50,7 +52,7 @@
 		}
 		
 		// 表格显示前,通常在这注册单击，双击事件
-		function tmCustomerTableRenderBeforeHandler(pGrid) {
+		function tbCustomerTableRenderBeforeHandler(pGrid) {
 			pGrid.on("rowdblclick", function(pGrid, pRowIndex, pEventObj) {
 				var record = pGrid.getStore().getAt(pRowIndex); // Get the Record
 					/*
@@ -161,14 +163,14 @@
 				<tr>
 					<td colspan="6" align="center">
 						<input type="button" value="查询"
-							onclick="tmCustomerTableQuery();" />
+							onclick="tbCustomerTableQuery();" />
 						&nbsp;&nbsp;
 						<input type="reset" value="重置"/>			
 					</td>
 				</tr>
 			</table>
 		</s:form>
-		<e3t:table id="tmCustomerTable" uri="findAllTmTbCustomerAction.action" var="remVo"
+		<e3t:table id="tbCustomerTable" uri="findAllTmTbCustomerAction.action" var="remVo"
 			scope="request" items="customerList" mode="ajax" 
 			toolbarPosition="bottom" skin="E3002" pageSize="20" width="800"
 			height="320" >
