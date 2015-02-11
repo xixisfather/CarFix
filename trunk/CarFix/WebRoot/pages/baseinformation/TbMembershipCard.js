@@ -91,7 +91,7 @@ function tbMembershipCardFormValidate() {
 function openWin() {
 	var props = "customerId,customerCode,customerName";
 	showCommonWin('findAllTmTbCustomerAction.action', '客户列表', 650, 350, props,
-			"tmCustomerTable");
+			"tbCustomerTable");
 }
 
 function formSubmit(){

@@ -32,7 +32,7 @@
 		
 		function openWin(){
 			var props = "customerId,customerCode,customerName";
-			showCommonWin('findAllTmTbCustomerAction.action','客户列表',650,350,props,null);
+			showCommonWin('findAllTmTbCustomerAction.action','客户列表',650,350,props,"tbCustomerTable");
 		}
 		
 		function printObj(id){
