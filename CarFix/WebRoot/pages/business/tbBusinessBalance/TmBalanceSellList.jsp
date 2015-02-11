@@ -74,7 +74,7 @@
 		
 		function openWin(){
 			var props = "customerId,null,customerName&types=1,3";
-			showCommonWin('findAllTmTbCustomerAction.action','客户列表',575,355,props,null)
+			showCommonWin('findAllTmTbCustomerAction.action','客户列表',575,355,props,"tbCustomerTable")
 		}
 		
 		
