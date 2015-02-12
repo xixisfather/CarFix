@@ -9,6 +9,7 @@ import java.util.Map;
 import com.selfsoft.baseinformation.model.TbPartInfo;
 import com.selfsoft.business.vo.DailyStockOutVo;
 import com.selfsoft.business.vo.TbMaintianVo;
+import com.selfsoft.business.vo.TbPartInfoStockOutVo;
 import com.selfsoft.business.vo.TbPartReceiverStatVo;
 import com.selfsoft.business.vo.TbStoreHouseSurveyVo;
 import com.selfsoft.business.vo.TmStockInDetailVo;
@@ -99,4 +100,12 @@ public interface IStockXLSImportService {
 	 * @param maintainDetails
 	 */
 	public void stockInDetailsExportXls(OutputStream os,String tpl,List<TmStockInDetailVo> stockInDetails);
+	
+	/**
+	 * 配件出库排行榜-采购明细导出
+	 * @param os
+	 * @param tpl
+	 * @param maintainDetails
+	 */
+	public void topPartStockoutExportXls(OutputStream os,String tpl,List<TbPartInfoStockOutVo> stockOutDetails);
 }

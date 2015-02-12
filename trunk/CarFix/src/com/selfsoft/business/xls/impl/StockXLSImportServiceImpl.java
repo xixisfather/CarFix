@@ -50,6 +50,7 @@ import com.selfsoft.business.service.ITmStockinDetailService;
 import com.selfsoft.business.vo.DailyStockOutVo;
 import com.selfsoft.business.vo.TbMaintianVo;
 import com.selfsoft.business.vo.TbPartInfoImportVo;
+import com.selfsoft.business.vo.TbPartInfoStockOutVo;
 import com.selfsoft.business.vo.TbPartReceiverStatVo;
 import com.selfsoft.business.vo.TbStoreHouseSurveyVo;
 import com.selfsoft.business.vo.TmStockInDetailVo;
@@ -1093,6 +1094,45 @@ public class StockXLSImportServiceImpl implements IStockXLSImportService{
 			if(xlsWriter.isSuccess()){
 				
 				ws = xlsWriter.exportXls(ws, stockInDetails);
+				
+				wwb.write();
+			}
+			
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try {
+				wwb.close();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+	}
+	
+	
+	/**
+	 * 配件出库排行榜-采购明细导出
+	 * @param os
+	 * @param tpl
+	 * @param maintainDetails
+	 */
+	public void topPartStockoutExportXls(OutputStream os,String tpl,List<TbPartInfoStockOutVo> stockOutDetails) {
+		
+		WritableWorkbook wwb = null;
+		
+		try{
+			wwb = Workbook.createWorkbook(os);
+			
+			WritableSheet ws = wwb.createSheet("Sheet1", 0);
+			
+			XlsWriter xlsWriter = new XlsWriter(this.getClass().getResourceAsStream(tpl));
+			
+			if(xlsWriter.isSuccess()){
+				
+				ws = xlsWriter.exportXls(ws, stockOutDetails);
 				
 				wwb.write();
 			}
