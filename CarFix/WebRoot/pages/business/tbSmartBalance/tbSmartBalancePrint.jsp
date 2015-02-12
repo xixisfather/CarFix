@@ -56,13 +56,18 @@ TbSmartBalance tbSmartBalance = (TbSmartBalance)request.getAttribute("tbSmartBal
 		</tr>
 		
 		<tr align="left">
-			<td>金额</td>
-			<td><%= new BigDecimal(tbSmartBalance.getServiceMoney()).setScale(2)%></td>
+			<td>会员卡号</td>
+			<td><%= tbSmartBalance.getCardNo() == null?"":tbSmartBalance.getCardNo()%></td>
+		</tr>
+		
+		<tr align="left">
+			<td>车牌号</td>
+			<td><%= tbSmartBalance.getLicenseCode() == null ? "" : tbSmartBalance.getLicenseCode()%></td>
 		</tr>
 	
 		<tr align="left">
-			<td>余额</td>
-			<td><%= null == tbSmartBalance.getCardSaving()? "" : new BigDecimal(tbSmartBalance.getCardSaving()).setScale(2)%></td>
+			<td>金额</td>
+			<td><%= null == tbSmartBalance.getServiceMoney()? "" : new BigDecimal(tbSmartBalance.getServiceMoney()).setScale(2)%></td>
 		</tr>
 		
 		<tr align="left">
