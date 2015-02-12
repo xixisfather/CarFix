@@ -11,7 +11,8 @@
 <html>
 <head>
 <title>快速结算打印</title>
-
+<link rel="stylesheet" type="text/css"
+	href="<%= request.getContextPath() %>/css/global2.css" />
 <script language="javascript">
 function printdiv(printpage)
 {
@@ -48,7 +49,7 @@ TbSmartBalance tbSmartBalance = (TbSmartBalance)request.getAttribute("tbSmartBal
 
 <div id="div_print" align="center">
 	
-	<table cellpadding="30">
+	<table cellpadding="16">
 	
 		<tr align="left">
 			<td>项目</td>
