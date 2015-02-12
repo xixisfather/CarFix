@@ -12,4 +12,6 @@ public interface ITbSmartBalanceService {
 	public List<TbSmartBalance> findByTbSmartBalance(TbSmartBalance tbSmartBalance);
 	
 	public TbSmartBalance findById(Long id);
+	
+	public TbSmartBalance findTbsmartBalancePrint(Long id);
 }

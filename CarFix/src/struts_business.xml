@@ -2418,7 +2418,7 @@
 		<action name="tbSmartBalanceCreateAction" class="com.selfsoft.business.action.TbSmartBalanceAction" method="tbSmartBalanceCreate">
 			<result name="success">
 				
-				/pages/business/tbSmartBalance/tbSmartBalancePrint.jsp
+				/pages/business/tbSmartBalance/tbSmartBalancePrintAction.action?id=${tbSmartBalance.id}
 			</result>
 			<result name="failure">
 				
@@ -2432,6 +2432,15 @@
 			<result name="success">
 				
 				/pages/business/tbSmartBalance/tbSmartBalanceFind.jsp
+			</result>
+			
+		</action>
+		
+		<action name="tbSmartBalancePrintAction" class="com.selfsoft.business.action.TbSmartBalanceAction" method="tbSmartBalancePrint">
+			
+			<result name="success">
+				
+				/pages/business/tbSmartBalance/tbSmartBalancePrint.jsp
 			</result>
 			
 		</action>

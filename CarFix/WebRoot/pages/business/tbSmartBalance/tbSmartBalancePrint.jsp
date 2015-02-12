@@ -33,15 +33,15 @@ return false;
 <%
 TbSmartBalance tbSmartBalance = (TbSmartBalance)request.getAttribute("tbSmartBalance");
 
-ApplicationContext appContext = new ClassPathXmlApplicationContext(
-		"classpath:applicationContext*.xml");
+//ApplicationContext appContext = new ClassPathXmlApplicationContext(
+//		"classpath:applicationContext*.xml");
 
-ITbSmartBalanceService tbSmartBalanceService = (ITbSmartBalanceService)appContext.getBean("tbSmartBalanceService");
+//ITbSmartBalanceService tbSmartBalanceService = (ITbSmartBalanceService)appContext.getBean("tbSmartBalanceService");
 
-if(null == tbSmartBalance) {
+//if(null == tbSmartBalance) {
 	
-	tbSmartBalance = tbSmartBalanceService.findById(Long.valueOf(request.getParameter("id")));
-}
+//	tbSmartBalance = tbSmartBalanceService.findTbsmartBalancePrint(Long.valueOf(request.getParameter("id")));
+//}
 
 %>
 
@@ -63,6 +63,11 @@ if(null == tbSmartBalance) {
 		<tr align="left">
 			<td>余额</td>
 			<td><%= null == tbSmartBalance.getCardSaving()? "" : new BigDecimal(tbSmartBalance.getCardSaving()).setScale(2)%></td>
+		</tr>
+		
+		<tr align="left">
+			<td>剩余次数</td>
+			<td><%= null == tbSmartBalance.getServiceCount()? "" : tbSmartBalance.getServiceCount()%></td>
 		</tr>
 		
 		<tr align="left">

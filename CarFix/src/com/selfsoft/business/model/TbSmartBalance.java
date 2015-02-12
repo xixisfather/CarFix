@@ -204,6 +204,16 @@ public class TbSmartBalance implements java.io.Serializable {
 		return useCardServiceShow;
 	}
 	
+	private Integer serviceCount;
+
+	public Integer getServiceCount() {
+		return serviceCount;
+	}
+
+	public void setServiceCount(Integer serviceCount) {
+		this.serviceCount = serviceCount;
+	}
+	
 	
 	
 	
