@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.selfsoft.baseinformation.model.TbCarInfo;
+import com.selfsoft.baseinformation.model.TbMembershipCard;
+import com.selfsoft.baseinformation.model.TmMemberShipService;
 import com.selfsoft.baseinformation.service.ITbCardHisService;
 import com.selfsoft.baseinformation.service.ITbMembershipCardService;
 import com.selfsoft.baseinformation.service.ITmMemberShipServiceService;
@@ -31,6 +33,35 @@ public class TbSmartBalanceServiceImpl implements ITbSmartBalanceService {
 	private ITmMemberShipServiceService tmMemberShipServiceService;
 	@Autowired
 	private ITbCardHisService tbCardHisService;
+	
+	public TbSmartBalance findTbsmartBalancePrint(Long id) {
+		
+		TbSmartBalance ts = tbSmartBalanceDao.findById(id);
+		
+		if(null != ts.getCardNo()) {
+			
+			TbMembershipCard tmc = tbMembershipCardService.findByCardNo(ts.getCardNo());
+			
+			List<TmMemberShipService> tmsList = tmMemberShipServiceService.findByMemberShipId(tmc.getId());
+			
+			if(null != tmsList && tmsList.size() > 0) {
+			
+				for(TmMemberShipService tms : tmsList) {
+					
+					if(tms.getServiceName().equals(ts.getServiceName())) {
+						
+						ts.setServiceCount(tms.getServiceCount());
+					
+						break;
+					}
+					
+				}
+			}
+			
+		}
+		
+		return ts;
+	}
 	
 	public TbSmartBalance findById(Long id) {
 		

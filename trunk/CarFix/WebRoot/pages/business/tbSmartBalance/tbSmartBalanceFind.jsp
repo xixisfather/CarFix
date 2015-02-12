@@ -99,7 +99,7 @@
 
 	<e3t:column property="no" title="操作" sortable="false" width="100">
 		
-		<a href="#" onclick="javascript:editObject('${tbSmartBalance.id}','<%= request.getContextPath() %>/pages/business/tbSmartBalance/tbSmartBalancePrint.jsp',600,300);">打印</a>
+		<a href="#" onclick="javascript:editObject('${tbSmartBalance.id}','<%= request.getContextPath() %>/pages/business/tbSmartBalance/tbSmartBalancePrintAction.action',600,300);">打印</a>
 	
 	</e3t:column>
 	

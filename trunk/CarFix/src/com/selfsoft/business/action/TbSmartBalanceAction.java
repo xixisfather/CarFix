@@ -120,14 +120,12 @@ ServletRequestAware, ServletResponseAware{
 		
 	}
 	
-	
-	
 	public String tbSmartBalanceCreate() throws Exception {
 		
 		
 		try{
 			
-			TbSmartBalance tbSmartBalance = new TbSmartBalance();
+			tbSmartBalance = new TbSmartBalance();
 			
 			String payPatten = request.getParameter("tbSmartBalance.payPatten"); 
 			
@@ -260,7 +258,7 @@ ServletRequestAware, ServletResponseAware{
 			
 			tbSmartBalanceService.insertTbSmartBalance(tbSmartBalance,(TmUser)request.getSession().getAttribute("tmUser"));
 			
-			request.setAttribute("tbSmartBalance", tbSmartBalance);
+			
 			
 			
 		}catch(Exception e) {
@@ -287,5 +285,17 @@ ServletRequestAware, ServletResponseAware{
 		
 		return Constants.SUCCESS;
 	}
+	
+	public String tbSmartBalancePrint() throws Exception {
+		
+		String id = request.getParameter("id");
+		
+		tbSmartBalance = tbSmartBalanceService.findTbsmartBalancePrint(Long.valueOf(id));
+
+		request.setAttribute("tbSmartBalance", tbSmartBalance);
+		
+		return Constants.SUCCESS;
+	}
+	
 	
 }
