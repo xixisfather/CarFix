@@ -1963,6 +1963,8 @@
 					/pages/business/statistics/StatTopPartInfoStockOut.jsp
 				</result>
 			</action>
+			<action name="getTopPartStockoutExportXlsAction" class="com.selfsoft.business.action.StatisticsAction" method="getTopPartStockoutExportXls">
+			</action>
 		<!-- 配件出库排行榜 -->
 		
 		

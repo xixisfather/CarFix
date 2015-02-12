@@ -29,17 +29,36 @@
 			pConfig.form = "getToppartInfoStockOutStatAction";
 			pConfig.showLoadingMsg = true;
 		}
+
+
+		function exportXls(){
+			
+			 document.getElementById("exp_storeHouseId").value = document.getElementById("storeHouseId").value;
+			 document.getElementById("exp_beginDate").value = document.getElementById("beginDate").value;
+			 document.getElementById("exp_endDate").value = document.getElementById("endDate").value;
+			 document.getElementById("exp_stockOutType").value = document.getElementById("stockOutType").value;
+			 document.forms["getTopPartStockoutExportXlsAction"].submit();
+			//window.open(url,'_blank');
+		}
 		
 	</script>
 	<body>
+	
+		<form id="getTopPartStockoutExportXlsAction" onsubmit="return true;" action="getTopPartStockoutExportXlsAction.action" method="post">
+			<input type="hidden" name="tbPartInfoStockOutVo.storeHouseId" value="" id="exp_storeHouseId"/>
+			<input type="hidden" name="tbPartInfoStockOutVo.stockOutType" value="" id="exp_stockOutType"/>
+			<input type="hidden" name="tbPartInfoStockOutVo.beginDate" value="" id="exp_beginDate"/>
+			<input type="hidden" name="tbPartInfoStockOutVo.endDate" value="" id="exp_endDate"/>
+		</form>
+		
 		<s:form action="getToppartInfoStockOutStatAction.action">
 			<s:hidden id="storeQuantity" name="tbPartInfo.storeQuantity" ></s:hidden>
 			<table>
 				<tr>	
 					<td>仓库</td>
-					<td><s:select name="tbPartInfoStockOutVo.storeHouseId" list="#request.stroeHouseList" headerValue="所有" headerKey="" listKey="id" listValue="houseName"/></td>
+					<td><s:select id="storeHouseId" name="tbPartInfoStockOutVo.storeHouseId" list="#request.stroeHouseList" headerValue="所有" headerKey="" listKey="id" listValue="houseName"/></td>
 					<td>出库类型：</td>
-					<td><s:select name="tbPartInfoStockOutVo.stockOutType" list="#request.elementsMap" headerValue="所有" headerKey="" listKey="key" listValue="value" ></s:select></td>
+					<td><s:select id="stockOutType" name="tbPartInfoStockOutVo.stockOutType" list="#request.elementsMap" headerValue="所有" headerKey="" listKey="key" listValue="value" ></s:select></td>
 					<td>日期从</td>
 					<td  ><s:textfield id="beginDate" name="tbPartInfoStockOutVo.beginDate" />
 						<e3c:calendar for="beginDate" dataFmt="yyyy-MM-dd" />
@@ -55,6 +74,9 @@
 				<tr>
 					<td>
 						<s:submit value="查询" ></s:submit>
+					</td>
+					<td>
+						<input type="button" onclick="exportXls()" value="xls导出" />
 					</td>
 				</tr>
 			</table>

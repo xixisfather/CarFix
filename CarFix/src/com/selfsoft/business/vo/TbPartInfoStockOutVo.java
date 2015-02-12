@@ -1,6 +1,8 @@
 package com.selfsoft.business.vo;
 
 public class TbPartInfoStockOutVo {
+	
+	private String xlsPK;
 
 	private String partName;			//配件名称
 	
@@ -192,6 +194,14 @@ public class TbPartInfoStockOutVo {
 
 	public void setCarModelTypeId(Long carModelTypeId) {
 		this.carModelTypeId = carModelTypeId;
+	}
+
+	public String getXlsPK() {
+		return xlsPK;
+	}
+
+	public void setXlsPK(String xlsPK) {
+		this.xlsPK = xlsPK;
 	}
 	
 	
