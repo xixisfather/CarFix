@@ -1238,4 +1238,46 @@ ServletRequestAware, ServletResponseAware{
 		
 		return null;
 	}
+	
+	
+	
+	/**
+	 * 配件出库排行榜 导出
+	 * @Date      2010-7-12
+	 * @Function  
+	 * @return
+	 */
+	public String getTopPartStockoutExportXls() throws Exception{
+		
+		response.reset();
+		
+		response.setCharacterEncoding("UTF-8");
+			
+		String name = "配件出库排行榜";
+			
+		name = URLEncoder.encode(name, "UTF-8");
+			
+		response.setHeader("Content-Disposition", "attachment;filename="+ new String(name.getBytes("UTF-8"), "GBK") + ".xls");
+			
+		response.setContentType("application/vnd.ms-excel");
+			
+		OutputStream os = response.getOutputStream();
+		
+		//得到所有仓库
+		Map<TbPartInfoStockOutVo,List<TbPartInfoStockOutVo>> map = statisticsStockInOutService.getToppartInfoStockOut(tbPartInfoStockOutVo);
+		List<TbPartInfoStockOutVo> result = null;
+		TbPartInfoStockOutVo tbPartInfoStockOutVo =null;
+		for(TbPartInfoStockOutVo voKey : map.keySet()){
+			result =  map.get(voKey);
+			tbPartInfoStockOutVo = voKey;
+		}
+		
+		stockXLSImportService.topPartStockoutExportXls(os, "/stockxlsimport/TbPartInfoStockOutVo_export_xls_tpl.properties", result);
+		
+		os.flush();
+		
+		os.close();
+		
+		return null;
+	}
 }
