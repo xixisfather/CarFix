@@ -292,7 +292,6 @@
 		    
 		    gobalIndex ++;
 
-
 		    jsTotalPrice();
 		}
 		
@@ -385,7 +384,7 @@
 		}
 		
 		function buildPrint(index){
-			var printHtml =  "<input type=checkbox name=isprint  id='isprint"+index+"' >";
+			var printHtml =  "<input type=checkbox name=isprint checked=true id='isprint"+index+"' >";
 			printHtml +="</input>";
 			return printHtml;
 			
