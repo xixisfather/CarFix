@@ -1256,7 +1256,7 @@ public class TbBusinessBalanceServiceImpl implements ITbBusinessBalanceService {
 
 				tempCopy.setFixHour(d2.doubleValue());
 
-				if (!tempCopy.getFreesymbol().equals(1d)
+				if (!tempCopy.getFreesymbol().equals(1L)
 						|| !tempCopy.getFixHourAll().equals(0d)) {
 
 					tbFixEntrustContentListAdd.add(tempCopy);
