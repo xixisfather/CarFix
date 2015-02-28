@@ -407,6 +407,8 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 		
 		ActionContext.getContext().put("tmUserMap",tmUserService.findAllTmUserMap());
 		
+		ActionContext.getContext().put("payMap",Constants.getPayMap());
+		
 		return Constants.SUCCESS;
 	}
 
@@ -2681,6 +2683,8 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 		
 		ActionContext.getContext().put("tbBusinessBalanceList",
 				tbBusinessBalanceList);
+		
+		ActionContext.getContext().put("payMap",Constants.getPayMap());
 		
 		return Constants.SUCCESS;
 	}
