@@ -471,6 +471,14 @@ public class Constants {
     
     public static final String PAYMEMBERCARDSHOW = "会员卡";
     
+    public static final Long PAYTRANSFER = 6L;
+    
+    public static final String PAYTRANSFERSHOW = "转账";
+    
+    public static final Long PAYBANK = 7L;
+    
+    public static final String PAYBANKSHOW = "银行收款";
+    
     public static final Map<Long,String> getPayMap(){
     	Map<Long,String> map = new LinkedHashMap<Long, String>();
     	
@@ -483,6 +491,10 @@ public class Constants {
     	map.put(PAYCARD, PAYCARDSHOW);
     	
     	map.put(PAYMEMBERCARD, PAYMEMBERCARDSHOW);
+    	
+    	map.put(PAYTRANSFER, PAYTRANSFERSHOW);
+    	
+    	map.put(PAYBANK, PAYBANKSHOW);
     	
     	return map;
     }
