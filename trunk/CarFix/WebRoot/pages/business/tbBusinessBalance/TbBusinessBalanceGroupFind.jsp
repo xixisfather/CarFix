@@ -106,6 +106,12 @@
 								format="yyyy-MM-dd" />
 						</s:param>
 					</s:textfield> <e3c:calendar for="bananceDateEnd" dataFmt="yyyy-MM-dd" /></td>
+			
+				<td>结算方式</td>
+				<td>
+					<s:select id="payPattern" name="tbBusinessBalance.payPattern" list="#request.payMap" listKey="key" listValue="value" emptyOption="true"></s:select>
+				</td>
+			
 			</tr>
 			<tr>
 				<td colspan="8" align="center"><input type="submit" value="查询" />
