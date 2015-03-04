@@ -371,6 +371,8 @@ public class TbBusinessBalanceServiceImpl implements ITbBusinessBalanceService {
 					TbBusinessBalance tj = listCondition.get(j);
 
 					if (ti.getId().equals(tj.getId())) {
+						
+						ti.setPayPattern(tj.getPayPattern());
 
 						ti.setTbFixEntrust(tj.getTbFixEntrust());
 
@@ -451,6 +453,8 @@ public class TbBusinessBalanceServiceImpl implements ITbBusinessBalanceService {
 								ti.getBananceDate(), "yyyy-MM-dd HH:ss:mm");
 
 						ti.setBananceDateStart_s(bananceDateStart_s);
+						
+						
 
 						listReturn.add(ti);
 
