@@ -105,6 +105,7 @@ TbBusinessBalance _tbBusinessBalance = (TbBusinessBalance)session.getAttribute("
       <td>底盘号</td>
       <td>联系方式</td>
       <td>金额</td>
+      <td>结算方式</td>
       <td>结算日期</td>
       <td>接待员</td>
     </tr>
@@ -136,6 +137,7 @@ TbBusinessBalance _tbBusinessBalance = (TbBusinessBalance)session.getAttribute("
       <td><%=tbBusinessBalance.getTbFixEntrust() == null ? "" : tbBusinessBalance.getTbFixEntrust().getTbCarInfo().getChassisCode()%></td>
       <td><%=tbBusinessBalance.getTbCustomer().getTelephone()%></td>
       <td><%=tbBusinessBalance.getBalanceTotalAll()%></td>
+      <td><%=tbBusinessBalance.getPayPatternShow()%></td>
       <td><%=CommonMethod.parseDateToString(tbBusinessBalance.getBananceDate(),"yyyy-MM-dd HH:ss:mm") %></td>
       <td><%=tbBusinessBalance.getUserRealName()%></td>
     </tr>
