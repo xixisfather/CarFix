@@ -357,4 +357,25 @@ public class TmCardTypeServiceImpl implements ITmCardTypeService{
 		
 	}
 	
+	/**
+	 * 优惠扣积分
+	 * @param yhMoney
+	 * @param cardTypeId
+	 * @return
+	 */
+	public Integer calcYhMinusPoint(Double yhMoney, Long cardTypeId) {
+		
+		TmCardType tmCardType = tmCardTypeDao.findById(cardTypeId);
+		
+		BigDecimal d_yhMoney = new BigDecimal(yhMoney);
+		
+		Integer yhMFullMoney = tmCardType.getYhMFullMoney();
+		
+		BigDecimal bs = d_yhMoney.divide(new BigDecimal(yhMFullMoney),2,
+				BigDecimal.ROUND_HALF_UP).setScale(2,
+						BigDecimal.ROUND_HALF_UP);
+		
+		return bs.intValue() * tmCardType.getYhMMinusPoint();
+	}
+	
 }
