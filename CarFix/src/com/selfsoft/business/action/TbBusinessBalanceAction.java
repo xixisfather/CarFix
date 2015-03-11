@@ -595,6 +595,10 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			
 			tbMembershipCard.setPjGivePoint(pjGivePoint);
 			
+			tbMembershipCard.setYhMoney(yhMoney);
+			
+			tbMembershipCard.setYhMinusPoint(yhMinusPoint);
+			
 			tbMembershipCard.setGiveMoney(gsGiveMoney + pjGiveMoney);
 			
 			tbMembershipCard.setGivePoint(gsGivePoint + pjGivePoint - yhMinusPoint);
