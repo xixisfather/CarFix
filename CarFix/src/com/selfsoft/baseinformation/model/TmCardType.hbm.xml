@@ -121,5 +121,13 @@
         <property name="pjBxYhl" type="java.lang.Double">
         	<column name="PJ_BX_YHL"/>
         </property>
+        
+        <property name="yhMFullMoney" type="java.lang.Integer">
+            <column name="YH_M_FULL_MONEY"/>
+        </property>
+        
+        <property name="yhMMinusPoint" type="java.lang.Integer">
+            <column name="YH_M_MINUS_POINT"/>
+        </property>
     </class>
 </hibernate-mapping>

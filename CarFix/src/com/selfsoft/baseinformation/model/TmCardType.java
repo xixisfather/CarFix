@@ -59,6 +59,10 @@ public class TmCardType implements java.io.Serializable{
 	private Double pjBxYhl;
 	
 	private Integer pjBxPGivePoint; 
+	
+	private Integer yhMFullMoney;
+	
+	private Integer yhMMinusPoint;
 
 	public Long getId() {
 		return id;
@@ -285,7 +289,20 @@ public class TmCardType implements java.io.Serializable{
 		this.pjBxPGivePoint = pjBxPGivePoint;
 	}
 
-	
-	
+	public Integer getYhMFullMoney() {
+		return yhMFullMoney;
+	}
+
+	public void setYhMFullMoney(Integer yhMFullMoney) {
+		this.yhMFullMoney = yhMFullMoney;
+	}
+
+	public Integer getYhMMinusPoint() {
+		return yhMMinusPoint;
+	}
+
+	public void setYhMMinusPoint(Integer yhMMinusPoint) {
+		this.yhMMinusPoint = yhMMinusPoint;
+	}
 	
 }
