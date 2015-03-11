@@ -461,7 +461,7 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 				Double balanceItemTotal = Double.valueOf(request
 						.getParameter(params[i]));
 				
-				if("".equals(balanceItemCode)) {
+				if("QL".equals(balanceItemCode)) {
 					yhMoney = balanceItemTotal;
 				}
 
