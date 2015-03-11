@@ -441,7 +441,7 @@ public class TbCardHisServiceImpl implements ITbCardHisService{
 		
 		tbCardHis.setOperationDate(new Date());
 		
-		tbCardHis.setOperationDesc("结算单【" + tbMembershipCard.getBalanceCode() + "】共结算【"+tbCardHis.getJexf()+"】元,工时结算【" + tbCardHis.getGsJexf()+ "】元返还【"+tbCardHis.getGsGiveMoney()+"】元【"+tbCardHis.getGsGivePoint()+"】积分,配件结算【" + tbCardHis.getPjJexf() + "】元返还【"+tbCardHis.getPjGiveMoney()+"】元【"+tbCardHis.getPjGivePoint()+"】积分,共返还【"+tbCardHis.getGiveMoney()+"】元【"+ tbCardHis.getGivePoint()+"】积分,会员卡支付【" + tbMembershipCard.getCardZFJE() +"】元,积分兑换【" + tbMembershipCard.getDhMoney() +"】元");
+		tbCardHis.setOperationDesc("结算单【" + tbMembershipCard.getBalanceCode() + "】共结算【"+tbCardHis.getJexf()+"】元,工时结算【" + tbCardHis.getGsJexf()+ "】元返还【"+tbCardHis.getGsGiveMoney()+"】元【"+tbCardHis.getGsGivePoint()+"】积分,配件结算【" + tbCardHis.getPjJexf() + "】元返还【"+tbCardHis.getPjGiveMoney()+"】元【"+tbCardHis.getPjGivePoint()+"】积分,结算优惠【"+tbMembershipCard.getYhMoney()+"】元扣除积分【"+tbMembershipCard.getYhMinusPoint()+"】,共返还【"+tbCardHis.getGiveMoney()+"】元【"+ tbCardHis.getGivePoint()+"】积分,会员卡支付【" + tbMembershipCard.getCardZFJE() +"】元,积分兑换【" + tbMembershipCard.getDhMoney() +"】元");
 		
 		tbCardHis.setBalanceCode(tbMembershipCard.getBalanceCode());
 		

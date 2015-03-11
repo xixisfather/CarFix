@@ -481,6 +481,29 @@ public class TbMembershipCard implements java.io.Serializable{
 		this.dhMoney = dhMoney;
 	}
 	
+	private Integer yhMinusPoint;
+
+	public Integer getYhMinusPoint() {
+		return yhMinusPoint;
+	}
+
+	public void setYhMinusPoint(Integer yhMinusPoint) {
+		this.yhMinusPoint = yhMinusPoint;
+	}
+	
+	private Double yhMoney;
+
+	public Double getYhMoney() {
+		return yhMoney;
+	}
+
+	public void setYhMoney(Double yhMoney) {
+		this.yhMoney = yhMoney;
+	}
+
+	
+	
+	
 	
 	
 }
