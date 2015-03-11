@@ -449,6 +449,8 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 		}
 		
 		String[] params = request.getParameterValues("params");
+		
+		Double yhMoney = 0d;
 
 		if (null != params && params.length > 0) {
 
@@ -458,6 +460,10 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 
 				Double balanceItemTotal = Double.valueOf(request
 						.getParameter(params[i]));
+				
+				if("".equals(balanceItemCode)) {
+					yhMoney = balanceItemTotal;
+				}
 
 				TbBusinessBalanceItem tbBusinessBalanceItem = new TbBusinessBalanceItem();
 
@@ -557,6 +563,11 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			Integer pjGivePoint = tmCardTypeService.calcPjGivePoint(pjMoney, tbMembershipCard.getTmCardType().getId(),tbFixEntrust.getTmFixType().getFixType());
 		
 			/**
+			 * 优惠扣除积分
+			 */
+			Integer yhMinusPoint = tmCardTypeService.calcYhMinusPoint(yhMoney, tbMembershipCard.getTmCardType().getId());
+			
+			/**
 			 * 消费后金额
 			 */
 			Double cardSaving = new BigDecimal(tbMembershipCard.getCardSaving()).add(new BigDecimal(gsGiveMoney)).add(new BigDecimal(pjGiveMoney)).subtract(new BigDecimal(cardZFJE)).doubleValue();
@@ -564,7 +575,7 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			/**
 			 * 消费后积分
 			 */
-			Long cardPoint = new BigDecimal(tbMembershipCard.getCardPoint()).add(new BigDecimal(gsGivePoint)).add(new BigDecimal(pjGivePoint)).longValue();
+			Long cardPoint = new BigDecimal(tbMembershipCard.getCardPoint()).add(new BigDecimal(gsGivePoint)).add(new BigDecimal(pjGivePoint)).subtract(new BigDecimal(yhMinusPoint)).longValue();
 		
 			tbMembershipCard.setCardZFJE(cardZFJE);
 			
@@ -586,7 +597,7 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			
 			tbMembershipCard.setGiveMoney(gsGiveMoney + pjGiveMoney);
 			
-			tbMembershipCard.setGivePoint(gsGivePoint + pjGivePoint);
+			tbMembershipCard.setGivePoint(gsGivePoint + pjGivePoint - yhMinusPoint);
 			
 			tbMembershipCard.setJexf(Double.valueOf(ZJE));
 			
