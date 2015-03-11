@@ -92,4 +92,12 @@ public interface ITmCardTypeService {
 	 * @return
 	 */
 	public Integer calcPjGivePoint(Double pjMoney, Long cardTypeId, String fixType);
+	
+	/**
+	 * 优惠扣积分
+	 * @param yhMoney
+	 * @param cardTypeId
+	 * @return
+	 */
+	public Integer calcYhMinusPoint(Double yhMoney, Long cardTypeId);
 }
