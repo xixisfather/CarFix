@@ -212,6 +212,34 @@
 				</tr>
 				
 				<tr>
+					<td>A3.结&nbsp;算&nbsp;优&nbsp;惠&nbsp;扣&nbsp;积&nbsp;分&nbsp;规&nbsp;则:(<font color="red">结算优惠满100元扣3积分,如果结算优惠530元,那么扣除  500/100 * 3 = 5*3 = 15积分</font>)</td>
+				</tr>
+				
+				<tr>
+					<td>&nbsp;</td>
+				</tr>
+				
+				<tr>
+					<td>
+					
+						&nbsp;&nbsp;&nbsp;&nbsp;1.结&nbsp;算&nbsp;优&nbsp;惠&nbsp;满&nbsp;
+						
+						<s:textfield id="yhMFullMoney" name="tmCardType.yhMFullMoney" size="4" value="100"/><font color="red">*</font>
+						
+						&nbsp;元&nbsp;扣&nbsp;除&nbsp;
+						
+						<s:textfield id="yhMMinusPoint" name="tmCardType.yhMMinusPoint" size="4" value="0"/><font color="red">*</font>
+						
+						&nbsp;积分
+					</td>
+				</tr>
+				
+				
+				<tr>
+					<td><hr/></td>
+				</tr>
+				
+				<tr>
 					<td>B.充&nbsp;值&nbsp;奖&nbsp;励&nbsp;规&nbsp;则:(<font color="red">满100送3元10积分,如果充值530元,奖励   5*3 = 15元, 5*10 = 50积分</font>)</td>
 				</tr>
 				
