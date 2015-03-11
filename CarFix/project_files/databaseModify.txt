@@ -207,4 +207,9 @@ go
 alter table TB_BUSINESS_BALANCE add DH_MONEY int; 
 alter table TB_BUSINESS_BALANCE add CARD_ZFJE          numeric(10,2); 
 
+alter table TM_CARD_TYPE add YH_M_FULL_MONEY int;
+alter table TM_CARD_TYPE add YH_M_MINUS_POINT int;
+update TM_CARD_TYPE set YH_M_FULL_MONEY=100;
+update TM_CARD_TYPE set YH_M_MINUS_POINT=0;
+
 
