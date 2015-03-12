@@ -89,7 +89,8 @@ body{
       <td>出库数量</td>
       <td>日期</td>
       <td>出库类型</td>
-      <td>价格</td>
+      <td>成本价</td>
+      <td>销售价</td>
       <td>发料人</td>
       <td>领料人</td>
       <td>服务顾问</td>
@@ -104,6 +105,7 @@ body{
 	      <td>${maintain.quantity }</td>
 	      <td align="center" ><fmt:formatDate value="${maintain.stockOutDate}" /></td>
 	      <td>${maintain.outTypeName }</td>
+	      <td>${maintain.costPrice }</td>
 	      <td>${maintain.sellPrice }</td>
 	      <td>${maintain.createUserName }</td>
 	      <td>${maintain.drowUserName }</td>

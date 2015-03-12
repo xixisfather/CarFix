@@ -25,7 +25,7 @@
 		var store = null;							//数据仓库
 		var loanRetId = "";							//配件归还ID 
 	
-		Ext.onReady(createGrid);					//初始化操作
+							//初始化操作
 	
 		function dataHandler(record){
 			/*验证*/
@@ -437,4 +437,7 @@
 		<br>		
 		<div id="partinfocollectionDiv" ></div>
 	</body> 
+	<SCRIPT type="text/javascript">
+	Ext.onReady(createGrid);
+	</SCRIPT>
 </html>

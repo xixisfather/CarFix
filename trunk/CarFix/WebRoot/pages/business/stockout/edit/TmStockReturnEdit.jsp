@@ -185,6 +185,7 @@
 		}
 		
 		function updateEntity(confirm){
+			
 			var param = "";
 			var totalNum = 0;
 			var totalprice = 0;
@@ -209,7 +210,6 @@
 			document.getElementById("totalPrice").value = totalprice;
 			var partCol = document.getElementById("partCol");
 			partCol.value = param;
-
 			document.forms[0].action += "?isConfirm="+confirm;
 			document.forms[0].submit();
 			
