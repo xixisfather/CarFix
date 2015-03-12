@@ -95,6 +95,17 @@ public class TmStockOutSerivceImpl implements ITmStockOutService {
 		 return tmstockoutList;
 	}
 	
+	public List<TmStockOutDetVo>  getDrawStockOutDetVos(Long isConfirm ,Long stockOutId,Long stockOutType){
+		String isConfirms = isConfirm+"";
+		 List<TmStockOutDetVo> tmstockoutList = tmStockOutDao.getStockOutDetVos(isConfirms,stockOutId,stockOutType);
+		 for(TmStockOutDetVo tmStockOutDetVo :tmstockoutList ){
+			 TbPartInfo tbPartInfo = tbPartInfoService.findById(tmStockOutDetVo.getPartinfoId());
+			 if(tbPartInfo.getTmCarModelType()!= null)
+				 tmStockOutDetVo.setModeName(tbPartInfo.getTmCarModelType().getModelName());
+		 }
+		 return tmstockoutList;
+	}
+	
 	public List<TmStockOutDetVo> getStockOutDetVos(TmStockOut tmStockOut ,Long stockOutId, Long stockOutType){
 		 List<TmStockOutDetVo> tmstockoutList = tmStockOutDao.getStockOutDetVos(tmStockOut,stockOutId,stockOutType);
 		 return tmstockoutList;
@@ -111,12 +122,18 @@ public class TmStockOutSerivceImpl implements ITmStockOutService {
 	 * @return
 	 */
 	public boolean deleteStockOut(Long stockOutId){
-		//删除出库明细表
-		tmStockOutDao.deleteStockOutDetail(stockOutId);
-		//删除出库主表
-		boolean flag = tmStockOutDao.deleteById(stockOutId);
+		TmStockOut tmStockOut = tmStockOutDao.findById(stockOutId);
+		if(null != tmStockOut && tmStockOut.getIsConfirm().equals(Constants.NOT_CONFIRM)){
+			//删除出库明细表
+			tmStockOutDao.deleteStockOutDetail(stockOutId);
+			//删除出库主表
+			boolean flag = tmStockOutDao.deleteById(stockOutId);
+			
+			return flag;
+		}
 		
-		return flag;
+		
+		return false;
 	}
 	
 	/**

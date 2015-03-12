@@ -678,7 +678,7 @@ ServletRequestAware, ServletResponseAware{
 	public String initEditDrawPage(){
 		String id = request.getParameter("id");
 		tmStockOut = tmStockOutService.findById(new Long(id));
-		List<TmStockOutDetVo> detVos = tmStockOutService.getStockOutDetVos(Constants.NOT_CONFIRM,  tmStockOut.getId(), StockTypeElements.DRAWSTOCKOUT.getElementValue());
+		List<TmStockOutDetVo> detVos = tmStockOutService.getDrawStockOutDetVos(Constants.NOT_CONFIRM,  tmStockOut.getId(), StockTypeElements.DRAWSTOCKOUT.getElementValue());
 		TmUser tmUser = tmUserService.findById(tmStockOut.getDrawPeople());
 		request.setAttribute("detVos", detVos);
 		request.setAttribute("tmUser", tmUser);
@@ -730,7 +730,7 @@ ServletRequestAware, ServletResponseAware{
 	public String initEditStockReturnPage(){
 		String id = request.getParameter("id");
 		tmStockOut = tmStockOutService.findById(new Long(id));
-		List<TmStockOutDetVo> detVos = tmStockOutService.getStockOutDetVos(Constants.NOT_CONFIRM, tmStockOut.getId(), StockTypeElements.STOCKRETURN.getElementValue());
+		List<TmStockOutDetVo> detVos = tmStockOutService.getDrawStockOutDetVos(Constants.NOT_CONFIRM, tmStockOut.getId(), StockTypeElements.STOCKRETURN.getElementValue());
 		List<TmStockInDetailVo> detInVos = tmStockinDetailService.getStockInDetVo(StockTypeElements.STOCK.getElementValue(),tmStockOut.getStockInId(),Constants.CONFIRM);
 		TmStockIn tmStockIn = tmStockInService.findById(tmStockOut.getStockInId());
 		
