@@ -111,6 +111,7 @@
 			var partCol = document.getElementById("partCol");
 			partCol.value = str;
 			document.forms[0].action += "?isConfirm="+confirm;
+			alert(str);
 			document.forms[0].submit();
 			
 		}

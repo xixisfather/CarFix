@@ -106,7 +106,7 @@
 			tp.value = totalPrice;
 			var partCol = document.getElementById("partCol");
 			partCol.value = str;
-			//alert(str);return;
+			alert(partCol.value);
 			document.forms[0].submit();
 			
 		}
