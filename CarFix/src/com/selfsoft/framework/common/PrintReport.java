@@ -176,7 +176,7 @@ public class PrintReport implements IPrintReport {
 		/**
 		 * 这里需要改--查询出采购退货明细  具体字段看下 cgth.jrxml或者tmStockOutDetVo_CGTH_pdf_tpl.properties 仓库、配件代码、名称.....有表格的那块
 		 */
-		List<TmStockOutDetVo> tmStockOutDetVoList = tmStockOutService.getStockOutDetVos(Constants.CONFIRM, id, StockTypeElements.STOCKRETURN.getElementValue());
+		List<TmStockOutDetVo> tmStockOutDetVoList = tmStockOutService.getDrawStockOutDetVos(Constants.NOT_CONFIRM, id, StockTypeElements.STOCKRETURN.getElementValue());
 		
 		TmStockOutVo tmStockOutVo = tmStockOutService.getStockOutVos(null, StockTypeElements.STOCKRETURN.getElementValue(), null, id).get(0);
 		
