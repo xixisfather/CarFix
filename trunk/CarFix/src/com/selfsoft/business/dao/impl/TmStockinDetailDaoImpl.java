@@ -97,9 +97,9 @@ public class TmStockinDetailDaoImpl  extends BaseDaoImpl<TmStockinDetail> implem
 		}else{
 			
 			hql.append("si.id,sid.id,si.stockInCode,sid.partinfoId,sid.quantity,sid.price,pi.partCode,pi.partName,pi.tmStoreHouse.id,pi.tmStoreHouse.houseCode,pi.tmStoreHouse.houseName,pi.tmUnit.unitName,pi.costPrice,sid.stockoutDetailId,");
-			hql.append(" si.supplierId,'','',si.arriveDate,si.indent)");
-			hql.append("from TmStockIn si , TmStockinDetail sid , TbPartInfo pi  ");
-			hql.append(" where si.id = sid.stockId and sid.partinfoId = pi.id ");
+			hql.append(" si.supplierId,tc.customerCode,tc.customerName,si.arriveDate,si.indent)");
+			hql.append("from TmStockIn si , TmStockinDetail sid , TbPartInfo pi ,TbCustomer  tc");
+			hql.append(" where si.id = sid.stockId and sid.partinfoId = pi.id and tc.id = si.supplierId");
 		}
 		if(stockInType != null)
 			hql.append(" and si.inType = "+stockInType);
