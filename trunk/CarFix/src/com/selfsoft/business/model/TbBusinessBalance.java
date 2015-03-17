@@ -391,6 +391,14 @@ public class TbBusinessBalance implements java.io.Serializable {
 				payPatternShow = Constants.PAYMEMBERCARDSHOW;
 			}
 			
+			else if(Constants.PAYTRANSFER.equals(this.payPattern)){
+				payPatternShow = Constants.PAYTRANSFERSHOW;
+			}
+			
+			else if(Constants.PAYBANK.equals(this.payPattern)){
+				payPatternShow = Constants.PAYBANKSHOW;
+			}
+			
 		}
 		
 		return payPatternShow;
