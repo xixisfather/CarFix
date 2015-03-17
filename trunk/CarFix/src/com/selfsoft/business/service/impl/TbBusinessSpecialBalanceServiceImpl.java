@@ -919,6 +919,119 @@ public class TbBusinessSpecialBalanceServiceImpl implements
 		// 发料配件列表
 		List<TbSpecialPartContent> tbSpecialPartContentList = tbSpecialPartContentService
 				.findBySpecialId(id);
+		
+		
+		
+		
+		List<TbSpecialPartContent> tbSpecialPartContentTemp = new ArrayList<TbSpecialPartContent>();
+
+		List<TbSpecialPartContent> tbSpecialPartContentAdd = new ArrayList<TbSpecialPartContent>();
+
+		if (tbSpecialPartContentList.size() > 0) {
+
+			for (int i = 0; i < tbSpecialPartContentList.size(); i++) {
+
+				boolean flag = false;
+
+				if (tbSpecialPartContentTemp.size() == 0) {
+
+					tbSpecialPartContentTemp.add(tbSpecialPartContentList.get(i));
+
+				} else {
+
+					if (tbSpecialPartContentTemp.size() > 1) {
+
+						int l = 0;
+
+						for (TbSpecialPartContent _tbSpecialPartContent : tbSpecialPartContentTemp) {
+
+							if (_tbSpecialPartContent.getTbPartInfo().getId().equals(
+									tbSpecialPartContentList.get(i).getTbPartInfo().getId())
+									&& _tbSpecialPartContent.getIsFree().equals(
+											tbSpecialPartContentList.get(i).getIsFree())
+									&& _tbSpecialPartContent.getPrice().equals(
+											tbSpecialPartContentList.get(i).getPrice())) {
+
+								// maintianvosTemp.set(l, maintianvos.get(i));
+
+								flag = true;
+
+								break;
+
+							}
+
+							l++;
+
+						}
+
+					}
+
+				}
+
+				if (flag) {
+
+					continue;
+
+				} else {
+
+					tbSpecialPartContentTemp.add(tbSpecialPartContentList.get(i));
+
+				}
+
+				TbSpecialPartContent temp = tbSpecialPartContentList.get(i);
+
+				BigDecimal d1 = new BigDecimal(temp.getPartQuantity());
+
+				BigDecimal d2 = new BigDecimal(temp.getTotal());
+
+				for (int j = i + 1; j < tbSpecialPartContentList.size(); j++) {
+
+					if (temp.getTbPartInfo().getId().equals(tbSpecialPartContentList.get(j).getTbPartInfo().getId())
+							&& temp.getIsFree().equals(
+									tbSpecialPartContentList.get(j).getIsFree())
+							&& temp.getPrice().equals(
+									tbSpecialPartContentList.get(j).getPrice())) {
+
+						temp.setPrice(tbSpecialPartContentList.get(j).getPrice());
+
+						d1 = d1.add(new BigDecimal(tbSpecialPartContentList.get(j)
+								.getPartQuantity()));
+
+						d2 = d2.add(new BigDecimal(tbSpecialPartContentList.get(j)
+								.getTotal()));
+
+					}
+
+				}
+
+				temp.setPartQuantity(d1.doubleValue());
+
+				temp.setTotal(d2.doubleValue());
+
+				if (!temp.getIsFree().equals(1L)
+						|| !temp.getPartQuantity().equals(0d)) {
+
+					
+					tbSpecialPartContentAdd.add(temp);
+
+				}
+
+			}
+
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 		// 结算项目列表
 		List<TbBusinessSpecialBalanceItem> tbBusinessSpecialBalanceItemList = tbBusinessSpecialBalanceItemService
@@ -1131,7 +1244,7 @@ public class TbBusinessSpecialBalanceServiceImpl implements
 
 		map.put("reportParameters", reportParameters);
 
-		map.put("dataSourceList", tbSpecialPartContentList);
+		map.put("dataSourceList", tbSpecialPartContentAdd);
 
 		if ("南宁市得众汽车维修服务有限公司".equals(tmCompany.getCompanyName().trim())) {
 
