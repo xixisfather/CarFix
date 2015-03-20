@@ -865,6 +865,17 @@ public class TbBusinessBalance implements java.io.Serializable {
 	}
 	
 	
+	private Long tmFixTypeId;
+
+	public Long getTmFixTypeId() {
+		return tmFixTypeId;
+	}
+
+
+	public void setTmFixTypeId(Long tmFixTypeId) {
+		this.tmFixTypeId = tmFixTypeId;
+	}
+	
 	
 	
 }

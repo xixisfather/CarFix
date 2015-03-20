@@ -84,6 +84,11 @@
 				<td><s:select name="tbBusinessBalance.tmUser.id"
 						list="#request.tmUserMap" listKey="key" listValue="value"
 						emptyOption="true"></s:select></td>
+				<td>修理类型</td>	
+				<td>
+					<s:select id="tmFixTypeId" name="tbBusinessBalance.tmFixTypeId"
+							list="#request.tmFixTypeMap" listKey="key" listValue="value" cssStyle="width:100;" emptyOption="true"/>
+				</td>	
 			</tr>
 			<tr>
 				<td>服务顾问</td>
