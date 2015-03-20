@@ -347,6 +347,11 @@ public class TbBusinessBalanceServiceImpl implements ITbBusinessBalanceService {
 				sqlCondition += " and tbBusinessBalance.payPattern = '"
 						+ tbBusinessBalance.getPayPattern() + "'";
 			}
+			
+			if(null != tbBusinessBalance.getTmFixTypeId()) {
+				sqlCondition += " and tbBusinessBalance.tbFixEntrust.tmFixType.id ="
+						+ tbBusinessBalance.getTmFixTypeId() + "";
+			}
 		}
 
 		List<TbBusinessBalance> listCondition = tbBusinessBalanceDao.findBySQL(

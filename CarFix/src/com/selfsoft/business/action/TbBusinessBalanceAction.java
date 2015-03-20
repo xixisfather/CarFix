@@ -315,6 +315,10 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			tbBusinessBalance.setBananceDateEnd(e);
 		}
 		
+		// 修理类型
+		ActionContext.getContext().put("tmFixTypeMap",
+						tmFixTypeService.findAllTmFixTypeMap());
+		
 		List<TbBusinessBalance> tbBusinessBalanceList = tbBusinessBalanceService
 		.findTbBusinessBalanceToGroup(tbBusinessBalance);
 		
