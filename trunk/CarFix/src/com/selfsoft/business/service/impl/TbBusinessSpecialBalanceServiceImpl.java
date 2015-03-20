@@ -1008,8 +1008,7 @@ public class TbBusinessSpecialBalanceServiceImpl implements
 
 				temp.setTotal(d2.doubleValue());
 
-				if (!temp.getIsFree().equals(1L)
-						|| !temp.getPartQuantity().equals(0d)) {
+				if (!temp.getIsFree().equals(1L)|| !temp.getPartQuantity().equals(0d)) {
 
 					
 					tbSpecialPartContentAdd.add(temp);
@@ -1161,9 +1160,26 @@ public class TbBusinessSpecialBalanceServiceImpl implements
 		// 子报表路径
 		reportParameters.put("SUBREPORT_DIR",
 				request.getRealPath("/reportfiles/") + "/");
+		
+		List<TbSpecialWorkingContent> tbSpecialWorkingContentListReport = new ArrayList<TbSpecialWorkingContent>();
+		
+		if(null != tbSpecialWorkingContentList && tbSpecialWorkingContentList.size() >0 ){
+			
+			for(TbSpecialWorkingContent twc : tbSpecialWorkingContentList) {
+				
+				if(!twc.getFixHour().equals(0d)&&!twc.getFreesymbol().equals(0L)) {
+					
+					tbSpecialWorkingContentListReport.add(twc);
+					
+				}
+				
+			}
+			
+		}
+		
 		// 子报表数据源-工时
 		reportParameters.put("subdatasource_0", new JRBeanCollectionDataSource(
-				tbSpecialWorkingContentList));
+				tbSpecialWorkingContentListReport));
 		// 子报表数据源-结算项目
 		List<TbBusinessSpecialBalanceItem> tbBusinessSpecialBalanceItemListSend = new ArrayList<TbBusinessSpecialBalanceItem>();
 
@@ -1244,7 +1260,22 @@ public class TbBusinessSpecialBalanceServiceImpl implements
 
 		map.put("reportParameters", reportParameters);
 
-		map.put("dataSourceList", tbSpecialPartContentAdd);
+		List<TbSpecialPartContent> tbSpecialPartContentListReport = new ArrayList<TbSpecialPartContent>();
+		
+		if(null != tbSpecialPartContentAdd && tbSpecialPartContentAdd.size() > 0) {
+			
+			for(TbSpecialPartContent tpc : tbSpecialPartContentAdd) {
+				
+				if(!tpc.getPartQuantity().equals(0d) && !tpc.getPartQuantity().equals(1L)) {
+					
+					tbSpecialPartContentListReport.add(tpc);
+					
+				}
+				
+			}
+		}
+		
+		map.put("dataSourceList", tbSpecialPartContentListReport);
 
 		if ("南宁市得众汽车维修服务有限公司".equals(tmCompany.getCompanyName().trim())) {
 
