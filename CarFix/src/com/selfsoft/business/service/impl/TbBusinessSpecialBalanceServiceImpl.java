@@ -1167,7 +1167,7 @@ public class TbBusinessSpecialBalanceServiceImpl implements
 			
 			for(TbSpecialWorkingContent twc : tbSpecialWorkingContentList) {
 				
-				if(!twc.getFixHour().equals(0d)&&!twc.getFreesymbol().equals(0L)) {
+				if(!twc.getFixHour().equals(0d)&&!twc.getFreesymbol().equals(1L)) {
 					
 					tbSpecialWorkingContentListReport.add(twc);
 					
