@@ -173,6 +173,11 @@ public class TbSpecialPartContent implements java.io.Serializable {
 	public void setQuantity(Double quantity) {
 		this.quantity = quantity;
 	}
+	
+	public Double acquireTotal() {
+		
+		return total;
+	}
 
 	public Double getTotal() {
 
