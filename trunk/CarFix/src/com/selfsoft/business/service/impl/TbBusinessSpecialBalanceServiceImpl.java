@@ -1268,6 +1268,8 @@ public class TbBusinessSpecialBalanceServiceImpl implements
 				
 				if(!tpc.getPartQuantity().equals(0d) && !tpc.getPartQuantity().equals(1L)) {
 					
+					tpc.setPartTotal(tpc.acquireTotal());
+					
 					tbSpecialPartContentListReport.add(tpc);
 					
 				}
