@@ -30,12 +30,17 @@
 			pConfig.showLoadingMsg = true;
 		}
 		
+		function openWin(){
+			var props = "customerId,customerName,customerName&types=2,3";
+			showCommonWin('findAllTmTbCustomerAction.action','供应商列表',575,355,props,null);
+		}
+		
 		function query(){
 			 document.frames["tmStockinDetailTab"].document.getElementById("iframe_partCode").value = document.getElementById("partCode").value;
 			 document.frames["tmStockinDetailTab"].document.getElementById("iframe_partName").value = document.getElementById("partName").value;
 			 document.frames["tmStockinDetailTab"].document.getElementById("iframe_beginDate").value = document.getElementById("beginDate").value;
 			 document.frames["tmStockinDetailTab"].document.getElementById("iframe_endDate").value = document.getElementById("endDate").value;
-			 document.frames["tmStockinDetailTab"].document.getElementById("iframe_supplierId").value = document.getElementById("supplierId").value;
+			 document.frames["tmStockinDetailTab"].document.getElementById("iframe_supplierId").value = document.getElementById("customerId").value;
 			 document.frames["tmStockinDetailTab"].document.getElementById("iframe_busType").value = document.getElementById("busType").value;
 			 document.frames["tmStockinDetailTab"].detailSubmit();
 			 
@@ -43,7 +48,7 @@
 				 document.frames["tbCustomerTab"].document.getElementById("iframe_partCode").value = document.getElementById("partCode").value;
 				 document.frames["tbCustomerTab"].document.getElementById("iframe_beginDate").value = document.getElementById("beginDate").value;
 				 document.frames["tbCustomerTab"].document.getElementById("iframe_endDate").value = document.getElementById("endDate").value;
-				 document.frames["tbCustomerTab"].document.getElementById("iframe_supplierId").value = document.getElementById("supplierId").value;
+				 document.frames["tbCustomerTab"].document.getElementById("iframe_supplierId").value = document.getElementById("customerId").value;
 				 document.frames["tbCustomerTab"].document.getElementById("iframe_partName").value = document.getElementById("partName").value;
 				 document.frames["tbCustomerTab"].document.getElementById("iframe_busType").value = document.getElementById("busType").value;
 				 document.frames["tbCustomerTab"].detailSubmit();
@@ -53,7 +58,7 @@
 				 document.frames["masterStockTab"].document.getElementById("iframe_partCode").value = document.getElementById("partCode").value;
 				 document.frames["masterStockTab"].document.getElementById("iframe_beginDate").value = document.getElementById("beginDate").value;
 				 document.frames["masterStockTab"].document.getElementById("iframe_endDate").value = document.getElementById("endDate").value;
-				 document.frames["masterStockTab"].document.getElementById("iframe_supplierId").value = document.getElementById("supplierId").value;
+				 document.frames["masterStockTab"].document.getElementById("iframe_supplierId").value = document.getElementById("customerId").value;
 				 document.frames["masterStockTab"].document.getElementById("iframe_partName").value = document.getElementById("partName").value;
 				 document.frames["masterStockTab"].document.getElementById("iframe_busType").value = document.getElementById("busType").value;
 				 document.frames["masterStockTab"].detailSubmit();
@@ -67,7 +72,7 @@
 			 document.getElementById("exp_partCode").value = document.getElementById("partCode").value;
 			 document.getElementById("exp_beginDate").value = document.getElementById("beginDate").value;
 			 document.getElementById("exp_endDate").value = document.getElementById("endDate").value;
-			 document.getElementById("exp_supplierId").value = document.getElementById("supplierId").value;
+			 document.getElementById("exp_supplierId").value = document.getElementById("customerId").value;
 			 document.getElementById("exp_partName").value = document.getElementById("partName").value;
 			 document.getElementById("exp_busType").value = document.getElementById("busType").value;
 			 document.forms["stockInDetailsExportXlsAction"].submit();
@@ -82,6 +87,7 @@
 			<s:hidden name="tmStockIn.supplierId" id="exp_supplierId" ></s:hidden>
 			<s:hidden name="tmStockIn.partName" id="exp_partName" ></s:hidden>
 			<s:hidden name="tmStockIn.busType" id="exp_busType" ></s:hidden>
+			<s:hidden  id="customerId" ></s:hidden>
 		</s:form>
 	
 		<s:form action="stockInTbPartInfoByStatActon.action">
@@ -100,8 +106,9 @@
 							</tr>
 							<tr>
 								<td>供应商</td>
-								<td ><s:select id="supplierId" name="tmStockIn.supplierId" list="#request.tbCustomers" headerKey="" headerValue="所有" listKey="id" listValue="customerName"/></td>
-								
+								<!-- <td ><s:select id="supplierId" name="tmStockIn.supplierId" list="#request.tbCustomers" headerKey="" headerValue="所有" listKey="id" listValue="customerName"/></td>
+								 -->
+								<td><s:textfield id="customerName" onfocus="openWin();" /></td>
 							</tr>	
 							<tr>
 								<td>配件代码</td>
