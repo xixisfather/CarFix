@@ -1633,8 +1633,8 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 
 		// Double saveAmount =
 		// tbAnvancePayService.acquireCustomerTotalAnvancePay(Long.valueOf(carInfoId));
-
-		tbBusinessBalance = tbBusinessBalanceService.findById(Long
+		if(null != tbBusinessBalanceId && !"".equals(tbBusinessBalanceId))
+			tbBusinessBalance = tbBusinessBalanceService.findById(Long
 				.valueOf(tbBusinessBalanceId));
 
 		// tbBusinessBalance.setSaveAmount(saveAmount);
@@ -2021,7 +2021,13 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 		
 		else{
 			
-			tbBusinessBalance = tbBusinessBalanceService.findById(Long.valueOf(id));
+			if(null != id){
+				tbBusinessBalance = tbBusinessBalanceService.findById(Long.valueOf(id));
+			}
+			else {
+				
+				tbBusinessBalance = new TbBusinessBalance();
+			}
 		}
 		
 		
@@ -2113,7 +2119,7 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			
 			if("jsd".equals(flag))
 				
-				tbBusinessBalanceItemService.findGroupTbBusinessBalanceItemListByTbBusinessBalanceId(Long.valueOf(id));
+				tbBusinessBalanceItemList = tbBusinessBalanceItemService.findGroupTbBusinessBalanceItemListByTbBusinessBalanceId(Long.valueOf(id));
 			
 			
 			
@@ -2266,7 +2272,18 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			ActionContext.getContext().getSession().put("calcMapReturn", calcMapReturn);
 			*/
 			
-			TmStockOut tmStockOut = tmStockOutService.findById(tbBusinessBalance.getTmStockOut().getId());
+			TmStockOut tmStockOut = null;
+			
+			if(null != request.getParameter("tmStockOutId")) {
+				
+				tmStockOut =tmStockOutService.findById(Long.valueOf(request.getParameter("tmStockOutId")));
+				tbBusinessBalance.setTmStockOut(tmStockOut);
+			}
+			
+			else {
+					
+				tmStockOut =tmStockOutService.findById(tbBusinessBalance.getTmStockOut().getId());
+			}
 			
 			TbCustomer customer = tbCustomerService.findById(tmStockOut.getCustomerBill());
 			
@@ -2280,10 +2297,39 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			
 			request.setAttribute("tsyList", tsyList);
 			
-			List<TmStockOutDetVo> detVos = tmStockOutService.getCustomerSellDetailByBalanceId(tbBusinessBalance.getTmStockOut().getId(),tbBusinessBalance.getId());
+			List<TmStockOutDetVo> detVos = null;
 			
-			Double solePartTotalAll = tmStockOutService.getCustomerSellTotalPriceByBalance(tbBusinessBalance.getTmStockOut().getId(),tbBusinessBalance.getId());
+			Double solePartTotalAll = 0.0d;
 			
+			if(null != request.getParameter("tmStockOutId")) {
+				
+				detVos = tmStockOutService.getCustomerSellDetailByTmStockOutId(Long.valueOf(request.getParameter("tmStockOutId")), Constants.BALANCE_ALL);
+			
+				for(TmStockOutDetVo vo : detVos){
+					if(vo.getIsFree().equals(Constants.FREESYMBOL_NO)){
+						
+						solePartTotalAll += vo.getPrice() * vo.getQuantity();
+					}
+				}
+				
+				BigDecimal   b   =   new   BigDecimal(solePartTotalAll);  
+				
+				solePartTotalAll   =   b.setScale(2,  BigDecimal.ROUND_HALF_UP).doubleValue();
+				
+			}
+			else {
+					
+				detVos = tmStockOutService.getCustomerSellDetailByBalanceId(tbBusinessBalance.getTmStockOut().getId(),tbBusinessBalance.getId());
+			
+				solePartTotalAll = tmStockOutService.getCustomerSellTotalPriceByBalance(tbBusinessBalance.getTmStockOut().getId(),tbBusinessBalance.getId());
+				
+			}
+			
+			
+			
+			
+					
+					
 			request.setAttribute("solePartTotalAll",solePartTotalAll);
 				
 			request.setAttribute("detVos", detVos);
@@ -2315,6 +2361,15 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 
 				}
 
+			}
+			else {
+				
+				for(TmBalanceItem  tmi : tmBalanceItemList) {
+					
+					calcMapReturn.put(tmi.getItemCode(), new BigDecimal(0.0d));
+					
+				}
+				
 			}
 
 			ActionContext.getContext().getSession().put("calcMapReturn",

@@ -1043,8 +1043,24 @@ public class TbBusinessSpecialBalanceAction extends ActionSupport implements
 
 		tbBusinessSpecialBalance.setEditCode(editCode);
 
-		tbBusinessSpecialBalance.setTbBusinessBalance(tbBusinessBalance);
+		//tbBusinessSpecialBalance.setTbBusinessBalance(tbBusinessBalance);
+		
+		if (null == tbBusinessBalance || null == tbBusinessBalance.getId()) {
 
+			tbBusinessSpecialBalance.setTbBusinessBalance(null);
+
+		} else {
+
+			tbBusinessSpecialBalance.setTbBusinessBalance(tbBusinessBalance);
+		}
+		
+		if(null != request.getParameter("tbBusinessBalance.tmStockOut.id")) {
+			
+			tbBusinessSpecialBalance.setStockOutId(Long.valueOf(request.getParameter("tbBusinessBalance.tmStockOut.id")));
+			
+			
+		}
+		
 		// 特殊编辑标识
 		tbBusinessSpecialBalance.setSpecialType(1L);
 
@@ -1632,7 +1648,7 @@ public class TbBusinessSpecialBalanceAction extends ActionSupport implements
 
 			tbBusinessBalance = tbBusinessSpecialBalance.getTbBusinessBalance();
 
-			if (null == tbBusinessBalance) {
+			if (null == tbBusinessBalance&& null != tbBusinessSpecialBalance.getEntrustId()) {
 
 				tbBusinessBalance = new TbBusinessBalance();
 
@@ -1646,7 +1662,7 @@ public class TbBusinessSpecialBalanceAction extends ActionSupport implements
 			}
 
 			// 委托书特殊结算
-			if (null != tbBusinessSpecialBalance.getTbBusinessBalance()
+			if (null != tbBusinessSpecialBalance.getTbBusinessBalance() && null != tbBusinessSpecialBalance.getTbBusinessBalance()
 					.getTbFixEntrust()) {
 
 				TbFixEntrust tbFixEntrust = tbFixEntrustService
@@ -1717,8 +1733,17 @@ public class TbBusinessSpecialBalanceAction extends ActionSupport implements
 				return Constants.EDITPAGE;
 			} else {
 
-				TmStockOut tmStockOut = tmStockOutService
+				TmStockOut tmStockOut = null;
+				
+				if(null != tbBusinessSpecialBalance.getStockOutId()) {
+					
+					tmStockOut = tmStockOutService
+							.findById(tbBusinessSpecialBalance.getStockOutId());
+				}
+				else { 
+					tmStockOut = tmStockOutService
 						.findById(tbBusinessBalance.getTmStockOut().getId());
+				}
 
 				TbCustomer customer = tbCustomerService.findById(tmStockOut
 						.getCustomerBill());
