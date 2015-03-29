@@ -308,6 +308,17 @@ function prePrint(){
 	
 }
 
+function prePrintXsd(){
+	var date = new Date();
+	var time = date.getTime();
+	var tmStockOutId = document.getElementById('tmStockOutId');
+	var tmBalanceId = document.getElementById('tmBalanceId');
+	addObject('tbBusinessBalanceEditAction.action?tmStockOutId=' + tmStockOutId.value + '&tmBalanceId=' + tmBalanceId.value +'&time='+time + '&flag=xsd',100,100);
+	
+	
+}
+
+
 
 function confirmBalance() {
 	
