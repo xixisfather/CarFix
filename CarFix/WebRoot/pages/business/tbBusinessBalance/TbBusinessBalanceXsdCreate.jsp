@@ -108,6 +108,9 @@
 				<tr>
 
 					<td align="center" colspan="6">
+						
+						<input type="button" value="结算预览" onclick="prePrintXsd();"/>
+						&nbsp;&nbsp;
 						<input type="button" value="结算" onclick="confirmBalance();"/>
 						&nbsp;&nbsp;
 						<input type="reset" value="重置"/>
