@@ -702,10 +702,17 @@ public class TbBusinessSpecialBalanceServiceImpl implements
 		// 结算单信息
 		TbBusinessSpecialBalance tbBusinessSpecialBalance = this.findById(id);
 		// 销售单信息
-		TmStockOut tmStockOut = tmStockOutService
+		TmStockOut tmStockOut = null;
+		
+		if(null != tbBusinessSpecialBalance.getStockOutId()) {
+			tmStockOut = tmStockOutService
+			.findById(tbBusinessSpecialBalance.getStockOutId());
+		}
+		else {
+			tmStockOut = tmStockOutService
 				.findById(tbBusinessSpecialBalance.getTbBusinessBalance()
 						.getTmStockOut().getId());
-
+		}
 		// 客户信息
 		TbCustomer tbCustomer = tbCustomerService.findById(tmStockOut
 				.getCustomerBill());
@@ -741,9 +748,19 @@ public class TbBusinessSpecialBalanceServiceImpl implements
 				tbBusinessSpecialBalance.getBananceDate(), "yyyy-MM-dd"));
 
 		// 付款
-		reportParameters.put("payPatten", tbBusinessSpecialBalance
+		if(null != tbBusinessSpecialBalance
+				.getTbBusinessBalance()) {
+			reportParameters.put("payPatten", tbBusinessSpecialBalance
 				.getTbBusinessBalance().getPayPatternShow());
-
+			// 备注说明
+			reportParameters.put("remark", tbBusinessSpecialBalance
+					.getTbBusinessBalance().getRemark());
+		}
+		else {
+			
+			reportParameters.put("payPatten", "");
+			reportParameters.put("remark", "");
+		}
 		// 电话
 		reportParameters.put("phone",
 				tbCustomer.getPhone() == null ? "" : tbCustomer.getPhone()
@@ -753,9 +770,7 @@ public class TbBusinessSpecialBalanceServiceImpl implements
 		// 地址
 		reportParameters.put("address", tbCustomer.getAddress());
 
-		// 备注说明
-		reportParameters.put("remark", tbBusinessSpecialBalance
-				.getTbBusinessBalance().getRemark());
+		
 
 		// 公司信息
 		reportParameters.put("companyName", tmCompany.getCompanyName());
