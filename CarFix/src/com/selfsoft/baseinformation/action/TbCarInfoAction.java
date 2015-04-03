@@ -266,19 +266,19 @@ ServletRequestAware, ServletResponseAware{
 				
 			}
 			
-            if(null != chassisCode && !"".equals(chassisCode)){
-				
-				TbCarInfo t = tbCarInfoService.findTbCarInfoByChassisCode(chassisCode);
-		
-				if(null!=t){
-					
-					response.getWriter().print("chassisExist,");
-				}
-				else{
-					response.getWriter().print("chassisNotExist,");
-				}
-				
-			}
+//            if(null != chassisCode && !"".equals(chassisCode)){
+//				
+//				TbCarInfo t = tbCarInfoService.findTbCarInfoByChassisCode(chassisCode);
+//		
+//				if(null!=t){
+//					
+//					response.getWriter().print("chassisExist,");
+//				}
+//				else{
+//					response.getWriter().print("chassisNotExist,");
+//				}
+//				
+//			}
 			
 		}
 		
