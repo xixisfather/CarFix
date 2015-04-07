@@ -17,8 +17,10 @@ import com.selfsoft.baseinformation.model.TbCustomer;
 import com.selfsoft.baseinformation.service.ITbCarInfoService;
 import com.selfsoft.baseinformation.service.ITbCustomerService;
 import com.selfsoft.baseparameter.service.ITmCarModelTypeService;
+import com.selfsoft.business.model.TbBusinessBalance;
 import com.selfsoft.business.model.TbFixEntrust;
 import com.selfsoft.business.model.TbReturnVisit;
+import com.selfsoft.business.service.ITbBusinessBalanceService;
 import com.selfsoft.business.service.ITbFixEntrustService;
 import com.selfsoft.business.service.ITbReturnVisitService;
 import com.selfsoft.framework.common.CommonMethod;
@@ -56,6 +58,9 @@ ServletRequestAware, ServletResponseAware{
 	
 	@Autowired
 	private ITbReturnVisitService tbReturnVisitService;
+	
+	@Autowired
+	private ITbBusinessBalanceService tbBusinessBalanceService;
 	
 	public TbCarInfo getTbCarInfo() {
 		return tbCarInfo;
@@ -157,9 +162,18 @@ ServletRequestAware, ServletResponseAware{
 		
 		TbCarInfo t = tbCarInfoService.findTbCarInfoBylicenseCode(licenseCode);
 		
+		List<TbBusinessBalance> oweList = tbBusinessBalanceService.findTbBusinessBalanceOweGroup(licenseCode);
+		
+		String owe = "0";
+		
+		if(null != oweList && oweList.size() > 0){
+			
+			owe = "1";
+		}
+		
 		if(null!=t){
 			
-			response.getWriter().print("success,"+t.getLicenseCode()+","+t.getChassisCode()+","+t.getTmCarModelType().getId()+","+CommonMethod.parseDateToString(t.getPurchaseDate(), "yyyy-MM-dd")+","+t.getEngineCode()+","+t.getTbCustomer().getCustomerName()+","+t.getTbCustomer().getContractPerson()+","+t.getTbCustomer().getPhone()+","+t.getTbCustomer().getTelephone()+","+t.getTbCustomer().getAddress()+","+t.getTbCustomer().getCustomerCode()+','+t.getId()+','+t.getTbCustomer().getId());
+			response.getWriter().print("success,"+t.getLicenseCode()+","+t.getChassisCode()+","+t.getTmCarModelType().getId()+","+CommonMethod.parseDateToString(t.getPurchaseDate(), "yyyy-MM-dd")+","+t.getEngineCode()+","+t.getTbCustomer().getCustomerName()+","+t.getTbCustomer().getContractPerson()+","+t.getTbCustomer().getPhone()+","+t.getTbCustomer().getTelephone()+","+t.getTbCustomer().getAddress()+","+t.getTbCustomer().getCustomerCode()+','+t.getId()+','+t.getTbCustomer().getId()+","+owe);
 		}
 		else{
 			response.getWriter().print("fail,");
