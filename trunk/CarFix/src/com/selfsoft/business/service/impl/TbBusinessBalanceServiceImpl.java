@@ -253,7 +253,7 @@ public class TbBusinessBalanceServiceImpl implements ITbBusinessBalanceService {
 				tbBusinessBalance);
 
 	}
-
+	
 	// 查询总单信息
 	public List<TbBusinessBalance> findTbBusinessBalanceToGroup(
 			TbBusinessBalance tbBusinessBalance) {
@@ -2075,6 +2075,17 @@ public class TbBusinessBalanceServiceImpl implements ITbBusinessBalanceService {
 
 			return list;
 		}
+	}
+	
+	public List<TbBusinessBalance> findTbBusinessBalanceOweGroup(
+			String licenseCode) {
+		
+		TbBusinessBalance t = new TbBusinessBalance();
+		
+		t.setLicenseCode(licenseCode);
+		
+		return this.findTbBusinessBalanceOweGroup(t);
+		
 	}
 
 	// 查询总单欠款

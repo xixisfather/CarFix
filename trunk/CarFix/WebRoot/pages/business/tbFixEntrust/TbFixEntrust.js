@@ -163,6 +163,11 @@ function returnCarInfo(originalRequest)
 		acquireStationTypeByCarModel();
 		
 		hasCarAlertContent(tbCarInfoId.value,1);
+		
+		if('1' == carInfo[14]) {
+			
+			alert('该车有欠款金额,请注意');
+		}
 	}
 	else{
 		
