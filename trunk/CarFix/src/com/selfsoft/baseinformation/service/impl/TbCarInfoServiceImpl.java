@@ -83,6 +83,9 @@ public class TbCarInfoServiceImpl implements ITbCarInfoService{
 				if(null!=tbCarInfo.getTbCustomer().getCustomerName()){
 					detachedCriteria.add(Restrictions.like("tbCustomer.customerName", "%"+tbCarInfo.getTbCustomer().getCustomerName()+"%"));
 				}
+				if(null!=tbCarInfo.getTbCustomer().getTelephone()){
+					detachedCriteria.add(Restrictions.like("tbCustomer.telephone", "%"+tbCarInfo.getTbCustomer().getTelephone()+"%"));
+				}
 			}
 			
 			if(StringUtils.isNotBlank(tbCarInfo.getBeginLicenseDate())){

@@ -120,6 +120,21 @@
 					<td>
 						<s:textfield id="licenseCode" name="tbCarInfo.licenseCode"/>
 					</td>
+					
+					<td>
+						姓名
+					</td>
+					<td>
+						<s:textfield id="customerName" name="tbCarInfo.tbCustomer.customerName"/>
+					</td>
+					
+					<td>
+						手机号
+					</td>
+					<td>
+						<s:textfield id="telephone" name="tbCarInfo.tbCustomer.telephone"/>
+					</td>
+					
 					<td>
 						<td>
 						<input type="button" value="查询"
