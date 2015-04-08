@@ -199,8 +199,23 @@ public class TbFixEntrustServiceImpl implements ITbFixEntrustService {
 
 			if (null != tbFixEntrust.getTbCustomer()) {
 
-				detachedCriteria.createAlias("tbCustomer", "tbCustomer");
-
+				boolean customerCodeBoolean = (null != tbFixEntrust.getTbCustomer().getCustomerCode()
+						&& !"".equals(tbFixEntrust.getTbCustomer()
+								.getCustomerCode()));
+				
+				boolean customerNameBoolean = (null != tbFixEntrust.getTbCustomer().getCustomerName()
+						&& !"".equals(tbFixEntrust.getTbCustomer()
+								.getCustomerName()));
+				
+				boolean telephoneBoolean = (null != tbFixEntrust.getTbCustomer().getTelephone()
+						&& !"".equals(tbFixEntrust.getTbCustomer()
+								.getTelephone()));
+				
+				if(customerCodeBoolean||customerNameBoolean||telephoneBoolean){
+				
+					detachedCriteria.createAlias("tbCustomer", "tbCustomer");
+				}
+				
 				if (null != tbFixEntrust.getTbCustomer().getCustomerCode()
 						&& !"".equals(tbFixEntrust.getTbCustomer()
 								.getCustomerCode())) {
@@ -287,7 +302,7 @@ public class TbFixEntrustServiceImpl implements ITbFixEntrustService {
 				}
 			}
 
-			if (null != tbFixEntrust.getTmUser()) {
+			if (null != tbFixEntrust.getTmUser() && null != tbFixEntrust.getTmUser().getId()) {
 
 				detachedCriteria.add(Restrictions.eq("tmUser.id", tbFixEntrust
 						.getTmUser().getId()));
