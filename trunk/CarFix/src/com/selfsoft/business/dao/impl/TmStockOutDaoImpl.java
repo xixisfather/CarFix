@@ -295,6 +295,9 @@ public class TmStockOutDaoImpl extends BaseDaoImpl<TmStockOut> implements ITmSto
 				if(tmStockIn.getSupplierId()!=null){
 					hql.append(" and si.supplierId = '").append(tmStockIn.getSupplierId()).append("'");
 				}
+				 if(tmStockIn.getPayMent() != null){
+					 hql.append(" and si.payMent = ").append(tmStockIn.getPayMent());
+				 }
 				hql.append(" )");
 			}
 		}
@@ -331,6 +334,9 @@ public class TmStockOutDaoImpl extends BaseDaoImpl<TmStockOut> implements ITmSto
 				if(tmStockIn.getSupplierId()!=null){
 					hql.append(" and si.supplierId = '").append(tmStockIn.getSupplierId()).append("'");
 				}
+				 if(tmStockIn.getPayMent() != null){
+					 hql.append(" and si.payMent = ").append(tmStockIn.getPayMent());
+				 }
 			}
 			
 		}
@@ -359,6 +365,9 @@ public class TmStockOutDaoImpl extends BaseDaoImpl<TmStockOut> implements ITmSto
 			
 			 if(tmStockIn.getSupplierId() != null){
 				 hql.append(" and si.supplier_Id = ").append(tmStockIn.getSupplierId());
+			 }
+			 if(tmStockIn.getPayMent() != null){
+				 hql.append(" and si.payMent = ").append(tmStockIn.getPayMent());
 			 }
 				
 			if(StringUtils.isNotBlank(tmStockIn.getPartCode())  ||StringUtils.isNotBlank(tmStockIn.getPartName())){

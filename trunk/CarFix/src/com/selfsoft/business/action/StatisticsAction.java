@@ -560,7 +560,8 @@ ServletRequestAware, ServletResponseAware{
 		
 		ActionContext.getContext().put("tbCustomers", tbCustomers);
 		ActionContext.getContext().put("busTypes", busTypes);
-		
+		Map<Long,String> panMentMap = Constants.getPayMentMap();
+		request.setAttribute("panMentMap", panMentMap);
 		return Constants.SUCCESS;
 	}
 	

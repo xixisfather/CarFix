@@ -125,6 +125,9 @@ public class TmStockinDetailDaoImpl  extends BaseDaoImpl<TmStockinDetail> implem
 			if(tmStockIn.getSupplierId() != null){
 				hql.append(" and si.supplierId = ").append(tmStockIn.getSupplierId());
 			}
+			if(tmStockIn.getPayMent() != null){
+				hql.append(" and si.payMent = ").append(tmStockIn.getPayMent());
+			}
 			if(StringUtils.isNotBlank(tmStockIn.getStockInCode())){
 				hql.append(" and si.stockInCode like '%").append(tmStockIn.getStockInCode()).append("%'");
 			}
@@ -151,6 +154,9 @@ public class TmStockinDetailDaoImpl  extends BaseDaoImpl<TmStockinDetail> implem
 			}
 			if(tmStockIn.getSupplierId() != null){
 				hql.append(" and si.supplier_Id = ").append(tmStockIn.getSupplierId());
+			}
+			if(tmStockIn.getPayMent() != null){
+				hql.append(" and si.payMent = ").append(tmStockIn.getPayMent());
 			}
 			if(StringUtils.isNotBlank(tmStockIn.getPartCode())){
 				hql.append(" and si.id in ");
@@ -205,6 +211,9 @@ public class TmStockinDetailDaoImpl  extends BaseDaoImpl<TmStockinDetail> implem
 			if(tmStockIn.getSupplierId() != null){
 				hql.append(" and si.supplierId = ").append(tmStockIn.getSupplierId());
 			}
+			if(tmStockIn.getPayMent() != null){
+				 hql.append(" and si.payMent = ").append(tmStockIn.getPayMent());
+			 }
 				
 		}
 		List result = this.getHibernateTemplate().find(hql.toString());
@@ -285,6 +294,9 @@ public class TmStockinDetailDaoImpl  extends BaseDaoImpl<TmStockinDetail> implem
 			if(tmStockIn.getSupplierId() != null){
 				hql.append(" and si.supplier_Id = ").append(tmStockIn.getSupplierId());
 			}
+			 if(tmStockIn.getPayMent() != null){
+				 hql.append(" and si.payMent = ").append(tmStockIn.getPayMent());
+			 }
 				
 		}
 		hql.append(" order by si.arrive_date desc");
@@ -319,6 +331,9 @@ public class TmStockinDetailDaoImpl  extends BaseDaoImpl<TmStockinDetail> implem
 			if(tmStockIn.getSupplierId() != null){
 				hql.append(" and si.supplier_Id = ").append(tmStockIn.getSupplierId());
 			}
+			 if(tmStockIn.getPayMent() != null){
+				 hql.append(" and si.payMent = ").append(tmStockIn.getPayMent());
+			 }
 				
 		}
 		hql.append(" union all");
