@@ -119,6 +119,18 @@
 			
 			</tr>
 			<tr>
+				<td>客户号</td>
+				<td><s:textfield name="tbBusinessBalance.customerCode"></s:textfield>
+				
+				<td>客户姓名</td>
+				<td><s:textfield name="tbBusinessBalance.customerName"></s:textfield>
+				
+				<td>手机号码</td>
+				<td><s:textfield name="tbBusinessBalance.telephone"></s:textfield>
+				
+				
+			</tr>
+			<tr>
 				<td colspan="8" align="center"><input type="submit" value="查询" />
 					<input type="button" value="重置" onclick="clearForm();" /></td>
 			</tr>

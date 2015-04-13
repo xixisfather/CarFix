@@ -334,6 +334,30 @@ public class TbBusinessBalanceServiceImpl implements ITbBusinessBalanceService {
 						+ tbBusinessBalance.getLicenseCode() + "%'";
 
 			}
+			
+			if (null != tbBusinessBalance.getCustomerName()
+					&& !"".equals(tbBusinessBalance.getCustomerName())) {
+
+				sqlCondition += " and tbBusinessBalance.tbFixEntrust.tbCustomer.customerName = '"
+						+ tbBusinessBalance.getCustomerName() + "'";
+
+			}
+			
+			if (null != tbBusinessBalance.getCustomerCode()
+					&& !"".equals(tbBusinessBalance.getCustomerCode())) {
+
+				sqlCondition += " and tbBusinessBalance.tbFixEntrust.tbCustomer.customerCode = '"
+						+ tbBusinessBalance.getCustomerCode() + "'";
+
+			}
+			
+			if (null != tbBusinessBalance.getTelephone()
+					&& !"".equals(tbBusinessBalance.getTelephone())) {
+
+				sqlCondition += " and tbBusinessBalance.tbFixEntrust.tbCustomer.telephone = '"
+						+ tbBusinessBalance.getTelephone() + "'";
+
+			}
 
 			if (null != tbBusinessBalance.getTmModelTypeId()) {
 
