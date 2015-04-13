@@ -41,6 +41,7 @@
 			<s:hidden name="tmStockIn.supplierId" id="iframe_supplierId" ></s:hidden>
 			<s:hidden name="tmStockIn.partName" id="iframe_partName" ></s:hidden>
 			<s:hidden name="tmStockIn.busType" id="iframe_busType" ></s:hidden>
+			<s:hidden name="tmStockIn.payMent" id="iframe_payMent" ></s:hidden>
 		</s:form>
 	
 		
