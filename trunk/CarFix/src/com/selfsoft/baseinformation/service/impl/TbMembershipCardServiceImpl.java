@@ -401,4 +401,18 @@ public class TbMembershipCardServiceImpl implements ITbMembershipCardService{
 		
 		return (cardPoint/dhFullPoint) * dhFullMoney;
 	}
+	
+	
+	public Integer calcDhJF(String cardNo, Integer money) {
+		
+		TbMembershipCard tbMembershipCard = this.findByCardNo(cardNo);
+		
+		TmCardType tmCardType = tbMembershipCard.getTmCardType();
+		
+		Integer dhFullPoint = tmCardType.getDhFullPoint();
+		
+		Integer dhFullMoney = tmCardType.getDhFullMoney();
+		
+		return money/dhFullMoney * dhFullPoint;
+	}
 }

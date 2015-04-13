@@ -583,7 +583,9 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			
 			if(!tbBusinessBalance.getDhMoney().equals(0)) {
 				
-				cardPoint = new BigDecimal("0.00").add(new BigDecimal(gsGivePoint)).add(new BigDecimal(pjGivePoint)).subtract(new BigDecimal(yhMinusPoint)).longValue();
+				Integer calcDHPint = tbMembershipCardService.calcDhJF(cardNo, tbBusinessBalance.getDhMoney());
+				
+				cardPoint = new BigDecimal(tbMembershipCard.getCardPoint()).subtract(new BigDecimal(calcDHPint)).add(new BigDecimal(gsGivePoint)).add(new BigDecimal(pjGivePoint)).subtract(new BigDecimal(yhMinusPoint)).longValue();
 				
 			}
 			
@@ -683,6 +685,8 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 		}
 
 		String[] params = request.getParameterValues("params");
+		
+		Double yhMoney = 0d;
 
 		if (null != params && params.length > 0) {
 
@@ -692,6 +696,10 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 
 				Double balanceItemTotal = Double.valueOf(request
 						.getParameter(params[i]));
+				
+				if("QL".equals(balanceItemCode)) {
+					yhMoney = balanceItemTotal;
+				}
 
 				TbBusinessBalanceItem tbBusinessBalanceItem = new TbBusinessBalanceItem();
 
@@ -789,6 +797,12 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			Integer pjGivePoint = tmCardTypeService.calcPjGivePoint(pjMoney, tbMembershipCard.getTmCardType().getId(),"");
 		
 			/**
+			 * 优惠扣除积分
+			 */
+			Integer yhMinusPoint = tmCardTypeService.calcYhMinusPoint(yhMoney, tbMembershipCard.getTmCardType().getId());
+			
+			
+			/**
 			 * 消费后金额
 			 */
 			Double cardSaving = new BigDecimal(tbMembershipCard.getCardSaving()).add(new BigDecimal(gsGiveMoney)).add(new BigDecimal(pjGiveMoney)).subtract(new BigDecimal(cardZFJE)).doubleValue();
@@ -796,8 +810,25 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			/**
 			 * 消费后积分
 			 */
-			Long cardPoint = new BigDecimal(tbMembershipCard.getCardPoint()).add(new BigDecimal(gsGivePoint)).add(new BigDecimal(pjGivePoint)).longValue();
-		
+			/**
+			 * 消费后积分
+			 */
+			Long cardPoint = 0L;
+			
+			if(!tbBusinessBalance.getDhMoney().equals(0)) {
+				
+				Integer calcDHPint = tbMembershipCardService.calcDhJF(cardNo, tbBusinessBalance.getDhMoney());
+				
+				cardPoint = new BigDecimal(tbMembershipCard.getCardPoint()).subtract(new BigDecimal(calcDHPint)).add(new BigDecimal(gsGivePoint)).add(new BigDecimal(pjGivePoint)).subtract(new BigDecimal(yhMinusPoint)).longValue();
+				
+			}
+			
+			else {
+				
+				cardPoint = new BigDecimal(tbMembershipCard.getCardPoint()).add(new BigDecimal(gsGivePoint)).add(new BigDecimal(pjGivePoint)).subtract(new BigDecimal(yhMinusPoint)).longValue();
+				
+			}
+			
 			tbMembershipCard.setCardZFJE(cardZFJE);
 			
 			tbMembershipCard.setOriCardSaving(tbMembershipCard.getCardSaving());
@@ -826,10 +857,10 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			
 			tbMembershipCard.setPjJexf(pjMoney);
 			
-			if(!tbBusinessBalance.getDhMoney().equals(0)) {
-				tbMembershipCard.setCardPoint(0L);
-				
-			}
+//			if(!tbBusinessBalance.getDhMoney().equals(0)) {
+//				tbMembershipCard.setCardPoint(0L);
+//				
+//			}
 			tbMembershipCard.setDhMoney(Long.valueOf(tbBusinessBalance.getDhMoney()));
 			
 			tbMembershipCard.setTbCustomer(tbCustomerService.findById(tmStockOut.getCustomerBill()));

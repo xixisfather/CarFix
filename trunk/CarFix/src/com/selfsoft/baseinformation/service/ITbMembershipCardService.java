@@ -69,4 +69,6 @@ public interface ITbMembershipCardService {
 	public void insertSmartBalanceTbMembershipCard(TbMembershipCard tbMembershipCard, TmUser tmUser);
 	
 	public Long calcDhMoney(String cardNo);
+	
+	public Integer calcDhJF(String cardNo, Integer money);
 }
