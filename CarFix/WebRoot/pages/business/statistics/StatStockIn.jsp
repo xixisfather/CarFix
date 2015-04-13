@@ -42,6 +42,8 @@
 			 document.frames["tmStockinDetailTab"].document.getElementById("iframe_endDate").value = document.getElementById("endDate").value;
 			 document.frames["tmStockinDetailTab"].document.getElementById("iframe_supplierId").value = document.getElementById("customerId").value;
 			 document.frames["tmStockinDetailTab"].document.getElementById("iframe_busType").value = document.getElementById("busType").value;
+			 document.frames["tmStockinDetailTab"].document.getElementById("iframe_payMent").value = document.getElementById("payMent").value;
+
 			 document.frames["tmStockinDetailTab"].detailSubmit();
 			 
 			 if(document.frames["tbCustomerTab"] != null){
@@ -51,6 +53,8 @@
 				 document.frames["tbCustomerTab"].document.getElementById("iframe_supplierId").value = document.getElementById("customerId").value;
 				 document.frames["tbCustomerTab"].document.getElementById("iframe_partName").value = document.getElementById("partName").value;
 				 document.frames["tbCustomerTab"].document.getElementById("iframe_busType").value = document.getElementById("busType").value;
+				 document.frames["tbCustomerTab"].document.getElementById("iframe_payMent").value = document.getElementById("payMent").value;
+					
 				 document.frames["tbCustomerTab"].detailSubmit();
 			 }
 			 
@@ -61,6 +65,8 @@
 				 document.frames["masterStockTab"].document.getElementById("iframe_supplierId").value = document.getElementById("customerId").value;
 				 document.frames["masterStockTab"].document.getElementById("iframe_partName").value = document.getElementById("partName").value;
 				 document.frames["masterStockTab"].document.getElementById("iframe_busType").value = document.getElementById("busType").value;
+				 document.frames["masterStockTab"].document.getElementById("iframe_payMent").value = document.getElementById("payMent").value;
+					
 				 document.frames["masterStockTab"].detailSubmit();
 			 }
 			 
@@ -75,6 +81,7 @@
 			 document.getElementById("exp_supplierId").value = document.getElementById("customerId").value;
 			 document.getElementById("exp_partName").value = document.getElementById("partName").value;
 			 document.getElementById("exp_busType").value = document.getElementById("busType").value;
+			 document.getElementById("exp_payMent").value = document.getElementById("payMent").value;
 			 document.forms["stockInDetailsExportXlsAction"].submit();
 			//window.open(url,'_blank');
 		}
@@ -87,6 +94,7 @@
 			<s:hidden name="tmStockIn.supplierId" id="exp_supplierId" ></s:hidden>
 			<s:hidden name="tmStockIn.partName" id="exp_partName" ></s:hidden>
 			<s:hidden name="tmStockIn.busType" id="exp_busType" ></s:hidden>
+			<s:hidden name="tmStockIn.payMent" id="exp_payMent" ></s:hidden>
 			<s:hidden  id="customerId" ></s:hidden>
 		</s:form>
 	
@@ -122,6 +130,12 @@
 								<td>业务类型</td>
 								<td >
 									<s:select id="busType" name="tmStockIn.busType" list="#request.busTypes" listKey="key" listValue="value"/>
+								</td>
+							</tr>
+							<tr>
+								<td>支付方式</td>
+								<td >
+									<s:select emptyOption="true" id="payMent" name="tmStockIn.payMent" list="#request.panMentMap" listKey="key" listValue="value"/>
 								</td>
 							</tr>
 							<tr>
