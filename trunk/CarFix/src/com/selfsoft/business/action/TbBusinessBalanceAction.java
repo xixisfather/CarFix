@@ -572,6 +572,11 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			Integer yhMinusPoint = tmCardTypeService.calcYhMinusPoint(yhMoney, tbMembershipCard.getTmCardType().getId());
 			
 			/**
+			 * 积分扣除积分
+			 */
+			Integer dhMinusPoint = tmCardTypeService.calcYhMinusPoint(Double.valueOf(tbBusinessBalance.getDhMoney()), tbMembershipCard.getTmCardType().getId());
+			
+			/**
 			 * 消费后金额
 			 */
 			Double cardSaving = new BigDecimal(tbMembershipCard.getCardSaving()).add(new BigDecimal(gsGiveMoney)).add(new BigDecimal(pjGiveMoney)).subtract(new BigDecimal(cardZFJE)).doubleValue();
@@ -585,7 +590,7 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 				
 				Integer calcDHPint = tbMembershipCardService.calcDhJF(cardNo, tbBusinessBalance.getDhMoney());
 				
-				cardPoint = new BigDecimal(tbMembershipCard.getCardPoint()).subtract(new BigDecimal(calcDHPint)).add(new BigDecimal(gsGivePoint)).add(new BigDecimal(pjGivePoint)).subtract(new BigDecimal(yhMinusPoint)).longValue();
+				cardPoint = new BigDecimal(tbMembershipCard.getCardPoint()).subtract(new BigDecimal(calcDHPint)).add(new BigDecimal(gsGivePoint)).add(new BigDecimal(pjGivePoint)).subtract(new BigDecimal(yhMinusPoint)).subtract(new BigDecimal(dhMinusPoint)).longValue();
 				
 			}
 			
@@ -620,7 +625,7 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			
 			tbMembershipCard.setGiveMoney(gsGiveMoney + pjGiveMoney);
 			
-			tbMembershipCard.setGivePoint(gsGivePoint + pjGivePoint - yhMinusPoint);
+			tbMembershipCard.setGivePoint(gsGivePoint + pjGivePoint - yhMinusPoint - dhMinusPoint);
 			
 			tbMembershipCard.setJexf(Double.valueOf(ZJE));
 			
@@ -801,6 +806,11 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			 */
 			Integer yhMinusPoint = tmCardTypeService.calcYhMinusPoint(yhMoney, tbMembershipCard.getTmCardType().getId());
 			
+			/**
+			 * 积分扣除积分
+			 */
+			Integer dhMinusPoint = tmCardTypeService.calcYhMinusPoint(Double.valueOf(tbBusinessBalance.getDhMoney()), tbMembershipCard.getTmCardType().getId());
+			
 			
 			/**
 			 * 消费后金额
@@ -819,7 +829,7 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 				
 				Integer calcDHPint = tbMembershipCardService.calcDhJF(cardNo, tbBusinessBalance.getDhMoney());
 				
-				cardPoint = new BigDecimal(tbMembershipCard.getCardPoint()).subtract(new BigDecimal(calcDHPint)).add(new BigDecimal(gsGivePoint)).add(new BigDecimal(pjGivePoint)).subtract(new BigDecimal(yhMinusPoint)).longValue();
+				cardPoint = new BigDecimal(tbMembershipCard.getCardPoint()).subtract(new BigDecimal(calcDHPint)).add(new BigDecimal(gsGivePoint)).add(new BigDecimal(pjGivePoint)).subtract(new BigDecimal(yhMinusPoint)).subtract(new BigDecimal(dhMinusPoint)).longValue();
 				
 			}
 			
@@ -849,7 +859,7 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			
 			tbMembershipCard.setGiveMoney(gsGiveMoney + pjGiveMoney);
 			
-			tbMembershipCard.setGivePoint(gsGivePoint + pjGivePoint);
+			tbMembershipCard.setGivePoint(gsGivePoint + pjGivePoint - yhMinusPoint- dhMinusPoint);
 			
 			tbMembershipCard.setJexf(Double.valueOf(ZJE));
 			
