@@ -411,6 +411,7 @@ public class TbBusinessBalance implements java.io.Serializable {
 	
 	//欠款金额
 	private Double oweAmount;
+	
 
 	public Double getOweAmount() {
 		
@@ -420,9 +421,16 @@ public class TbBusinessBalance implements java.io.Serializable {
 			
 			BigDecimal d_shouldPayAmount = new BigDecimal(String.valueOf(this.shouldPayAmount));
 			
+			BigDecimal d_freeAmount =  new BigDecimal("0.00");
+			
+			if(null != this.freeAmount) {
+				
+				d_freeAmount = new BigDecimal(String.valueOf(this.freeAmount));
+			}
+					
 			BigDecimal d_oweAmount = new BigDecimal("0.00");
 			
-			d_oweAmount = d_balanceTotalAll.subtract(d_shouldPayAmount).setScale(2,BigDecimal.ROUND_HALF_UP);
+			d_oweAmount = d_balanceTotalAll.subtract(d_shouldPayAmount).subtract(d_freeAmount).setScale(2,BigDecimal.ROUND_HALF_UP);
 		
 			return d_oweAmount.doubleValue();
 		}
