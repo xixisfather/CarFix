@@ -1066,8 +1066,8 @@ public class TbBusinessBalanceServiceImpl implements ITbBusinessBalanceService {
 
 				}
 
-				owe = owe.add(new BigDecimal(String.valueOf(t.getOweAmount())))
-						.subtract(d);
+				owe = owe.add(new BigDecimal(String.valueOf(t.getOweAmount())));
+						//.subtract(d);
 			}
 
 		}
