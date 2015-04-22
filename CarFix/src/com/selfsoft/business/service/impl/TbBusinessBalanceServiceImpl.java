@@ -484,6 +484,43 @@ public class TbBusinessBalanceServiceImpl implements ITbBusinessBalanceService {
 						ti.setBananceDateStart_s(bananceDateStart_s);
 						
 						
+						
+						// 当有欠款的时候
+						if (ti.getOweAmount() > 0D) {
+
+							BigDecimal d = new BigDecimal("0.00");
+
+							List<TbReceiveFree> tbReceiveFreeList = tbReceiveFreeService
+									.findByBalanceId(ti.getId());
+
+							/**
+							 * 是否有减免金额
+							 */
+							if (null != tbReceiveFreeList
+									&& tbReceiveFreeList.size() > 0) {
+
+								for (TbReceiveFree tf : tbReceiveFreeList) {
+
+									if (Constants.AMOUNTS.equals(tf.getAmountType())) {
+
+										d = d.add(new BigDecimal(tf.getFeeAmount()));
+										
+										ti.setFreeAmount(tf.getFeeAmount());
+									}
+
+								}
+
+							}
+							
+						}
+						
+						
+						
+						
+						
+						
+						
+						
 
 						listReturn.add(ti);
 
@@ -2144,15 +2181,19 @@ public class TbBusinessBalanceServiceImpl implements ITbBusinessBalanceService {
 							if (Constants.AMOUNTS.equals(tf.getAmountType())) {
 
 								d = d.add(new BigDecimal(tf.getFeeAmount()));
-
+								
+								t.setFreeAmount(tf.getFeeAmount());
 							}
 
 						}
 
 					}
 
-					if (t.getOweAmount() - d.doubleValue() > 0D) {
+					//if (t.getOweAmount() - d.doubleValue() > 0D) {
+					if (t.getOweAmount()>0d) {
 
+						
+						
 						list_return.add(t);
 
 					}
