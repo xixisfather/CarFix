@@ -315,8 +315,28 @@ function dhMoneyClick() {
 	
 	if(dhMoney.checked) {
 		
-		shouldPayAmount.value=shouldPayAmount.value-dhMoneyShow.value;
-		parent.document.getElementById('dhMoney').value=dhMoneyShow.value;  
+		var p_m = shouldPayAmount.value-dhMoneyShow.value;
+		
+		if(p_m >= 0 ) {
+			
+			shouldPayAmount.value=shouldPayAmount.value-dhMoneyShow.value;
+			
+			parent.document.getElementById('dhMoney').value=dhMoneyShow.value;
+			
+		}
+		
+		else {
+			
+			parent.document.getElementById('dhMoney').value=parseInt(shouldPayAmount.value);
+			
+			shouldPayAmount.value = 0;
+			
+			
+			
+		}
+		
+		
+		  
 	}
 	else {
 		shouldPayAmount.value=parseFloat(shouldPayAmount.value)+parseInt(dhMoneyShow.value);

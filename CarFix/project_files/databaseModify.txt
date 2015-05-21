@@ -117,13 +117,13 @@ COMMIT
 
 ALTER table dbo.TB_MAINTAIN_PART_CONTENT add IS_PRINT VARCHAR(50)
 
-采购入库增加税率字段
+--采购入库增加税率字段
 alter table dbo.tm_stock_in add RATE numeric(10, 2) NULL;
-维修发料增加成本价字段
+--维修发料增加成本价字段
 alter table Tb_Maintain_Part_Content add cost_price numeric(10,2)
-配件信息增加含税成本价字段
+--配件信息增加含税成本价字段
 alter table tb_part_info add RATE_COST_PRICE numeric(10,2)
-销售价系数
+--销售价系数
 CREATE TABLE [dbo].[TB_SALE_PRICE] (
 	[ID] [int] IDENTITY (1, 1) NOT NULL ,
 	[RATE] [varchar] (20) COLLATE Chinese_PRC_CI_AS NULL  
