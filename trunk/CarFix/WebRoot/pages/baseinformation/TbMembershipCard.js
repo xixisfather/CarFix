@@ -184,7 +184,7 @@ function sendCJF(flag)
 	
 	var pass = document.getElementById('pass');
 	
-	if(clearNoNum22(czjf,0.00,100000.00))
+	if(isNumber(czjf.value))
 	{
 		
 		var url = 'tmCardTypeFindByCJFAction.action?czjf=' + czjf.value + '&tbMembershipCardId=' + tbMembershipCardId.value + '&flag=' + flag + '&pass='+ pass.value+ '&time=' + time;
