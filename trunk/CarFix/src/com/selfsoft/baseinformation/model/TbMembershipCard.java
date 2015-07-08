@@ -502,8 +502,13 @@ public class TbMembershipCard implements java.io.Serializable{
 	}
 
 	
-	
-	
-	
-	
+	private TbCustomer payTbCustomer;
+
+	public TbCustomer getPayTbCustomer() {
+		return payTbCustomer;
+	}
+
+	public void setPayTbCustomer(TbCustomer payTbCustomer) {
+		this.payTbCustomer = payTbCustomer;
+	}
 }

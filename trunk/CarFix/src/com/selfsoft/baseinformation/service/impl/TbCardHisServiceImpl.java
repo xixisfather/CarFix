@@ -457,11 +457,11 @@ public class TbCardHisServiceImpl implements ITbCardHisService{
 		
 		tbCardHis.setUserRealName(tmUser.getUserRealName());
 		
-		tbCardHis.setCustomerId(tbMembershipCard.getTbCustomer().getId());
+		tbCardHis.setCustomerId(tbMembershipCard.getPayTbCustomer().getId());
 		
-		tbCardHis.setCustomerName(tbMembershipCard.getTbCustomer().getCustomerName());
+		tbCardHis.setCustomerName(tbMembershipCard.getPayTbCustomer().getCustomerName());
 		
-		tbCardHis.setCustomerCode(tbMembershipCard.getTbCustomer().getCustomerCode());
+		tbCardHis.setCustomerCode(tbMembershipCard.getPayTbCustomer().getCustomerCode());
 		
 		tbCardHisDao.insert(tbCardHis);
 	}
