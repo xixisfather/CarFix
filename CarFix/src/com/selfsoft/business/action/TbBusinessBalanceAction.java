@@ -633,7 +633,8 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 			
 			tbMembershipCard.setPjJexf(pjMoney);
 			
-			tbMembershipCard.setTbCustomer(tbFixEntrust.getTbCarInfo().getTbCustomer());
+			//tbMembershipCard.setTbCustomer(tbFixEntrust.getTbCarInfo().getTbCustomer());
+			tbMembershipCard.setPayTbCustomer(tbFixEntrust.getTbCarInfo().getTbCustomer());
 			
 			tbBusinessBalance.setTbMembershipCard(tbMembershipCard);
 			
@@ -877,7 +878,7 @@ public class TbBusinessBalanceAction extends ActionSupport implements
 //			}
 			tbMembershipCard.setDhMoney(Long.valueOf(tbBusinessBalance.getDhMoney()));
 			
-			tbMembershipCard.setTbCustomer(tbCustomerService.findById(tmStockOut.getCustomerBill()));
+			tbMembershipCard.setPayTbCustomer(tbCustomerService.findById(tmStockOut.getCustomerBill()));
 			
 			tbBusinessBalance.setTbMembershipCard(tbMembershipCard);
 		}
