@@ -5689,7 +5689,7 @@ public class TbBusinessBalanceServiceImpl implements ITbBusinessBalanceService {
 				String telephone = temp.getTbFixEntrust() == null ? "" : temp
 						.getTbFixEntrust().getTbCarInfo().getChassisCode();
 
-				temp.setTelephone(temp.getTbCustomer().getTelephone());
+				temp.setTelephone(temp.getTbCustomer()== null?"":temp.getTbCustomer().getTelephone());
 
 				String bananceDateStart_s = CommonMethod.parseDateToString(
 						temp.getBananceDate(), "yyyy-MM-dd HH:ss:mm");

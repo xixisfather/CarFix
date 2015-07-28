@@ -18,7 +18,6 @@ import java.util.logging.Logger;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
-
 import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
@@ -415,7 +414,7 @@ public class CommonMethod {
 	}
 
 
-	public static void main(String[] args){
+	public static void main(String[] args) throws Exception{
 		
 		/*String encoding=System.getProperty("file.encoding");
 
@@ -425,6 +424,8 @@ public class CommonMethod {
 		System.out.println(getMACAddress());*/
 	
 		//System.out.println(getMonthDays(2012, 7));
+		
+		System.out.println(encryptBASE64("112233"));
 	}
 	
 	
