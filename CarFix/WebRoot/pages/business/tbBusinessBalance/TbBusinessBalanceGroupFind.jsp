@@ -128,7 +128,9 @@
 				<td>手机号码</td>
 				<td><s:textfield name="tbBusinessBalance.telephone"></s:textfield>
 				
-				
+				<td>底盘号</td>
+				<td><s:textfield id="chassisCode"
+						name="tbBusinessBalance.chassisCode" /></td>
 			</tr>
 			<tr>
 				<td colspan="8" align="center"><input type="submit" value="查询" />

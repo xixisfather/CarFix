@@ -125,6 +125,16 @@
 				<td>底盘号</td>
 				<td><s:textfield id="chassisCode"
 						name="tbFixEntrust.tbCarInfo.chassisCode" /></td>
+						
+				<td>结算状况</td>
+				<td>
+				    <select  name="jsqk">
+				    	<option value=""></option>
+				    	<option value="wjs">未结算</option>
+				    	<option value="yjs">已结算</option>
+				    </select>
+				
+				</td>
 			</tr>
 
 			<tr>

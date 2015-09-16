@@ -624,5 +624,15 @@ public class TbFixEntrust implements java.io.Serializable {
 		this.pjcb = pjcb;
 	}
 	
+	private String jsqk;
+
+	public String getJsqk() {
+		return jsqk;
+	}
+
+	public void setJsqk(String jsqk) {
+		this.jsqk = jsqk;
+	}
+	
 	
 }
