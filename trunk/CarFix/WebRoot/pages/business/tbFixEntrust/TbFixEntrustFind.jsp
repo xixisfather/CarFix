@@ -113,6 +113,14 @@
 				    </select>
 				
 				</td>
+				
+				<td>
+					接待员
+				</td>
+				
+				<td><s:select name="tbFixEntrust.tmUser.id"
+						list="#request.tmUserMap" listKey="key" listValue="value"
+						emptyOption="true"></s:select></td>
 			</tr>
 
 			<tr>
