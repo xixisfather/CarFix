@@ -194,6 +194,8 @@ public class TbFixEntrustAction extends ActionSupport implements
 		ActionContext.getContext().put("pjcbTotal", pjcbTotal.divide(
 				new BigDecimal("1.00"), 2,
 				BigDecimal.ROUND_HALF_UP));
+		
+		ActionContext.getContext().put("tmUserMap",tmUserService.findAllTmUserMap());
 
 		ActionContext.getContext().put("tbFixEntrustList", tbFixEntrustListPage);
 
