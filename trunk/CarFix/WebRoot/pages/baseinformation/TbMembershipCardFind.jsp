@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="e3t" uri="http://www.jcreate.net/e3/table"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -66,6 +67,9 @@
 				<a href="javascript:editObject('${tbMembershipCard.id}','tbMembershipCardForwardPageAction!forwardPage.action',800,500);">
 					<font color="blue">修改</font>
 				</a>
+				
+				<c:if test="${session.tmUserRole.roleName=='财务'}">
+				
 				<a href="javascript:forwardPage('${tbMembershipCard.id}','tbMembershipCardForwardPageAction!forwardPage.action','cz',800,500);">
 					<font color="blue">充值</font>
 				</a>
@@ -75,6 +79,8 @@
 				<a href="javascript:forwardPage('${tbMembershipCard.id}','tbMembershipCardForwardPageAction!forwardPage.action','jfxf',800,500);">
 					<font color="blue">积分消费</font>
 				</a>
+				
+				</c:if>
 				<a href="javascript:operateObject('${tbMembershipCard.id}','tbMembershipCardValidAction.action','确定生效操作?');"><font color="blue">生效</font></a>
 				
 				<a href="javascript:operateObject('${tbMembershipCard.id}&flag=sx','tbMembershipCardDeleteAction.action','确定失效操作?');"><font color="blue">失效</font></a>

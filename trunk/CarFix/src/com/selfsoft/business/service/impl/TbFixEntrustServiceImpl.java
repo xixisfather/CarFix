@@ -309,6 +309,22 @@ public class TbFixEntrustServiceImpl implements ITbFixEntrustService {
 
 				}
 			}
+			
+			if (null != tbFixEntrust.getJsqk()
+					&& !"".equals(tbFixEntrust.getJsqk())) {
+
+				if ("wjs".equals(tbFixEntrust.getWjg())) {
+
+					detachedCriteria.add(Restrictions.ne("entrustStatus", 3L));
+
+				}
+
+				else if ("yjs".equals(tbFixEntrust.getWjg())) {
+
+					detachedCriteria.add(Restrictions.eq("entrustStatus", 3L));
+
+				}
+			}
 
 			if (null != tbFixEntrust.getTmUser() && null != tbFixEntrust.getTmUser().getId()) {
 

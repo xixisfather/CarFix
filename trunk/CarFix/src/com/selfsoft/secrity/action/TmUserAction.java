@@ -345,6 +345,13 @@ public class TmUserAction extends ActionSupport implements ServletRequestAware,
 			Cookie cookie=new Cookie(request.getRemoteAddr() + "usernameCookie",URLEncoder.encode(tmUser.getUserName(),"UTF-8"));
 			cookie.setMaxAge(365*24*60*60); //保存365天
 			response.addCookie(cookie); 
+			
+			Long roleId = tmUserRoleService.getUserRoleRelationByUserId(Long.valueOf(userList.get(0).getId()));
+			
+			TmRole tro = tmRoleService.findById(roleId);
+			
+			request.getSession().setAttribute("tmUserRole", tro);
+			
 			return Constants.SUCCESS;
 		}
 		request.setAttribute("msg", "用户名密码错误或账号已停用");

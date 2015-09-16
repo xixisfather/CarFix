@@ -153,6 +153,10 @@ public class TbFixEntrustAction extends ActionSupport implements
 		
 		tbFixEntrust.setWjg(wjg);
 		
+		String jsqk = request.getParameter("jsqk");
+		
+		tbFixEntrust.setJsqk(jsqk);
+		
 		List<TbFixEntrust> tbFixEntrustList = tbFixEntrustService
 				.findByTbFixEntrust(tbFixEntrust);
 		
