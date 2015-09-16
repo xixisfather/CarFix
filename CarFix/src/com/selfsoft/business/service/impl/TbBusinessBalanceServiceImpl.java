@@ -335,6 +335,14 @@ public class TbBusinessBalanceServiceImpl implements ITbBusinessBalanceService {
 
 			}
 			
+			if (null != tbBusinessBalance.getChassisCode()
+					&& !"".equals(tbBusinessBalance.getChassisCode())) {
+
+				sqlCondition += " and tbBusinessBalance.tbFixEntrust.tbCarInfo.chassisCode like '%"
+						+ tbBusinessBalance.getChassisCode() + "%'";
+
+			}
+			
 			if (null != tbBusinessBalance.getCustomerName()
 					&& !"".equals(tbBusinessBalance.getCustomerName())) {
 

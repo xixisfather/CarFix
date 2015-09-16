@@ -253,6 +253,14 @@ public class TbFixEntrustServiceImpl implements ITbFixEntrustService {
 									+ tbFixEntrust.getTbCarInfo()
 											.getLicenseCode() + "%"));
 				}
+				
+				if (null != tbFixEntrust.getTbCarInfo().getLicenseCode()) {
+					detachedCriteria.add(Restrictions.like(
+							"tbCarInfo.chassisCode", "%"
+									+ tbFixEntrust.getTbCarInfo()
+											.getChassisCode() + "%"));
+				}
+				
 				if (null != tbFixEntrust.getTbCarInfo().getTmCarModelType()) {
 					detachedCriteria.createAlias("tbCarInfo.tmCarModelType",
 							"tmCarModelType");

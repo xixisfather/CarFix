@@ -121,6 +121,10 @@
 				<td><s:select name="tbFixEntrust.tmUser.id"
 						list="#request.tmUserMap" listKey="key" listValue="value"
 						emptyOption="true"></s:select></td>
+						
+				<td>底盘号</td>
+				<td><s:textfield id="chassisCode"
+						name="tbFixEntrust.tbCarInfo.chassisCode" /></td>
 			</tr>
 
 			<tr>
