@@ -828,6 +828,10 @@
 			</result>
 		</action>
 		
+		<action name="tbFixEntrustExportXlsAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="exportTbFixEntrustXls">
+			
+		</action>
+		
 		<action name="tbFixEntrustViewAction" class="com.selfsoft.business.action.TbFixEntrustAction" method="viewTbFixEntrust">
 			<result name="success">
 				/pages/business/tbFixEntrust/TbFixEntrustView.jsp

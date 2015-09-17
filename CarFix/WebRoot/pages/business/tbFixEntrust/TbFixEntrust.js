@@ -16,7 +16,21 @@ function tbFixEntrustTableConfigHandler(pConfig) {
 		handler : function() {
 			refresh_tbFixEntrustTable();
 		}
-	} ];
+	} 
+	
+	, '', '-', '', {
+		text : '导出',
+		iconCls : 'editIcon',
+		handler : function() {
+			var date = new Date();
+			
+			var time = date.getTime();
+			
+			window.open('tbFixEntrustExportXlsAction.action?timeId='+time,'_blank');
+		}
+	} 
+	
+	];
 
 	// pConfig.autoExpandColumn='no';
 }
