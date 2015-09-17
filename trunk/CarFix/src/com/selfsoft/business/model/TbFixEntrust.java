@@ -634,5 +634,16 @@ public class TbFixEntrust implements java.io.Serializable {
 		this.jsqk = jsqk;
 	}
 	
+	private BigDecimal zlr;
+
+	public BigDecimal getZlr() {
+		return zlr;
+	}
+
+	public void setZlr(BigDecimal zlr) {
+		this.zlr = zlr;
+	}
+	
+	
 	
 }

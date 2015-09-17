@@ -83,6 +83,7 @@ import com.selfsoft.business.vo.TmStockOutDetVo;
 import com.selfsoft.framework.common.CommonMethod;
 import com.selfsoft.framework.common.Constants;
 import com.selfsoft.framework.common.StockTypeElements;
+import com.selfsoft.framework.file.XlsWriter;
 import com.selfsoft.secrity.model.TmCompany;
 import com.selfsoft.secrity.model.TmUser;
 import com.selfsoft.secrity.service.ITmCompanyService;
@@ -5096,5 +5097,37 @@ public class TbFixEntrustServiceImpl implements ITbFixEntrustService {
 
 		return map;
 
+	}
+	
+	public void tbFixEntrustExportXls(OutputStream os,String tpl,List<TbFixEntrust> list) {
+		
+		WritableWorkbook wwb = null;
+		
+		try{
+			wwb = Workbook.createWorkbook(os);
+			
+			WritableSheet ws = wwb.createSheet("Sheet1", 0);
+			
+			XlsWriter xlsWriter = new XlsWriter(this.getClass().getResourceAsStream(tpl));
+			
+			if(xlsWriter.isSuccess()){
+				
+				ws = xlsWriter.exportXls(ws, list);
+				
+				wwb.write();
+			}
+			
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try {
+				wwb.close();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 	}
 }

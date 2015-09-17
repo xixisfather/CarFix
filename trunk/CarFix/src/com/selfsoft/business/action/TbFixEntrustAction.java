@@ -3,6 +3,7 @@ package com.selfsoft.business.action;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.math.BigDecimal;
+import java.net.URLEncoder;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -189,6 +190,8 @@ public class TbFixEntrustAction extends ActionSupport implements
 				
 				_tbFixEntrust.setAllTotal(_tbFixEntrust.getFixHourTotal().add(_tbFixEntrust.getStockOutPartTotal().add(_tbFixEntrust.getSolePartTotal())));
 				
+				_tbFixEntrust.setZlr(_tbFixEntrust.getFixHourTotal().add(_tbFixEntrust.getStockOutPartTotal().add(_tbFixEntrust.getSolePartTotal()).subtract(_tbFixEntrust.getPjcb())));
+				
 				tbFixEntrustListPage.add(_tbFixEntrust);
 				
 			}
@@ -202,6 +205,8 @@ public class TbFixEntrustAction extends ActionSupport implements
 		ActionContext.getContext().put("tmUserMap",tmUserService.findAllTmUserMap());
 
 		ActionContext.getContext().put("tbFixEntrustList", tbFixEntrustListPage);
+		
+		ActionContext.getContext().getSession().put("tbFixEntrustListSession", tbFixEntrustListPage);
 
 		return Constants.SUCCESS;
 	}
@@ -1160,5 +1165,32 @@ public class TbFixEntrustAction extends ActionSupport implements
 			
 		return null;
 		
+	}
+	
+	public String exportTbFixEntrustXls() throws Exception {
+		
+		response.reset();
+		
+		response.setCharacterEncoding("UTF-8");
+			
+		String name = "委托书";
+			
+		name = URLEncoder.encode(name, "UTF-8");
+			
+		response.setHeader("Content-Disposition", "attachment;filename="+ new String(name.getBytes("UTF-8"), "GBK") + ".xls");
+			
+		response.setContentType("application/vnd.ms-excel");
+		
+		OutputStream os = response.getOutputStream();
+		
+		List<TbFixEntrust> list = (List<TbFixEntrust>) ActionContext.getContext().getSession().get("tbFixEntrustListSession");
+		
+		tbFixEntrustService.tbFixEntrustExportXls(os, "/tbFixEntrust_export_xls.properties", list);
+		
+		os.flush();
+		
+		os.close();
+		
+		return null;
 	}
 }

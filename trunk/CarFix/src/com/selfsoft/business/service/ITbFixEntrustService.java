@@ -73,4 +73,6 @@ public interface ITbFixEntrustService {
 	
 	public Map putEntrustBalanceReportParamMap(Long id,
 			HttpServletRequest request);
+	
+	public void tbFixEntrustExportXls(OutputStream os,String tpl,List<TbFixEntrust> list);
 }
