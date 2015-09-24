@@ -123,6 +123,15 @@ ServletRequestAware, ServletResponseAware{
 				return "pass";
 				
 			}
+			
+			else if("zjfw".equals(flag)) {
+				
+				List<TmMemberShipService> tmMemberShipServiceList = tmMemberShipServiceService.findByMemberShipId(Long.valueOf(id));
+
+				request.setAttribute("tmMemberShipServiceList", tmMemberShipServiceList);
+				
+				return "zjfw";
+			}
 
 			return Constants.EDITPAGE;
 		}
@@ -451,5 +460,27 @@ ServletRequestAware, ServletResponseAware{
 		
 		return Constants.SUCCESS;
 		
+	}
+	
+	public String updateTbMemberCardService() throws Exception {
+		
+		for(int i = 0 ; i < 20; i++) {
+			
+			String memberShipId = request.getParameter("memberShipId" + i);
+			
+			String serviceName = request.getParameter("serviceName" + i);
+			
+			String serviceCount = request.getParameter("serviceCount" + i);
+			
+			if(null ==serviceName|| null==serviceCount || "".equals(serviceName) || "".equals(serviceCount)) {
+				break;
+			}
+			
+			tmMemberShipServiceService.updateTmMemberShipService(Long.valueOf(memberShipId), serviceName, Integer.valueOf(serviceCount));
+		}
+		
+		
+		
+		return Constants.SUCCESS;
 	}
 }

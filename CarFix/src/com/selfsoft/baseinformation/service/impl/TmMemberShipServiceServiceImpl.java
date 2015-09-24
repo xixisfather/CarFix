@@ -69,5 +69,29 @@ public class TmMemberShipServiceServiceImpl implements ITmMemberShipServiceServi
 			
 		}
 	}
+	
+	
+	public void updateTmMemberShipService(Long memberShipId,String serviceName,Integer serviceCount) {
+		
+		List<TmMemberShipService> tmMemberShipServiceList = this.findByMemberShipId(memberShipId);
+		
+		if(null != tmMemberShipServiceList) {
+			
+			for(TmMemberShipService tmMemberShipService : tmMemberShipServiceList) {
+				
+				if(tmMemberShipService.getServiceName().equals(serviceName)&&tmMemberShipService.getServiceCount() > 0) {
+					
+					tmMemberShipService.setServiceCount(serviceCount);
+					
+					tmMemberShipServiceDao.update(tmMemberShipService);
+					
+					
+				}
+				
+				
+			}
+			
+		}
+	}
 
 }

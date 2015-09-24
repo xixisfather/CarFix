@@ -12,17 +12,28 @@ public class TestTmUser {
 	private static ITmUserService tmUserService;
 	
 	public static void main(String[] args) {
-		ApplicationContext appContext= new ClassPathXmlApplicationContext("classpath:applicationContext*.xml");	
+		//ApplicationContext appContext= new ClassPathXmlApplicationContext("classpath:applicationContext*.xml");	
 		
-		tmUserService=(ITmUserService) appContext.getBean("tmUserService");
+		//tmUserService=(ITmUserService) appContext.getBean("tmUserService");
 		
 		//testFindAll();
 		//testFindById();
 		//testDelete();
-		testInsert();
+		//testInsert();
 		//testFindByObject();
 		//testUpdateObjectValid();
 		//testFindBySQL();
+		
+		TmUser t = new TmUser();
+		
+		t.setId(11L);
+		
+		TmUser t1 = t;
+		
+		t1.setId(null);
+		
+		System.out.println(t.getId());
+		
 	}
 	
 	private static void testFindAll(){

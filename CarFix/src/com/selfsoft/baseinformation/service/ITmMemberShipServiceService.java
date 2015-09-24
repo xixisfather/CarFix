@@ -13,4 +13,6 @@ public interface ITmMemberShipServiceService {
 	public void deleteByMemberShipId(Long memberShipId);
 	
 	public void updateTmMemberShipService(Long memberShipId,String serviceName);
+	
+	public void updateTmMemberShipService(Long memberShipId,String serviceName,Integer serviceCount);
 }

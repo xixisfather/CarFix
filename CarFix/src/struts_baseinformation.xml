@@ -167,6 +167,9 @@
 			<result name="pass">
 				/pages/baseinformation/TbMembershipCardResetPassword.jsp
 			</result>
+			<result name="zjfw">
+				/pages/baseinformation/TbMembershipCardEditService.jsp
+			</result>
 		</action>
 		
 		<action name="tbMembershipCardInsertAction" class="com.selfsoft.baseinformation.action.TbMembershipCardAction" method="insertTbMembershipCard">
@@ -262,6 +265,19 @@
 				
 				/pages/baseinformation/TbMembershipCardViewService.jsp
 			</result>
+			
+		</action>	
+		
+		<action name="updateTbMemberCardServiceAction" class="com.selfsoft.baseinformation.action.TbMembershipCardAction" method="updateTbMemberCardService">
+			<result name="success">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/success.jsp?table=tbMembershipCardTable
+			</result>
+			<result name="failure">
+				<!--将定义的E3表格的ID传入URL-->
+				/pages/message/fail.jsp?table=tbMembershipCardTable
+			</result>
+			
 			
 		</action>		
  		<!-- 会员卡信息 -->
