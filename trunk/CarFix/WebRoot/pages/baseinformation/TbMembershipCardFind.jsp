@@ -68,7 +68,7 @@
 					<font color="blue">修改</font>
 				</a>
 				
-				<c:if test="${session.tmUserRole.roleName=='财务'}">
+				<c:if test="${session.tmUserRole.roleName=='财务'||session.tmUser.userName=='admin'}">
 				
 				<a href="javascript:forwardPage('${tbMembershipCard.id}','tbMembershipCardForwardPageAction!forwardPage.action','cz',800,500);">
 					<font color="blue">充值</font>
@@ -78,6 +78,10 @@
 				</a>
 				<a href="javascript:forwardPage('${tbMembershipCard.id}','tbMembershipCardForwardPageAction!forwardPage.action','jfxf',800,500);">
 					<font color="blue">积分消费</font>
+				</a>
+				
+				<a href="javascript:forwardPage('${tbMembershipCard.id}','tbMembershipCardForwardPageAction!forwardPage.action','zjfw',800,500);">
+					<font color="blue">增加服务</font>
 				</a>
 				
 				</c:if>
