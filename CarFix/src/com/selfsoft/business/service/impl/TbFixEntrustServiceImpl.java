@@ -255,7 +255,7 @@ public class TbFixEntrustServiceImpl implements ITbFixEntrustService {
 											.getLicenseCode() + "%"));
 				}
 				
-				if (null != tbFixEntrust.getTbCarInfo().getLicenseCode()) {
+				if (null != tbFixEntrust.getTbCarInfo().getChassisCode()) {
 					detachedCriteria.add(Restrictions.like(
 							"tbCarInfo.chassisCode", "%"
 									+ tbFixEntrust.getTbCarInfo()
@@ -314,13 +314,13 @@ public class TbFixEntrustServiceImpl implements ITbFixEntrustService {
 			if (null != tbFixEntrust.getJsqk()
 					&& !"".equals(tbFixEntrust.getJsqk())) {
 
-				if ("wjs".equals(tbFixEntrust.getWjg())) {
+				if ("wjs".equals(tbFixEntrust.getJsqk())) {
 
 					detachedCriteria.add(Restrictions.ne("entrustStatus", 3L));
 
 				}
 
-				else if ("yjs".equals(tbFixEntrust.getWjg())) {
+				else if ("yjs".equals(tbFixEntrust.getJsqk())) {
 
 					detachedCriteria.add(Restrictions.eq("entrustStatus", 3L));
 
