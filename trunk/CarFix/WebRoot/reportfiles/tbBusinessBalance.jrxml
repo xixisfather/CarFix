@@ -16,8 +16,7 @@
 		 bottomMargin="20"
 		 whenNoDataType="AllSectionsNoDetail"
 		 isTitleNewPage="false"
-		 isSummaryNewPage="false"
-		 isIgnorePagination="true">
+		 isSummaryNewPage="false">
 	<property name="ireport.scriptlethandling" value="0" />
 	<property name="ireport.encoding" value="UTF-8" />
 	<import value="java.util.*" />
