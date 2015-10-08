@@ -85,13 +85,19 @@ public class TbMembershipCardServiceImpl implements ITbMembershipCardService{
 			//}
 			//if(null!=tbMembershipCard.getTbCustomer()){
 				
-				if((null!=tbMembershipCard.getCustomerName()&&!"".equals(tbMembershipCard.getCustomerName()))||(null!=tbMembershipCard.getTelephone()&&!"".equals(tbMembershipCard.getTelephone()))){
+				if((null!=tbMembershipCard.getCustomerName()&&!"".equals(tbMembershipCard.getCustomerName()))||(null!=tbMembershipCard.getTelephone()&&!"".equals(tbMembershipCard.getTelephone())||(null!=tbMembershipCard.getCustomerId()))){
 					
 					//detachedCriteria.setFetchMode("tbMembershipCard.tbCustomer", FetchMode.JOIN);
 					
 					//if(!flag)
 					detachedCriteria.createAlias("tbCustomer", "tbCustomer");
 					
+					
+				}
+				
+				if(null != tbMembershipCard.getCustomerId()) {
+					
+					detachedCriteria.add(Restrictions.eq("tbCustomer.id",tbMembershipCard.getCustomerId()));
 					
 				}
 				
