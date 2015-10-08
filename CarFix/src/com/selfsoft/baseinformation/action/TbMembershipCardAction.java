@@ -166,8 +166,22 @@ ServletRequestAware, ServletResponseAware{
 		
 		if(tbMembershipCardService.validateCarNo(tbMembershipCard)){
 			
-			tbMembershipCardService.insertKkTbMembershipCard(tbMembershipCard, (TmUser)request.getSession().getAttribute("tmUser"));
+			TbMembershipCard tbMembershipCardTemp = new TbMembershipCard();
 			
+			tbMembershipCardTemp.setCustomerId(tbMembershipCard.getTbCustomer().getId());
+			
+			List<TbMembershipCard> tempList = tbMembershipCardService.findByTbMembershipCard(tbMembershipCardTemp);
+			
+			if(null != tempList&&tempList.size()>0) {
+				
+				ActionContext.getContext().put("msg","客户已经开卡");
+				
+				return Constants.FAILURE;
+			}
+			
+			else{
+				tbMembershipCardService.insertKkTbMembershipCard(tbMembershipCard, (TmUser)request.getSession().getAttribute("tmUser"));
+			}
 		}
 		else{
 			

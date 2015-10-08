@@ -511,4 +511,16 @@ public class TbMembershipCard implements java.io.Serializable{
 	public void setPayTbCustomer(TbCustomer payTbCustomer) {
 		this.payTbCustomer = payTbCustomer;
 	}
+	
+	private Long customerId;
+
+	public Long getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
+	}
+	
+	
 }
