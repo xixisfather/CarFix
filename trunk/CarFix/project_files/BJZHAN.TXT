@@ -1,0 +1,20 @@
+alter table dbo.TB_RECEIVE_FREE
+   add constraint FK_TB_RECE_FREE_REFERENCE_TB_CUSTO foreign key (CUSTOMER_ID)
+      references dbo.TB_CUSTOMER (ID);
+
+DELETE FROM TB_RECEIVE_FREE WHERE CUSTOMER_ID not in (select id from tb_customer)
+
+
+
+
+
+
+
+
+1.ok等模板
+2.OK
+3.ok
+4.遇到这种情况可以新建个要过户客户信息（如果系统里没有这个客户信息的话），然后添加车辆，输入牌照号的时候（沪   A0000）牌照号中间加空格来与原来的车区分，底盘号也同样操作，加空格区分就可以了
+5.ok运行上面sql
+6.等白总
+
