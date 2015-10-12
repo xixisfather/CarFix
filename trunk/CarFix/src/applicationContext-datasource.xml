@@ -162,13 +162,18 @@
    
     <tx:advice id="txAdvice" transaction-manager="transactionManagerSQL"> 
         <tx:attributes>
-        	<tx:method name="*" rollback-for="com.selfsoft.common.exception.MinusException" />
-			<tx:method name="insert*" rollback-for="com.selfsoft.common.exception.MinusException" />
-			<tx:method name="save*"	rollback-for="com.selfsoft.common.exception.MinusException"   />
-            <tx:method name="update*" rollback-for="com.selfsoft.common.exception.MinusException"  />
+        	<tx:method name="*"/>
+			<tx:method name="insert*"/>
+			<tx:method name="save*"/>
+            <tx:method name="update*"/>
             <tx:method name="delete*"/>
+            <tx:method name="batch*"/>
+            <tx:method name="stock*"/>
+            <tx:method name="part*"/>
             <tx:method name="find*" read-only="true"/>
+            <tx:method name="get*" read-only="true"/>
             <tx:method name="Query*" read-only="true"/>
+            <tx:method name="query*" read-only="true"/>
             <tx:method name="*Execute"/>
         </tx:attributes>
     </tx:advice> 

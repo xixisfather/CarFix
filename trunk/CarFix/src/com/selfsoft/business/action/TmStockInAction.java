@@ -214,6 +214,13 @@ ServletRequestAware, ServletResponseAware{
 	public String insertStockIn() throws IOException{
 		String partCol = request.getParameter("partCol");
 		String isConfirm = request.getParameter("isConfirm");
+		if(null != isConfirm){
+			
+			if(isConfirm.contains("?")) {
+				isConfirm = isConfirm.split("\\?")[0];
+			}
+			
+		}
 		tmStockIn.setStockInCode(tmDictionaryService.GenerateCode(StockTypeElements.STOCK.getElementString()));
 		tmStockIn.setCreateDate(new Date());
 		tmStockIn.setTotalPrice(totalPrice);									//税前金额合计
