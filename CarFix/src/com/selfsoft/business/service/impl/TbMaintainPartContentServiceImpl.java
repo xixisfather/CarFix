@@ -679,6 +679,7 @@ public class TbMaintainPartContentServiceImpl implements
 		tbMaintainPartContent.setEntrustId(entrustId);
 		if(null!=tbMaintainPartContent.getEntrustId()){
 			detachedCriteria.add(Restrictions.eq("entrustId", tbMaintainPartContent.getEntrustId()));
+			detachedCriteria.add(Restrictions.ne("isConfirm", Constants.NOT_CONFIRM));
 		}
 		return tbMaintainPartContentDao.findByCriteria(detachedCriteria, tbMaintainPartContent);
 	}
