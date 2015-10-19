@@ -12,21 +12,21 @@ public interface ITbMaintainPartContentService {
 	
 	public List<TbMaintainPartContent> findByEntity(TbMaintainPartContent tbMaintainPartContent,Long balanceType);
 	
-	public String batchInsertMaintain(String partCol,Double totalPrice,Long entrustId,Long isConfirm,Long userId) throws NumberFormatException, MinusException;
+	public String batchInsertMaintain(String partCol,Double totalPrice,Long entrustId,Long isConfirm,Long userId) throws Exception;
 	
-	public void updatePartInfoQuantity(Long partId,Double quantity) throws MinusException;
+	public void updatePartInfoQuantity(Long partId,Double quantity) throws Exception;
 	
-	public void updateMaintainState(String maintainCode) throws MinusException;
+	public void updateMaintainState(String maintainCode) throws Exception;
 	
 	public List<TbMaintianVo> getTbMaintianVos(String isConfirms  , TbMaintainPartContent queryEntity);
 	
 	public List<TbMaintianVo> getTbMaintianDetailVos(String maintainCode);
 	
-	public void updateMaintain(String maintainCode ,String partCol,Double totalPrice,Long entrustId,Long isConfirm,Long userId) throws NumberFormatException, MinusException;
+	public void updateMaintain(String maintainCode ,String partCol,Double totalPrice,Long entrustId,Long isConfirm,Long userId) throws Exception;
 	
 	public boolean deleteTbMaintain(String maintainCode);
 	
-	public void updateConfirmMaintain(String maintainCode ,String partCol,Double totalPrice,Long entrustId,Long isConfirm,Long userId) throws NumberFormatException, MinusException;
+	public void updateConfirmMaintain(String maintainCode ,String partCol,Double totalPrice,Long entrustId,Long isConfirm,Long userId) throws Exception;
 	
 	public Double getMaintainPartContentTotalPrice(String maintainCode);
 	

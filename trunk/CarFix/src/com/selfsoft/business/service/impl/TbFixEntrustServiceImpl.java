@@ -838,7 +838,7 @@ public class TbFixEntrustServiceImpl implements ITbFixEntrustService {
 		reportParameters.put("carProperty", tbCarInfo.getCarPropertyShow());
 
 		reportParameters.put("purchaseDate", CommonMethod.parseDateToString(
-				tbCarInfo.getProductDate(), "yyyy-MM-dd"));
+				tbCarInfo.getPurchaseDate(), "yyyy-MM-dd"));
 
 		reportParameters.put("chassisCode", tbCarInfo.getChassisCode());
 
@@ -1006,7 +1006,7 @@ public class TbFixEntrustServiceImpl implements ITbFixEntrustService {
 		reportParameters.put("carProperty", tbCarInfo.getCarPropertyShow());
 
 		reportParameters.put("purchaseDate", CommonMethod.parseDateToString(
-				tbCarInfo.getProductDate(), "yyyy-MM-dd"));
+				tbCarInfo.getPurchaseDate(), "yyyy-MM-dd"));
 
 		reportParameters.put("chassisCode", tbCarInfo.getChassisCode());
 

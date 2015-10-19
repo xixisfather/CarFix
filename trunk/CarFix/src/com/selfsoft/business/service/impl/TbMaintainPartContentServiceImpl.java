@@ -142,7 +142,7 @@ public class TbMaintainPartContentServiceImpl implements
 	 * @throws MinusException 
 	 * @throws NumberFormatException 
 	 */
-	public String batchInsertMaintain(String partCol,Double totalPrice,Long entrustId,Long isConfirm,Long userId) throws NumberFormatException, MinusException{
+	public String batchInsertMaintain(String partCol,Double totalPrice,Long entrustId,Long isConfirm,Long userId) throws Exception{
 		if(StringUtils.isNotBlank(partCol)){
 			
 			
@@ -227,7 +227,7 @@ public class TbMaintainPartContentServiceImpl implements
 	 * @param quantity
 	 * @throws MinusException 
 	 */
-	public void updatePartInfoQuantity(Long partId,Double quantity) throws MinusException{
+	public void updatePartInfoQuantity(Long partId,Double quantity) throws Exception{
 		TbPartInfo tbPartInfo = tbPartInfoDao.findById(partId);
 		Double sourceQuantity = tbPartInfo.getStoreQuantity()!= null?tbPartInfo.getStoreQuantity():0D;
 		Double newQuantity = sourceQuantity - quantity;
@@ -238,7 +238,7 @@ public class TbMaintainPartContentServiceImpl implements
 		checkPartInfoStockQuantity(tbPartInfo, newQuantity);
 		boolean flag = tmDictionaryService.isMinusStockOnt();
 		if(flag == false && newQuantity < 0  )
-			throw new MinusException();
+			throw new Exception();
 		tbPartInfoDao.update(tbPartInfo);
 		
 	}
@@ -276,7 +276,7 @@ public class TbMaintainPartContentServiceImpl implements
 	 * @param maintainCode
 	 * @throws MinusException 
 	 */
-	public void updateMaintainState(String maintainCode) throws MinusException{
+	public void updateMaintainState(String maintainCode) throws Exception{
 		TbMaintainPartContent queryEntity  = new TbMaintainPartContent();
 		queryEntity.setMaintainCode(maintainCode);
 		List<TbMaintainPartContent> mainContents = this.findByEntity(queryEntity);
@@ -352,7 +352,7 @@ public class TbMaintainPartContentServiceImpl implements
 		return result;
 	}
 	
-	public void updateMaintain(String maintainCode ,String partCol,Double totalPrice,Long entrustId,Long isConfirm,Long userId) throws NumberFormatException, MinusException{
+	public void updateMaintain(String maintainCode ,String partCol,Double totalPrice,Long entrustId,Long isConfirm,Long userId) throws Exception{
 		
 		tbMaintainPartContentDao.deleteTbMaintain(maintainCode);
 		
@@ -432,7 +432,7 @@ public class TbMaintainPartContentServiceImpl implements
 	}
 	
 	
-	public void updateConfirmMaintain(String maintainCode ,String partCol,Double totalPrice,Long entrustId,Long isConfirm,Long userId) throws NumberFormatException, MinusException{
+	public void updateConfirmMaintain(String maintainCode ,String partCol,Double totalPrice,Long entrustId,Long isConfirm,Long userId) throws Exception{
 		
 		if(StringUtils.isNotBlank(partCol)){
 			TbMaintainPartContent queryEntity = new TbMaintainPartContent();
