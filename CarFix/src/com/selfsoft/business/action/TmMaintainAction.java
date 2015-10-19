@@ -239,7 +239,7 @@ ServletRequestAware, ServletResponseAware{
 		try {
 			code = tbMaintainPartContentService.batchInsertMaintain(partCol, totalPrice,entrustId,new Long(isConfirm),userId);
 			ActionContext.getContext().put("msg","生成维修发料单号:" + code);
-		} catch (MinusException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			ActionContext.getContext().put("msg",e.getMessage());
 			return Constants.FAILURE;
@@ -256,7 +256,7 @@ ServletRequestAware, ServletResponseAware{
 	 * @Date      2010-6-1
 	 * @Function
 	 */
-	public void updateMaintainState() throws MinusException{
+	public void updateMaintainState() throws Exception{
 		String maintainCode =request.getParameter("maintainCode");
 		
 		tbMaintainPartContentService.updateMaintainState(maintainCode);
@@ -310,7 +310,7 @@ ServletRequestAware, ServletResponseAware{
 		String isConfirm = request.getParameter("isConfirm");
 		try {
 			tbMaintainPartContentService.updateMaintain(tbMaintainPartContent.getMaintainCode(), partCol, totalPrice, entrustId, new Long(isConfirm),userId);
-		} catch (MinusException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			ActionContext.getContext().put("msg",e.getMessage());
 			return Constants.FAILURE;
@@ -360,11 +360,11 @@ ServletRequestAware, ServletResponseAware{
 	}
 	
 	
-	public String updateConfirmMaintainContent() throws IOException, NumberFormatException{
+	public String updateConfirmMaintainContent() throws Exception{
 		Long userId = (Long) request.getSession().getAttribute("userId");
 		try {
 			tbMaintainPartContentService.updateConfirmMaintain(tbMaintainPartContent.getMaintainCode(), partCol, totalPrice, entrustId,tbMaintainPartContent.getIsConfirm(),userId);
-		} catch (MinusException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			ActionContext.getContext().put("msg",e.getMessage());
 			return Constants.FAILURE;

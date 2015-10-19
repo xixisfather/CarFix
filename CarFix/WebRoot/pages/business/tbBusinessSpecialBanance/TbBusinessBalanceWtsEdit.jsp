@@ -391,6 +391,10 @@ function calcAjax(itemCode)
 
 	var itemVal = document.getElementById(itemCode).value;
 	
+	if(itemVal.indexOf(".") == -1){
+		itemVal = itemVal + '.00';
+	}
+	
 	if(!validateNonPositiveNum(itemVal))
 	{
 

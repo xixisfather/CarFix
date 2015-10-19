@@ -174,14 +174,25 @@ ServletRequestAware, ServletResponseAware{
 			
 			if(null != tempList&&tempList.size()>0) {
 				
-				ActionContext.getContext().put("msg","客户已经开卡");
+				for(TbMembershipCard tfind : tempList) {
+					
+					if(!tfind.getTmCardType().getCardDesc().contains("洗车") ) {
+						
+						ActionContext.getContext().put("msg","客户已经开卡");
+						
+						return Constants.FAILURE;
+						
+					}
+					
+					
+				}
 				
-				return Constants.FAILURE;
+				
 			}
 			
-			else{
-				tbMembershipCardService.insertKkTbMembershipCard(tbMembershipCard, (TmUser)request.getSession().getAttribute("tmUser"));
-			}
+			
+			tbMembershipCardService.insertKkTbMembershipCard(tbMembershipCard, (TmUser)request.getSession().getAttribute("tmUser"));
+			
 		}
 		else{
 			
