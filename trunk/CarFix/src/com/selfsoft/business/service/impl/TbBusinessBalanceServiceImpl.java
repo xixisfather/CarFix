@@ -1341,7 +1341,7 @@ public class TbBusinessBalanceServiceImpl implements ITbBusinessBalanceService {
 				tempCopy.setFixHour(d2.doubleValue());
 
 				if (!tempCopy.getFreesymbol().equals(1L)
-						|| !tempCopy.getFixHourAll().equals(0d)) {
+						|| (!tempCopy.getFixHourAll().equals(0d)&&tempCopy.getFreesymbol().equals(1L))) {
 
 					tbFixEntrustContentListAdd.add(tempCopy);
 
@@ -1502,7 +1502,7 @@ public class TbBusinessBalanceServiceImpl implements ITbBusinessBalanceService {
 				temp.setTotal(d2.doubleValue());
 
 				if (!temp.getIsFree().equals(1L)
-						|| !temp.getPartQuantity().equals(0d)) {
+						|| (!temp.getPartQuantity().equals(0d)&&temp.getIsFree().equals(1L))) {
 
 					/*
 					 * temp.setPrice(new BigDecimal(temp.getTotal()).divide(new
@@ -1897,7 +1897,7 @@ public class TbBusinessBalanceServiceImpl implements ITbBusinessBalanceService {
 				temp.setTotal(d2.doubleValue());
 
 				if (!temp.getIsFree().equals(1L)
-						|| !temp.getPartQuantity().equals(0d)) {
+						|| (!temp.getPartQuantity().equals(0d)&&temp.getIsFree().equals(1L))) {
 
 					maintianvosAdd.add(temp);
 
