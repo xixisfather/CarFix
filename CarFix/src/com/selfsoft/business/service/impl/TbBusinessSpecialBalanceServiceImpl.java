@@ -1023,7 +1023,7 @@ public class TbBusinessSpecialBalanceServiceImpl implements
 
 				temp.setTotal(d2.doubleValue());
 
-				//if (!temp.getIsFree().equals(1L)|| !temp.getPartQuantity().equals(0d)) {
+				//if (!temp.getIsFree().equals(1L)|| (!temp.getPartQuantity().equals(0d)&&temp.getIsFree().equals(0L))) {
 				//if (!temp.getPartQuantity().equals(0d)) {
 
 					
@@ -1183,7 +1183,7 @@ public class TbBusinessSpecialBalanceServiceImpl implements
 			
 			for(TbSpecialWorkingContent twc : tbSpecialWorkingContentList) {
 				
-				//if(!twc.getFixHour().equals(0d)||!twc.getFreesymbol().equals(1L)) {
+				//if((!twc.getFixHour().equals(0d)&&twc.getFreesymbol().equals(1L))||!twc.getFreesymbol().equals(1L)) {
 				//if(!twc.getFixHour().equals(0d)) {
 					
 					tbSpecialWorkingContentListReport.add(twc);
@@ -1283,13 +1283,13 @@ public class TbBusinessSpecialBalanceServiceImpl implements
 			
 			for(TbSpecialPartContent tpc : tbSpecialPartContentAdd) {
 				
-				//if(!tpc.getPartQuantity().equals(0d) && !tpc.getPartQuantity().equals(1L)) {
+				if((!tpc.getPartQuantity().equals(0d))) {
 					
 					tpc.setPartTotal(tpc.acquireTotal());
 					
 					tbSpecialPartContentListReport.add(tpc);
 					
-				//}
+				}
 				
 			}
 		}
