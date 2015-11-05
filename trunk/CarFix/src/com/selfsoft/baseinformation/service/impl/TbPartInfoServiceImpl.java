@@ -1,5 +1,6 @@
 package com.selfsoft.baseinformation.service.impl;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -22,6 +23,8 @@ import com.selfsoft.baseinformation.service.ITbPartSolePriceService;
 import com.selfsoft.baseinformation.vo.TbPartInfoVo;
 import com.selfsoft.baseparameter.model.TmSoleType;
 import com.selfsoft.baseparameter.service.ITmSoleTypeService;
+import com.selfsoft.business.service.IStatisticsStockInOutService;
+import com.selfsoft.business.vo.TbPartInfoReFlowStatVo;
 import com.selfsoft.common.exception.MinusException;
 import com.selfsoft.framework.common.CommonMethod;
 @Service("tbPartInfoService")
@@ -36,6 +39,8 @@ public class TbPartInfoServiceImpl implements ITbPartInfoService {
 	private ITmSoleTypeService tmSoleTypeService;
 	@Autowired
 	private ITbPartSolePriceService tbPartSolePriceService;
+	@Autowired
+	private IStatisticsStockInOutService statisticsStockInOutService;
 
 	public boolean deleteById(Long id) {
 		//删除配件相关的所有价格
@@ -386,4 +391,54 @@ public class TbPartInfoServiceImpl implements ITbPartInfoService {
 		}
 	}
 	
+	public void updateAllNotRightStoreQuantity() {
+		
+		System.out.println("begin update storequantity");
+		
+		List<TbPartInfo> list = tbPartInfoDao.findAll();
+		
+		if(null !=list &&list.size() > 0) {
+			
+			for(TbPartInfo tpo : list) {
+				
+				List<TbPartInfo> temp = new ArrayList<TbPartInfo>();
+				
+				temp.add(tpo);
+				
+				List<TbPartInfoReFlowStatVo> results = statisticsStockInOutService.getPartInfoReFlowDetailStat(temp, null, new TbPartInfoReFlowStatVo());
+				
+				BigDecimal total = new BigDecimal(0.00d);
+				
+				if(null !=results&&results.size() > 0) {
+					
+					for(TbPartInfoReFlowStatVo t : results) {
+						
+						Double in = t.getInQuantity() == null?0.00d : t.getInQuantity();
+						
+						Double out = t.getOutQuantity() == null ? 0.00d:t.getOutQuantity();
+						
+						Double totalQuantity = t.getTotalQuantity();
+						
+						BigDecimal din = new BigDecimal(in.toString());
+						
+						BigDecimal dout = new BigDecimal(out.toString());
+						
+						total = total.add(din).subtract(dout);
+						
+					}
+					if(!tpo.getStoreQuantity().equals(total.doubleValue())) {
+						//System.out.println(tpo.getPartCode() + " " + tpo.getStoreQuantity() + " " + total);
+						tpo.setStoreQuantity(total.doubleValue());
+						tbPartInfoDao.update(tpo);
+						
+					}
+				}
+			
+			
+			
+			}
+		
+		
+		}
+	}
 }

@@ -526,8 +526,8 @@ public enum StockTypeElements {
 		if(val.equals(StockTypeElements.STOCK.getElementValue()) ||
 				val.equals(StockTypeElements.ALLOT.getElementValue()) ||
 				val.equals(StockTypeElements.OTHERSTOCKIN.getElementValue()) ||
-				val.equals(StockTypeElements.OVERFLOW.getElementValue()) ||
-				val.equals(StockTypeElements.STOCKRETURN.getElementValue()) 
+				val.equals(StockTypeElements.OVERFLOW.getElementValue()) 
+				//||val.equals(StockTypeElements.STOCKRETURN.getElementValue()) 
 		
 		){
 			return 1L;
@@ -537,6 +537,7 @@ public enum StockTypeElements {
 				val.equals(StockTypeElements.MAINTAIN.getElementValue()) ||
 				val.equals(StockTypeElements.DRAWSTOCKOUT.getElementValue()) ||
 				val.equals(StockTypeElements.SHIFTSTOCK.getElementValue()) 
+				||val.equals(StockTypeElements.STOCKRETURN.getElementValue()) 
 		){
 			return 2L;
 			
