@@ -166,29 +166,33 @@ ServletRequestAware, ServletResponseAware{
 		
 		if(tbMembershipCardService.validateCarNo(tbMembershipCard)){
 			
-			TbMembershipCard tbMembershipCardTemp = new TbMembershipCard();
-			
-			tbMembershipCardTemp.setCustomerId(tbMembershipCard.getTbCustomer().getId());
-			
-			List<TbMembershipCard> tempList = tbMembershipCardService.findByTbMembershipCard(tbMembershipCardTemp);
-			
-			if(null != tempList&&tempList.size()>0) {
+			if(!tbMembershipCard.getTmCardType().getCardDesc().contains("洗车卡")) {
 				
-				for(TbMembershipCard tfind : tempList) {
+				TbMembershipCard tbMembershipCardTemp = new TbMembershipCard();
+				
+				tbMembershipCardTemp.setCustomerId(tbMembershipCard.getTbCustomer().getId());
+				
+				List<TbMembershipCard> tempList = tbMembershipCardService.findByTbMembershipCard(tbMembershipCardTemp);
+				
+				if(null != tempList&&tempList.size()>0) {
 					
-					if(!tfind.getTmCardType().getCardDesc().contains("洗车") ) {
+					for(TbMembershipCard tfind : tempList) {
 						
-						ActionContext.getContext().put("msg","客户已经开卡");
+						if(!tfind.getTmCardType().getCardDesc().contains("洗车卡") ) {
+							
+							ActionContext.getContext().put("msg","客户已经开卡");
+							
+							return Constants.FAILURE;
+							
+						}
 						
-						return Constants.FAILURE;
 						
 					}
 					
 					
 				}
-				
-				
-			}
+			} 
+			
 			
 			
 			tbMembershipCardService.insertKkTbMembershipCard(tbMembershipCard, (TmUser)request.getSession().getAttribute("tmUser"));
