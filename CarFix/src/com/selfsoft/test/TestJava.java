@@ -112,23 +112,27 @@ public class TestJava {
 		
 		//for(int i = 100000 ; i < 999999 ; i++){
 			
-			String inputStr = "021";   
-			System.err.println("原文:\n" + inputStr);   
-			
-			byte[] inputData = inputStr.getBytes();   
-			String code = encryptBASE64(inputData);   
-			
-			System.err.println("BASE64加密后:\n" + code);   
-		
-			String outputStr = decryptBASE64(code);   
-			
-			System.err.println("BASE64解密后:\n" + outputStr);
+//			String inputStr = "021";   
+//			System.err.println("原文:\n" + inputStr);   
+//			
+//			byte[] inputData = inputStr.getBytes();   
+//			String code = encryptBASE64(inputData);   
+//			
+//			System.err.println("BASE64加密后:\n" + code);   
+//		
+//			String outputStr = decryptBASE64(code);   
+//			
+//			System.err.println("BASE64解密后:\n" + outputStr);
 			
 		//}
 			
-			String s = "1234567890";
-
-			System.out.println(s.substring(0, 4));
+//			String s = "1234567890";
+//
+//			System.out.println(s.substring(0, 4));
+		
+		String  ssss = "111?222?333";
+		
+		System.out.println(ssss.split("\\?")[0]);
 		  
 	}
 	

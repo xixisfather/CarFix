@@ -44,4 +44,6 @@ public interface ITbPartInfoService {
 	public TbPartInfo findByCode(String partCode);
 	
 	public void checkPartInfoStockInQuantity(Long tbPartInfoId , Double newStoreQuantity)throws MinusException;
+
+	public void updateAllNotRightStoreQuantity();
 }

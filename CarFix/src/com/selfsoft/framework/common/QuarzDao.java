@@ -14,6 +14,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import com.selfsoft.baseinformation.service.ITbPartInfoService;
 import com.selfsoft.baseparameter.service.ITmStoreDiskService;
 
 public class QuarzDao extends HibernateDaoSupport {
@@ -120,6 +121,11 @@ public class QuarzDao extends HibernateDaoSupport {
 					}
 				});
 		
+		
+		
+		ITbPartInfoService tbPartInfoService=(ITbPartInfoService) appContext.getBean("tbPartInfoService");
+		
+		tbPartInfoService.updateAllNotRightStoreQuantity();
 	}
 	
 	public static void main(String[] args){
