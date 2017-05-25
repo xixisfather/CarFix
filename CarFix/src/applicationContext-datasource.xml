@@ -163,18 +163,18 @@
     <tx:advice id="txAdvice" transaction-manager="transactionManagerSQL"> 
         <tx:attributes>
         	<tx:method name="*"/>
-			<tx:method name="insert*"/>
-			<tx:method name="save*"/>
-            <tx:method name="update*"/>
-            <tx:method name="delete*"/>
-            <tx:method name="batch*"/>
-            <tx:method name="stock*"/>
-            <tx:method name="part*"/>
-            <tx:method name="find*" read-only="true"/>
-            <tx:method name="get*" read-only="true"/>
-            <tx:method name="Query*" read-only="true"/>
-            <tx:method name="query*" read-only="true"/>
-            <tx:method name="*Execute"/>
+			<tx:method name="insert*" propagation="REQUIRED"/>
+			<tx:method name="save*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED"/>
+            <tx:method name="batch*" propagation="REQUIRED"/>
+            <tx:method name="stock*" propagation="REQUIRED"/>
+            <tx:method name="part*" propagation="REQUIRED"/>
+            <tx:method name="find*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="get*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="Query*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="query*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="*Execute" propagation="REQUIRED"/>
         </tx:attributes>
     </tx:advice> 
     
