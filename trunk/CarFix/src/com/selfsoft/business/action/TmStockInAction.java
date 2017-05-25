@@ -234,7 +234,7 @@ ServletRequestAware, ServletResponseAware{
 		
 		try {
 			tmStockinDetailService.insertBatchStock(formMap, tmStockIn);
-		} catch (MinusException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			ActionContext.getContext().put("msg",e.getMessage());
 			return Constants.FAILURE;

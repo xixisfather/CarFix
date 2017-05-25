@@ -284,7 +284,11 @@ public class TmUserAction extends ActionSupport implements ServletRequestAware,
 			companyAddressPinYin = CommonMethod.tranferToPinYin(t.getCompanyAddress()).substring(0,16);
 		}
 		
+		deadDate = "9999-12-31";
+		
 		if(null==deadDate){
+			
+			
 			
 			ActionContext.getContext().put("msg","序列号错误! 公司拼音 : " + companyNamePinYin +"  " + "公司地址拼音 : " + companyAddressPinYin + " " + "机器码：" + CommonMethod.getMACAddress());
 			
