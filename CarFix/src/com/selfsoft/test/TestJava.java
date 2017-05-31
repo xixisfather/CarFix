@@ -3,6 +3,7 @@ package com.selfsoft.test;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
@@ -10,9 +11,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
-
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 
 import com.selfsoft.framework.common.CommonMethod;
 import com.selfsoft.framework.common.Constants;
@@ -112,17 +110,17 @@ public class TestJava {
 		
 		//for(int i = 100000 ; i < 999999 ; i++){
 			
-//			String inputStr = "021";   
-//			System.err.println("原文:\n" + inputStr);   
-//			
-//			byte[] inputData = inputStr.getBytes();   
-//			String code = encryptBASE64(inputData);   
-//			
-//			System.err.println("BASE64加密后:\n" + code);   
-//		
-//			String outputStr = decryptBASE64(code);   
-//			
-//			System.err.println("BASE64解密后:\n" + outputStr);
+			String inputStr = "021";   
+			System.err.println("原文:\n" + inputStr);   
+			
+			byte[] inputData = inputStr.getBytes();   
+			String code = encryptBASE64(inputStr);   
+			
+			System.err.println("BASE64加密后:\n" + code);   
+		
+			String outputStr = decryptBASE64(code);   
+			
+			System.err.println("BASE64解密后:\n" + outputStr);
 			
 		//}
 			
@@ -130,9 +128,9 @@ public class TestJava {
 //
 //			System.out.println(s.substring(0, 4));
 		
-		String  ssss = "111?222?333";
+		//String  ssss = "111?222?333";
 		
-		System.out.println(ssss.split("\\?")[0]);
+		//System.out.println(ssss.split("\\?")[0]);
 		  
 	}
 	
@@ -150,11 +148,12 @@ public class TestJava {
 	
 	 
 	public static String decryptBASE64(String key) throws Exception {   
-		return new String((new BASE64Decoder()).decodeBuffer(key));   
+		return new String(Base64.getDecoder().decode(key));
 	}   
 
 	 
-	public static String encryptBASE64(byte[] key) throws Exception {   
-	    return (new BASE64Encoder()).encodeBuffer(key);   
+	public static String encryptBASE64(String key) throws Exception {   
+		return Base64.getEncoder().encodeToString(key.getBytes());
 	}
+	
 }

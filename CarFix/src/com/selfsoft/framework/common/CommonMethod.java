@@ -8,6 +8,7 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Enumeration;
@@ -16,8 +17,8 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
+import org.apache.commons.codec.Encoder;
+
 import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
@@ -375,12 +376,12 @@ public class CommonMethod {
 	}
 	
 	public static String decryptBASE64(String key) throws Exception {   
-		return new String((new BASE64Decoder()).decodeBuffer(key));   
+		return new String(Base64.getDecoder().decode(key));
 	}   
 
 	 
 	public static String encryptBASE64(String key) throws Exception {   
-	    return (new BASE64Encoder()).encodeBuffer(key.getBytes());   
+		return Base64.getEncoder().encodeToString(key.getBytes());
 	}
 	
 	public static int getYear(Date d){
